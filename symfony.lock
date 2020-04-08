@@ -78,11 +78,44 @@
     "egulias/email-validator": {
         "version": "2.1.17"
     },
+    "guzzlehttp/guzzle": {
+        "version": "6.5.2"
+    },
+    "guzzlehttp/promises": {
+        "version": "v1.3.1"
+    },
+    "guzzlehttp/psr7": {
+        "version": "1.6.1"
+    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "knplabs/knp-menu": {
+        "version": "v3.1.0"
+    },
+    "knplabs/knp-menu-bundle": {
+        "version": "v3.0.0"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+        },
+        "files": [
+            "config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
     "laminas/laminas-zendframework-bridge": {
         "version": "1.0.3"
+    },
+    "league/oauth2-client": {
+        "version": "2.4.1"
+    },
+    "meyfa/php-svg": {
+        "version": "v0.9.1"
     },
     "monolog/monolog": {
         "version": "2.0.2"
@@ -117,11 +150,17 @@
     "psr/event-dispatcher": {
         "version": "1.0.0"
     },
+    "psr/http-message": {
+        "version": "1.0.1"
+    },
     "psr/link": {
         "version": "1.0.0"
     },
     "psr/log": {
         "version": "1.1.2"
+    },
+    "ralouphie/getallheaders": {
+        "version": "3.0.3"
     },
     "sensio/framework-extra-bundle": {
         "version": "5.2",
@@ -134,6 +173,9 @@
         "files": [
             "config/packages/sensio_framework_extra.yaml"
         ]
+    },
+    "survos/landing-bundle": {
+        "version": "1.7.2"
     },
     "symfony/asset": {
         "version": "v5.0.4"
@@ -495,6 +537,25 @@
             "config/packages/dev/web_profiler.yaml",
             "config/packages/test/web_profiler.yaml",
             "config/routes/dev/web_profiler.yaml"
+        ]
+    },
+    "symfony/webpack-encore-bundle": {
+        "version": "1.6",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "1.6",
+            "ref": "69e1d805ad95964088bd510c05995e87dc391564"
+        },
+        "files": [
+            "assets/css/app.css",
+            "assets/js/app.js",
+            "config/packages/assets.yaml",
+            "config/packages/prod/webpack_encore.yaml",
+            "config/packages/test/webpack_encore.yaml",
+            "config/packages/webpack_encore.yaml",
+            "package.json",
+            "webpack.config.js"
         ]
     },
     "symfony/yaml": {
