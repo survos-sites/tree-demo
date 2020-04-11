@@ -1,0 +1,64 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Basic HTML Demo{% endblock %}
+
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('basic-html') }}
+{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        #jstree1, #jstree2, .jstree-basic
+        {
+            max-width:100%; overflow:auto; font:10px Verdana, sans-serif; box-shadow:0 0 5px #ccc; padding:10px; border-radius:5px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    {% for block_name in ['root_nodes', 'nodes_with_children'] %}
+    <h3>{{ block_name|title }}</h3>
+{{ block(block_name) }}
+    {% endfor %}
+
+
+
+<div class="container" id="content">
+    <div class="row page" id="demo" style="display:block;">
+        <div class="col-md-12">
+
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block root_nodes %}
+<div id="html1" class="jstree-basic">
+    <ul>
+        <li>Root node 1</li>
+        <li>Root node 2</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block nodes_with_children %}
+<div class="jstree-basic">
+    <ul>
+        <li>Root node 1
+            <ul>
+                <li>Child node 1</li>
+                <li><a href="#">Child node 2</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+{% endblock %}

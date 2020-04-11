@@ -12,12 +12,16 @@ class MenuBuilder extends LandingMenuBuilder
         $menu = $this->factory->createItem('root');
 
 $menu->setChildrenAttribute('class', 'nav navbar-nav mr-auto');
+        $menu->addChild('app_basic_ajax', ['route' => 'app_basic_ajax']);
+        $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
+
 
 $menu->addChild('survos_landing', ['route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
 
+/*
 $menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');
 $menu->addChild('app_typography', ['route' => 'app_typography'])->setAttribute('icon', 'fab fa-bootstrap');
-
+*/
 try {
 } catch (\Exception $e) {
     // probably not loaded.
