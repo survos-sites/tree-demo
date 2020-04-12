@@ -1,0 +1,6 @@
+[
+  { "id" : "BA", "parent" : "#", "text" : "Basement" },
+  { "id" : "1FL", "parent" : "#", "text" : "First Floor" },
+  { "id" : "KIT", "parent" : "1FL", "text" : "Kitchen" },
+  { "id" : "LR", "parent" : "1FL", "text" : "Living Room" }
+]
