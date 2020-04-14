@@ -1,0 +1,19 @@
+App\Entity\Location:
+  attributes:
+    name:
+      groups: ['jstree']
+    id:
+      groups: ['jstree']
+    code:
+      groups: ['jstree']
+    parent:
+      groups: ['jstree']
+    building:
+      groups: ['jstree']
+
+App\Entity\Building:
+  attributes:
+    name:
+      groups: ['jstree']
+    id:
+      groups: ['jstree']

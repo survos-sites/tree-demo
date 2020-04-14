@@ -10,10 +10,15 @@
 {% block body %}
 
     {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
+    {% set apiUrl =  path('api_locations_get_collection', {_format: 'json'}) %}
+
     <span id="config"
           data-save-url="{{ path('app_tree_save') }}"
+          data-api-url="{{ path('api_locations_get_collection') }}"
           data-url="{{ url }}"></span>
+
     <a href="{{ url }}">JSON</a>
+    <a href="{{ apiUrl }}">API URL</a>
 
 <div class="container" id="content">
     <div class="row page" id="demo" style="display:block;">
@@ -21,9 +26,9 @@
             <h3>Basic AJAX demo</h3>
             <div class="row">
                 <div class="col-md-4 col-sm-8 col-xs-8">
-                    <button type="button" class="btn btn-success btn-sm" onclick="demo_create();"><i class="glyphicon glyphicon-asterisk"></i> Create</button>
-                    <button type="button" class="btn btn-warning btn-sm" onclick="demo_rename();"><i class="glyphicon glyphicon-pencil"></i> Rename</button>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="demo_delete();"><i class="glyphicon glyphicon-remove"></i> Delete</button>
+                    <button type="button" class="btn btn-success btn-sm js-create" ><i class="glyphicon glyphicon-asterisk"></i> Create</button>
+                    <button type="button" class="btn btn-warning btn-sm js-rename" ><i class="glyphicon glyphicon-pencil"></i> Rename</button>
+                    <button type="button" class="btn btn-danger btn-sm js-delete" ><i class="glyphicon glyphicon-remove"></i> Delete</button>
 
                     <button id="js_save_button" type="button" class="btn btn-primary btn-sm"><i class="fas fa-upload"></i> Save</button>
                 </div>

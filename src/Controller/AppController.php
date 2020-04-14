@@ -73,6 +73,7 @@ class AppController extends BaseController
         foreach ($repository->findAll() as $location) {
             array_push($data, [
                 'id' => $location->getCode(),
+                'data' => ['databaseId' => $location->getId()],
                 'text' => $location->getName(),
                 'parent' => $location->getParent() ? $location->getParent()->getCode() : '#'
             ]);

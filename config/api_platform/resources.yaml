@@ -1,0 +1,40 @@
+# api/config/api_platform/resources.yaml
+App\Entity\User: ~
+App\Entity\Location:
+  shortName: 'Location'                   # optional
+  description: 'A place within a building where inventory item is physically located.' # optional
+  attributes:                          # optional
+    pagination_items_per_page: 3    # optional
+    normalization_context:
+      groups: ['jstree']
+    denormalization_context:
+      groups: ['jstree']
+#  collectionOperations:
+#    get: ~
+#    post:
+#      security: 'is_granted("ROLE_ADMIN")'
+#    create_child:
+#      read: false
+#      method: POST
+#      path: /create-location
+#      controller: App\Controller\CreateLocation
+
+#    security: 'is_granted("ROLE_USER")'
+#  collectionOperations:
+#    get: ~
+#    post:
+#      security: 'is_granted("ROLE_ADMIN")'
+#  itemOperations:
+#    get: ~
+#    put:
+#      security: 'is_granted("ROLE_ADMIN") or object.owner == user'
+
+App\Entity\Building:
+  shortName: 'Building'                   # optional
+  description: 'A physical building, that has locations within it, managed by a user' # optional
+  attributes:                          # optional
+    pagination_items_per_page: 3    # optional
+    normalization_context:
+      groups: ['jstree']
+    denormalization_context:
+      groups: ['jstree']

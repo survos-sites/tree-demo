@@ -19,6 +19,7 @@
         "build": "encore production --progress"
     },
     "dependencies": {
+        "jquery-confirm": "^3.3.4",
         "jstree": "^3.3.9"
     }
 }

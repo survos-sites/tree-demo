@@ -6,7 +6,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
@@ -56,6 +56,7 @@ class Location
      * @Gedmo\TreeParent
      * @ORM\ManyToOne(targetEntity="Location", inversedBy="children")
      * @ORM\JoinColumn(referencedColumnName="id", onDelete="CASCADE")
+     * @Assert\Valid()
      */
     private $parent;
 
@@ -74,6 +75,13 @@ class Location
      * @ORM\Column(type="integer", nullable=true)
      */
     private $orderIdx;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="App\Entity\Building", inversedBy="locations")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\Valid()
+     */
+    private $building;
 
     public function __construct(string $name = null)
     {
@@ -158,6 +166,9 @@ class Location
         return $this;
     }
 
+    /**
+     * @return ?Location
+     */
     public function getParent(): ?self
     {
         return $this->parent;
@@ -209,6 +220,23 @@ class Location
     public function setOrderIdx(?int $orderIdx): self
     {
         $this->orderIdx = $orderIdx;
+
+        return $this;
+    }
+
+    public function __toString()
+    {
+        return $this->getName(); // could expand parents
+    }
+
+    public function getBuilding(): ?Building
+    {
+        return $this->building;
+    }
+
+    public function setBuilding(?Building $building): self
+    {
+        $this->building = $building;
 
         return $this;
     }
