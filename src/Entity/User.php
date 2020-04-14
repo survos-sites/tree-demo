@@ -36,7 +36,7 @@ class User implements UserInterface
     private $password;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Building", mappedBy="user", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Building", mappedBy="user", orphanRemoval=true, cascade={"persist"})
      */
     private $buildings;
 

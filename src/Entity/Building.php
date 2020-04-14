@@ -30,12 +30,13 @@ class Building
     private $user;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="building", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="building", orphanRemoval=true, cascade={"persist"})
      */
     private $locations;
 
-    public function __construct()
+    public function __construct(string $name = null)
     {
+        $this->name = $name;
         $this->locations = new ArrayCollection();
     }
 

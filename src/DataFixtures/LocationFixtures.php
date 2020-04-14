@@ -27,13 +27,29 @@ END;
             ;
         $manager->persist($user);
 
-        $building = (new Building())
-            ->setName('House 1');
-        $manager->persist($building);
+        foreach (['Condo' => 'Bedroom 1,Bedroom 2,Bathroom', 'House'=>'First Floor,Second Floor', 'Warehouse' => 'Storage Area 1, Storage Area 2']
+                 as $buildingName => $areas) {
+            $building = (new Building($buildingName));
+            $user
+                ->addBuilding($building);
 
-        $user
-            ->addBuilding($building);
+            // root
+            $rootLocation = (new Location($buildingName));
+            $building->addLocation($rootLocation);
+           // $manager->persist($rootLocation);
 
+            foreach (explode(',', $areas) as $area) {
+                $location = (new Location($area))
+                    ->setParent($rootLocation);
+            }
+            // $manager->persist($location);
+
+        }
+
+
+
+
+        /*
         // a root is a locatino with no parent
         $root = (new Location())->setName('House');
         $manager->persist($root);
@@ -56,6 +72,7 @@ END;
         $building
             ->addLocation($closet);
         $manager->persist($closet);
+        */
 
 
         $manager->flush();

@@ -12,6 +12,7 @@ require('@fortawesome/fontawesome-free/js/all.js');
 require('jstree');
 $('.jstree-basic').jstree();
 
+
 /**
 \u0040fortawesome\/fontawesome\u002Dfree
 bootstrap

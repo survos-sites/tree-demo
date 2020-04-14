@@ -18,6 +18,7 @@ $menu->setChildrenAttribute('class', 'nav navbar-nav mr-auto');
 
 $menu->addChild('survos_landing', ['route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
 $menu->addChild('easyadmin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-database');
+$menu->addChild('building_index', ['route' => 'building_index'])->setAttribute('icon', 'fas fa-building');
 
 /*
 $menu->addChild('survos_landing_credits', ['route' => 'survos_landing_credits'])->setAttribute('icon', 'fas fa-trophy');

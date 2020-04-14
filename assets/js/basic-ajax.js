@@ -205,10 +205,11 @@ function demo_delete() {
 
         // listen for events
         .on('changed.jstree', function (e, data) { // triggered when selection changes, can be multiple, data is tree data, not node data
-            console.log(e.type, data.action, data.selected.join(','));
+            const {action, node, selected, instance} = data;
+            console.log(e.type, action, node, selected.join(','), instance);
             var i, j, r = [], ids = [];
-            for(i = 0, j = data.selected.length; i < j; i++) {
-                let node = data.instance.get_node(data.selected[i]);
+            for(i = 0, j = selected.length; i < j; i++) {
+                let node = instance.get_node(selected[i]);
                 console.log(i, node, node.data);
                 r.push(node.text);
                 ids.push(node.data.databaseId);

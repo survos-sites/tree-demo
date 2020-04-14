@@ -177,6 +177,9 @@ class Location
     public function setParent(?self $parent): self
     {
         $this->parent = $parent;
+        if ($parent) {
+            $this->parent->getBuilding()->addLocation($this);
+        }
 
         return $this;
     }
