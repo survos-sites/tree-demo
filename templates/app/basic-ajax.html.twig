@@ -2,19 +2,23 @@
 
 {% block title %}Basic AJAX Demo{% endblock %}
 
+
 {% block javascripts %}
 {{ parent() }}
-{{ encore_entry_script_tags('basic-ajax') }}
+{{ encore_entry_script_tags('tree-api') }}
 {% endblock %}
 
 {% block body %}
 
+    This is kinda cool, too.: https://github.com/alesmit/jquery-hortree
+
+    <hr />
     {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
     {% set apiUrl =  path('api_locations_get_collection', {_format: 'json'}) %}
 
     <span id="config"
           data-save-url="{{ path('app_tree_save') }}"
-          data-api-url="{{ path('api_locations_get_collection') }}"
+          data-api-url="{{ apiUrl }}"
           data-url="{{ url }}"></span>
 
     <a href="{{ url }}">JSON</a>
@@ -23,7 +27,7 @@
 <div class="container" id="content">
     <div class="row page" id="demo" style="display:block;">
         <div class="col-md-12">
-            <h3>Basic AJAX demo</h3>
+            <h3>API Platform AJAX demo</h3>
             <div class="row">
                 <div class="col-md-4 col-sm-8 col-xs-8">
                     <button type="button" class="btn btn-success btn-sm js-create" ><i class="glyphicon glyphicon-asterisk"></i> Create</button>
@@ -38,7 +42,16 @@
             </div>
             <div class="row">
                 <div class="col-md-8">
-                    <div id="jstree_demo" class="demo" style="margin-top:1em; min-height:200px;"></div>
+                    <div id="jstree_demo" class="demo" style="margin-top:1em; min-height:200px;"><code>jstree_demo</code></div>
+
+                    <div id="location_manager" class="demo"
+                         data-api-base="{{ apiUrl }}"
+                    >
+                        {{ apiUrl }}
+                        The location manager goes here.
+
+                    </div>
+
                 </div>
 
                 <div class="col-md-4">

@@ -8,6 +8,7 @@
         "antishov/doctrine-extensions-bundle": "^1.4",
         "api-platform/api-pack": "^1.2",
         "easycorp/easyadmin-bundle": "^2.3",
+        "friendsofsymfony/jsrouting-bundle": "^2.5",
         "sensio/framework-extra-bundle": "^5.1",
         "survos/landing-bundle": "^1.7",
         "symfony/asset": "5.0.*",

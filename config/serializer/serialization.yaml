@@ -8,6 +8,8 @@ App\Entity\Location:
       groups: ['jstree']
     parent:
       groups: ['jstree']
+    parentId:
+      groups: ['jstree']
     building:
       groups: ['jstree']
 

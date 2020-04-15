@@ -174,6 +174,14 @@ class Location
         return $this->parent;
     }
 
+    /**
+     * @return ?int
+     */
+    public function getParentId(): ?int
+    {
+        return $this->getParent() ? $this->getParent()->getId() : null;
+    }
+
     public function setParent(?self $parent): self
     {
         $this->parent = $parent;

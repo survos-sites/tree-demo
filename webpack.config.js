@@ -24,8 +24,10 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
-    .addEntry('basic-ajax', './assets/js/basic-ajax.js')
+    .addEntry('tree-api', './assets/js/tree-api.js')
+//    .addEntry('basic-ajax', './assets/js/basic-ajax.js')
     .addEntry('basic-html', './assets/js/basic-html.js')
+//    .addEntry('LocationManager', './assets/js/LocationManagerApp.js')
     //.addEntry('page1', './assets/js/page1.js')
     //.addEntry('page2', './assets/js/page2.js')
 

@@ -1,6 +1,23 @@
-require('jstree');
 const $ = require('jquery');
+require('jstree');
 require('jquery-confirm');
+
+// global.$ = $; // hack if you need a global $
+
+const routes = require('../../public/js/fos_js_routes.json');
+import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/public/js/router.min.js';
+const swal = require('sweetalert');
+
+import {LocationManagerApp} from './LocationManagerApp';
+
+const locationManager = new LocationManagerApp($('#jstree_demo'));
+
+// locationManager.render();
+
+// require('./LocationManagerApp');
+// import ExclamFunction from './tutorial'; <-- use import when possible!
+// console.log('hello' + ExclamFunction(3))
+// let manager = new LocationManager($('#location_manager', $, Routing));
 
 let contentTypes = {
     'PATCH': 'application/merge-patch+json',
@@ -105,9 +122,14 @@ function demo_delete() {
     ref.delete_node(sel);
 }
 
+// start of code
+
+function main() {
     var to = false;
     $('#demo_q').keyup(function () {
-        if(to) { clearTimeout(to); }
+        if (to) {
+            clearTimeout(to);
+        }
         to = setTimeout(function () {
             var v = $('#demo_q').val();
             $('#jstree_demo').jstree(true).search(v);
@@ -119,7 +141,7 @@ function demo_delete() {
     console.log(url, apiUrl);
 
 
-    $('#js_save_button').click(function() {
+    $('#js_save_button').click(function () {
         demo_save();
     });
     $('.js-create').click(demo_create);
@@ -128,10 +150,10 @@ function demo_delete() {
 
     let locationTree = $('#jstree_demo')
         .jstree({
-            "core" : {
-                animation : 0,
+            "core": {
+                animation: 0,
                 // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node', 'copy_node' or 'edit'
-                check_callback : function (operation, node, node_parent, node_position, more) {
+                check_callback: function (operation, node, node_parent, node_position, more) {
                     switch (operation) {
                         case 'delete_node':
                             return confirm("Are you sure you want to delete " + node.text);
@@ -147,7 +169,7 @@ function demo_delete() {
                                     '</div>' +
                                     '</form>',
                                 buttons: {
-                                    ok: function() {
+                                    ok: function () {
 
                                         location.href = this.$target.attr('href');
                                     },
@@ -167,7 +189,7 @@ function demo_delete() {
                             console.error('unhandled check_callback: ' + operation);
                     }
                 },
-                "xxcheck_callback" : function (operation, node, node_parent, node_position, more) {
+                "xxcheck_callback": function (operation, node, node_parent, node_position, more) {
                     console.log(operation, node, node.data, node_position, more);
                     // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node', 'copy_node' or 'edit'
                     // in case of 'rename_node' node_position is filled with the new node name
@@ -181,26 +203,27 @@ function demo_delete() {
                         return true;
                     }
                 },
-                'force_text' : true,
-                "themes" : { "stripes" : true },
-                'data' : {
-                    'url' : function (node) {
+                'force_text': true,
+                "themes": {"stripes": true},
+                'data': {
+                    'url': function (node) {
                         return url;
                         // node.id === '#' ? 'https://www.jstree.com/static/3.3.9/assets/ajax_roots.json' : 'https://www.jstree.com/static/3.3.9/assets/ajax_children.json';
                         // return node.id === '#' ? '/static/3.3.9/assets/ajax_demo_roots.json' : '/static/3.3.9/assets/ajax_demo_children.json';
                     },
-                    'data' : function (node) {
-                        return { 'id' : node.id };
+                    'data': function (node) {
+                        console.warn(node);
+                        return {'id': node.id};
                     }
                 }
             },
-            "types" : {
-                "#" : { "max_children" : 1, "max_depth" : 4, "valid_children" : ["root"] },
-                "root" : { "icon" : "/static/3.3.9/assets/images/tree_icon.png", "valid_children" : ["default"] },
-                "default" : { "valid_children" : ["default","file"] },
-                "file" : { "icon" : "glyphicon glyphicon-file", "valid_children" : [] }
+            "types": {
+                "#": {"max_children": 1, "max_depth": 4, "valid_children": ["root"]},
+                "root": {"icon": "/static/3.3.9/assets/images/tree_icon.png", "valid_children": ["default"]},
+                "default": {"valid_children": ["default", "file"]},
+                "file": {"icon": "glyphicon glyphicon-file", "valid_children": []}
             },
-            "plugins" : [ "contextmenu", "dnd", "search", "state", "types", "wholerow" ]
+            "plugins": ["contextmenu", "dnd", "search", "state", "types", "wholerow"]
         })
 
         // listen for events
@@ -208,7 +231,7 @@ function demo_delete() {
             const {action, node, selected, instance} = data;
             console.log(e.type, action, node, selected.join(','), instance);
             var i, j, r = [], ids = [];
-            for(i = 0, j = selected.length; i < j; i++) {
+            for (i = 0, j = selected.length; i < j; i++) {
                 let node = instance.get_node(selected[i]);
                 console.log(i, node, node.data);
                 r.push(node.text);
@@ -232,14 +255,16 @@ function demo_delete() {
 
             let buildingId = 1;
             // var node = $('#dashboardTree').jstree(true).find('//something');
-            itemApiCall(node, 'POST', {code: node.id,
+            itemApiCall(node, 'POST', {
+                code: node.id,
                 building: "/api/buildings/" + buildingId,
                 parent: '/api/locations/' + parentNode.data.databaseId,
-                name: text}, function (data) {
+                name: text
+            }, function (data) {
                 console.error(data);
             });
         })
-        .on('rename_node.jstree',  (e, data) => {
+        .on('rename_node.jstree', (e, data) => {
             const {node, text, old} = data;
             console.warn(node, node.parent, text, old);
             console.log(node);
@@ -254,10 +279,10 @@ function demo_delete() {
         })
         .on('delete_node.jstree', function (e, data) {
             var i, j, r = [];
-            console.log(e, data, data.action,data.node.data.databaseId , data.node, data.node.data);
-            $('#jstree_event_log').html('DELETE! ' + data.node.data.databaseId );
-            $.ajax(apiUrl + "/"  + data.node.data.databaseId , {method: 'DELETE'}
-            ).done( (data) => {
+            console.log(e, data, data.action, data.node.data.databaseId, data.node, data.node.data);
+            $('#jstree_event_log').html('DELETE! ' + data.node.data.databaseId);
+            $.ajax(apiUrl + "/" + data.node.data.databaseId, {method: 'DELETE'}
+            ).done((data) => {
                 console.log('Success!', data)
             })
             ;
@@ -267,8 +292,9 @@ function demo_delete() {
             console.warn('Deleting ' + nodeData.databaseId);
         })
 
-        .on('ready.jstree', function(e, data) {
+        .on('ready.jstree', function (e, data) {
             // demo_save();
         })
     ;
 
+}

@@ -4,7 +4,7 @@ App\Entity\Location:
   shortName: 'Location'                   # optional
   description: 'A place within a building where inventory item is physically located.' # optional
   attributes:                          # optional
-    pagination_items_per_page: 3    # optional
+    pagination_items_per_page: 30   # optional
     normalization_context:
       groups: ['jstree']
     denormalization_context:

@@ -1,11 +1,22 @@
 {% extends 'base.html.twig' %}
 
+{% block javascripts %}
+    {{ parent() }}
+    {{ encore_entry_script_tags('tree-api') }}
+{% endblock %}
+
 {% block title %}Building{% endblock %}
 
 {% block body %}
     <h1>Building</h1>
 
-    <table class="table">
+{% set apiUrl =  path('api_locations_get_collection', {_format: 'json'}) %}
+<div id="location_manager" class="demo"
+     data-api-base="{{ apiUrl }}"
+>
+
+
+<table class="table">
         <tbody>
             <tr>
                 <th>Id</th>
