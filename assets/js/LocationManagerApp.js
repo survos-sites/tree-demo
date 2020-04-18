@@ -1,14 +1,67 @@
 const $ = require('jquery');
 require('jstree'); // add jstree to jquery
 
-// import {jstree} from "jstree";
+// may want to see https://www.manning.com/books/extending-jquery
+
+
 
 export class LocationManagerApp
 {
-    constructor($element) {
+    constructor($element, data) {
+        console.log(data);
+        this.$element = $element;
+        this.addListeners();
+        this.jstree = this.$element.jstree(
+            {
+                core: {data: data },
+                plugins: ["contextmenu", "dnd", "search", "state", "types", "wholerow"]
 
-        if (0)
-        $element.jstree({ 'core' : {
+            });
+
+        this.jstree = $element.jstree(true);
+        console.log(this.$element, this.jstree);
+        this.render();
+    }
+
+
+    addListeners() {
+        this.$element
+            .on('changed.jstree', this.onChanged) // triggered when selection changes, can be multiple, data is tree data, not node data
+            .on('ready.jstree', function (e, data) {
+                console.warn('ready.jstree fired.');
+            })
+            .on('ready.jstree', function (e, data) {
+                console.warn('ready.jstree second on call.');
+            })
+        ;
+    }
+
+    onReady(e, data) {
+        console.warn('ready.jstree fired.');
+    }
+
+    onChanged(e, data) {
+        const {action, node, selected, instance} = data;
+        console.log(e.type, action, node, selected.join(','), instance);
+        var i, j, r = [], ids = [];
+        for (i = 0, j = selected.length; i < j; i++) {
+            let node = instance.get_node(selected[i]);
+            console.log(i, node, node.data);
+            r.push(node.text);
+            console.log(r);
+            // ids.push(node.data.databaseId);
+        }
+    }
+
+    render() {
+
+        // this.$element.jstree(true).settings.core.data = ['New Data'];
+
+        this.$element.jstree(true).refresh();
+        return;
+
+        console.log('calling render()');
+        this.$element.jstree({ 'core' : {
                 'data' : [
                     'Simple root node',
                     {
@@ -24,6 +77,7 @@ export class LocationManagerApp
                     }
                 ]
             } });
+        return;
         // $('#jstree_demo').html('loading tree.');
 
         let apiUrlBase = $element.data('api-base');
@@ -73,20 +127,6 @@ export class LocationManagerApp
                                 console.error('unhandled check_callback: ' + operation);
                         }
                     },
-                    "xxcheck_callback" : function (operation, node, node_parent, node_position, more) {
-                        console.log(operation, node, node.data, node_position, more);
-                        // operation can be 'create_node', 'rename_node', 'delete_node', 'move_node', 'copy_node' or 'edit'
-                        // in case of 'rename_node' node_position is filled with the new node name
-                        if (operation === 'delete_node') {
-
-                            if (!confirm_delete()) {
-                                return false;
-                            }
-                            return true;
-                        } else {
-                            return true;
-                        }
-                    },
                     'force_text' : true,
                     "themes" : { "stripes" : true },
                     'data' : {
@@ -106,7 +146,7 @@ export class LocationManagerApp
                             {
                                 "text json": function (data) {
                                     return JSON.parse(data).map( x => {
-                                        return { parent: x.parentId ? x.parentId: '#', id: x.id, text: x.name };
+                                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
                                     });
                                 }
                             },
@@ -187,7 +227,7 @@ export class LocationManagerApp
         });
     }
 
-    render() {
+    renderExample() {
 
 
         const itemsHtml = this.references.map(reference => {

@@ -23,6 +23,7 @@ App\Entity\Location:
 #  collectionOperations:
 #    get: ~
 #    post:
+
 #      security: 'is_granted("ROLE_ADMIN")'
 #  itemOperations:
 #    get: ~

@@ -10,12 +10,14 @@ App\Entity\Location:
       groups: ['jstree']
     parentId:
       groups: ['jstree']
-    building:
-      groups: ['jstree']
+#    building:
+#      groups: ['jstree']
 
 App\Entity\Building:
   attributes:
     name:
+      groups: ['jstree']
+    locations:
       groups: ['jstree']
     id:
       groups: ['jstree']

@@ -13,10 +13,35 @@ const swal = require('sweetalert');
 
 import {LocationManagerApp} from './LocationManagerApp';
 
+let $allLocations = $('#all_locations');
+let $buildingLocations = $('#building_locations');
 // pass in the jQuery element
-const locationManager = new LocationManagerApp(
-    $('#location_manager'), {
-        url: Routing.generate('api_locations_get_collection', {_format: 'json'}),
+
+const buildingManager = new LocationManagerApp(
+    $buildingLocations, {
+        dataType: 'json', // should set accept header
+        url: Routing.generate('api_buildings_get_collection') + '/' + $buildingLocations.data('buildingId'), // seems hackish
+        converters:
+            {
+                "text json": function (data) {
+                    return JSON.parse(data).locations.map( x => {
+                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
+                    });
+                }
+            },
+
+    },
+
+    {
+
+        // map: { parent: 'parentId', text: 'name' }
+        changed: (data) => {}
+});
+
+const allManager = new LocationManagerApp(
+    $allLocations, {
+        dataType: 'json', // should set accept header
+        url: Routing.generate('api_locations_get_collection'),
         converters:
             {
                 "text json": function (data) {
@@ -26,10 +51,15 @@ const locationManager = new LocationManagerApp(
                 }
             },
 
-    }, {
+    },
+
+    {
+
         // map: { parent: 'parentId', text: 'name' }
         changed: (data) => {}
-});
+    });
+
+$('.demo').off('changed.jstree').on('changed.jstree', (e, data) => { console.log(e, 'changed, my handler!!'); });
 
 
 locationManager.render(); // first time

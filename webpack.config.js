@@ -25,6 +25,7 @@ Encore
      */
     .addEntry('app', './assets/js/app.js')
     .addEntry('tree-api', './assets/js/tree-api.js')
+    .addEntry('building_show', './assets/js/building.js')
 //    .addEntry('basic-ajax', './assets/js/basic-ajax.js')
     .addEntry('basic-html', './assets/js/basic-html.js')
 //    .addEntry('LocationManager', './assets/js/LocationManagerApp.js')
@@ -68,7 +69,7 @@ Encore
     //.enableIntegrityHashes(Encore.isProduction())
 
     // uncomment if you're having problems with a jQuery plugin
-    .autoProvidejQuery()
+    // .autoProvidejQuery()
 
     // uncomment if you use API Platform Admin (composer req api-admin)
     //.enableReactPreset()

@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "86bff16454f9eaa3e6ca64832b727cd8",
+    "content-hash": "a55b444c6b9ff26524b1eac9447f5077",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -2064,6 +2064,59 @@
                 "sql"
             ],
             "time": "2014-01-12T16:20:24+00:00"
+        },
+        {
+            "name": "jwage/easy-csv",
+            "version": "1.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/jwage/easy-csv.git",
+                "reference": "b4dd4ccafbfd2998d46949533679324e659c7bec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/jwage/easy-csv/zipball/b4dd4ccafbfd2998d46949533679324e659c7bec",
+                "reference": "b4dd4ccafbfd2998d46949533679324e659c7bec",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "doctrine/coding-standard": "^6.0",
+                "phpstan/phpstan": "^0.11.5",
+                "phpstan/phpstan-strict-rules": "^0.11.0",
+                "phpunit/phpunit": "^8.1"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "EasyCSV\\": "lib/EasyCSV"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Jonathan H. Wage",
+                    "email": "jonwage@gmail.com"
+                }
+            ],
+            "description": "Easy CSV manipulation for PHP 5.4+",
+            "homepage": "http://github.com/jwage/easy-csv",
+            "keywords": [
+                "csv",
+                "read",
+                "write"
+            ],
+            "time": "2019-04-11T22:55:44+00:00"
         },
         {
             "name": "knplabs/knp-menu",
