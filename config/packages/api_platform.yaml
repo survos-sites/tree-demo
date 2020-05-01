@@ -1,3 +1,4 @@
+# config/packages/api_platform.yaml
 api_platform:
     mapping:
         paths:
