@@ -41,11 +41,11 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
             $this->addMenuItem($buildingMenu, ['route' => 'building_' . $routeSuffix]);
         }
 
-        $menu->addChild('survos_landing', ['label' => 'home', 'route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
+        $this->addMenuItem($menu, ['route' => 'app_homepage', 'icon' => 'fas fa-home']);
+
         $menu->addChild('app_basic_ajax', ['route' => 'app_basic_ajax']);
         $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
 
-        $menu->addChild('survos_landing', ['route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
         $adminMenu = $this->addMenuItem($menu, ['menu_code' => 'admin_dropdown']);
         $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
         $this->addMenuItem($adminMenu, ['route' => 'api_entrypoint']);
