@@ -2,13 +2,34 @@
 
 namespace App\EventSubscriber;
 
+use Survos\BaseBundle\Menu\BaseMenuSubscriber;
+use Survos\BaseBundle\Menu\MenuBuilder;
+use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
-use Survos\LandingBundle\Traits\KnpMenuHelperTrait;
+use Symfony\Component\HttpFoundation\RequestStack;
+use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
+use Symfony\Component\Security\Core\Security;
 
-class MenuSubscriber implements EventSubscriberInterface
+class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterface
 {
-    use KnpMenuHelperTrait;
+    // use KnpMenuHelperTrait; // for auth menu
+
+    private $requestStack;
+    private $authorizationChecker;
+    private $security;
+
+    /**
+     * @param AuthorizationCheckerInterface $authorizationChecker
+     */
+    public function __construct(AuthorizationCheckerInterface $authorizationChecker, Security $security, RequestStack $requestStack)
+    {
+        $this->requestStack = $requestStack;
+        $this->authorizationChecker = $authorizationChecker;
+        $this->security = $security;
+    }
+
+   // use KnpMenuHelperTrait;
 
     public function onKnpMenuEvent(KnpMenuEvent $event)
     {
@@ -25,7 +46,10 @@ class MenuSubscriber implements EventSubscriberInterface
         $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
 
         $menu->addChild('survos_landing', ['route' => 'app_homepage'])->setAttribute('icon', 'fas fa-home');
-        $menu->addChild('easyadmin', ['route' => 'easyadmin'])->setAttribute('icon', 'fas fa-database');
+        $adminMenu = $this->addMenuItem($menu, ['menu_code' => 'admin_dropdown']);
+        $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
+        $this->addMenuItem($adminMenu, ['route' => 'api_entrypoint']);
+        $this->addMenuItem($adminMenu, ['route' => 'api_doc']);
 
         // ...
     }
@@ -33,7 +57,7 @@ class MenuSubscriber implements EventSubscriberInterface
     public static function getSubscribedEvents()
     {
         return [
-            KnpMenuEvent::class => 'onKnpMenuEvent',
+            MenuBuilder::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
         ];
     }
 }

@@ -5,14 +5,13 @@ namespace App\Controller;
 use App\Entity\Location;
 use App\Repository\LocationRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Survos\LandingBundle\Controller\BaseController;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-class AppController extends BaseController
+class AppController extends AbstractController
 {
     // see https://www.jstree.com/docs/json/
     // and maybe https://www.phpflow.com/demo/dynamic-jstree-php-mysql-demo/#
@@ -36,6 +35,7 @@ class AppController extends BaseController
     }
 
     /**
+     * @Route("/", name="app_homepage")
      * @Route("/html-demos", name="app_basic_html")
      */
     public function html()
