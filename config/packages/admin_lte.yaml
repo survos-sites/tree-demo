@@ -6,21 +6,66 @@
 # For tabs in the control_sidebar (right screen) add the 'control_sidebar' config key:
 # https://github.com/kevinpapst/AdminLTEBundle/blob/master/Resources/docs/control_sidebar.md
 
-# config/packages/admin_lte.yaml
 admin_lte:
+    options:
+        # default image for missing user avatar images
+        default_avatar: bundles/adminlte/images/default_avatar.png
+        # default image for missing logos
+        default_brand_logo: bundles/adminlte/images/adminltelogo.png
+
+        # the color skin
+        skin: skin-green
+
+        # fixes the position of the header menu
+        fixed_header: true
+        # fixes the position of the left sidebar
+        fixed_menu: true
+        # fixes the position of the footer
+        fixed_footer: true
+        # boxed layout (true) or full-screen (false)
+        boxed_layout: false
+        # initial collapsed state of the sidebar
+        collapsed_sidebar: false
+        # whether the left menu/sidebar is shown as icons when minified or completely removed
+        mini_sidebar: true
+        # max number of notifications displayed
+        max_navbar_notifications: 10
+        # max number of tasks displayed
+        max_navbar_tasks: 10
+        # max number of messages displayed
+        max_navbar_messages: 10
+
+    # configurable tabs in the control_sidebar (right screen), see:
+    # https://github.com/kevinpapst/AdminLTEBundle/blob/master/Resources/docs/control_sidebar.md
+    # control_sidebar:
+    #    home:
+    #        icon: fas fa-home
+    #        template: control-sidebar/home.html.twig
+    #    settings:
+    #        icon: fas fa-cogs
+    #        controller: 'App\Controller\DefaultController::controlSidebarSettings'
+
+
+    theme:
+        widget:
+            type: 'primary'
+            collapsible: false
+            collapsible_title: 'Collapse'
+            removable: false
+            removable_title: 'Remove'
+            solid: false
+        button:
+            type: 'primary'
+            size: false
+
     knp_menu:
         enable: true
+        main_menu: survos_sidebar_menu
+        breadcrumb_menu: true
 
     routes:
         adminlte_welcome: app_homepage
         adminlte_login: app_login
         adminlte_profile: app_profile
-
-    options:
-        skin: skin-blue
-        fixed_layout: false
-        boxed_layout: false
-        collapsed_sidebar: false
-        mini_sidebar: false
 
 

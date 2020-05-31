@@ -1,1 +1,148 @@
-{% extends "@SurvosLanding/base.html.twig" %}
+{% extends '@SurvosBase/base.html.twig' %}
+{#
+{% extends "@AdminLTE/layout/default-layout.html.twig" %}
+{% extends '@SurvosBase/public_base.html.twig' %}
+#}
+
+{% block page_content %}
+    {{ block('body') }}
+{% endblock %}
+
+
+    {% block xxxnavbar %}
+        <nav class="main-header navbar navbar-expand fixed-top navbar-dark">
+            <ul class="navbar-nav">
+                {% block navbar_toggle %}
+                    <li class="nav-item">
+                        <a class="nav-link" data-widget="pushmenu" href="#">
+                            <i class="fas fa-bars"></i>
+                            <span class="sr-only">{{ 'Toggle navigation'|trans({}, 'AdminLTEBundle')  }}</span>
+                        </a>
+                    </li>
+                {% endblock %}
+                {% block navbar_links %}
+                    {# TODO document me #}
+                    {#
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="../../index3.html" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item d-none d-sm-inline-block">
+                        <a href="#" class="nav-link">Contact</a>
+                    </li>
+                    #}
+                {% endblock %}
+            </ul>
+
+            {% block navbar_search %}
+                {% block sidebar_search %}
+                    {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\SidebarController::searchFormAction')) }}
+                {% endblock %}
+            {% endblock %}
+
+            <ul class="navbar-nav ml-auto">
+                {% block navbar_start %}{% endblock %}
+                {% block navbar_teams %}
+                    {{ render(controller('App\\Controller\\NavbarController::listTeams')) }}
+                {% endblock %}
+
+                {% block navbar_messages %}
+                    {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\NavbarController::messagesAction')) }}
+                {% endblock %}
+                {% block navbar_notifications %}
+                    {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\NavbarController::notificationsAction')) }}
+                {% endblock %}
+                {% block navbar_tasks %}
+                    {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\NavbarController::tasksAction')) }}
+                {% endblock %}
+
+                {% block navbar_user %}
+                    {{ render(controller('KevinPapst\\AdminLTEBundle\\Controller\\NavbarController::userAction')) }}
+                {% endblock %}
+                {% block navbar_end %}{% endblock %}
+
+                {% block navbar_control_sidebar_toggle %}
+                    {% if admin_lte_context.control_sidebar is defined and admin_lte_context.control_sidebar is not empty %}
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-widget="control-sidebar" data-slide="true"><i class="fas fa-th-large"></i></a>
+                        </li>
+                    {% endif %}
+                {% endblock %}
+            </ul>
+        </nav>
+    {% endblock %}
+
+
+{% block page_content_before  %}
+    {{ 0 and block('page_menu') }}
+    {% include "@SurvosBase/render_page_menu.html.twig" %}
+
+{% endblock %}
+
+
+    {% block page_menu %}
+        <div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a class="navbar-brand" href="#">{{ app.request.get('_route') }}</a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Active Link</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Dropdown
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Action</a>
+                                <a class="dropdown-item" href="#">Another action</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="#">Something else here</a>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    {% endblock %}
+
+
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('app') }}
+    {% endblock %}
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {{ encore_entry_link_tags('app') }}
+    {% endblock %}
+
+
+{# could also overwrite template
+        {% include '@AdminLTE/Partials/_footer.html.twig' %}
+#}
+
+{% block footer %}
+    <footer class="main-footer">
+        <!-- To the right -->
+        <div class="pull-right hidden-xs">
+
+        </div>
+        <!-- Default to the left -->
+        <strong>Code Copyright &copy; 2020 <a href="#">Survos</a>.</strong>  All rights reserved.
+    </footer>
+{% endblock %}
+
+{% block logo_mini %}<b>Tree</b>{% endblock %}
+{% block logo_large '<b>Tree</b> Data' %}
+
+{% block page_title 'Hierarchical Data Demo' %}
+{% block page_subtitle 'With JS-Tree and Nested Sets' %}
+
+

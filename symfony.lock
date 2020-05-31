@@ -122,6 +122,9 @@
     "doctrine/reflection": {
         "version": "v1.1.0"
     },
+    "doctrine/sql-formatter": {
+        "version": "1.x-dev"
+    },
     "easycorp/easyadmin-bundle": {
         "version": "2.0",
         "recipe": {
@@ -157,25 +160,31 @@
         "version": "v2.4.39"
     },
     "guzzlehttp/guzzle": {
-        "version": "6.5.2"
+        "version": "6.5.3"
     },
     "guzzlehttp/promises": {
-        "version": "v1.3.1"
+        "version": "1.4-dev"
     },
     "guzzlehttp/psr7": {
-        "version": "1.6.1"
-    },
-    "jdorn/sql-formatter": {
-        "version": "v1.2.17"
+        "version": "1.x-dev"
     },
     "jwage/easy-csv": {
         "version": "1.0.0"
     },
+    "kevinpapst/adminlte-bundle": {
+        "version": "0.9",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "0.9",
+            "ref": "dca6a91efc23d844326d2e90b47bdf48a5038fcf"
+        }
+    },
     "knplabs/knp-menu": {
-        "version": "v3.1.0"
+        "version": "3.2-dev"
     },
     "knplabs/knp-menu-bundle": {
-        "version": "v3.0.0"
+        "version": "3.1.x-dev"
     },
     "knpuniversity/oauth2-client-bundle": {
         "version": "1.20",
@@ -195,8 +204,11 @@
     "league/oauth2-client": {
         "version": "2.4.1"
     },
-    "meyfa/php-svg": {
-        "version": "v0.9.1"
+    "lorenzo/pinky": {
+        "version": "1.0.5"
+    },
+    "mindscreen/yarnlock": {
+        "version": "v1.0.1"
     },
     "monolog/monolog": {
         "version": "2.0.2"
@@ -247,7 +259,7 @@
         "version": "1.0.0"
     },
     "psr/http-message": {
-        "version": "1.0.1"
+        "version": "1.0.x-dev"
     },
     "psr/link": {
         "version": "1.0.0"
@@ -270,8 +282,8 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
-    "survos/landing-bundle": {
-        "version": "1.7.2"
+    "survos/base-bundle": {
+        "version": "1.x-dev"
     },
     "symfony/asset": {
         "version": "v5.0.4"
@@ -321,6 +333,9 @@
     },
     "symfony/dependency-injection": {
         "version": "v5.0.4"
+    },
+    "symfony/deprecation-contracts": {
+        "version": "2.1-dev"
     },
     "symfony/doctrine-bridge": {
         "version": "v5.0.4"
@@ -495,6 +510,9 @@
     "symfony/polyfill-php73": {
         "version": "v1.14.0"
     },
+    "symfony/polyfill-php80": {
+        "version": "1.17-dev"
+    },
     "symfony/process": {
         "version": "v5.0.4"
     },
@@ -657,7 +675,19 @@
     "symfony/yaml": {
         "version": "v5.0.4"
     },
+    "tijsverkoyen/css-to-inline-styles": {
+        "version": "2.2.2"
+    },
+    "twig/cssinliner-extra": {
+        "version": "v3.0.3"
+    },
     "twig/extra-bundle": {
+        "version": "v3.0.3"
+    },
+    "twig/inky-extra": {
+        "version": "v3.0.3"
+    },
+    "twig/markdown-extra": {
         "version": "v3.0.3"
     },
     "twig/string-extra": {

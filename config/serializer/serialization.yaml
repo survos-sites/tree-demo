@@ -1,3 +1,5 @@
+# config/serializer/serialization.yaml
+
 App\Entity\Location:
   attributes:
     name:
