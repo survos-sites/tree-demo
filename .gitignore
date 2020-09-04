@@ -1,11 +1,9 @@
 ###> symfony/framework-bundle ###
 /.env.local
-/.env.heroku
 /.env.local.php
 /.env.*.local
 /config/secrets/prod/prod.decrypt.private.php
 /public/bundles/
-/public/js/fos_js_routes.json
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
