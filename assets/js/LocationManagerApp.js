@@ -113,6 +113,10 @@ export class LocationManagerApp
         this.render();
     }
 
+    error(msg) {
+        console.error(msg);
+    }
+
 
     addListeners() {
         this.$element
@@ -129,7 +133,7 @@ export class LocationManagerApp
             // listen for events
             .on('changed.jstree', function (e, data) { // triggered when selection changes, can be multiple, data is tree data, not node data
                 const {action, node, selected, instance} = data;
-                console.log(e.type, action, node, selected.join(','), instance);
+                // console.log(e.type, action, node, selected.join(','), instance);
                 var i, j, r = [], ids = [];
                 for (i = 0, j = selected.length; i < j; i++) {
                     let node = instance.get_node(selected[i]);
@@ -209,9 +213,9 @@ export class LocationManagerApp
         var i, j, r = [], ids = [];
         for (i = 0, j = selected.length; i < j; i++) {
             let node = instance.get_node(selected[i]);
-            console.log(i, node, node.data);
+            // console.log(i, node, node.data);
             r.push(node.text);
-            console.log(r);
+            // console.log(r);
             // ids.push(node.data.databaseId);
         }
     }
@@ -279,7 +283,7 @@ export class LocationManagerApp
                         converters:
                             {
                                 "text json": function (data) {
-                                    console.error(data);
+                                    // console.error(data);
                                     return JSON.parse(data).map( x => {
                                         return { parent: x.parentId ?? '#', id: x.id, text: x.name };
                                     });
@@ -322,11 +326,6 @@ export class LocationManagerApp
         this.$element = $element;
         this.url = apiUrlBase;
         console.log('api base: ' + this.url);
-
-
-
-        return;
-
         /* @
         this.references = [];
         this.render();
