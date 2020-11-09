@@ -24,7 +24,8 @@ const fileManagerApp = new FileManagerApp(
                 "text json": function (data) {
                     console.log("Got some data");
                     return JSON.parse(data).locations.map( x => {
-                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
+                        const display = x.name + '(' + x.childCount + ')';
+                        return { parent: x.parentId ?? '#', id: x.id, text: display };
                     });
                 }
             },
@@ -38,7 +39,7 @@ const fileManagerApp = new FileManagerApp(
 });
 
 
-$('.demo').off('changed.jstree').on('changed.jstree', (e, data) => { console.log(e, 'changed, my handler!!'); });
+// $('.demo').off('changed.jstree').on('changed.jstree', (e, data) => { console.log(e, 'changed, my handler!!'); });
 
 
 fileManagerApp.render(); // first time

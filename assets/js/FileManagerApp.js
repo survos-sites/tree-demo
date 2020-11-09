@@ -15,7 +15,6 @@ export class FileManagerApp
         // console.log(data);
         this.$element = $element;
         this.jstree = this.configure($element);
-        this.addListeners();
         this.url = $element.data('apiBase');
         if (this.url === undefined) {
             this.error('data-api-base is required, eventually pass in as options?');
@@ -29,6 +28,7 @@ export class FileManagerApp
         //     });
 
         // this sets up the core, listeners are already attached.  check_callback should be in the listeners if possible.
+
        this.jstree = $element
             .jstree({
                 "core": {
@@ -108,8 +108,9 @@ export class FileManagerApp
                 "plugins": ["contextmenu", "dnd", "search", "state", "types", "wholerow"]
             })
 
+        this.addListeners();
 
-        this.render();
+        this.render(); // first time?
     }
 
     error(msg) {
@@ -126,6 +127,9 @@ export class FileManagerApp
             .on('ready.jstree', function (e, data) {
                 console.warn('ready.jstree second on call.');
             })
+            .on('loaded.jstree', function (e, data) {
+                console.warn('jstree loaded.');
+            })
         ;
 
         this.$element
@@ -136,7 +140,7 @@ export class FileManagerApp
                 var i, j, r = [], ids = [];
                 for (i = 0, j = selected.length; i < j; i++) {
                     let node = instance.get_node(selected[i]);
-                    console.log(i, node, node.data);
+                    // console.log(i, node, node.data);
                     r.push(node.text);
                     ids.push(node.id );
                 }
@@ -196,7 +200,7 @@ export class FileManagerApp
             })
 
             .on('ready.jstree', function (e, data) {
-                // demo_save();
+                console.warn('ready.jstree.');
             })
         ;
 
@@ -221,6 +225,7 @@ export class FileManagerApp
 
     configure($element)
     {
+        console.warn('configure');
 
         this.tree = $element
             .jstree({
@@ -283,13 +288,16 @@ export class FileManagerApp
                                 "text json": function (data) {
                                     // console.error(data);
                                     return JSON.parse(data).map( x => {
-                                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
+                                        return {
+                                            state: {'open': x.parentId === undefined, 'disabled': false},
+                                            // icon: x.isDir ? 'glyphicon glyphicon-dir' : "glyphicon glyphicon-file",
+                                            parent: x.parentId ?? '#', id: x.id, text: x.name };
                                     });
                                 }
                             },
                         // this is the data SENT to the server
                         'data' : function (node) {
-                            return {'fields' : ['parentId', 'name'] };
+                            return {'fields' : ['childCount', 'isDir', 'parentId', 'name'] };
                             // return { id : node.id }; e.g. send # if root node.  Maybe send buildingId?
                         }
                     }
@@ -307,20 +315,28 @@ export class FileManagerApp
                 console.warn('ready.jstree');
                 // demo_save();
             })
-            .on("loaded.jstree", function (event, data) {
-                console.warn('loaded.');
+            .on("loaded.jstree", (event, data) => {
+                console.warn('loaded, open_all!');
                 $(this).jstree("open_all");
-            });
+            })
+            .on("refresh.jstree", (event, data) => {
+                console.warn('loaded, open_all!');
+                // this.tree.jstree("open_all");
+            })
+
         ;
-
-
+        // this.tree.bind("refresh.jstree", function (event, data) {
+        //     tree.jstree("open_all");
+        // });
+        return this.tree;
     }
 
     render() {
+        console.error('render()');
 
         // this.$element.jstree(true).settings.core.data = ['New Data'];
 
-        this.$element.jstree(true).refresh();
+        this.$element.jstree().refresh();
         return;
         let $element = this.$element;
         console.log('calling render()');

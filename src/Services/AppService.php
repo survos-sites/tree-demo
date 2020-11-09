@@ -29,7 +29,8 @@ class AppService
         $root = (new File())
             ->setIsDir(true)
             ->setName($directory);
-        $em->persist($root);
+//        $em->persist($root);
+        $root = null; // can't figure out how to only open the top level, so this is a hack.
         $finder = new Finder();
         $finder
             ->ignoreVCSIgnored(true)
@@ -51,7 +52,6 @@ class AppService
             $f = (new File())
                 ->setIsDir($fileInfo->isDir())
                 ->setName($name)
-            ;
             ;
 
             if ($parentName = $fileInfo->getRelativePath()) {

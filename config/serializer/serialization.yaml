@@ -21,6 +21,10 @@ App\Entity\File:
       groups: ['jstree']
     id:
       groups: ['jstree']
+    isDir:
+      groups: ['jstree']
+    childCount:
+      groups: ['jstree']
     parent:
       groups: ['jstree']
     parentId:

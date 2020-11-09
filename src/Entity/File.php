@@ -210,6 +210,11 @@ class File
         return $this;
     }
 
+    public function getChildCount(): int
+    {
+        return $this->getChildren()->count();
+    }
+
     /**
      * @return ?int
      */
