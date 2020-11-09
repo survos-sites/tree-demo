@@ -19,6 +19,8 @@
 
 {% block body %}
 
+    <a class="btn btn-danger" href="{{ path('app_load_files') }}">Reload Directory</a>
+
     {% for block_name in ['root_nodes', 'nodes_with_children'] %}
     <h3>{{ block_name|title }}</h3>
 {{ block(block_name) }}
@@ -43,15 +45,24 @@
 
 {% block root_nodes %}
 <div id="html1" class="jstree-basic">
+
+    {% if html|default(false) %}
+    {{ html|raw }}
+    {% else %}
     <ul>
         <li>Root node 1</li>
         <li>Root node 2</li>
     </ul>
+    {% endif %}
 </div>
 {% endblock %}
 
 {% block nodes_with_children %}
 <div class="jstree-basic">
+    {% if html|default(false) %}
+            {{ html|raw }}
+    {% else %}
+
     <ul>
         <li>Root node 1
             <ul>
@@ -60,5 +71,6 @@
             </ul>
         </li>
     </ul>
+    {% endif %}
 </div>
 {% endblock %}
