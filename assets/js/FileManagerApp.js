@@ -8,14 +8,14 @@ const contentTypes = {
     'POST': 'application/json'
 };
 
-export class LocationManagerApp
+export class FileManagerApp
 {
     // pass options, which override what's in .data?
     constructor($element) {
         // console.log(data);
         this.$element = $element;
-        this.addListeners();
         this.jstree = this.configure($element);
+        this.addListeners();
         this.url = $element.data('apiBase');
         if (this.url === undefined) {
             this.error('data-api-base is required, eventually pass in as options?');
@@ -109,7 +109,6 @@ export class LocationManagerApp
             })
 
 
-        console.log(this.$element, this.jstree);
         this.render();
     }
 
@@ -267,12 +266,11 @@ export class LocationManagerApp
                     'force_text' : true,
                     "themes" : { "stripes" : true },
                     'data' : {
-                        'url' : (node) => {
-                            console.log('data.url: calling ' + this.url);
-                            console.log(node);
+                        url : (node) => {
+                            // console.log('data.url: calling ' + this.url);
 
                             // @todo: add params to node
-                            return this.url + '.json'; // or set this in api_platform routes?
+                            return this.url; // or set this in api_platform routes?
                         },
                         success: function(data) {
                             // we've received the jsTree formatted data.
@@ -305,10 +303,16 @@ export class LocationManagerApp
                 "plugins" : [ "contextmenu", "dnd", "search", "state", "types", "wholerow" ]
             })
             .on('ready.jstree', function (e, data) {
+                // $(this).jstree("open_all");
                 console.warn('ready.jstree');
                 // demo_save();
             })
+            .on("loaded.jstree", function (event, data) {
+                console.warn('loaded.');
+                $(this).jstree("open_all");
+            });
         ;
+
 
     }
 

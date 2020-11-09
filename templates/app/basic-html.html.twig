@@ -19,8 +19,6 @@
 
 {% block body %}
 
-    <a class="btn btn-danger" href="{{ path('app_load_files') }}">Reload Directory</a>
-
     {% for block_name in ['root_nodes', 'nodes_with_children'] %}
     <h3>{{ block_name|title }}</h3>
 {{ block(block_name) }}

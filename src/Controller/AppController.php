@@ -6,8 +6,10 @@ use App\Entity\File;
 use App\Entity\Location;
 use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
+use App\Services\AppService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -45,9 +47,20 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/load-files", name="app_load_files")
+     */
+    public function loadFiles(Request $request, AppService $appService, ParameterBagInterface $bag)
+    {
+        $directory = $bag->get('kernel.project_dir');
+        $appService->importDirectory($directory);
+
+        return $this->redirectToRoute('app_files');
+    }
+
+    /**
      * @Route("/basic-files", name="app_files")
      */
-    public function files()
+    public function files(Request $request)
     {
         $htmlTree = $this->fileRepository->childrenHierarchy(
             null, /* starting from root nodes */
@@ -58,7 +71,7 @@ class AppController extends AbstractController
                 'html' => true
             )
         );
-        return $this->render('app/basic-html.html.twig', [
+        return $this->render('file/show.html.twig', [
             'html' => $htmlTree
         ]);
     }

@@ -1,5 +1,16 @@
 # api/config/api_platform/resources.yaml
 App\Entity\User: ~
+
+App\Entity\File:
+#  shortName: 'File Structure'                   # optional
+  description: 'A file or directory' # optional
+  attributes:                          # optional
+    pagination_items_per_page: 30   # optional
+    normalization_context:
+      groups: ['jstree']
+    denormalization_context:
+      groups: ['jstree']
+
 App\Entity\Location:
   shortName: 'Location'                   # optional
   description: 'A place within a building where inventory item is physically located.' # optional

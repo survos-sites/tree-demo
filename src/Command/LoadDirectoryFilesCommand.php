@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Entity\File;
 use App\Repository\FileRepository;
+use App\Services\AppService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
@@ -24,13 +25,18 @@ class LoadDirectoryFilesCommand extends Command
      * @var FileRepository
      */
     private $fileRepository;
+    /**
+     * @var AppService
+     */
+    private AppService $appService;
 
-    public function __construct(EntityManagerInterface $em, string $name = null)
+    public function __construct(EntityManagerInterface $em, AppService $appService, string $name = null)
     {
         parent::__construct($name);
         $this->em = $em;
 
         $this->fileRepository = $em->getRepository(File::class);
+        $this->appService = $appService;
     }
 
     protected function configure()
@@ -47,36 +53,11 @@ class LoadDirectoryFilesCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $directory = $input->getArgument('dir');
 
-        $finder = new Finder();
-        $finder
-//            ->files()
-            ->ignoreVCSIgnored($input->getOption('gitignore'))
-            ->in($directory)
-        ;
-
-
-        $dir = null;
-        $files = [];
-        foreach ($finder as $fileInfo) {
-            $f = (new File())
-                ->setName($fileInfo->getPathname());
-            $this->em->persist($f);
-            if ($fileInfo->isDir()) {
-                $f
-                    ->setIsDir(true);
-                $dir = $f;
-                continue;
-            }
-            $f
-                ->setParent($dir) // assuming that the results are in order
-                ->setIsDir($fileInfo->isDir())
-                ->setName($fileInfo->getFilename());
-            $io->info(sprintf("Adding %s to %s", $f->getName(), $f->getParent()));
-            $parentName = $fileInfo->getPath();
-        }
+        $this->appService->importDirectory($directory, ['gitignore' => $input->getOption('gitignore')]);
         $this->em->flush();
-        $io->success('You have a new command! Now make it your own! Pass --help to see your options.');
+        $io->success('Import complete');
 
         return Command::SUCCESS;
     }
+
 }

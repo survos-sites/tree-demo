@@ -11,7 +11,10 @@
 {% block body %}
 <h3>{{ block('title') }}</h3>
 
-{% set apiUrl =  path('api_files_get_collection', {_format: 'json'}) %}
+    <a class="btn btn-danger" href="{{ path('app_load_files') }}">Reload Directory</a>
+
+
+    {% set apiUrl =  path('api_files_get_collection', {_format: 'json'}) %}
     Files from this repo (demo), using
     <a target="_blank" href="{{ apiUrl }}">
         {{ apiUrl }}

@@ -210,6 +210,14 @@ class File
         return $this;
     }
 
+    /**
+     * @return ?int
+     */
+    public function getParentId(): ?int
+    {
+        return $this->getParent() ? $this->getParent()->getId() : null;
+    }
+
     public function __toString()
     {
         return $this->getName();
