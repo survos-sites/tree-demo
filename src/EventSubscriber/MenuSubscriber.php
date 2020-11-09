@@ -43,6 +43,7 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
 
         $this->addMenuItem($menu, ['route' => 'app_homepage', 'icon' => 'fas fa-home']);
 
+        $menu->addChild('app_files', ['route' => 'app_files']);
         $menu->addChild('app_basic_ajax', ['route' => 'app_basic_ajax']);
         $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
 

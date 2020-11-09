@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\File;
 use App\Entity\Location;
+use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,6 +15,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
+    private EntityManagerInterface $entityManager;
+    private FileRepository $fileRepository;
+
+    public function __construct(EntityManagerInterface $entityManager )
+    {
+
+        $this->entityManager = $entityManager;
+        $this->fileRepository = $entityManager->getRepository(File::class);
+
+
+
+    }
     // see https://www.jstree.com/docs/json/
     // and maybe https://www.phpflow.com/demo/dynamic-jstree-php-mysql-demo/#
 
@@ -21,16 +35,31 @@ class AppController extends AbstractController
         return $this->getDoctrine()->getRepository(Location::class);
     }
 
-    public function __construct()
-    {
-    }
-
     /**
      * @Route("/basic-ajax", name="app_basic_ajax")
      */
     public function index()
     {
         return $this->render('app/basic-ajax.html.twig', [
+        ]);
+    }
+
+    /**
+     * @Route("/basic-files", name="app_files")
+     */
+    public function files()
+    {
+        $htmlTree = $this->fileRepository->childrenHierarchy(
+            null, /* starting from root nodes */
+            false, /* false: load all children, true: only direct */
+            array(
+                'decorate' => true,
+                'representationField' => 'name',
+                'html' => true
+            )
+        );
+        return $this->render('app/basic-html.html.twig', [
+            'html' => $htmlTree
         ]);
     }
 
