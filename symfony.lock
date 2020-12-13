@@ -520,6 +520,9 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
+    "symfony/polyfill-uuid": {
+        "version": "v1.20.0"
+    },
     "symfony/process": {
         "version": "v5.1.5"
     },
@@ -623,6 +626,9 @@
     },
     "symfony/twig-pack": {
         "version": "v1.0.0"
+    },
+    "symfony/uid": {
+        "version": "v5.2.0"
     },
     "symfony/validator": {
         "version": "4.3",

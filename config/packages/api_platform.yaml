@@ -8,3 +8,10 @@ api_platform:
         json: ['application/merge-patch+json']
     swagger:
         versions: [3]
+
+#services:
+#    # ...
+#    location.building_filter:
+#        parent: 'api_platform.doctrine.orm.search_filter'
+#        arguments: [ { 'building.id': "exact" } ]
+#        tags:  [ 'api_platform.filter' ]

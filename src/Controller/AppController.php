@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Building;
 use App\Entity\File;
 use App\Entity\Location;
 use App\Repository\FileRepository;
@@ -38,11 +39,12 @@ class AppController extends AbstractController
     }
 
     /**
-     * @Route("/basic-ajax", name="app_basic_ajax")
+     * @Route("/basic-ajax/{buildingId}", name="app_basic_ajax")
      */
-    public function index()
+    public function index(Building $building)
     {
         return $this->render('app/basic-ajax.html.twig', [
+            'building' => $building
         ]);
     }
 
@@ -82,8 +84,7 @@ class AppController extends AbstractController
      */
     public function html()
     {
-        return $this->render('app/basic-html.html.twig', [
-        ]);
+        return $this->render('app/basic-html.html.twig', []);
     }
 
     private function getSampleJson() {

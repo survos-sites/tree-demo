@@ -5,11 +5,13 @@ namespace App\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Survos\BaseBundle\Entity\SurvosBaseEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\BuildingRepository")
  */
-class Building
+class Building extends SurvosBaseEntity
 {
     /**
      * @ORM\Id()
@@ -33,6 +35,12 @@ class Building
      * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="building", orphanRemoval=true, cascade={"persist"})
      */
     private $locations;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Gedmo\Slug(fields={"name"})
+     */
+    private $code;
 
     public function __construct(string $name = null)
     {
@@ -103,5 +111,22 @@ class Building
     public function __toString()
     {
         return (string)$this->getName();
+    }
+
+    public function getCode(): ?string
+    {
+        return $this->code;
+    }
+
+    public function setCode(string $code): self
+    {
+        $this->code = $code;
+
+        return $this;
+    }
+
+    function getUniqueIdentifiers()
+    {
+        return ['buildingId' => $this->getCode()];
     }
 }

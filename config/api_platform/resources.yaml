@@ -20,6 +20,9 @@ App\Entity\Location:
       groups: ['jstree']
     denormalization_context:
       groups: ['jstree']
+    collectionOperations:
+      get:
+        filters: [ 'location.building_filter' ]
 #  collectionOperations:
 #    get: ~
 #    post:

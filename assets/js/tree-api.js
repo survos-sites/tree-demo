@@ -14,25 +14,24 @@ const swal = require('sweetalert');
 import {LocationManagerApp} from './LocationManagerApp';
 
 // pass in the jQuery element
-const locationManager = new LocationManagerApp(
-    $('#location_manager'), {
-        url: Routing.generate('api_locations_get_collection', {_format: 'json'}),
-        converters:
-            {
-                "text json": function (data) {
-                    return JSON.parse(data).map( x => {
-                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
-                    });
-                }
-            },
+const $locationManager = $('#location_manager');
+const url = $locationManager.data('apiBase');
 
+let buildingId = $locationManager.data('buildingId');
+const locationManager = new LocationManagerApp(
+    $locationManager, {
+        url: url, // the base for all api platform calls
+        dataWrapper: {
+            building: "/api/buildings/" + buildingId,
+        },
     }, {
         // map: { parent: 'parentId', text: 'name' }
         changed: (data) => {}
 });
 
+console.log(url)
 
-locationManager.render(); // first time
+// locationManager.render(); // first time
 
 /*
 let $element = $('#demo');
