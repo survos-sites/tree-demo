@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a0a9b4d3fde8e99d35220e3f7555feb9",
+    "content-hash": "e7dce89863ef27917573fbb1bd106ce9",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -123,16 +123,16 @@
         },
         {
             "name": "api-platform/core",
-            "version": "v2.6.0-beta.1",
+            "version": "v2.5.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "75deb1a6b535fe5cdcf2e9d32174e4c182f4af7a"
+                "reference": "4f05477b5ec5cff7c9324a7510900db2a1173d70"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/75deb1a6b535fe5cdcf2e9d32174e4c182f4af7a",
-                "reference": "75deb1a6b535fe5cdcf2e9d32174e4c182f4af7a",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/4f05477b5ec5cff7c9324a7510900db2a1173d70",
+                "reference": "4f05477b5ec5cff7c9324a7510900db2a1173d70",
                 "shasum": ""
             },
             "require": {
@@ -216,7 +216,6 @@
                 "doctrine/mongodb-odm-bundle": "To support MongoDB. Only versions 4.0 and later are supported.",
                 "elasticsearch/elasticsearch": "To support Elasticsearch.",
                 "guzzlehttp/guzzle": "To use the HTTP cache invalidation system.",
-                "ocramius/package-versions": "To display the API Platform's version in the debug bar.",
                 "phpdocumentor/reflection-docblock": "To support extracting metadata from PHPDoc.",
                 "psr/cache-implementation": "To use metadata caching.",
                 "ramsey/uuid": "To support Ramsey's UUID identifiers.",
@@ -225,14 +224,13 @@
                 "symfony/expression-language": "To use authorization features.",
                 "symfony/security": "To use authorization features.",
                 "symfony/twig-bundle": "To use the Swagger UI integration.",
-                "symfony/uid": "To support Symfony UUID/ULID identifiers.",
                 "symfony/web-profiler-bundle": "To use the data collector.",
                 "webonyx/graphql-php": "To support GraphQL."
             },
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.6.x-dev"
+                    "dev-master": "2.5.x-dev"
                 },
                 "symfony": {
                     "require": "^3.4 || ^4.4 || ^5.1"
@@ -269,7 +267,7 @@
             ],
             "support": {
                 "issues": "https://github.com/api-platform/core/issues",
-                "source": "https://github.com/api-platform/core/tree/v2.6.0-beta.1"
+                "source": "https://github.com/api-platform/core/tree/v2.5.9"
             },
             "funding": [
                 {
@@ -277,7 +275,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2020-12-17T18:10:53+00:00"
+            "time": "2020-12-17T15:47:58+00:00"
         },
         {
             "name": "behat/transliterator",
@@ -11005,7 +11003,7 @@
         "kevinpapst/adminlte-bundle": 20,
         "survos/base-bundle": 20
     },
-    "prefer-stable": false,
+    "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
         "php": "^7.4",

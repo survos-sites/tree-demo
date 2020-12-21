@@ -109,5 +109,6 @@
             "url": "git@github.com:tacman/AdminLTEBundle.git"
         }
     },
-    "minimum-stability": "beta"
+    "minimum-stability": "beta",
+    "prefer-stable": true
 }
