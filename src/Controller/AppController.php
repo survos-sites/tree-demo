@@ -43,6 +43,7 @@ class AppController extends AbstractController
      */
     public function index(Building $building)
     {
+
         return $this->render('app/basic-ajax.html.twig', [
             'building' => $building
         ]);

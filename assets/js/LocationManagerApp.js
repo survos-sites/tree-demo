@@ -266,7 +266,7 @@ export class LocationManagerApp
 
     onChanged(e, data) {
         const {action, node, selected, instance} = data;
-        // console.log(e.type, action, node, selected.join(','), instance);
+        console.log(e.type, action, node, selected.join(','), instance);
         var i, j, r = [], ids = [];
         for (i = 0, j = selected.length; i < j; i++) {
             let node = instance.get_node(selected[i]);
@@ -319,6 +319,7 @@ export class LocationManagerApp
                                 return true;
                             default:
                                 console.error('unhandled check_callback: ' + operation);
+                                return true;
                         }
                     },
                     'force_text' : true,

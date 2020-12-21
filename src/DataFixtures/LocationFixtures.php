@@ -43,7 +43,6 @@ END;
                     ->setParent($rootLocation)
                 ;
                 $building->addLocation($location);
-
             }
 
         }

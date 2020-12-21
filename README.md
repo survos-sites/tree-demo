@@ -1,6 +1,15 @@
 # JS-TREE and Doctrine Tree Extension
 
-Install SurvosLanding
+## Example
+
+https://jstree-symfony-demo.herokuapp.com
+
+## Relevant Links
+
+This app uses Symfony, Doctrine, Doctrine Extensions, APIPlatform
+and jquery-jstree.
+
+This is a great read to understand how Nested Sets work:
 
     https://drib.tech/programming/hierarchical-data-relational-databases-symfony-4-doctrine
 
