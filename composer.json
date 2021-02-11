@@ -15,6 +15,7 @@
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "jwage/easy-csv": "^1.0",
         "kevinpapst/adminlte-bundle": "dev-adminlte-v3",
+        "knplabs/knp-markdown-bundle": "^1.8",
         "sensio/framework-extra-bundle": "^5.2",
         "survos/base-bundle": "^1.0@dev",
         "symfony/asset": "^5.0",
