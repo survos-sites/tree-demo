@@ -1,11 +1,11 @@
 {
     "devDependencies": {
-        "@symfony/webpack-encore": "^0.30.0",
+        "@symfony/webpack-encore": "1.1",
         "core-js": "^3.0.0",
         "jquery-confirm": "^3.3.4",
         "node-sass": "^4.14.1",
         "regenerator-runtime": "^0.13.2",
-        "sass-loader": "^8",
+        "sass-loader": "11",
         "sweetalert": "^2.1.2",
         "webpack-notifier": "^1.6.0"
     },
@@ -18,7 +18,10 @@
         "build": "encore production --progress"
     },
     "dependencies": {
-        "admin-lte": "^3.0.5",
+        "@fortawesome/fontawesome-free": "^5.15.2",
+        "@popperjs/core": "^2.7.0",
+        "Hinclude": "^1.2.0",
+        "bootstrap": "^5.0.0-beta2",
         "jquery": "^3.5.1",
         "jstree": "^3.3.9"
     }

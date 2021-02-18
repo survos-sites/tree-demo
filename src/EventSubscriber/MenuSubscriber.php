@@ -6,8 +6,9 @@ use App\Repository\BuildingRepository;
 use Survos\BaseBundle\Menu\BaseMenuSubscriber;
 use Survos\BaseBundle\Menu\MenuBuilder;
 use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
+use Survos\BaseBundle\Event\KnpMenuEvent;
+
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Security;
