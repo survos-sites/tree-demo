@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Building;
 use App\Entity\File;
 use App\Entity\Location;
+use App\Repository\CategoryRepository;
 use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
 use App\Services\AppService;
@@ -20,15 +21,16 @@ class AppController extends AbstractController
 {
     private EntityManagerInterface $entityManager;
     private FileRepository $fileRepository;
+    private CategoryRepository $categoryRepository;
 
-    public function __construct(EntityManagerInterface $entityManager )
+    public function __construct(EntityManagerInterface $entityManager, CategoryRepository $categoryRepository)
     {
 
         $this->entityManager = $entityManager;
         $this->fileRepository = $entityManager->getRepository(File::class);
 
 
-
+        $this->categoryRepository = $categoryRepository;
     }
     // see https://www.jstree.com/docs/json/
     // and maybe https://www.phpflow.com/demo/dynamic-jstree-php-mysql-demo/#
@@ -43,9 +45,23 @@ class AppController extends AbstractController
      */
     public function index(Building $building)
     {
+//        $category = $this->categoryRepository->getTree('animals');
+////        $category = $this->categoryRepository->findOneBy(['id' => 'birds']);
+//        dd($category->getChildNodes());
+        $birdsEntity = $this->categoryRepository->findOneBy(['id' => 'birds']);
+//        $birdsEntity = $this->categoryRepository->getFlatTree('/animals/birds');
+        $birdsEntity = $this->categoryRepository->getTree('/animals/birds', 't', ['depth' => "2"]);
+        $animals = $this->categoryRepository->getTree('/animals', 't', ['depth' => "3"]);
+//        dd($birdsEntity);
+//
+        $categories = $this->categoryRepository->findAll();
+//        dd($categories);
 
         return $this->render('app/basic-ajax.html.twig', [
-            'building' => $building
+            'building' => $building,
+            'materialTree' => $animals,
+            'roots' => $this->categoryRepository->getRootNodes(),
+            'categories' => $categories
         ]);
     }
 

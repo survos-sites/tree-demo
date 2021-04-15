@@ -15,8 +15,29 @@
     {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
     #}
     {# need format, since default format is json+ld #}
+    <h1>Categories</h1>
+
+    {{ dump(materialTree) }}
+    {{ dump(materialTree.toArray) }}
+
+    {% for c in categories %}
+        <li>{{ c.realMaterializedPath }} {{ c.materializedPath }} <span class="text-danger badge badge-warning">{{ c.depth }}</span> </li>
+{#        {% set tree = c.getTree(c.getMaterializedPath) %}#}
+{#        #}
+{#        {{ dump(tree) }}#}
+{#        <h3>{{ c.realMaterializedPath }} {{ c.childNodes|length }} [{{ c.id }}]</h3>#}
+{#        <ul>#}
+{#            {% for child in c.childNodes %}#}
+{#                <li>{{ child.realMaterializedPath }}</li>#}
+{#            {% endfor %}#}
+{#        </ul>#}
+{#        {{ dump(c.toArray) }}#}
+    {% endfor %}
+
     <h1>{{ building }}</h1>
     {% set apiUrl =  path('api_locations_get_collection') %}
+
+
 
     <div class="row">
         <div class="col-md-8">
@@ -46,9 +67,9 @@
 
 {% block tree %}
     {# ... box widget with defaults ... #}
-    {% embed '@AdminLTE/Widgets/box-widget.html.twig' %}
+    {% embed '@SurvosBase/Widgets/box-widget.html.twig' %}
 
-        {% import '@AdminLTE/Macros/buttons.html.twig'  as btn %}
+        {% import '@SurvosBase/Macros/buttons.html.twig'  as btn %}
         {% block box_title %}Location API{% endblock %}
         {% block box_body %}
             <div class="callout callout-info">

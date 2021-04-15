@@ -63,7 +63,7 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
         $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
 
         $adminMenu = $this->addMenuItem($menu, ['menu_code' => 'admin_dropdown']);
-        $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
+//        $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
         $this->addMenuItem($adminMenu, ['route' => 'api_entrypoint']);
         $this->addMenuItem($adminMenu, ['route' => 'api_doc']);
 

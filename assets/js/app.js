@@ -3,6 +3,9 @@ require('bootstrap');
 require('Hinclude/hinclude');
 require('../css/app.scss');
 
+require('adminkit/static/js/app');
+
+
 // const $ = require('jquery');
 // require('popper.js');
 // global.jQuery = global.$ = $;
