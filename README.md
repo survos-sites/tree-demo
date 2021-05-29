@@ -42,14 +42,21 @@ bin/console make:entity Location
 Add the tree properties.  Change 'Location' to your class name if necessary.
 Two parts, the header, set the slugger on 'code', and then add the properties.
 
+In the entity class, add  @Gedmo\Tree(type="nested") 
+add @Gedmo\Mapping\Annotation as Gedmo;
+
 ```php
-use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
+// src/Entity/Location.php
+use Gedmo\Mapping\Annotation as Gedmo; 
+use \Gedmo\Tree\Traits\NestedSetEntity;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
- * @Gedmo\Tree(type="nested") <-- Add This
+ * @Gedmo\Tree(type="nested") <-- Add This!
  */
-...
+class Location {
+use \Gedmo\Tree\Traits\NestedSetEntityUuid; // or NestedSetEntity
+
     /**
      * @ORM\Column(type="string", length=32)
      * @Gedmo\Slug(fields={"name"}) <-- add this
@@ -59,6 +66,8 @@ use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
 ```   
 
 ```php
+// Location.php 
+
     /**
      * @Gedmo\TreeLeft
      * @ORM\Column(type="integer")

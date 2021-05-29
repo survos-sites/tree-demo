@@ -17,7 +17,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  */
 class CategoryRepository extends ServiceEntityRepository
 {
-    use TreeTrait;
+    use TreeTrait; // materialized tree example!
 
     public function __construct(ManagerRegistry $registry)
     {

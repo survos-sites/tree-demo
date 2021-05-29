@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Location;
+use App\Services\SurvosNestedTreeRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
@@ -15,8 +16,13 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 
 
-class LocationRepository extends NestedTreeRepository // was ServiceEntityRepository
+class LocationRepository extends NestedTreeRepository // extends ServiceEntityRepository
 {
+//    public function __construct(ManagerRegistry $registry)
+//    {
+//        parent::__construct($registry, Location::class);
+//    }
+
 
     // /**
     //  * @return Location[] Returns an array of Location objects

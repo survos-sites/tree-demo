@@ -33,6 +33,8 @@ export class LocationManagerApp
                         {
                             "text json":  (data) => {
                                 return JSON.parse(data).map( x => {
+                                    console.log(x);
+
                                     return { parent: x.parentId ?? '#', id: x.id, text: x.name };
                                 });
                             }
@@ -336,6 +338,7 @@ export class LocationManagerApp
                             // we've received the jsTree formatted data.
                             // console.warn('!!', data);
                             console.warn('success!', data);
+                            console.log(data);
                         },
 
                         // api_platform calls return JSON in a certain format, but js-tree needs it in another.
@@ -344,7 +347,7 @@ export class LocationManagerApp
                                 "text json": function (dataString) {
                                     let data = JSON.parse(dataString);
                                     return data['hydra:member'].map( x => {
-                                        return { parent: x.parentId ?? '#', id: x.id, text: x.name };
+                                        return { parent: x.parentId ?? '#', id: x.id, text: x.label };
                                     });
                                 }
                             },
@@ -425,17 +428,17 @@ export class LocationManagerApp
 
     collectionApiCall(node, method, data, callback) {
         // node is the parent node, methods are GET, POST
-        $.ajax(this.url, {
+
+        fetch(this.url, {
             data: JSON.stringify(data),
             // dataType: "json", // this is the RETURN data
             contentType: contentTypes[method],
             method: method
-        }).done( (data) =>  {
+        }).then ( (data) =>  {
             callback(data);
             console.log(data);
-
-        }).fail( (data) => {
-            console.error(data);
+        }).catch( error  => {
+            console.error(error);
         })
     }
 

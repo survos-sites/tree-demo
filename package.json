@@ -22,9 +22,12 @@
         "Hinclude": "^1.2.0",
         "adminkit": "https://github.com/survos/adminkit.git",
         "bootstrap": "^5.0.0-beta2",
+        "cors": "^2.8.5",
+        "https-proxy-agent": "^5.0.0",
         "jquery-confirm": "^3.3.4",
         "jstree": "^3.3.11",
         "sass-loader": "11",
-        "sweetalert": "^2.1.2"
+        "sweetalert": "^2.1.2",
+        "ulid": "^2.3.0"
     }
 }

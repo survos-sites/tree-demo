@@ -27,6 +27,7 @@ class SidebarMenuSubscriber extends BaseMenuSubscriber implements EventSubscribe
     {
         $menu = $event->getMenu();
         $this->addMenuItem($menu, ['route' => 'app_homepage']);
+        $this->addMenuItem($menu, ['route' => 'app_ca_tree']);
 //        $this->addMenuItem($menu, ['route' => 'app_typography']);
 //        $this->addMenuItem($menu, ['route' => 'app_heroku']);
 // https://dashboard.heroku.com/apps/agile-chamber-52782/resources

@@ -1,67 +1,24 @@
 
 {% extends 'base.html.twig' %}
 
-{% block title %}Basic AJAX Demo{% endblock %}
+{% block title %}CA Tree via API {% endblock %}
 
 
 {% block javascripts %}
 {{ parent() }}
-{{ encore_entry_script_tags('tree-api') }}
 {{ encore_entry_script_tags('ca-list-tree-api') }}
 {% endblock %}
 
 {% block body %}
 
+    <h1>CA Lists</h1>
+    {% set apiUrl  = 'https://127.0.0.1:8001/api' %}
+{#    {% set apiUrl  = 'https://ac.wip:8001/api' %}#}
 
-    {# this is really for basic-ajax, which we've lost...
-    {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
-    #}
-    {# need format, since default format is json+ld #}
-    <h1>Categories</h1>
+    <div id="js-ca-list" data-api-base="{{ apiUrl }}">
 
-    {{ dump(materialTree) }}
-    {{ dump(materialTree.toArray) }}
-
-    {% for c in categories %}
-        <li>{{ c.code }} in {{ c.materializedPath }} <span class="text-danger badge badge-warning">{{ c.depth }}</span> </li>
-{#        {% set tree = c.getTree(c.getMaterializedPath) %}#}
-{#        #}
-{#        {{ dump(tree) }}#}
-{#        <h3>{{ c.realMaterializedPath }} {{ c.childNodes|length }} [{{ c.id }}]</h3>#}
-{#        <ul>#}
-{#            {% for child in c.childNodes %}#}
-{#                <li>{{ child.realMaterializedPath }}</li>#}
-{#            {% endfor %}#}
-{#        </ul>#}
-{#        {{ dump(c.toArray) }}#}
-    {% endfor %}
-
-    <h1>{{ building }}</h1>
-    {% set apiUrl =  path('api_locations_get_collection') %}
-
-    <div class="row">
-        <div class="col-md-8">
-            {{ block('tree') }}
-            <div id="jstree_demo2" class="demo" style="margin-top:1em; min-height:200px;"><code>jstree_demo2</code></div>
-
-            The API URL IS {{ apiUrl }}
-
-
-            This is kinda cool, too.: <a href="https://github.com/alesmit/jquery-hortree">jquery-hortree</a>
-
-            <hr />
-
-
-        </div>
-
-        <div class="col-md-4">
-            <h3>Location Editor</h3>
-
-            <h3>Events</h3>
-            <div id="jstree_event_log"></div>
-        </div>
+        CA List here...
     </div>
-
 
 {% endblock %}
 

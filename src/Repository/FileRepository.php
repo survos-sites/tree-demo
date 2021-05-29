@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\File;
+use App\Services\SurvosNestedTreeRepository;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
@@ -15,8 +16,11 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class FileRepository extends NestedTreeRepository
 {
-//    public function __construct(ManagerRegistry $registry)
+//    public function __construct($registry, $metaData)
 //    {
+//        dump(get_class($registry), get_class($metaData));
+////        assert(false);
+//        dd($registry);
 //        parent::__construct($registry, File::class);
 //    }
 

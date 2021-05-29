@@ -23,7 +23,8 @@ class AppController extends AbstractController
     private FileRepository $fileRepository;
     private CategoryRepository $categoryRepository;
 
-    public function __construct(EntityManagerInterface $entityManager, CategoryRepository $categoryRepository)
+    public function __construct(EntityManagerInterface $entityManager,
+                                CategoryRepository $categoryRepository)
     {
 
         $this->entityManager = $entityManager;
@@ -45,6 +46,8 @@ class AppController extends AbstractController
      */
     public function index(Building $building)
     {
+
+//        dd($locationRepository->findAll());
 //        $category = $this->categoryRepository->getTree('animals');
 ////        $category = $this->categoryRepository->findOneBy(['id' => 'birds']);
 //        dd($category->getChildNodes());
@@ -66,6 +69,20 @@ class AppController extends AbstractController
     }
 
     /**
+     * Via API Platform (on ac)
+     *
+     * @Route("/ca-tree", name="app_ca_tree")
+     */
+    public function catree()
+    {
+        return $this->render('app/ca-tree.html.twig', [
+        ]);
+
+
+    }
+
+
+        /**
      * @Route("/load-files", name="app_load_files")
      */
     public function loadFiles(Request $request, AppService $appService, ParameterBagInterface $bag)

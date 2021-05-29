@@ -21,6 +21,7 @@ Encore
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
     .addEntry('app', './assets/js/app.js')
+    .addEntry('ca-list-tree-api', './assets/js/ca-list-tree-api.js')
     .addEntry('tree-api', './assets/js/tree-api.js')
     .addEntry('building_show', './assets/js/building.js')
     .addEntry('directory', './assets/js/directory.js')
