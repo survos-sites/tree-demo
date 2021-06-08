@@ -42,6 +42,7 @@
         "symfonycasts/verify-email-bundle": "^1.4",
         "twig/cssinliner-extra": "^3.0",
         "twig/inky-extra": "^3.0",
+        "twig/intl-extra": "^3.3",
         "twig/markdown-extra": "^3.0",
         "twig/string-extra": "^3.0"
     },
@@ -97,7 +98,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "5.2.*"
+            "require": "5.3.*"
         }
     },
     "repositories": {
