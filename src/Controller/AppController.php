@@ -94,6 +94,15 @@ class AppController extends AbstractController
     }
 
     /**
+     * @Route("/bootstrap5-menu", name="app_menu_demo")
+     */
+    public function menu_demo(Request $request)
+    {
+        return $this->render("/bootstrap5-sidebar.html.twig");
+
+    }
+
+    /**
      * @Route("/basic-files", name="app_files")
      */
     public function files(Request $request)

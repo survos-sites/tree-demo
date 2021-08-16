@@ -19,6 +19,9 @@
 
 {% block body %}
 
+    <a href="{{ path('app_menu_demo') }}">SIDEBAR MENU</a>
+
+
     {% for block_name in ['root_nodes', 'nodes_with_children'] %}
     <h3>{{ block_name|title }}</h3>
 {{ block(block_name) }}
