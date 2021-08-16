@@ -26,7 +26,6 @@ class SidebarMenuSubscriber extends BaseMenuSubscriber implements EventSubscribe
     public function onKnpMenuEvent(KnpMenuEvent $event): void
     {
         $menu = $event->getMenu();
-        $this->addMenuItem($menu, ['route' => 'app_homepage']);
         $this->addMenuItem($menu, ['route' => 'app_ca_tree']);
 //        $this->addMenuItem($menu, ['route' => 'app_typography']);
 //        $this->addMenuItem($menu, ['route' => 'app_heroku']);
