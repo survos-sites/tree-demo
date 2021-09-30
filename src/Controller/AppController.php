@@ -5,8 +5,10 @@ namespace App\Controller;
 use App\Entity\Building;
 use App\Entity\File;
 use App\Entity\Location;
+use App\Entity\Topic;
 use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
+use App\Repository\TopicRepository;
 use App\Services\AppService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -18,24 +20,13 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
-    private EntityManagerInterface $entityManager;
     private FileRepository $fileRepository;
+    private TopicRepository $topicRepository;
 
-    public function __construct(EntityManagerInterface $entityManager )
+    public function __construct(private EntityManagerInterface $entityManager )
     {
-
-        $this->entityManager = $entityManager;
-        $this->fileRepository = $entityManager->getRepository(File::class);
-
-
-
-    }
-    // see https://www.jstree.com/docs/json/
-    // and maybe https://www.phpflow.com/demo/dynamic-jstree-php-mysql-demo/#
-
-    private function getRepo(): LocationRepository
-    {
-        return $this->getDoctrine()->getRepository(Location::class);
+        $this->fileRepository = $this->entityManager->getRepository(File::class);
+        $this->topicRepository = $this->entityManager->getRepository(Topic::class);
     }
 
     /**
@@ -57,25 +48,37 @@ class AppController extends AbstractController
         $directory = $bag->get('kernel.project_dir');
         $appService->importDirectory($directory);
 
-        return $this->redirectToRoute('app_files');
+        return $this->redirectToRoute('app_tree', ['entity' => 'files']);
     }
 
     /**
-     * @Route("/basic-files", name="app_files")
+     * @Route("/basic-{entity}", name="app_tree")
      */
-    public function files(Request $request)
+    public function files(Request $request, string $entity)
     {
-        $htmlTree = $this->fileRepository->childrenHierarchy(
+        $repo = match($entity) {
+            'files' => $this->fileRepository,
+            'topics' => $this->topicRepository
+        };
+
+        if (0)
+        $htmlTree = $repo->childrenHierarchy(
             null, /* starting from root nodes */
             false, /* false: load all children, true: only direct */
             array(
                 'decorate' => true,
                 'representationField' => 'name',
-                'html' => true
-            )
+                'html' => true,
+                'nodeDecorator' => function ($node)
+                {
+                    return sprintf("%s %s %s", $node['name'], $node['code'], $node['lvl']);
+                },
+            ),
+            true
         );
         return $this->render('file/show.html.twig', [
-            'html' => $htmlTree
+            'entity' => $entity,
+            'html' => ''// $htmlTree
         ]);
     }
 
@@ -83,8 +86,11 @@ class AppController extends AbstractController
      * @Route("/", name="app_homepage")
      * @Route("/html-demos", name="app_basic_html")
      */
-    public function html()
+    public function html(TopicRepository $topicRepository)
     {
+        $count = $topicRepository->count([]);
+
+
         return $this->render('app/basic-html.html.twig', []);
     }
 

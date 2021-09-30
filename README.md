@@ -42,7 +42,8 @@ bin/console make:entity Location
 Add the tree properties.  Change 'Location' to your class name if necessary.
 Two parts, the header, set the slugger on 'code', and then add the properties.
 
-```php
+```php 
+// Location.php (the entity class)
 use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
 
 /**
@@ -105,10 +106,22 @@ Now generate the setters and getters.
 bin/console make:entity App\\Entity\\Location --regenerate
 ```
 
-Set the LocationRepository.php repository to extend the NestTreeRepsitory.  Alas, you must remove the constructor
+Set the LocationRepository.php repository to extend the NestTreeRepsitory.  Replace the constructor
 ```php
 class LocationRepository extends NestedTreeRepository // was ServiceEntityRepository
 {
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        parent::__construct($em, $em->getClassMetadata(Location::class));
+    }
+
+//    public function __construct(ManagerRegistry $registry)
+//    {
+//        parent::__construct($registry, Location::class);
+//    }
+
+}
 
 ```
 

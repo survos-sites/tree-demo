@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "5902bb51c265402fb932f1da26c3d765",
+    "content-hash": "3213dd61ab8d18a877380bc7463a1c20",
     "packages": [
         {
             "name": "antishov/doctrine-extensions-bundle",
@@ -8830,21 +8830,24 @@
         },
         {
             "name": "symfony/uid",
-            "version": "v5.2.11",
+            "version": "v5.3.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/uid.git",
-                "reference": "3604ffeb285e2ad213113aadc891338dfa7e9ff7"
+                "reference": "45853bbc72f2b91c32e707afe7f896fddb3ee8e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/uid/zipball/3604ffeb285e2ad213113aadc891338dfa7e9ff7",
-                "reference": "3604ffeb285e2ad213113aadc891338dfa7e9ff7",
+                "url": "https://api.github.com/repos/symfony/uid/zipball/45853bbc72f2b91c32e707afe7f896fddb3ee8e9",
+                "reference": "45853bbc72f2b91c32e707afe7f896fddb3ee8e9",
                 "shasum": ""
             },
             "require": {
                 "php": ">=7.2.5",
                 "symfony/polyfill-uuid": "^1.15"
+            },
+            "require-dev": {
+                "symfony/console": "^4.4|^5.0"
             },
             "type": "library",
             "autoload": {
@@ -8880,7 +8883,7 @@
                 "uuid"
             ],
             "support": {
-                "source": "https://github.com/symfony/uid/tree/v5.2.11"
+                "source": "https://github.com/symfony/uid/tree/v5.3.3"
             },
             "funding": [
                 {
@@ -8896,7 +8899,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2021-06-23T14:41:09+00:00"
+            "time": "2021-06-24T08:13:00+00:00"
         },
         {
             "name": "symfony/validator",

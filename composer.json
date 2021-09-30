@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": ">= 7.4",
+        "php": ">= 8.0",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "antishov/doctrine-extensions-bundle": "^1.4",
@@ -32,15 +32,15 @@
         "symfony/monolog-bundle": "^3.1",
         "symfony/notifier": "^5.0",
         "symfony/process": "^5.0",
-        "symfony/property-access": "5.2.*",
-        "symfony/property-info": "5.2.*",
-        "symfony/proxy-manager-bridge": "5.2.*",
+        "symfony/property-access": "^5.3",
+        "symfony/property-info": "^5.3",
+        "symfony/proxy-manager-bridge": "^5.3",
         "symfony/security-bundle": "^5.0",
-        "symfony/serializer": "5.2.*",
+        "symfony/serializer": "^5.3",
         "symfony/string": "^5.0",
         "symfony/translation": "^5.0",
-        "symfony/twig-bundle": "5.2.*",
-        "symfony/uid": "5.2.*",
+        "symfony/twig-bundle": "^5.3",
+        "symfony/uid": "^5.3",
         "symfony/validator": "^5.0",
         "symfony/web-link": "^5.0",
         "symfony/yaml": "^5.0",
@@ -54,13 +54,13 @@
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "phpunit/phpunit": "^9.5",
-        "symfony/browser-kit": "5.2.*",
-        "symfony/css-selector": "5.2.*",
-        "symfony/debug-bundle": "5.2.*",
+        "symfony/browser-kit": "^5.3",
+        "symfony/css-selector": "^5.3",
+        "symfony/debug-bundle": "^5.3",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^5.3",
-        "symfony/stopwatch": "5.2.*",
-        "symfony/web-profiler-bundle": "5.2.*"
+        "symfony/stopwatch": "^5.3",
+        "symfony/web-profiler-bundle": "^5.3"
     },
     "config": {
         "preferred-install": {
@@ -107,7 +107,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "5.2.*"
+            "require": "^5.3"
         }
     },
     "repositories": {

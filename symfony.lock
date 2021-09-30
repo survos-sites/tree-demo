@@ -11,9 +11,6 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
-    "api-platform/api-pack": {
-        "version": "v1.3.0"
-    },
     "api-platform/core": {
         "version": "2.5",
         "recipe": {
@@ -582,9 +579,6 @@
     "symfony/options-resolver": {
         "version": "v5.1.5"
     },
-    "symfony/orm-pack": {
-        "version": "v2.0.0"
-    },
     "symfony/password-hasher": {
         "version": "v5.3.7"
     },
@@ -685,9 +679,6 @@
     },
     "symfony/serializer": {
         "version": "v5.1.5"
-    },
-    "symfony/serializer-pack": {
-        "version": "v1.0.3"
     },
     "symfony/service-contracts": {
         "version": "v2.1.3"

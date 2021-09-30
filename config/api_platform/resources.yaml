@@ -11,6 +11,16 @@ App\Entity\File:
     denormalization_context:
       groups: ['jstree']
 
+App\Entity\Topic:
+  #  shortName: 'File Structure'                   # optional
+  description: 'A topic' # optional
+  attributes:                          # optional
+    pagination_items_per_page: 30   # optional
+    normalization_context:
+      groups: ['jstree']
+    denormalization_context:
+      groups: ['jstree']
+
 App\Entity\Location:
   shortName: 'Location'                   # optional
   description: 'A place within a building where inventory item is physically located.' # optional
