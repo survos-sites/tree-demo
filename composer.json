@@ -12,13 +12,12 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
-        "easycorp/easyadmin-bundle": "^2.3",
         "friendsofsymfony/jsrouting-bundle": "^2.5",
         "knplabs/knp-markdown-bundle": "^1.8",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^5.2",
-        "survos/base-bundle": "^1.0@dev",
+        "survos/base-bundle": "*@dev",
         "symfony/asset": "^5.0",
         "symfony/console": "^5.0",
         "symfony/dotenv": "^5.0",
@@ -35,7 +34,7 @@
         "symfony/property-access": "^5.3",
         "symfony/property-info": "^5.3",
         "symfony/proxy-manager-bridge": "^5.3",
-        "symfony/security-bundle": "^5.0",
+        "symfony/security-bundle": "^5.4",
         "symfony/serializer": "^5.3",
         "symfony/string": "^5.0",
         "symfony/translation": "^5.0",
@@ -107,7 +106,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "^5.3"
+            "require": "^5.4"
         }
     },
     "repositories": {
@@ -120,6 +119,6 @@
             "url": "git@github.com:tacman/AdminLTEBundle.git"
         }
     },
-    "minimum-stability": "beta",
+    "minimum-stability": "dev",
     "prefer-stable": true
 }

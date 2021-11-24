@@ -1,14 +1,14 @@
-survos_base:
-  theme: adminlte
-#  theme: start-bootstrap
-#  menu:
-#    enable: true
-#    main_menu: survos_sidebar_menu
-#    breadcrumb_menu: true
+#survos_base:
+#  theme: adminlte
+##  theme: start-bootstrap
+##  menu:
+##    enable: true
+##    main_menu: survos_sidebar_menu
+##    breadcrumb_menu: true
+##
 #
-
-twig:
-  globals:
-    theme: adminlte
-  paths:
-    'vendor/survos/base-bundle/src/Resources/views/adminlte': 'theme'
+#twig:
+#  globals:
+#    theme: adminlte
+#  paths:
+#    'vendor/survos/base-bundle/src/Resources/views/adminlte': 'theme'
