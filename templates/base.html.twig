@@ -1,36 +1,4 @@
-{% extends '@SurvosBase/base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
-{% block page_content %}
-    {{ block('body') }}
-{% endblock %}
-
-
-    {% block javascripts %}
-        {{ parent() }}
-        {{ encore_entry_script_tags('app') }}
-    {% endblock %}
-
-    {% block stylesheets %}
-        {{ parent() }}
-        {{ encore_entry_link_tags('app') }}
-    {% endblock %}
-
-
-{% block footer %}
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-
-        </div>
-        <!-- Default to the left -->
-        <strong>js-tree, adminlte, doctrine tree extension</strong>
-    </footer>
-{% endblock %}
-
-{% block logo_mini %}<b>Tree</b>{% endblock %}
-{% block logo_large '<b>Tree</b> Data' %}
-
-{% block page_title 'Hierarchical Data Demo' %}
-{% block page_subtitle 'With JS-Tree and Nested Sets' %}
 
 

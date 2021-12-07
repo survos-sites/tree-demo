@@ -6,8 +6,9 @@ use App\Repository\BuildingRepository;
 use Survos\BaseBundle\Menu\BaseMenuSubscriber;
 use Survos\BaseBundle\Menu\MenuBuilder;
 use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
+use Survos\BaseBundle\Event\KnpMenuEvent;
+
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
-use KevinPapst\AdminLTEBundle\Event\KnpMenuEvent;
 use Symfony\Component\HttpFoundation\RequestStack;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 use Symfony\Component\Security\Core\Security;
@@ -57,7 +58,9 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
 
         $this->addMenuItem($menu, ['route' => 'app_homepage', 'icon' => 'fas fa-home']);
 
-        $menu->addChild('app_files', ['route' => 'app_files']);
+        foreach (['files', 'topics'] as $entityName) {
+            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
+        }
 
         $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
 

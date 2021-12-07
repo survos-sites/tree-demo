@@ -125,7 +125,7 @@ class Building extends SurvosBaseEntity
         return $this;
     }
 
-    function getUniqueIdentifiers()
+    function getUniqueIdentifiers(): array
     {
         return ['buildingId' => $this->getCode()];
     }
