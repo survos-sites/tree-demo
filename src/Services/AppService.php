@@ -16,7 +16,6 @@ class AppService
 
     public function __construct(EntityManagerInterface $entityManager, LoggerInterface $logger)
     {
-
         $this->entityManager = $entityManager;
         $this->fileRepository = $entityManager->getRepository(File::class);
         $this->logger = $logger;
@@ -26,9 +25,9 @@ class AppService
     {
 
         $em = $this->entityManager;
-        $root = (new File())
-            ->setIsDir(true)
-            ->setName($directory);
+//        $root = (new File())
+//            ->setIsDir(true)
+//            ->setName($directory);
 //        $em->persist($root);
         $root = null; // can't figure out how to only open the top level, so this is a hack.
         $finder = new Finder();

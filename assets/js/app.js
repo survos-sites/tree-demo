@@ -3,9 +3,11 @@ require('bootstrap');
 require('Hinclude/hinclude');
 require('../css/app.scss');
 
-// const $ = require('jquery');
-// require('popper.js');
-// global.jQuery = global.$ = $;
+const $ = require('jquery');
+global.jQuery = global.$ = $;
+
+require('../../vendor/survos/base-bundle/src/Resources/assets/js/adminlte');
+
 //
 // console.log('app.js loading...');
 //
