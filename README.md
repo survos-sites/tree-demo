@@ -16,7 +16,7 @@ This is a great read to understand how Nested Sets work:
 ## Install Doctrine Tree Extension
 
 ```bash
-composer req antishov/doctrine-extensions-bundle
+composer req stof/doctrine-extensions-bundle
 ```
 
 Modify the configuration

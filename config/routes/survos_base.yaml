@@ -10,6 +10,7 @@ survos_landing: {path: /landing, controller: 'Survos\BaseBundle\Controller\Landi
 app_heroku: {path: /heroku, controller: 'Survos\BaseBundle\Controller\LandingController::heroku'}
 app_logo: {path: /logo, controller: 'Survos\BaseBundle\Controller\LandingController::logo'}
 app_profile: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
+app_register: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
 profile: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
 app_logout: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::logout'}
 # required if app_profile is used, since you can change the password from the profile

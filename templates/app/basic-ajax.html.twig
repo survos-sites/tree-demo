@@ -4,13 +4,19 @@
 {% block title %}Basic AJAX Demo{% endblock %}
 
 
-{% block javascripts %}
-{{ parent() }}
-{{ encore_entry_script_tags('tree-api') }}
-{% endblock %}
+{#{% block javascripts %}#}
+{#{{ parent() }}#}
+{#{{ encore_entry_script_tags('tree-api') }}#}
+{#{% endblock %}#}
 
 {% block body %}
 
+    {% set CONTROLLER = 'hello' %}
+    <div {{ stimulus_controller(CONTROLLER) }}>
+        <div {{ stimulus_target(CONTROLLER, 'hello') }}>
+            Waiting to connect...
+        </div>
+    </div>
     {# this is really for basic-ajax, which we've lost...
     {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
     #}
