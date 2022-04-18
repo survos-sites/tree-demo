@@ -29,38 +29,29 @@ class AppController extends AbstractController
         $this->topicRepository = $this->entityManager->getRepository(Topic::class);
     }
 
-    /**
-     * @Route("/basic-ajax/{buildingId}", name="app_basic_ajax")
-     */
+    #[Route(path: '/basic-ajax/{buildingId}', name: 'app_basic_ajax')]
     public function index(Building $building)
     {
-
         return $this->render('app/basic-ajax.html.twig', [
             'building' => $building
         ]);
     }
 
-    /**
-     * @Route("/load-files", name="app_load_files")
-     */
+    #[Route(path: '/load-files', name: 'app_load_files')]
     public function loadFiles(Request $request, AppService $appService, ParameterBagInterface $bag)
     {
         $directory = $bag->get('kernel.project_dir');
         $appService->importDirectory($directory);
-
         return $this->redirectToRoute('app_tree', ['entity' => 'files']);
     }
 
-    /**
-     * @Route("/basic-{entity}", name="app_tree")
-     */
+    #[Route(path: '/basic-{entity}', name: 'app_tree')]
     public function files(Request $request, string $entity)
     {
         $repo = match($entity) {
             'files' => $this->fileRepository,
             'topics' => $this->topicRepository
         };
-
         if (0)
         $htmlTree = $repo->childrenHierarchy(
             null, /* starting from root nodes */
@@ -82,15 +73,11 @@ class AppController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/", name="app_homepage")
-     * @Route("/html-demos", name="app_basic_html")
-     */
+    #[Route(path: '/', name: 'app_homepage')]
+    #[Route(path: '/html-demos', name: 'app_basic_html')]
     public function html(TopicRepository $topicRepository)
     {
         $count = $topicRepository->count([]);
-
-
         return $this->render('app/basic-html.html.twig', []);
     }
 
@@ -101,25 +88,19 @@ class AppController extends AbstractController
     }
 
 
-    /**
-     * @Route("/tree-json.{_format}", name="app_tree_json")
-     */
+    #[Route(path: '/tree-json.{_format}', name: 'app_tree_json')]
     public function treeJson(Request $request, $_format='html')
     {
-
         $data = array_map(function($name) { return ['text' =>  $name];}, ['Basement', 'First Floor', 'Second Floor', 'Attic']);
         return $this->jsonResponse($data, $request);
     }
 
-    /**
-     * @Route("/fetch.{_format}", name="app_tree_fetch")
-     */
+    #[Route(path: '/fetch.{_format}', name: 'app_tree_fetch')]
     public function fetch(Request $request, EntityManagerInterface $em, $_format='json')
     {
         $repository = $em->getRepository(Location::class);
         /** @var Location $location */
         $data = [];
-
         foreach ($repository->findAll() as $location) {
             array_push($data, [
                 'id' => $location->getCode(),
@@ -129,18 +110,14 @@ class AppController extends AbstractController
             ]);
         }
         return new JsonResponse($data);
-
     }
 
-    /**
-     * @Route("/save.{_format}", name="app_tree_save")
-     */
+    #[Route(path: '/save.{_format}', name: 'app_tree_save')]
     public function save(Request $request, $_format='html')
     {
         $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Location::class);
         $data = $request->get('json');
-
         // create nodes that don't exist.  Codes, though, are locked.
         foreach ($data as $node) {
             $node = (object)$node;

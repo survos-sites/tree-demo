@@ -8,9 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-/**
- * @Gedmo\Tree(type="nested")
- */
+#[Gedmo\Tree(type: "nested")]
 #[ORM\Entity(repositoryClass: FileRepository::class)]
 class File implements \Stringable
 {
@@ -24,30 +22,22 @@ class File implements \Stringable
     private $path;
     #[ORM\Column(type: 'boolean')]
     private $isDir;
-    /**
-     * @Gedmo\TreeLeft
-     */
+    #[Gedmo\TreeLeft]
+
     #[ORM\Column(type: 'integer')]
     private $lft;
-    /**
-     * @Gedmo\TreeLevel
-     */
+
+    #[Gedmo\TreeLevel]
     #[ORM\Column(type: 'integer')]
     private $lvl;
-    /**
-     * @Gedmo\TreeRight
-     */
+    #[Gedmo\TreeRight]
     #[ORM\Column(type: 'integer')]
     private $rgt;
-    /**
-     * @Gedmo\TreeRoot
-     */
+    #[Gedmo\TreeRoot]
     #[ORM\ManyToOne(targetEntity: 'File')]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
     private $root;
-    /**
-     * @Gedmo\TreeParent
-     */
+    #[Gedmo\TreeParent]
     #[ORM\ManyToOne(targetEntity: 'File', inversedBy: 'children')]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
     private $parent;

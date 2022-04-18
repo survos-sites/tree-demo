@@ -57,6 +57,7 @@ return static function (ContainerConfigurator $containerConfigurator): void {
     $containerConfigurator->import(SymfonySetList::SYMFONY_CODE_QUALITY);
     $containerConfigurator->import(SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION);
 
+
     // register a single rule
 //    $services->set(\Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector::class);
 //    $services->set(\PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer::class);
