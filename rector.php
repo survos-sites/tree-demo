@@ -47,6 +47,11 @@ return static function (ContainerConfigurator $containerConfigurator): void {
 //                new AddParamTypeDeclaration('SomeClass', 'process', 0, new StringType()),
 //            ]),
 //        ]]);
+
+    $containerConfigurator->import(\Rector\Doctrine\Set\DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES);
+    $containerConfigurator->import(SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES);
+    $containerConfigurator->import(\Rector\Nette\Set\NetteSetList::ANNOTATIONS_TO_ATTRIBUTES);
+    $containerConfigurator->import(\Rector\Symfony\Set\SensiolabsSetList::FRAMEWORK_EXTRA_61);
 //
     $containerConfigurator->import(SymfonySetList::SYMFONY_54);
     $containerConfigurator->import(SymfonySetList::SYMFONY_CODE_QUALITY);

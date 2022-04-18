@@ -14,6 +14,9 @@ bin/console doctrine:schema:update --dump-sql --force
 #bin/console make:migration
 #bin/console doctrine:migrations:migrate -n
 bin/console doctrine:fixtures:load -n
+
+bin/console app:import-topics
+
 bin/create-admins.sh
 
 

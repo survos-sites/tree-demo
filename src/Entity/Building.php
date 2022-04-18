@@ -8,75 +8,51 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Survos\BaseBundle\Entity\SurvosBaseEntity;
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\BuildingRepository")
- */
-class Building extends SurvosBaseEntity
+#[ORM\Entity(repositoryClass: 'App\Repository\BuildingRepository')]
+class Building extends SurvosBaseEntity implements \Stringable
 {
-    /**
-     * @ORM\Id()
-     * @ORM\GeneratedValue()
-     * @ORM\Column(type="integer")
-     */
+    #[ORM\Id]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
     private $id;
-
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $name;
-
-    /**
-     * @ORM\ManyToOne(targetEntity="App\Entity\User", inversedBy="buildings")
-     * @ORM\JoinColumn(nullable=false)
-     */
+    #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'buildings')]
+    #[ORM\JoinColumn(nullable: false)]
     private $user;
-
-    /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Location", mappedBy="building", orphanRemoval=true, cascade={"persist"})
-     */
+    #[ORM\OneToMany(targetEntity: 'App\Entity\Location', mappedBy: 'building', orphanRemoval: true, cascade: ['persist'])]
     private $locations;
-
     /**
-     * @ORM\Column(type="string", length=255)
      * @Gedmo\Slug(fields={"name"})
      */
+    #[ORM\Column(type: 'string', length: 255)]
     private $code;
-
-    public function __construct(string $name = null)
+    public function __construct(#[ORM\Column(type: 'string', length: 255)] private ?string $name = null)
     {
-        $this->name = $name;
         $this->locations = new ArrayCollection();
     }
-
     public function getId(): ?int
     {
         return $this->id;
     }
-
     public function getName(): ?string
     {
         return $this->name;
     }
-
     public function setName(string $name): self
     {
         $this->name = $name;
 
         return $this;
     }
-
     public function getUser(): ?User
     {
         return $this->user;
     }
-
     public function setUser(?User $user): self
     {
         $this->user = $user;
 
         return $this;
     }
-
     /**
      * @return Collection|Location[]
      */
@@ -84,7 +60,6 @@ class Building extends SurvosBaseEntity
     {
         return $this->locations;
     }
-
     public function addLocation(Location $location): self
     {
         if (!$this->locations->contains($location)) {
@@ -94,7 +69,6 @@ class Building extends SurvosBaseEntity
 
         return $this;
     }
-
     public function removeLocation(Location $location): self
     {
         if ($this->locations->contains($location)) {
@@ -107,24 +81,20 @@ class Building extends SurvosBaseEntity
 
         return $this;
     }
-
-    public function __toString()
+    public function __toString(): string
     {
         return (string)$this->getName();
     }
-
     public function getCode(): ?string
     {
         return $this->code;
     }
-
     public function setCode(string $code): self
     {
         $this->code = $code;
 
         return $this;
     }
-
     public function getUniqueIdentifiers(): array
     {
         return ['buildingId' => $this->getCode()];
