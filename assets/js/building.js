@@ -1,7 +1,6 @@
 const $ = require('jquery');
-require('jstree');
-require('jquery-confirm');
 
+require('jstree');
 
 // global.$ = $; // hack if you need a global $
 

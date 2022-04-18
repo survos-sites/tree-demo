@@ -146,9 +146,6 @@
     "guzzlehttp/psr7": {
         "version": "2.1.0"
     },
-    "knplabs/knp-markdown-bundle": {
-        "version": "1.8.1"
-    },
     "knplabs/knp-menu": {
         "version": "v3.3.0"
     },
@@ -175,9 +172,6 @@
     },
     "lorenzo/pinky": {
         "version": "1.0.5"
-    },
-    "michelf/php-markdown": {
-        "version": "1.9.0"
     },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"
@@ -351,6 +345,12 @@
     },
     "survos/base-bundle": {
         "version": "1.x-dev"
+    },
+    "survos/maker-bundle": {
+        "version": "2.1.0"
+    },
+    "survos/workflow-extension-bundle": {
+        "version": "2.0-dev"
     },
     "symfony/asset": {
         "version": "v5.1.5"
@@ -726,6 +726,18 @@
             "config/packages/webpack_encore.yaml",
             "package.json",
             "webpack.config.js"
+        ]
+    },
+    "symfony/workflow": {
+        "version": "6.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "3b2f8ca32a07fcb00f899649053943fa3d8bbfb6"
+        },
+        "files": [
+            "config/packages/workflow.yaml"
         ]
     },
     "symfony/yaml": {

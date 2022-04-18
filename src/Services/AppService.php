@@ -33,7 +33,8 @@ class AppService
         $finder = new Finder();
         $finder
             ->ignoreVCSIgnored(true)
-            ->in($directory);
+            ->in($directory)
+        ;
 //        foreach ($finder->directories() as $directory) {
 //            dd($directory);
 //        }
@@ -54,6 +55,11 @@ class AppService
             ;
 
             if ($parentName = $fileInfo->getRelativePath()) {
+                // symbolic links, like base-bundle, don't work right
+                if (!array_key_exists($parentName, $dirs)) {
+                    continue;
+                }
+                assert(array_key_exists($parentName, $dirs), sprintf("Missing %s in %s (%s)", $parentName, $fileInfo->getPathname(), $directory));
 //                dd($fileInfo, $parentName, $dirs[$parentName]);
                 $dir = $dirs[$parentName];
             } else {
