@@ -51,7 +51,7 @@ class User implements UserInterface
         return $this->id;
     }
 
-    public function getEmail(): ?string
+    public function getEmail(): string
     {
         return $this->email;
     }
@@ -158,5 +158,11 @@ class User implements UserInterface
     public function __toString()
     {
         return $this->getEmail();
+    }
+
+    public function getUserIdentifier(): string
+    {
+        return $this->getEmail();
+        // TODO: Implement getUserIdentifier() method.
     }
 }
