@@ -45,30 +45,6 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
 
         $menu = $event->getMenu();
 
-        $buildingMenu = $this->addMenuItem($menu, ['menu_code' => 'building_dropdown', 'label' => 'Buildings']);
-        foreach (['index', 'new'] as $routeSuffix) {
-            $this->addMenuItem($buildingMenu, ['route' => 'building_' . $routeSuffix]);
-        }
-        foreach ($this->buildingRepository->findAll() as $building) {
-            $this->addMenuItem($buildingMenu, ['route' => 'app_basic_ajax',
-                'label' => $building,
-                'rp'=> $building]);
-        }
-
-
-        $this->addMenuItem($menu, ['route' => 'app_homepage', 'icon' => 'fas fa-home']);
-
-        foreach (['files', 'topics'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
-        }
-
-        $menu->addChild('app_basic_html', ['route' => 'app_basic_html']);
-
-        $adminMenu = $this->addMenuItem($menu, ['menu_code' => 'admin_dropdown']);
-//        $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
-        $this->addMenuItem($adminMenu, ['route' => 'api_entrypoint']);
-        $this->addMenuItem($adminMenu, ['route' => 'api_doc']);
-
         // ...
     }
 

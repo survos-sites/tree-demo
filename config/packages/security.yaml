@@ -1,33 +1,33 @@
 security:
-    encoders:
-        App\Entity\User:
-            algorithm: auto
+    enable_authenticator_manager: true
 
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+    password_hashers:
+        # Our user class and the algorithm we'll use to encode passwords
+        # 'auto' means to let Symfony choose the best possible password hasher (Argon2 or Bcrypt)
+        # https://symfony.com/doc/current/security.html#c-encoding-passwords
+        App\Entity\User: 'auto'
+
     providers:
-        # used to reload user from session & other features (e.g. switch_user)
-        app_user_provider:
-            entity:
-                class: App\Entity\User
-                property: email
+        users_in_memory: { memory: null }
+        # https://symfony.com/doc/current/security/user_provider.html
+        # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+        # In this example, users are stored via Doctrine in the database
+        # To see the users at src/App/DataFixtures/ORM/LoadFixtures.php
+        # To load users from somewhere else: https://symfony.com/doc/current/security/user_provider.html#creating-a-custom-user-provider
+        database_users:
+            entity: { class: App\Entity\User, property: email }
+
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
-            anonymous: true
             lazy: true
-            provider: app_user_provider
-            guard:
-                authenticators:
-                    - App\Security\AppAuthenticator
-            logout:
-                path: app_logout
-                # where to redirect after logout
-                # target: app_any_route
+            provider: users_in_memory
 
             # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
+            # https://symfony.com/doc/current/security.html#the-firewall
 
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true

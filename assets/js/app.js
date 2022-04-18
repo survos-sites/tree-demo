@@ -1,12 +1,14 @@
-require('@popperjs/core');
-require('bootstrap');
-require('Hinclude/hinclude');
+// require('@popperjs/core');
+// require('bootstrap');
+// require('Hinclude/hinclude');
+
+console.log('requiring css');
 require('../css/app.scss');
 
 const $ = require('jquery');
 global.jQuery = global.$ = $;
 
-require('../../vendor/survos/base-bundle/src/Resources/assets/js/adminlte');
+
 
 //
 // console.log('app.js loading...');
