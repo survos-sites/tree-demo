@@ -11,6 +11,7 @@ use App\Repository\LocationRepository;
 use App\Repository\TopicRepository;
 use App\Services\AppService;
 use Doctrine\ORM\EntityManagerInterface;
+use Survos\BaseBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,6 +21,7 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class AppController extends AbstractController
 {
+    use JsonResponseTrait;
     private FileRepository $fileRepository;
     private TopicRepository $topicRepository;
 
@@ -113,9 +115,8 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/save.{_format}', name: 'app_tree_save')]
-    public function save(Request $request, $_format='html')
+    public function save(Request $request, EntityManagerInterface $em, $_format='html')
     {
-        $em = $this->getDoctrine()->getManager();
         $repo = $em->getRepository(Location::class);
         $data = $request->get('json');
         // create nodes that don't exist.  Codes, though, are locked.

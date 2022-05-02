@@ -15,6 +15,9 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route(path: '/building')]
 class BuildingController extends AbstractController
 {
+    public function __construct(private EntityManagerInterface $entityManager) {
+
+    }
     #[Route(path: '/', name: 'building_index', methods: ['GET'])]
     public function index(BuildingRepository $buildingRepository) : Response
     {
@@ -29,7 +32,7 @@ class BuildingController extends AbstractController
         $form = $this->createForm(BuildingType::class, $building);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->entityManager;
             $entityManager->persist($building);
             $entityManager->flush();
 
@@ -56,7 +59,7 @@ class BuildingController extends AbstractController
         $form = $this->createForm(BuildingType::class, $building);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-            $this->getDoctrine()->getManager()->flush();
+            $this->entityManager->flush();
 
             return $this->redirectToRoute('building_index');
         }
@@ -69,7 +72,7 @@ class BuildingController extends AbstractController
     public function delete(Request $request, Building $building) : Response
     {
         if ($this->isCsrfTokenValid('delete'.$building->getId(), $request->request->get('_token'))) {
-            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager = $this->entityManager;
             $entityManager->remove($building);
             $entityManager->flush();
         }
