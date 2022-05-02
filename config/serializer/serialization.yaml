@@ -39,11 +39,13 @@ App\Entity\Building:
     id:
       groups: ['jstree']
 
-App\Entity\Topic:
-  attributes:
-    name:
-      groups: ['jstree']
-    description:
-      groups: ['jstree']
-    id:
-      groups: ['jstree']
+#App\Entity\Topic:
+#  attributes:
+#    name:
+#      groups: ['jstree']
+#    description:
+#      groups: ['jstree']
+#    id:
+#      groups: ['jstree']
+#    parentId:
+#      groups: ['jstree']

@@ -2,12 +2,23 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\OrderFilter;
+use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 use App\Repository\FileRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(
+    normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','transitions', 'rp']],
+    denormalizationContext: ['groups' => ["Default", "minimum", "browse"]],
+)]
+#[ApiFilter(OrderFilter::class, properties: ['marking', 'org', 'shortName', 'fullName'], arguments: ['orderParameterName' => 'order'])]
+#[ApiFilter(SearchFilter::class, properties: ["marking"=>"exact", 'local.id' => 'exact', 'id'=> 'exact', 'name' => 'partial'])]
 #[Gedmo\Tree(type: "nested")]
 #[ORM\Entity(repositoryClass: FileRepository::class)]
 class File implements \Stringable
@@ -15,8 +26,10 @@ class File implements \Stringable
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['minimum','search','jstree'])]
     private $id;
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['minimum','search','jstree'])]
     private $name;
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $path;
@@ -163,6 +176,7 @@ class File implements \Stringable
     {
         return $this->getChildren()->count();
     }
+    #[Groups(['minimum','search','jstree'])]
     public function getParentId(): ?int
     {
         return $this->getParent() ? $this->getParent()->getId() : null;

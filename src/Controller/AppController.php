@@ -10,6 +10,7 @@ use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
 use App\Repository\TopicRepository;
 use App\Services\AppService;
+use App\Services\TopicsService;
 use Doctrine\ORM\EntityManagerInterface;
 use Survos\BaseBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,6 +40,13 @@ class AppController extends AbstractController
         ]);
     }
 
+    #[Route(path: '/load-topics', name: 'app_load_topics')]
+    public function loadTopics(Request $request, TopicsService $topicsService)
+    {
+            $topicsService->importTopics();
+            return $this->redirectToRoute('app_tree', ['entity' => 'topics']);
+    }
+
     #[Route(path: '/load-files', name: 'app_load_files')]
     public function loadFiles(Request $request, AppService $appService, ParameterBagInterface $bag)
     {
@@ -48,7 +56,7 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/basic-{entity}', name: 'app_tree')]
-    public function files(Request $request, string $entity)
+    public function files(Request $request, TopicsService $topicsService, string $entity)
     {
         $repo = match($entity) {
             'files' => $this->fileRepository,

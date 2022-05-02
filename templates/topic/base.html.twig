@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}BASE Topic{% endblock %}
+
+{% block page_title %}{{ topic }}{% endblock %}
+{% block page_subtitle %}{{ app.request.get('_route') }}{% endblock %}
+
+{% block body %}
+
+If we have a Topic entity, we should display it here.
+
+{% endblock %}

@@ -1,0 +1,5 @@
+<form method="post" action="{{ path('topic_delete', topic.rp ) }}" onsubmit="return confirm('Are you sure you want to delete this topic ?');">
+    <input type="hidden" name="_method" value="DELETE">
+    <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ topic.code) }}">
+    <button class="btn btn-danger">Delete</button>
+</form>

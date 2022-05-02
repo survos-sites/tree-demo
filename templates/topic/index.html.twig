@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Topic index{% endblock %}
+
+
+{% block body %}
+    <h1>Topic index</h1>
+
+    {% include "topic/_table.html.twig" %}
+
+    <a class="btn btn-primary" href="{{ path('topic_new') }}"><span class="fas fa-plus"></span>New  Topic</a>
+{% endblock %}

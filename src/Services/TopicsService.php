@@ -6,13 +6,16 @@ use App\Entity\Topic;
 use App\Repository\TopicRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class TopicsService
 {
 
     private TopicRepository $topicRepository;
 
-    public function __construct(private EntityManagerInterface $em,
+    public function __construct(
+        private ParameterBagInterface $bag,
+        private EntityManagerInterface $em,
     private LoggerInterface $logger)
     {
         $this->topicRepository = $this->em->getRepository(Topic::class);
@@ -22,8 +25,12 @@ class TopicsService
         return $this->topicRepository->count([]);
     }
 
-    public function importTopics(string $topicsJsonFile)
+    public function importTopics(?string $topicsJsonFile=null)
     {
+        if (!$topicsJsonFile) {
+            $topicsJsonFile = $this->bag->get('topics_json_file');
+        }
+
         $this->em->createQuery("delete from " . Topic::class)->execute();
 
         $data = json_decode(file_get_contents($topicsJsonFile))->conceptSet;
@@ -46,6 +53,8 @@ class TopicsService
             $topic = $topics[$topicCode];
             if (isset($cSet->broader)) {
                 $parentCode = $this->getCode($cSet->broader[0], '/');
+//                dd($topic, $cSet, $parentCode);
+
                 $this->logger->warning("Parent", [$parentCode, $topicCode]);
 //                assert(array_key_exists($parentCode, $parents), "Missing $parentCode as parent");
                 $topic->setParent($topics[$parentCode]);

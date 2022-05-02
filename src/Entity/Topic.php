@@ -4,24 +4,34 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
 use App\Repository\TopicRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Survos\BaseBundle\Entity\SurvosBaseEntity;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-/**
- * @Gedmo\Tree(type="nested")
- */
+#[Gedmo\Tree(type:"nested")]
+#[ApiResource(
+    normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','transitions', 'rp']],
+    denormalizationContext: ['groups' => ["Default", "minimum", "browse"]],
+)]
 #[ORM\Entity(repositoryClass: TopicRepository::class)]
-class Topic implements \Stringable
+class Topic extends SurvosBaseEntity implements \Stringable
 {
+    const PLACE_NEW='new';
+
     #[ORM\Id]
     #[ORM\Column(type: 'string', length: 10)]
+    #[Groups(['minimum','search','jstree'])]
     private $code;
     #[ORM\Column(type: 'string', length: 255)]
+    #[Groups(['minimum','search','jstree'])]
     private $name;
     #[ORM\Column(type: 'text')]
+    #[Groups(['minimum','search','jstree'])]
     private $description;
     public function getCode(): ?string
     {
@@ -172,4 +182,21 @@ class Topic implements \Stringable
     {
         return sprintf("%s %s", $this->getName(), $this->getCode());
     }
+    public function getUniqueIdentifiers(): array
+    {
+        return ['topicId' => $this->getCode()];
+    }
+
+    #[Groups(['minimum','search','jstree'])]
+    public function getParentId(): ?string
+    {
+        return $this->getParent() ? $this->getParent()->getCode() : null;
+    }
+
+    #[Groups(['minimum','search','jstree'])]
+    public function getId(): ?string
+    {
+        return $this->getCode();
+    }
+
 }

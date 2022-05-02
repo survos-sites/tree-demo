@@ -1,0 +1,42 @@
+
+
+<table class="table js-datatable">
+    <thead>
+    <tr>
+        <th>actions</th>
+                    <th>Code</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Lft</th>
+                    <th>Lvl</th>
+                    <th>Rgt</th>
+            </tr>
+    </thead>
+    <tbody>
+    {% for topic in topics %}
+    <tr>
+        <td>
+            <a href="{{ path('topic_show', topic.rp) }}">
+                <span class="fas fa-eye"></span>
+                <i class="bi bi-info"></i>
+            </a>
+            <a href="{{ path('topic_edit', topic.rp) }}">
+                <span class="fas fa-edit"></span>
+                <i class="bi bi-pencil"></i>
+            </a>
+        </td>
+
+                    <td>{{ topic.code }}</td>
+                    <td>{{ topic.name }}</td>
+                    <td>{{ topic.description }}</td>
+                    <td>{{ topic.lft }}</td>
+                    <td>{{ topic.lvl }}</td>
+                    <td>{{ topic.rgt }}</td>
+            </tr>
+    {% else %}
+    <tr>
+        <td colspan="7">no records found</td>
+    </tr>
+    {% endfor %}
+    </tbody>
+</table>
