@@ -1,16 +1,4 @@
 {
-    "antishov/doctrine-extensions-bundle": {
-        "version": "1.4",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.4",
-            "ref": "6c1ceb662f8997085f739cd089bfbef67f245983"
-        },
-        "files": [
-            "config/packages/stof_doctrine_extensions.yaml"
-        ]
-    },
     "api-platform/core": {
         "version": "2.5",
         "recipe": {
@@ -125,19 +113,6 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
-    "easycorp/easyadmin-bundle": {
-        "version": "2.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "2.0",
-            "ref": "0a51040a43c6f2172a3a0135cd15daf2043905d7"
-        },
-        "files": [
-            "config/packages/easy_admin.yaml",
-            "config/routes/easy_admin.yaml"
-        ]
-    },
     "egulias/email-validator": {
         "version": "2.1.19"
     },
@@ -163,42 +138,27 @@
         "version": "v2.4.42"
     },
     "guzzlehttp/guzzle": {
-        "version": "7.0.1"
+        "version": "7.4.0"
     },
     "guzzlehttp/promises": {
-        "version": "v1.3.1"
+        "version": "1.5.1"
     },
     "guzzlehttp/psr7": {
-        "version": "1.6.1"
-    },
-    "jwage/easy-csv": {
-        "version": "1.0.0"
-    },
-    "kevinpapst/adminlte-bundle": {
-        "version": "0.9",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.9",
-            "ref": "dca6a91efc23d844326d2e90b47bdf48a5038fcf"
-        }
-    },
-    "knplabs/knp-markdown-bundle": {
-        "version": "1.8.1"
+        "version": "2.1.0"
     },
     "knplabs/knp-menu": {
-        "version": "v3.1.2"
+        "version": "v3.3.0"
     },
     "knplabs/knp-menu-bundle": {
-        "version": "v3.0.0"
+        "version": "v3.2.0"
     },
     "knpuniversity/oauth2-client-bundle": {
-        "version": "1.20",
+        "version": "2.9",
         "recipe": {
             "repo": "github.com/symfony/recipes-contrib",
             "branch": "master",
             "version": "1.20",
-            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+            "ref": "1ff300d8c030f55c99219cc55050b97a695af3f6"
         },
         "files": [
             "config/packages/knpu_oauth2_client.yaml"
@@ -207,20 +167,11 @@
     "laminas/laminas-code": {
         "version": "3.4.1"
     },
-    "laminas/laminas-eventmanager": {
-        "version": "3.3.0"
-    },
-    "laminas/laminas-zendframework-bridge": {
-        "version": "1.1.0"
-    },
     "league/oauth2-client": {
-        "version": "2.5.0"
+        "version": "2.6.0"
     },
     "lorenzo/pinky": {
         "version": "1.0.5"
-    },
-    "michelf/php-markdown": {
-        "version": "1.9.0"
     },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"
@@ -246,23 +197,11 @@
     "nikic/php-parser": {
         "version": "v4.9.1"
     },
-    "ocramius/package-versions": {
-        "version": "1.5.1"
-    },
-    "ocramius/proxy-manager": {
-        "version": "2.8.0"
-    },
-    "pagerfanta/pagerfanta": {
-        "version": "v2.4.1"
-    },
     "phar-io/manifest": {
         "version": "2.0.3"
     },
     "phar-io/version": {
         "version": "3.1.0"
-    },
-    "php": {
-        "version": "7.4"
     },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
@@ -275,6 +214,9 @@
     },
     "phpspec/prophecy": {
         "version": "1.14.0"
+    },
+    "phpstan/phpstan": {
+        "version": "1.5.6"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.7"
@@ -331,6 +273,9 @@
     },
     "ralouphie/getallheaders": {
         "version": "3.0.3"
+    },
+    "rector/rector": {
+        "version": "0.12.21"
     },
     "sebastian/cli-parser": {
         "version": "1.0.1"
@@ -392,8 +337,26 @@
             "config/packages/sensio_framework_extra.yaml"
         ]
     },
+    "stof/doctrine-extensions-bundle": {
+        "version": "1.7",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.2",
+            "ref": "e805aba9eff5372e2d149a9ff56566769e22819d"
+        },
+        "files": [
+            "config/packages/stof_doctrine_extensions.yaml"
+        ]
+    },
     "survos/base-bundle": {
         "version": "1.x-dev"
+    },
+    "survos/maker-bundle": {
+        "version": "2.1.0"
+    },
+    "survos/workflow-extension-bundle": {
+        "version": "2.0-dev"
     },
     "symfony/asset": {
         "version": "v5.1.5"
@@ -436,9 +399,6 @@
         "files": [
             "config/packages/dev/debug.yaml"
         ]
-    },
-    "symfony/debug-pack": {
-        "version": "v1.0.8"
     },
     "symfony/dependency-injection": {
         "version": "v5.1.5"
@@ -580,7 +540,7 @@
         "version": "v5.1.5"
     },
     "symfony/password-hasher": {
-        "version": "v5.3.7"
+        "version": "v5.4.0-RC1"
     },
     "symfony/phpunit-bridge": {
         "version": "4.3",
@@ -612,9 +572,6 @@
     "symfony/polyfill-mbstring": {
         "version": "v1.18.1"
     },
-    "symfony/polyfill-php73": {
-        "version": "v1.18.1"
-    },
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
@@ -626,9 +583,6 @@
     },
     "symfony/process": {
         "version": "v5.1.5"
-    },
-    "symfony/profiler-pack": {
-        "version": "v1.0.5"
     },
     "symfony/property-access": {
         "version": "v5.1.5"
@@ -654,28 +608,25 @@
         ]
     },
     "symfony/security-bundle": {
-        "version": "5.1",
+        "version": "5.4",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
-            "version": "5.1",
-            "ref": "0a4bae19389d3b9cba1ca0102e3b2bccea724603"
+            "version": "5.3",
+            "ref": "3307d76caa2d12fb10ade57975beb3d8975df396"
         },
         "files": [
             "config/packages/security.yaml"
         ]
     },
     "symfony/security-core": {
-        "version": "v5.1.5"
+        "version": "v5.4.0-RC1"
     },
     "symfony/security-csrf": {
-        "version": "v5.1.5"
-    },
-    "symfony/security-guard": {
-        "version": "v5.1.5"
+        "version": "v5.4.0-RC1"
     },
     "symfony/security-http": {
-        "version": "v5.1.5"
+        "version": "v5.4.0-RC1"
     },
     "symfony/serializer": {
         "version": "v5.1.5"
@@ -688,9 +639,6 @@
     },
     "symfony/string": {
         "version": "v5.1.5"
-    },
-    "symfony/test-pack": {
-        "version": "v1.0.6"
     },
     "symfony/translation": {
         "version": "3.3",
@@ -724,9 +672,6 @@
             "config/packages/twig.yaml",
             "templates/base.html.twig"
         ]
-    },
-    "symfony/twig-pack": {
-        "version": "v1.0.0"
     },
     "symfony/uid": {
         "version": "v5.2.0"
@@ -768,12 +713,12 @@
         ]
     },
     "symfony/webpack-encore-bundle": {
-        "version": "1.9",
+        "version": "1.13",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "master",
             "version": "1.9",
-            "ref": "34a82422147bc632dec0db2676bf27aaaa582ba0"
+            "ref": "0f274572ea315eb3b5884518a50ca43f211b4534"
         },
         "files": [
             "assets/app.js",
@@ -787,6 +732,18 @@
             "config/packages/webpack_encore.yaml",
             "package.json",
             "webpack.config.js"
+        ]
+    },
+    "symfony/workflow": {
+        "version": "6.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "3b2f8ca32a07fcb00f899649053943fa3d8bbfb6"
+        },
+        "files": [
+            "config/packages/workflow.yaml"
         ]
     },
     "symfony/yaml": {
@@ -816,8 +773,11 @@
     "twig/twig": {
         "version": "v3.0.5"
     },
-    "webimpress/safe-writer": {
-        "version": "2.1.0"
+    "umbrella2/adminbundle": {
+        "version": "v6.1"
+    },
+    "umbrella2/corebundle": {
+        "version": "v6.1"
     },
     "webmozart/assert": {
         "version": "1.9.1"
@@ -827,11 +787,5 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
-    },
-    "zendframework/zend-code": {
-        "version": "3.4.1"
-    },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
     }
 }

@@ -7,11 +7,8 @@ use App\Services\AppService;
 
 class CreateLocation
 {
-    private $appService;
-
-    public function __construct(AppService $appService)
+    public function __construct(private AppService $appService)
     {
-        $this->appService = $appService;
     }
 
     public function __invoke(Location $data): Location

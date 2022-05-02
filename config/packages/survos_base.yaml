@@ -1,5 +1,5 @@
 survos_base:
-  theme: adminlte
+  theme: umbrella
 #  theme: start-bootstrap
 #  menu:
 #    enable: true
@@ -9,6 +9,6 @@ survos_base:
 
 twig:
   globals:
-    theme: adminlte
+    theme: umbrella
   paths:
-    'vendor/survos/base-bundle/src/Resources/views/adminlte': 'theme'
+    'vendor/survos/base-bundle/src/Resources/views/umbrella': 'theme'

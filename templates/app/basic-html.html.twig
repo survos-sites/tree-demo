@@ -42,17 +42,19 @@
 {% endblock %}
 
 {% block root_nodes %}
-<div id="html1" class="jstree-basic">
-
-    {% if html|default(false) %}
-    {{ html|raw }}
-    {% else %}
-    <ul>
-        <li>Root node 1</li>
-        <li>Root node 2</li>
-    </ul>
-    {% endif %}
-</div>
+    {% set _sc = 'jstree' %}
+    <div {{ stimulus_controller(_sc) }}>
+        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html')}}>
+            {% if html|default(false) %}
+                {{ html|raw }}
+            {% else %}
+                <ul>
+                    <li>Root node 1</li>
+                    <li>Root node 2</li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
 {% endblock %}
 
 {% block nodes_with_children %}

@@ -1,0 +1,3 @@
+umbrella_admin:
+    app_name: JS Tree Demo
+    menu: App\Menu\AppMenu

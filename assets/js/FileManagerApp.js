@@ -1,4 +1,4 @@
-// const $ = require('jquery');
+const $ = require('jquery');
 require('jstree'); // add jstree to jquery
 
 // may want to see https://www.manning.com/books/extending-jquery

@@ -1,7 +1,6 @@
 const $ = require('jquery');
-require('jstree');
-require('jquery-confirm');
 
+require('jstree');
 
 // global.$ = $; // hack if you need a global $
 
@@ -62,7 +61,7 @@ const allManager = new LocationManagerApp(
 $('.demo').off('changed.jstree').on('changed.jstree', (e, data) => { console.log(e, 'changed, my handler!!'); });
 
 
-locationManager.render(); // first time
+buildingManager.render(); // first time
 
 /*
 let $element = $('#demo');
