@@ -11,6 +11,21 @@
 {% block body %}
 <h3>{{ block('title') }}</h3>
 
+    {% set _sc = 'jstree' %}
+    <div {{ stimulus_controller(_sc) }}>
+        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html')}}>
+            {% if html|default(false) %}
+                {{ html|raw }}
+            {% else %}
+                <ul>
+                    <li>Root node 1</li>
+                    <li>Root node 2</li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+
+
     {{ html|raw }}
 
     <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>
