@@ -36,7 +36,7 @@ class ImportCommand extends Command
             ->addOption('start', null, InputOption::VALUE_OPTIONAL, 'Starting Record', 0);;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $service = $this->importService;
 
@@ -93,6 +93,6 @@ class ImportCommand extends Command
             $output->writeln("Use with --tree and/or --variables");
         }
 
-        return 0;
+        return self::SUCCESS;
     }
 }

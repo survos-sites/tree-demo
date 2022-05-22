@@ -33,7 +33,7 @@ class ScrapeCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         /** @var $service ImportService */
         $service = $this->importService;
@@ -69,6 +69,6 @@ class ScrapeCommand extends Command
             }
             $output->writeln("<info>Done</info>");
         }
-        return 0;
+        return self::SUCCESS;
     }
 }

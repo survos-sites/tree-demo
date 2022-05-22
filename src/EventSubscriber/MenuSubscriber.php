@@ -48,7 +48,7 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
         // ...
     }
 
-    public static function getSubscribedEvents()
+    public static function getSubscribedEvents(): array
     {
         return [
             MenuBuilder::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',

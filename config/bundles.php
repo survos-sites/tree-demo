@@ -25,4 +25,5 @@ return [
     Umbrella\AdminBundle\UmbrellaAdminBundle::class => ['all' => true],
     Survos\Bundle\MakerBundle\SurvosMakerBundle::class => ['dev' => true, 'test' => true],
     Survos\WorkflowBundle\SurvosWorkflowBundle::class => ['all' => true],
+    Symfony\UX\Turbo\TurboBundle::class => ['all' => true],
 ];
