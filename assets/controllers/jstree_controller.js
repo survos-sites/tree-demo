@@ -4,9 +4,9 @@ import 'jstree';
 export default class extends Controller {
 
     static values = {
-        url: { type: String, default: '/bill' },
-        interval: { type: Number, default: 5 },
-        clicked: Boolean
+        // url: { type: String, default: '/bill' },
+        // interval: { type: Number, default: 5 },
+        // clicked: { type: Boolean, default: false },
     }
 
     static targets = [ "html", "ajax" ]

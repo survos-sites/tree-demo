@@ -83,12 +83,17 @@ class AppController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/', name: 'app_homepage')]
     #[Route(path: '/html-demos', name: 'app_basic_html')]
     public function html(TopicRepository $topicRepository)
     {
         $count = $topicRepository->count([]);
         return $this->render('app/basic-html.html.twig', []);
+    }
+
+    #[Route(path: '/', name: 'app_homepage')]
+    public function home()
+    {
+        return $this->render('app/home.html.twig', []);
     }
 
     private function getSampleJson() {
