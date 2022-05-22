@@ -50,12 +50,14 @@
         "twig/cssinliner-extra": "^3.0",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/inky-extra": "^3.0",
+        "twig/intl-extra": "^3.4",
         "twig/markdown-extra": "^3.0",
         "twig/string-extra": "^3.0",
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.12.21",
         "survos/maker-bundle": "dev-main",
@@ -97,6 +99,11 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
+        "pre-update-cmd": "vendor/bin/phpstan analyse src/Entity",
+        "pre-commit-cmd": [
+            "bin/console lint:twig",
+            "php -v"
+        ],
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json": "symfony-cmd",
@@ -105,6 +112,9 @@
         },
         "post-install-cmd": [
             "@auto-scripts"
+        ],
+        "lint": [
+            "bin/console lint:twig"
         ],
         "post-update-cmd": [
             "@auto-scripts"
@@ -121,8 +131,8 @@
     },
     "repositories": {
         "survos_workflow": {
-            "type": "vcs",
-            "url": "git@github.com:survos/workflow-bundle.git"
+            "type": "path",
+            "url": "/home/tac/survos/bundles/WorkflowBundle/"
         },
         "survos_maker": {
             "type": "vcs",

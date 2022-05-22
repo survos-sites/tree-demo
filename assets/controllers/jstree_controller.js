@@ -1,4 +1,4 @@
-import { Controller } from 'stimulus';
+import {Controller} from "@hotwired/stimulus"
 import 'jstree';
 
 export default class extends Controller {
