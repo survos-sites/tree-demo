@@ -9,6 +9,8 @@ const $ = require('jquery');
 global.jQuery = global.$ = $;
 
 
+// start the Stimulus application
+import './../bootstrap';
 
 //
 // console.log('app.js loading...');
