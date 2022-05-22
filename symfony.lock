@@ -146,6 +146,9 @@
     "guzzlehttp/psr7": {
         "version": "2.1.0"
     },
+    "hgtan/symfony-pre-commit": {
+        "version": "dev-master"
+    },
     "knplabs/knp-menu": {
         "version": "v3.3.0"
     },

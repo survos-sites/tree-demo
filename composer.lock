@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16697ae0589f4ddb477665cb202096fe",
+    "content-hash": "e1a4e6e2f122a44f0cab09031e5f7510",
     "packages": [
         {
             "name": "api-platform/core",
@@ -10553,6 +10553,45 @@
             "time": "2022-04-28T17:58:29+00:00"
         },
         {
+            "name": "hgtan/symfony-pre-commit",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/hoangthienan/symfony-pre-commit.git",
+                "reference": "4691b6e6aafdd8ed5a79a3c4e159122722900194"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/hoangthienan/symfony-pre-commit/zipball/4691b6e6aafdd8ed5a79a3c4e159122722900194",
+                "reference": "4691b6e6aafdd8ed5a79a3c4e159122722900194",
+                "shasum": ""
+            },
+            "default-branch": true,
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Hgtan\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Hoang Thien An",
+                    "homepage": "https://hoangthienan.com"
+                }
+            ],
+            "description": "A Symfony pre-commit hook",
+            "homepage": "https://github.com/hoangthienan/symfony-pre-commit",
+            "support": {
+                "issues": "https://github.com/hoangthienan/symfony-pre-commit/issues",
+                "source": "https://github.com/hoangthienan/symfony-pre-commit/tree/master"
+            },
+            "time": "2015-07-03T09:03:53+00:00"
+        },
+        {
             "name": "myclabs/deep-copy",
             "version": "1.11.0",
             "source": {
@@ -12825,6 +12864,7 @@
     "stability-flags": {
         "survos/base-bundle": 20,
         "survos/workflow-extension-bundle": 20,
+        "hgtan/symfony-pre-commit": 20,
         "survos/maker-bundle": 20
     },
     "prefer-stable": true,
