@@ -12,6 +12,7 @@ export class FileManagerApp
 {
     // pass options, which override what's in .data?
     constructor($element) {
+        console.log('FileManagerApp.js');
         // console.log(data);
         this.$element = $element;
         this.jstree = this.configure($element);

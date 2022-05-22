@@ -1,5 +1,4 @@
 import { Controller } from 'stimulus';
-// import { jstree } from 'jstree';
 import 'jstree';
 
 export default class extends Controller {
