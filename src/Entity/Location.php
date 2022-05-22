@@ -137,7 +137,7 @@ class Location implements \Stringable
     /**
      * @return ?Location
      */
-    public function getParent(): ?self
+    public function getParent(): ?Location
     {
         return $this->parent;
     }

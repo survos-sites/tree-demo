@@ -14,14 +14,8 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 class BuildingParamConverter implements ParamConverterInterface
 {
 
-    private $registry;
-
-    /**
-     * @param ManagerRegistry $registry Manager registry
-     */
-    public function __construct(ManagerRegistry $registry = null)
+    public function __construct(private ManagerRegistry $registry)
     {
-        $this->registry = $registry;
     }
 
     /**
@@ -29,7 +23,7 @@ class BuildingParamConverter implements ParamConverterInterface
      *
      * Check, if object supported by our converter
      */
-    public function supports(ParamConverter $configuration)
+    public function supports(ParamConverter $configuration): bool
     {
         return Building::class == $configuration->getClass();
     }
@@ -43,7 +37,7 @@ class BuildingParamConverter implements ParamConverterInterface
      * @throws NotFoundHttpException     When object not found
      * @throws Exception
      */
-    public function apply(Request $request, ParamConverter $configuration)
+    public function apply(Request $request, ParamConverter $configuration): bool
     {
         $params = $request->attributes->get('_route_params');
 
@@ -57,7 +51,7 @@ class BuildingParamConverter implements ParamConverterInterface
         // Check, if route attributes exists
         if (null === $buildingId ) {
             if (!isset($params['buildingId'])) {
-                return; // no buildingId in the route, so leave.  Could throw an exception.
+                return false; // no buildingId in the route, so leave.  Could throw an exception.
             }
         }
 
