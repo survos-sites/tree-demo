@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.2",
         "friendsofsymfony/jsrouting-bundle": "^3.1.1",
+        "jordanlev/twig-tree-tag": "dev-master",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
@@ -130,6 +131,10 @@
         }
     },
     "repositories": {
+        "tacman_twig_tree": {
+            "type": "path",
+            "url": "/home/tac/survos/bundles/twig-tree-tag/"
+        },
         "survos_workflow": {
             "type": "path",
             "url": "/home/tac/survos/bundles/WorkflowBundle/"

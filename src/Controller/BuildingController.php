@@ -43,7 +43,7 @@ class BuildingController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route(path: '/{id}', name: 'building_show', methods: ['GET'])]
+    #[Route(path: '/{buildingId}', name: 'building_show', methods: ['GET'])]
     public function show(Building $building, EntityManagerInterface $entityManager) : Response
     {
         $repo = $entityManager->getRepository(Location::class);

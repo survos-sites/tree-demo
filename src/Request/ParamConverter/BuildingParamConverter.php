@@ -68,6 +68,7 @@ class BuildingParamConverter implements ParamConverterInterface
 
         // Map found building to the route's parameter
         $request->attributes->set($configuration->getName(), $building);
+        return true;
     }
 
 }

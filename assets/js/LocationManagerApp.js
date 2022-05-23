@@ -1,4 +1,4 @@
-// const $ = require('jquery');
+const $ = window.jQuery; // require('jquery');
 require('jstree'); // add jstree to jquery
 
 // may want to see https://www.manning.com/books/extending-jquery
@@ -17,7 +17,7 @@ export class LocationManagerApp
         this.url = options.url;
         this.configure($element);
         this.addListeners($element);
-        this.logDiv = $('#jstree_event_log');
+        // this.logDiv = $('#jstree_event_log');
 
         if (0)
         $element.jstree({

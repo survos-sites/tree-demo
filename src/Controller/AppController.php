@@ -56,12 +56,13 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/basic-{entity}', name: 'app_tree')]
-    public function files(Request $request, TopicsService $topicsService, string $entity)
+    public function files(Request $request, string $entity)
     {
         $repo = match($entity) {
             'files' => $this->fileRepository,
             'topics' => $this->topicRepository
         };
+
         if (0)
         $htmlTree = $repo->childrenHierarchy(
             null, /* starting from root nodes */

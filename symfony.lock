@@ -149,6 +149,9 @@
     "hgtan/symfony-pre-commit": {
         "version": "dev-master"
     },
+    "jordanlev/twig-tree-tag": {
+        "version": "dev-master"
+    },
     "knplabs/knp-menu": {
         "version": "v3.3.0"
     },

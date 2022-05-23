@@ -12,9 +12,12 @@ export default class extends Controller {
     static targets = [ "html", "ajax" ]
 
     connect() {
-        this.element.textContent = 'Hello from ' + this.identifier;
+        let msg = 'Hello from controller ' + this.identifier;
+        console.log(msg);
+        this.html(this.element);
+        // this.element.textContent = msg;
         if (this.hasHtmlTarget) {
-            this.html(htmlTarget);
+            this.html(this.htmlTarget);
         }
     }
 

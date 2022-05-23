@@ -2,7 +2,7 @@
 
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('building_show') }}
+{#    {{ encore_entry_script_tags('building_show') }}#}
 {% endblock %}
 
 {% block title %}Building {{ building.name }}{% endblock %}
@@ -12,14 +12,34 @@
 
 {% set apiUrl =  path('api_locations_get_collection', {_format: 'json'}) %}
 
+<h3>Tree</h3>
+{% set _controller = 'jstree' %}
+<div
+        {{ stimulus_controller(_controller) }}
+{#        {{ stimulus_target(_controller, 'html')#}
+        }}>
+
+{% tree item in building.locations %}
+    {% if treeloop.first %}<ul >{% endif %}
+    <li class="jstree-open">
+        #{{ treeloop.index }}
+        {{ item.name }}
+{#        <a href="{{ path('build') }}">{{ item.name }}</a>#}
+        {% subtree item.children %}
+    </li>
+    {% if treeloop.last %}</ul>{% endif %}
+{% endtree %}
+</div>
+
+<h3>Using locationManagerApp/{{ apiUrl }}</h3>
 <div id="location_manager" class="demo"
      data-building-id="{{ building.id }}"
      data-api-base="{{ apiUrl }}"
 >
-
     <div id="all_locations" class="demo"></div>
     <hr />
-    <div id="building_locations"  data-building-id="{{ building.id }}" class="demo"></div>
+    <div id="building_locations"
+         data-building-id="{{ building.id }}" class="demo"></div>
 
 
 <table class="table">

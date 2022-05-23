@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "16db03cee6e48779d8c9bf8e5740ef4d",
+    "content-hash": "d87118929ee741c2fab78427d16e3a94",
     "packages": [
         {
             "name": "api-platform/core",
@@ -2367,6 +2367,42 @@
             "time": "2022-03-20T21:55:58+00:00"
         },
         {
+            "name": "jordanlev/twig-tree-tag",
+            "version": "dev-master",
+            "dist": {
+                "type": "path",
+                "url": "/home/tac/survos/bundles/twig-tree-tag",
+                "reference": "aa2f9bedd7bc998980e892f372f78f8c0269e555"
+            },
+            "require": {
+                "twig/twig": "^1.20|^2|^3"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "JordanLev\\TwigTreeTag\\": "src"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Alain Tiemblo",
+                    "email": "alain@fuz.org"
+                },
+                {
+                    "name": "Jordan Lev",
+                    "email": "github@jordanlev.com"
+                }
+            ],
+            "description": "A Twig extension for succinctly traversing nested lists (e.g. navigation menus).",
+            "homepage": "https://github.com/jordanlev/twig-tree-tag",
+            "transport-options": {
+                "relative": false
+            }
+        },
+        {
             "name": "knplabs/knp-menu",
             "version": "v3.3.0",
             "source": {
@@ -3908,7 +3944,7 @@
             "dist": {
                 "type": "path",
                 "url": "/home/tac/survos/bundles/WorkflowBundle",
-                "reference": "07c9dfd07c2b766a5b7e2dac430d0a0833375223"
+                "reference": "73de05008782966b91391b7d484fc12e8c88637a"
             },
             "require": {
                 "doctrine/orm": "^2.7|^3.0",
@@ -12922,6 +12958,7 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
+        "jordanlev/twig-tree-tag": 20,
         "survos/base-bundle": 20,
         "survos/workflow-extension-bundle": 20,
         "hgtan/symfony-pre-commit": 20,

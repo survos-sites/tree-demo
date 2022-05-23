@@ -2,7 +2,6 @@
 // require('bootstrap');
 // require('Hinclude/hinclude');
 
-console.log('requiring css');
 require('../css/app.scss');
 
 const $ = require('jquery');
