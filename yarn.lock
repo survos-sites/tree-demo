@@ -978,6 +978,11 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.11.5.tgz#db5a11bf66bdab39569719555b0f76e138d7bd64"
   integrity sha512-9X2obfABZuDVLCgPK9aX0a/x4jaOEweTTWE2+9sr0Qqqevj2Uv5XorvusThmc9XGYpS9yI+fhh8RTafBtGposw==
 
+"@survos/ux-tree@file:vendor/survos/tree-bundle/Resources/assets":
+  version "1.1.0"
+  dependencies:
+    jstree "^3.3.12"
+
 "@symfony/stimulus-bridge@^3.1.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@symfony/stimulus-bridge/-/stimulus-bridge-3.1.0.tgz#fcca15b09af5ed346e9b94f9e5770fd3994287a8"
@@ -4008,10 +4013,10 @@ svgo@^2.7.0:
     picocolors "^1.0.0"
     stable "^0.1.8"
 
-sweetalert2@^11.4.8:
-  version "11.4.15"
-  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.15.tgz#a1682c7a016e43320d5d2f46e7f8a5a6ea1996c1"
-  integrity sha512-rj7fiN8hSMrXosoAvg13NB7OvlDS2swhL7uUGv9GcOAkr35QSQu/2Ly/93KE7eKNbYMOWtoTR00UVcgEyIoUCg==
+sweetalert2@^11.4.17:
+  version "11.4.17"
+  resolved "https://registry.yarnpkg.com/sweetalert2/-/sweetalert2-11.4.17.tgz#d51a67d034c97b8a9854ce0c161ee21fdd681c4a"
+  integrity sha512-z0iQW5fDdvtoDNle3iHTKunsuNWgPaMifVu0GPtdguR0uVPrvg9gg9bnSQeJ4tx3C7FwJOEnRshxrs6fFItRvw==
 
 sweetalert@^2.1.2:
   version "2.1.2"

@@ -4,4 +4,13 @@
 
 {% block body %}
     JS Tree Home page
+
+    <div {{ stimulus_controller('@survos/ux-tree/hello') }}>
+        Hello controller. '@survos/ux-tree/hello'
+    </div>
+
+{#    <div {{ stimulus_controller('tour') }}>#}
+{#        Tour#}
+{#    </div>#}
+
 {% endblock %}

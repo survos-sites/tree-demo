@@ -2,6 +2,7 @@
     "devDependencies": {
         "@hotwired/stimulus": "^3.0.0",
         "@hotwired/turbo": "^7.0.1",
+        "@survos/ux-tree": "file:vendor/survos/tree-bundle/Resources/assets",
         "@symfony/stimulus-bridge": "^3.1.0",
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
@@ -28,6 +29,6 @@
         "bootstrap-icons": "^1.8.2",
         "jstree": "^3.3.12",
         "sweetalert": "^2.1.2",
-        "sweetalert2": "^11.4.8"
+        "sweetalert2": "^11.4.17"
     }
 }

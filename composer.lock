@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "49faf0b8d4172953f396da748fa56d62",
+    "content-hash": "d09b1a982a5b1af6564948e8748ea580",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3940,6 +3940,46 @@
                 "issues": "https://github.com/survos/BaseBundle/issues"
             },
             "time": "2022-05-22T12:52:35+00:00"
+        },
+        {
+            "name": "survos/tree-bundle",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "/home/tac/survos/bundles/SurvosTreeBundle",
+                "reference": "fa2d01ca4d85c7ff2a95bea31552c4f1686dbab5"
+            },
+            "require": {
+                "php": "^8.1",
+                "symfony/config": "^6.1",
+                "symfony/dependency-injection": "^6.1",
+                "symfony/http-kernel": "^6.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^1.7",
+                "symfony/browser-kit": "^6.1",
+                "symfony/framework-bundle": "^6.1",
+                "symfony/phpunit-bridge": "^6.1"
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Survos\\TreeBundle\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "Integrates jstree in a Symfony application",
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "survos/workflow-extension-bundle",
@@ -13064,6 +13104,7 @@
     "stability-flags": {
         "jordanlev/twig-tree-tag": 20,
         "survos/base-bundle": 20,
+        "survos/tree-bundle": 20,
         "survos/workflow-extension-bundle": 20,
         "hgtan/symfony-pre-commit": 20,
         "survos/maker-bundle": 20
