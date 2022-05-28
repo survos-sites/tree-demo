@@ -1,0 +1,6 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import "~bootstrap-icons";
+
+#sidebar-nav {
+    width: 260px;
+}

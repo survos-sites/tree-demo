@@ -44,6 +44,7 @@
         "symfony/translation": "^6.0",
         "symfony/twig-bundle": "^6.0",
         "symfony/uid": "^6.0",
+        "symfony/ux-chartjs": "^2.1",
         "symfony/ux-turbo": "^2.1",
         "symfony/validator": "^6.0",
         "symfony/web-link": "^6.0",
@@ -127,10 +128,14 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "^6.0"
+            "require": "^6.1"
         }
     },
     "repositories": {
+        "survos_tree": {
+            "type": "path",
+            "url": "/home/tac/survos/bundles/SurvosTreeBundle"
+        },
         "tacman_twig_tree": {
             "type": "path",
             "url": "/home/tac/survos/bundles/twig-tree-tag/"
@@ -152,6 +157,6 @@
             "url": "git@github.com:tacman/AdminLTEBundle.git"
         }
     },
-    "minimum-stability": "dev",
+    "minimum-stability": "beta",
     "prefer-stable": true
 }

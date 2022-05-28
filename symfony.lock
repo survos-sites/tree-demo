@@ -179,6 +179,9 @@
     "lorenzo/pinky": {
         "version": "1.0.5"
     },
+    "masterminds/html5": {
+        "version": "2.7.5"
+    },
     "mindscreen/yarnlock": {
         "version": "v1.0.1"
     },
@@ -360,6 +363,9 @@
     },
     "survos/maker-bundle": {
         "version": "2.1.0"
+    },
+    "survos/tree-bundle": {
+        "version": "dev-main"
     },
     "survos/workflow-extension-bundle": {
         "version": "2.0-dev"
@@ -593,9 +599,6 @@
     "symfony/polyfill-php80": {
         "version": "v1.18.1"
     },
-    "symfony/polyfill-php81": {
-        "version": "v1.23.0"
-    },
     "symfony/polyfill-uuid": {
         "version": "v1.20.0"
     },
@@ -696,6 +699,9 @@
     },
     "symfony/uid": {
         "version": "v5.2.0"
+    },
+    "symfony/ux-chartjs": {
+        "version": "v2.1.1"
     },
     "symfony/ux-turbo": {
         "version": "v2.1.1"

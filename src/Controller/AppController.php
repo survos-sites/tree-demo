@@ -55,6 +55,12 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_tree', ['entity' => 'files']);
     }
 
+    #[Route(path: '/knp-menu', name: 'app_knp_menu')]
+    public function knpMenu(Request $request, AppService $appService, ParameterBagInterface $bag)
+    {
+        return $this->render('menu.html.twig');
+    }
+
     #[Route(path: '/basic-{entity}', name: 'app_tree')]
     public function files(Request $request, string $entity)
     {

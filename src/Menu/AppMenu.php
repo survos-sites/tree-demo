@@ -46,9 +46,6 @@ class AppMenu extends BaseAdminMenu
             $this->addMenuItem($buildingMenu, ['route' => 'app_basic_ajax',
                 'label' => $building,
                 'rp'=> $building]);
-            $this->addMenuItem($buildingMenu, ['route' => 'building_show',
-                'label' => $building . ' SHOW',
-                'rp'=> $building]);
         }
 
         $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
