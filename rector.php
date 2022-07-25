@@ -1,66 +1,64 @@
 <?php
 
-// @todo: https://pen-y-fan.github.io/2021/05/23/Standard-setup-for-PHP-projects-2021/
-
 declare(strict_types=1);
 
-use Rector\Core\Configuration\Option;
-use Rector\Set\ValueObject\SetList;
-use Symfony\Component\DependencyInjection\Loader\Configurator\ContainerConfigurator;
+use Rector\CodeQuality\Rector\Class_\InlineConstructorDefaultToPropertyRector;
+use Rector\Config\RectorConfig;
+use Rector\Doctrine\Set\DoctrineSetList;
 use Rector\Symfony\Set\SymfonySetList;
-use Rector\TypeDeclaration\Rector\ClassMethod\AddParamTypeDeclarationRector;
-use Rector\TypeDeclaration\ValueObject\AddParamTypeDeclaration;
-use Symplify\SymfonyPhpConfig\ValueObjectInliner;
+use Rector\Symfony\Set\SensiolabsSetList;
+use Rector\Nette\Set\NetteSetList;
+use Rector\Set\ValueObject\LevelSetList;
+use Rector\CodeQuality\Rector\ClassMethod\ReturnTypeFromStrictScalarReturnExprRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictBoolReturnExprRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNativeFuncCallRector;
+use Rector\TypeDeclaration\Rector\ClassMethod\ReturnTypeFromStrictNewArrayRector;
 
-return static function (ContainerConfigurator $containerConfigurator): void {
-    // get parameters
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(Option::PATHS, [
-        __DIR__ . '/src/',
-    ]);
-    $parameters->set(Option::PHP_VERSION_FEATURES,  \Rector\Core\ValueObject\PhpVersion::PHP_80);
-
-
-    // Define what rule sets will be applied
-    $containerConfigurator->import(SetList::PHP_80);
-
-    // get services (needed for register a single rule)
-    $services = $containerConfigurator->services();
-
-    $parameters = $containerConfigurator->parameters();
-    $parameters->set(
-        Option::SYMFONY_CONTAINER_XML_PATH_PARAMETER,
-        __DIR__ . '/var/cache/dev/App_KernelDevDebugContainer.xml'
-    );
-
-    $parameters->set(Option::BOOTSTRAP_FILES, [
-        __DIR__ . '/vendor/autoload.php',
+return static function (RectorConfig $rectorConfig): void {
+    $rectorConfig->paths([
+        __DIR__ . '/src/Event'
     ]);
 
-//    $services->set(AddParamTypeDeclarationRector::class);
-
-    // endregion
-
-//    $services->set(AddParamTypeDeclarationRector::class)
-//        ->call('configure', [[
-//            AddParamTypeDeclarationRector::PARAMETER_TYPEHINTS => ValueObjectInliner::inline([
-//                new AddParamTypeDeclaration('SomeClass', 'process', 0, new StringType()),
-//            ]),
-//        ]]);
-
-    $containerConfigurator->import(\Rector\Doctrine\Set\DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES);
-    $containerConfigurator->import(SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES);
-    $containerConfigurator->import(\Rector\Nette\Set\NetteSetList::ANNOTATIONS_TO_ATTRIBUTES);
-    $containerConfigurator->import(\Rector\Symfony\Set\SensiolabsSetList::FRAMEWORK_EXTRA_61);
-//
-    $containerConfigurator->import(SymfonySetList::SYMFONY_54);
-    $containerConfigurator->import(SymfonySetList::SYMFONY_CODE_QUALITY);
-    $containerConfigurator->import(SymfonySetList::SYMFONY_CONSTRUCTOR_INJECTION);
-
+    $rectorConfig->rules([
+        \Rector\Symfony\Rector\Class_\CommandPropertyToAttributeRector::class,
+        ReturnTypeFromStrictBoolReturnExprRector::class,
+        ReturnTypeFromStrictNewArrayRector::class,
+        ReturnTypeFromStrictScalarReturnExprRector::class,
+    ]);
 
     // register a single rule
-//    $services->set(\Rector\TypeDeclaration\Rector\FunctionLike\ReturnTypeDeclarationRector::class);
-//    $services->set(\PhpCsFixer\Fixer\FunctionNotation\PhpdocToParamTypeFixer::class);
-//    $services->set(\PHPStan\Type\Symfony\ParameterDynamicReturnTypeExtension::class);
-//     $services->set(TypehintR::class);
+    $rectorConfig->ruleWithConfiguration(
+        \Rector\Php80\Rector\Class_\AnnotationToAttributeRector::class,
+        [
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('ApiPlatform\Core\Annotation\ApiFilter'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('ApiPlatform\Core\Annotation\ApiResource'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('ApiPlatform\Core\Annotation\ApiProperty'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('ApiPlatform\Core\Annotation\ApiSubresource'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\Tree'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\TreeRoot'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\TreeParent'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\TreeLeft'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\TreeLevel'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\TreeRight'),
+
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\Timestampable'),
+            new \Rector\Php80\ValueObject\AnnotationToAttribute('Gedmo\Mapping\Annotation\Slug'),
+
+
+
+
+        ]
+    );
+
+
+    $rectorConfig->rule(InlineConstructorDefaultToPropertyRector::class);
+    $rectorConfig->sets([
+        LevelSetList::UP_TO_PHP_81,
+        DoctrineSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        SymfonySetList::SYMFONY_60,
+        SymfonySetList::ANNOTATIONS_TO_ATTRIBUTES,
+        NetteSetList::ANNOTATIONS_TO_ATTRIBUTES,
+        SensiolabsSetList::FRAMEWORK_EXTRA_61,
+    ]);
 };
+

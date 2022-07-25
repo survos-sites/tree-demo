@@ -1,5 +1,15 @@
 {
     "controllers": {
+        "@survos/tree-bundle": {
+            "tree": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "api_tree": {
+                "enabled": true,
+                "fetch": "lazy"
+            }
+        },
         "@survos/workflow-helper-bundle": {
             "workflow": {
                 "enabled": true,

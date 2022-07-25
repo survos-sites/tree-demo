@@ -18,7 +18,7 @@ class BuildingController extends AbstractController
     public function __construct(private EntityManagerInterface $entityManager) {
 
     }
-    #[Route(path: '/', name: 'building_index', methods: ['GET'])]
+    #[Route(path: '/browse', name: 'building_index', methods: ['GET'])]
     public function index(BuildingRepository $buildingRepository) : Response
     {
         return $this->render('building/index.html.twig', [
@@ -43,17 +43,20 @@ class BuildingController extends AbstractController
             'form' => $form,
         ]);
     }
-    #[Route(path: '/{buildingId}', name: 'building_show', methods: ['GET'])]
+    #[Route(path: '/show/{buildingId}', name: 'building_show', methods: ['GET'])]
     public function show(Building $building, EntityManagerInterface $entityManager) : Response
     {
         $repo = $entityManager->getRepository(Location::class);
         return $this->render('building/show.html.twig', [
-            'tree' => $repo->childrenHierarchy( $repo->findOneBy(['name' => $building->getName()]), true,
-                ['html' => true, 'decorate' => true]  ),
+            'filter' => [
+                'building' => '/api/buildings/' . $building->getId()
+            ],
+//            'tree' => $repo->childrenHierarchy( $repo->findOneBy(['name' => $building->getName()]), true,
+//                ['html' => true, 'decorate' => true]  ),
             'building' => $building,
         ]);
     }
-    #[Route(path: '/{id}/edit', name: 'building_edit', methods: ['GET', 'POST'])]
+    #[Route(path: '/{buildingId}/edit', name: 'building_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Building $building) : Response
     {
         $form = $this->createForm(BuildingType::class, $building);
@@ -68,7 +71,7 @@ class BuildingController extends AbstractController
             'form' => $form->createView(),
         ]);
     }
-    #[Route(path: '/{id}', name: 'building_delete', methods: ['DELETE'])]
+    #[Route(path: '/{buildingId}', name: 'building_delete', methods: ['DELETE'])]
     public function delete(Request $request, Building $building) : Response
     {
         if ($this->isCsrfTokenValid('delete'.$building->getId(), $request->request->get('_token'))) {

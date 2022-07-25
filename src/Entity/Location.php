@@ -2,60 +2,56 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Serializer\Filter\PropertyFilter;
+use App\Repository\LocationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Survos\CoreBundle\Entity\RouteParametersInterface;
+use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\SearchFilter;
 
-/**
- * @Gedmo\Tree(type="nested")
- * @ApiResource()
- * @ApiFilter(SearchFilter::class, properties={"building": "exact"})
- *
- */
-#[ORM\Entity(repositoryClass: 'App\Repository\LocationRepository')]
-class Location implements \Stringable
+#[ORM\Entity(repositoryClass: LocationRepository::class)]
+#[Gedmo\Tree(type: 'nested')]
+#[ApiResource(
+    normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','rp']],
+)]
+
+#[ApiFilter(PropertyFilter::class)]
+#[ApiFilter(SearchFilter::class, properties: ['building' => 'exact'])]
+class Location implements \Stringable, RouteParametersInterface
 {
+    use RouteParametersTrait;
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
     private $id;
-    /**
-     * @Gedmo\Slug(fields={"name"})
-     */
     #[ORM\Column(type: 'string', length: 32)]
+    #[Gedmo\Slug(fields: ['name'])]
     private $code;
-    /**
-     * @Gedmo\TreeLeft
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeLeft]
     private $lft;
-    /**
-     * @Gedmo\TreeLevel
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeLevel]
     private $lvl;
-    /**
-     * @Gedmo\TreeRight
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeRight]
     private $rgt;
-    /**
-     * @Gedmo\TreeRoot
-     */
-    #[ORM\ManyToOne(targetEntity: 'Location')]
+    #[ORM\ManyToOne(targetEntity: Location::class)]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[Gedmo\TreeRoot]
     private $root;
-    /**
-     * @Gedmo\TreeParent
-     */
     #[Assert\Valid]
     #[ORM\ManyToOne(targetEntity: 'Location', inversedBy: 'children')]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
+    #[Gedmo\TreeParent]
     private $parent;
     #[ORM\OneToMany(targetEntity: 'Location', mappedBy: 'parent')]
     #[ORM\OrderBy(['lft' => 'ASC'])]
@@ -63,7 +59,7 @@ class Location implements \Stringable
     #[ORM\Column(type: 'integer', nullable: true)]
     private $orderIdx;
     #[Assert\Valid]
-    #[ORM\ManyToOne(targetEntity: 'App\Entity\Building', inversedBy: 'locations')]
+    #[ORM\ManyToOne(targetEntity: \App\Entity\Building::class, inversedBy: 'locations')]
     #[ORM\JoinColumn(nullable: false)]
     private $building;
     public function __construct(#[ORM\Column(type: 'string', length: 80)] private ?string $name = null)
@@ -134,13 +130,11 @@ class Location implements \Stringable
 
         return $this;
     }
-    /**
-     * @return ?Location
-     */
     public function getParent(): ?Location
     {
         return $this->parent;
     }
+    #[Groups(['Default'])]
     public function getParentId(): ?int
     {
         return $this->getParent() ? $this->getParent()->getId() : null;

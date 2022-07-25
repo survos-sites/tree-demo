@@ -4,10 +4,10 @@
 {% block title %}Basic AJAX Demo{% endblock %}
 
 
-{#{% block javascripts %}#}
-{#{{ parent() }}#}
-{#{{ encore_entry_script_tags('tree-api') }}#}
-{#{% endblock %}#}
+{% block javascripts %}
+{{ parent() }}
+{{ encore_entry_script_tags('building_show') }}
+{% endblock %}
 
 {% block body %}
 

@@ -43,7 +43,7 @@ class AppMenu extends BaseAdminMenu
             $this->addMenuItem($buildingMenu, ['route' => 'building_' . $routeSuffix]);
         }
         foreach ($this->buildingRepository->findAll() as $building) {
-            $this->addMenuItem($buildingMenu, ['route' => 'app_basic_ajax',
+            $this->addMenuItem($buildingMenu, ['route' => 'building_show',
                 'label' => $building,
                 'rp'=> $building]);
         }

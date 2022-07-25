@@ -10,6 +10,7 @@ global.jQuery = global.$ = $;
 
 // start the Stimulus application
 import './../bootstrap';
+require('bootstrap');
 
 //
 // console.log('app.js loading...');

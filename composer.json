@@ -13,12 +13,12 @@
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.2",
         "friendsofsymfony/jsrouting-bundle": "^3.1.1",
-        "jordanlev/twig-tree-tag": "*@dev",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
-        "survos/base-bundle": "*@dev",
+        "survos/base-bundle": "dev-master",
+        "survos/tree-bundle": "dev-main",
         "survos/workflow-helper-bundle": "*@dev",
         "symfony/asset": "^6.0",
         "symfony/console": "^6.0",
@@ -50,6 +50,7 @@
         "symfony/web-link": "^6.0",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "^6.0",
+        "tacman/twig-tree-tag": "^2.0",
         "twig/cssinliner-extra": "^3.0",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/inky-extra": "^3.0",
@@ -62,8 +63,8 @@
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^9.5",
-        "rector/rector": "^0.12.21",
-        "survos/maker-bundle": "*@dev",
+        "rector/rector": "^0.13",
+        "survos/maker-bundle": "dev-main",
         "symfony/browser-kit": "^6.0",
         "symfony/css-selector": "^6.0",
         "symfony/debug-bundle": "^6.0",
@@ -133,34 +134,6 @@
         }
     },
     "repositories": {
-        "maker": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/maker-bundle"
-        },
-        "base": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/base-bundle"
-        },
-        "workflow-helper": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/workflow-helper-bundle"
-        },
-        "html_prettify": {
-            "type": "path",
-            "url": "/home/tac/survos/bundles/HtmlPrettifyBundle"
-        },
-        "tacman_twig_tree": {
-            "type": "path",
-            "url": "/home/tac/survos/bundles/twig-tree-tag/"
-        },
-        "survos_maker": {
-            "type": "path",
-            "url": "/home/tac/survos/bundles/maker-bundle"
-        },
-        "survos_base_bundle": {
-            "type": "path",
-            "url": "/home/tac/survos/bundles/base-bundle"
-        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true

@@ -16,6 +16,9 @@ let $allLocations = $('#all_locations');
 let $buildingLocations = $('#building_locations');
 // pass in the jQuery element
 
+
+
+// handle one specific building.  Needs filter or specific route.
 const buildingManager = new LocationManagerApp(
     $buildingLocations, {
         dataType: 'json', // should set accept header
@@ -62,22 +65,3 @@ $('.demo').off('changed.jstree').on('changed.jstree', (e, data) => { console.log
 
 
 buildingManager.render(); // first time
-
-/*
-let $element = $('#demo');
-let idx = 0;
-$element.jstree({core: {data: ['Root Node 1']}})
-    .on('changed.jstree', (e, data) => {
-        idx++;
-        console.log('changed.jstree ' + idx);
-        console.log(data);
-    })
-    .on('ready.jstree', (e, data) => {
-        idx++;
-        console.log('ready.jstree ' + idx);
-        console.log(data);
-    });
-
-$element.jstree(true).settings.core.data = ['New Data'];
-$element.jstree(true).refresh();
-*/

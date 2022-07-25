@@ -3,6 +3,20 @@
 {% block title %}Building index{% endblock %}
 
 {% block body %}
+
+
+    {% set apiUrl = path('api_locations_get_collection', {_format: 'json'}) %}
+    <div id="location_manager"
+         class="demo"
+         data-api-base="{{ apiUrl }}"
+    >
+        <h3>All Buildings:</h3>
+        <div id="all_locations" class="demo"></div>
+        <hr />
+
+    </div>
+
+
     <h1>Building index</h1>
 
     <table class="table">
@@ -19,8 +33,8 @@
                 <td>{{ building.id }}</td>
                 <td>{{ building.name }}</td>
                 <td>
-                    <a href="{{ path('building_show', {'id': building.id}) }}">show</a>
-                    <a href="{{ path('building_edit', {'id': building.id}) }}">edit</a>
+                    <a href="{{ path('building_show', building.rp) }}">show</a>
+                    <a href="{{ path('building_edit', building.rp) }}">edit</a>
                 </td>
             </tr>
         {% else %}

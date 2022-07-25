@@ -1,4 +1,5 @@
 import {Controller} from "@hotwired/stimulus"
+import jQuery from 'jquery';
 import 'jstree';
 
 export default class extends Controller {
@@ -9,9 +10,10 @@ export default class extends Controller {
         // clicked: { type: Boolean, default: false },
     }
 
-    static targets = [ "html", "ajax" ]
+    static targets = [ "html" ]
 
     connect() {
+
         let msg = 'Hello from controller ' + this.identifier;
         console.log(msg);
         this.html(this.element);
@@ -22,6 +24,9 @@ export default class extends Controller {
     }
 
     html(el) {
+        // jQuery.jstree(el,
+            console.assert(jQuery().jstree, 'jstree is not loaded.');
+            // jQuery.tree.reference(el );
         $(el).jstree(
             {
                 "plugins": ['checkbox', 'theme', "html_data", "types"]

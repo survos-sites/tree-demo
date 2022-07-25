@@ -10,10 +10,27 @@
 {% block body %}
 <h3>{{ block('title') }}</h3>
 
-{% set apiUrl =  path('api_locations_get_collection', {_format: 'json'}) %}
+{% set _controller = '@survos/tree-bundle/api_tree' %}
+{% set apiUrl = path('api_locations_get_collection') %}
+<h3>AJAX Tree, using {{ _controller }}</h3>
+<div
+{{ stimulus_controller(_controller, {
+    apiCall: apiUrl,
+    filter: filter
+}) }}
+>
+    <div {{ stimulus_target(_controller, 'message') }}>Messages go here.</div>
 
-<h3>Tree</h3>
-{% set _controller = 'jstree' %}
+    <ol {{ stimulus_target(_controller, 'ajax') }}>
+        Ajax tree will be populated here.
+    </ol>
+</div>
+
+
+{% set _controller = '@survos/tree-bundle/tree' %}
+{#{% set _controller = 'jstree' %}#}
+    {% if true %}
+<h3>HTML Tree, using stimulus {{ _controller }}</h3>
 <div
         {{ stimulus_controller(_controller) }}
 {#        {{ stimulus_target(_controller, 'html')#}
@@ -30,16 +47,18 @@
     {% if treeloop.last %}</ul>{% endif %}
 {% endtree %}
 </div>
+    {% endif %}
 
-<h3>Using locationManagerApp/{{ apiUrl }}</h3>
-<div id="location_manager" class="demo"
-     data-building-id="{{ building.id }}"
-     data-api-base="{{ apiUrl }}"
->
-    <div id="all_locations" class="demo"></div>
-    <hr />
-    <div id="building_locations"
-         data-building-id="{{ building.id }}" class="demo"></div>
+{#<h3>Using locationManagerApp for building {{ building.id }}/{{ apiUrl }}</h3>#}
+{#<div id="location_manager"#}
+{#     class="demo"#}
+{#     data-building-id="{{ building.id }}"#}
+{#     data-api-base="{{ apiUrl }}"#}
+{#>#}
+{#    <h3>Specific Building: {{ building.id }} {{ building }}</h3>#}
+{#    <div id="building_locations"#}
+{#         data-building-id="{{ building.id }}" class="demo"></div>#}
+{#</div>#}
 
 
 <table class="table">
@@ -67,9 +86,7 @@
         </li>
     {% endfor %}
 
-    <a href="{{ path('building_index') }}">back to list</a>
-
-    <a href="{{ path('building_edit', {'id': building.id}) }}">edit</a>
+    <a href="{{ path('building_edit', building.rp) }}">edit</a>
 
     {{ include('building/_delete_form.html.twig') }}
 {% endblock %}

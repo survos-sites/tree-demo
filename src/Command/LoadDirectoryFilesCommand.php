@@ -6,6 +6,7 @@ use App\Entity\File;
 use App\Repository\FileRepository;
 use App\Services\AppService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
@@ -13,10 +14,9 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\Finder\Finder;
-
+#[AsCommand( 'app:load-directory-files', description: 'Import a directory into a nested tree')]
 class LoadDirectoryFilesCommand extends Command
 {
-    protected static $defaultName = 'app:load-directory-files';
     /**
      * @var EntityManagerInterface
      */
@@ -42,7 +42,6 @@ class LoadDirectoryFilesCommand extends Command
     protected function configure()
     {
         $this
-            ->setDescription('Import a directory into a nested tree')
             ->addArgument('dir', InputArgument::REQUIRED, 'path to directory root')
             ->addOption('gitignore', null, InputOption::VALUE_NONE, 'Ignore .gitignore files')
         ;

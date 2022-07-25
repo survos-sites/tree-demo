@@ -33,7 +33,7 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/basic-ajax/{buildingId}', name: 'app_basic_ajax')]
-    public function index(Building $building)
+    public function basic_ajax(Building $building)
     {
         return $this->render('app/basic-ajax.html.twig', [
             'building' => $building
