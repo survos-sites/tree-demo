@@ -15,12 +15,12 @@ export default class extends Controller {
     connect() {
 
         let msg = 'Hello from controller ' + this.identifier;
-        console.log(msg);
-        this.html(this.element);
-        // this.element.textContent = msg;
-        if (this.hasHtmlTarget) {
-            this.html(this.htmlTarget);
-        }
+        console.error(msg);
+        // this.html(this.element);
+        // // this.element.textContent = msg;
+        // if (this.hasHtmlTarget) {
+        //     this.html(this.htmlTarget);
+        // }
     }
 
     html(el) {
