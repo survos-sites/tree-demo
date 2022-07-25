@@ -3,6 +3,7 @@
 namespace App\EventSubscriber;
 
 use App\Repository\BuildingRepository;
+use Knp\Menu\MenuItem;
 use Survos\BaseBundle\Menu\BaseMenuSubscriber;
 use Survos\BaseBundle\Menu\MenuBuilder;
 use Survos\BaseBundle\Traits\KnpMenuHelperTrait;
@@ -51,7 +52,7 @@ class MenuSubscriber extends BaseMenuSubscriber implements EventSubscriberInterf
     public static function getSubscribedEvents(): array
     {
         return [
-            MenuBuilder::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
+            KnpMenuEvent::SIDEBAR_MENU_EVENT => 'onKnpMenuEvent',
         ];
     }
 }

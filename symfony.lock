@@ -361,13 +361,16 @@
     "survos/base-bundle": {
         "version": "1.x-dev"
     },
+    "survos/bootstrap-bundle": {
+        "version": "dev-master"
+    },
+    "survos/core-bundle": {
+        "version": "1.0.7"
+    },
     "survos/maker-bundle": {
         "version": "2.1.0"
     },
-    "survos/tree-bundle": {
-        "version": "dev-main"
-    },
-    "survos/workflow-extension-bundle": {
+    "survos/workflow-helper-bundle": {
         "version": "2.0-dev"
     },
     "symfony/asset": {

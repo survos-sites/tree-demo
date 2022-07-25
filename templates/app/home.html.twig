@@ -5,8 +5,17 @@
 {% block body %}
     JS Tree Home page
 
-    <div {{ stimulus_controller('@survos/ux-tree/hello') }}>
-        Hello controller. '@survos/ux-tree/hello'
+    {% set _controller = '@survos/ux-tree/hello' %}
+    <div {{ stimulus_controller(_controller, {
+        title: 'testing bundle controller (stimulus)'
+    }) }}>
+        Hello controller. {{ _controller }}
+        <i>
+            <span {{ stimulus_target(_controller, 'msg') }}>
+                the msg target.
+            </span>
+
+        </i>
     </div>
 
 {#    <div {{ stimulus_controller('tour') }}>#}

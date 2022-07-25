@@ -1,13 +1,13 @@
 {
     "controllers": {
-        "@symfony/ux-chartjs": {
-            "chart": {
+        "@survos/workflow-helper-bundle": {
+            "workflow": {
                 "enabled": true,
                 "fetch": "eager"
             }
         },
-        "@survos/ux-tree": {
-            "hello": {
+        "@symfony/ux-chartjs": {
+            "chart": {
                 "enabled": true,
                 "fetch": "eager"
             }

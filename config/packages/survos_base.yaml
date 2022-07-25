@@ -1,5 +1,6 @@
 survos_base:
   theme: umbrella
+  user_provider: security.user.provider.concrete.database_users
 #  theme: start-bootstrap
 #  menu:
 #    enable: true
@@ -11,4 +12,4 @@ twig:
   globals:
     theme: umbrella
   paths:
-    'vendor/survos/base-bundle/src/Resources/views/umbrella': 'theme'
+    'vendor/survos/base-bundle/templates/umbrella': 'theme'

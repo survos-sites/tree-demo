@@ -1,8 +1,8 @@
-survos_base_bundle_oauth:
-    resource: '@SurvosBaseBundle/Controller/OAuthController.php'
-    prefix: /
-    type: annotation
-
+#survos_base_bundle_oauth:
+#    resource: '@SurvosBaseBundle/Controller/OAuthController.php'
+#    prefix: /
+#    type: annotation
+#
 
 
 survos_landing: {path: /landing, controller: 'Survos\BaseBundle\Controller\LandingController::landing'}
@@ -12,7 +12,6 @@ app_logo: {path: /logo, controller: 'Survos\BaseBundle\Controller\LandingControl
 app_profile: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
 app_register: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
 profile: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::profile'}
-app_logout: {path: /profile, controller: 'Survos\BaseBundle\Controller\LandingController::logout'}
 # required if app_profile is used, since you can change the password from the profile
 app_change_password: {path: /change-password, controller: 'Survos\BaseBundle\Controller\LandingController::changePassword'}
 app_typography: {path: /typography, controller: 'Survos\BaseBundle\Controller\LandingController::typography'}

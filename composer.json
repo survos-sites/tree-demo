@@ -13,14 +13,13 @@
         "doctrine/orm": "^2.8",
         "doctrine/persistence": "^2.2",
         "friendsofsymfony/jsrouting-bundle": "^3.1.1",
-        "jordanlev/twig-tree-tag": "dev-master",
+        "jordanlev/twig-tree-tag": "*@dev",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
-        "survos/base-bundle": "dev-master",
-        "survos/tree-bundle": "*@dev",
-        "survos/workflow-extension-bundle": "*@dev",
+        "survos/base-bundle": "*@dev",
+        "survos/workflow-helper-bundle": "*@dev",
         "symfony/asset": "^6.0",
         "symfony/console": "^6.0",
         "symfony/dotenv": "^6.0",
@@ -64,7 +63,7 @@
         "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.12.21",
-        "survos/maker-bundle": "dev-main",
+        "survos/maker-bundle": "*@dev",
         "symfony/browser-kit": "^6.0",
         "symfony/css-selector": "^6.0",
         "symfony/debug-bundle": "^6.0",
@@ -134,29 +133,33 @@
         }
     },
     "repositories": {
-        "survos_tree": {
+        "maker": {
             "type": "path",
-            "url": "/home/tac/survos/bundles/SurvosTreeBundle"
+            "url": "//home/tac/survos/bundles/maker-bundle"
+        },
+        "base": {
+            "type": "path",
+            "url": "//home/tac/survos/bundles/base-bundle"
+        },
+        "workflow-helper": {
+            "type": "path",
+            "url": "//home/tac/survos/bundles/workflow-helper-bundle"
+        },
+        "html_prettify": {
+            "type": "path",
+            "url": "/home/tac/survos/bundles/HtmlPrettifyBundle"
         },
         "tacman_twig_tree": {
             "type": "path",
             "url": "/home/tac/survos/bundles/twig-tree-tag/"
         },
-        "survos_workflow": {
-            "type": "path",
-            "url": "/home/tac/survos/bundles/WorkflowBundle/"
-        },
         "survos_maker": {
-            "type": "vcs",
-            "url": "git@github.com:survos/AdminMakerBundle.git"
+            "type": "path",
+            "url": "/home/tac/survos/bundles/maker-bundle"
         },
         "survos_base_bundle": {
-            "type": "vcs",
-            "url": "git@github.com:survos/BaseBundle.git"
-        },
-        "admin_lte_bundle": {
-            "type": "vcs",
-            "url": "git@github.com:tacman/AdminLTEBundle.git"
+            "type": "path",
+            "url": "/home/tac/survos/bundles/base-bundle"
         }
     },
     "minimum-stability": "dev",

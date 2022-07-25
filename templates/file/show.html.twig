@@ -1,19 +1,41 @@
+{% extends 'layout.html.twig' %}
 
-{% extends 'base.html.twig' %}
-
+{#{% block sidebar 'hidden while offline' %}#}
 {% block javascripts %}
     {{ parent() }}
-    {{ encore_entry_script_tags('directory') }}
+{#    {{ encore_entry_script_tags('directory') }}#}
 {% endblock %}
 
-{% block title %}Directory Demo{% endblock %}
+{% block title %}Directory Demo, uses twig-tree-tag, jstree-simulus{% endblock %}
 
 {% block body %}
-<h3>{{ block('title') }}</h3>
+    <h3>{{ block('title') }}</h3>
+
+
+    {% set _sc = 'jstree' %}
+
+    <div {{ stimulus_controller(_sc) }}>
+{#            {% apply prettify %}#}
+            {% tree e in entities %}
+                {% if treeloop.first %}<ul>{% endif %}
+                <li>
+{#                        {{ treeloop.level }}#}
+                        {{ e }}
+{#                    <a href="#{{ e.id }}">#}
+{#                    </a>#}
+                    {% subtree e.children %}
+                </li>
+                {% if treeloop.last %}</ul>{% endif %}
+            {% endtree %}
+{#            {% endapply %}#}
+        <div {{ stimulus_target(_sc, 'html') }}>
+        </div>
+    </div>
+
 
     {% set _sc = 'jstree' %}
     <div {{ stimulus_controller(_sc) }}>
-        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html')}}>
+        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html') }}>
             {% if html|default(false) %}
                 {{ html|raw }}
             {% else %}
@@ -37,11 +59,11 @@
     </a>
 
 
-<div id="file_manager" class="demo"
-     data-api-base="{{ apiUrl }}"
->
-    {{ entity  }}from this repo (demo), using {{ apiUrl }}
+    <div id="file_manager" class="demo"
+         data-api-base="{{ apiUrl }}"
+    >
+        {{ entity }}from this repo (demo), using {{ apiUrl }}
 
-</div>
+    </div>
 
 {% endblock %}

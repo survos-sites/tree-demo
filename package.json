@@ -2,7 +2,7 @@
     "devDependencies": {
         "@hotwired/stimulus": "^3.0.0",
         "@hotwired/turbo": "^7.0.1",
-        "@survos/ux-tree": "file:vendor/survos/tree-bundle/Resources/assets",
+        "@survos/workflow-helper-bundle": "file:vendor/survos/workflow-helper-bundle/assets",
         "@symfony/stimulus-bridge": "^3.1.0",
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
         "@symfony/ux-turbo": "file:vendor/symfony/ux-turbo/Resources/assets",
