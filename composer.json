@@ -60,6 +60,8 @@
         "twig/twig": "^2.12|^3.0"
     },
     "require-dev": {
+        "roave/security-advisories": "dev-latest"
+        ,
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^9.5",
@@ -120,6 +122,11 @@
         "lint": [
             "bin/console lint:twig"
         ],
+        "compile": [
+            "bin/console doctrine:migrations:migrate -n --allow-no-migration ",
+            "bin/console app:import-topics"
+        ],
+
         "post-update-cmd": [
             "@auto-scripts"
         ]
