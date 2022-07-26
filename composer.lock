@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2a0e7d7650f6e32f1efdaab339e481e8",
+    "content-hash": "7471422144fadc73edec81f040e4e20e",
     "packages": [
         {
             "name": "api-platform/core",
@@ -4125,16 +4125,10 @@
         {
             "name": "survos/tree-bundle",
             "version": "dev-main",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/survos/SurvosTreeBundle.git",
-                "reference": "60834cb7f73d32f91abc92070619909078f4cc1a"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosTreeBundle/zipball/60834cb7f73d32f91abc92070619909078f4cc1a",
-                "reference": "60834cb7f73d32f91abc92070619909078f4cc1a",
-                "shasum": ""
+                "type": "path",
+                "url": "//home/tac/survos/bundles/tree-bundle",
+                "reference": "60834cb7f73d32f91abc92070619909078f4cc1a"
             },
             "require": {
                 "api-platform/core": "^2.7 || ^3.0",
@@ -4159,7 +4153,6 @@
                 "symfony/var-dumper": "^6.1",
                 "symfony/webpack-encore-bundle": "^1.11"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -4174,7 +4167,11 @@
                     "Survos\\Tree\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "phpstan": [
+                    "vendor/bin/phpstan analyse"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -4189,11 +4186,9 @@
                 "symfony-ux",
                 "symfony6"
             ],
-            "support": {
-                "issues": "https://github.com/survos/SurvosTreeBundle/issues",
-                "source": "https://github.com/survos/SurvosTreeBundle/tree/main"
-            },
-            "time": "2022-07-25T19:17:13+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "survos/workflow-helper-bundle",

@@ -11,6 +11,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Survos\BaseBundle\Entity\SurvosBaseEntity;
+use Survos\CoreBundle\Entity\RouteParametersInterface;
+use Survos\CoreBundle\Entity\RouteParametersTrait;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[Gedmo\Tree(type:"nested")]
@@ -19,9 +21,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
     denormalizationContext: ['groups' => ["Default", "minimum", "browse"]],
 )]
 #[ORM\Entity(repositoryClass: TopicRepository::class)]
-class Topic extends SurvosBaseEntity implements \Stringable
+class Topic implements \Stringable, RouteParametersInterface
 {
-    const PLACE_NEW='new';
+    use RouteParametersTrait;
+    final const PLACE_NEW='new';
 
     #[ORM\Id]
     #[ORM\Column(type: 'string', length: 10)]
@@ -63,36 +66,29 @@ class Topic extends SurvosBaseEntity implements \Stringable
 
         return $this;
     }
-    /**
-     * @Gedmo\TreeLeft
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeLeft]
     private $lft;
-    /**
-     * @Gedmo\TreeLevel
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeLevel]
     private $lvl;
-    /**
-     * @Gedmo\TreeRight
-     */
     #[ORM\Column(type: 'integer')]
+    #[Gedmo\TreeRight]
     private $rgt;
-    /**
-     * @Gedmo\TreeRoot
-     */
     #[ORM\ManyToOne(targetEntity: 'Topic')]
     #[ORM\JoinColumn(referencedColumnName: 'code', onDelete: 'CASCADE')]
+    #[Gedmo\TreeRoot]
     private $root;
-    /**
-     * @Gedmo\TreeParent
-     */
     #[ORM\ManyToOne(targetEntity: 'Topic', inversedBy: 'children')]
     #[ORM\JoinColumn(referencedColumnName: 'code', onDelete: 'CASCADE')]
+    #[Gedmo\TreeParent]
     private $parent;
     #[ORM\OneToMany(targetEntity: 'Topic', mappedBy: 'parent')]
     #[ORM\OrderBy(['lft' => 'ASC'])]
     private $children;
+
+    #[ORM\Column]
+    private int $childCount = 0;
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -158,6 +154,7 @@ class Topic extends SurvosBaseEntity implements \Stringable
     {
         if (!$this->children->contains($child)) {
             $this->children[] = $child;
+            $this->childCount++;
             $child->setParent($this);
         }
 
@@ -166,6 +163,7 @@ class Topic extends SurvosBaseEntity implements \Stringable
     public function removeChild(Topic $child): self
     {
         if ($this->children->removeElement($child)) {
+            $this->childCount--;
             // set the owning side to null (unless already changed)
             if ($child->getParent() === $this) {
                 $child->setParent(null);
@@ -174,9 +172,9 @@ class Topic extends SurvosBaseEntity implements \Stringable
 
         return $this;
     }
-    public function getData()
+    public function getData(): string|bool
     {
-        return json_encode($this);
+        return json_encode($this, JSON_THROW_ON_ERROR);
     }
     public function __toString(): string
     {
@@ -197,6 +195,18 @@ class Topic extends SurvosBaseEntity implements \Stringable
     public function getId(): ?string
     {
         return $this->getCode();
+    }
+
+    public function getChildCount(): ?int
+    {
+        return $this->childCount;
+    }
+
+    public function setChildCount(int $childCount): self
+    {
+        $this->childCount = $childCount;
+
+        return $this;
     }
 
 }

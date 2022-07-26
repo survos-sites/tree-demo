@@ -39,13 +39,21 @@ class TopicsService
             $topicCode = $this->getCode($cSet->qcode, ':');
             $topic = (new Topic())
                 ->setCode($topicCode)
+//                ->setChildCount(count($cSet->narrower))
                 ->setName($cSet->prefLabel->{'en-US'})
                 ->setDescription($cSet->definition->{'en-US'});
             $this->em->persist($topic);
             $topics[$topicCode] = $topic;
+
+            // not in order, e.g. 20001181, so defer until later
+//            if (isset($cSet->broader)) {
+//                $parentCode = $this->getCode($cSet->broader[0], '/');
+//                assert(array_key_exists($parentCode, $topics), "Missing $parentCode");
+//                $topics[$parentCode]->addChild($topic);
+//            }
+
         }
-        $this->em->flush();
-        $this->logger->warning("Topics loaded and flushed without parents");
+        $this->logger->info("Topics loaded, now setting parents");
 
         reset($data);
         foreach ($data as $cSet) {
@@ -53,19 +61,13 @@ class TopicsService
             $topic = $topics[$topicCode];
             if (isset($cSet->broader)) {
                 $parentCode = $this->getCode($cSet->broader[0], '/');
-//                dd($topic, $cSet, $parentCode);
-
-                $this->logger->warning("Parent", [$parentCode, $topicCode]);
-//                assert(array_key_exists($parentCode, $parents), "Missing $parentCode as parent");
-                $topic->setParent($topics[$parentCode]);
+                $topics[$parentCode]->addChild($topic);
+//                $topic->setParent($topics[$parentCode]);
             } else {
 //                $topic->setParent(null);
             }
-            if ($topic->getName() == 'civil rights') {
-//                dd($parentCode, $topicCode, $topic->getParent());
-            }
         }
-        $this->logger->warning("Flushing...");
+        $this->logger->info("Flushing...");
         $this->em->flush();
 
 //        foreach ($data->hasTopConcept as $topConcept) {

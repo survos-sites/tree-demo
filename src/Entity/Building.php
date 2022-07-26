@@ -103,4 +103,10 @@ class Building  implements \Stringable, RouteParametersInterface
     {
         return ['buildingId' => $this->getCode()];
     }
+
+    public function getRootLocation(): ?Location
+    {
+        // or filter by no parent?
+        return $this->getLocations()->first() ?: null;
+    }
 }

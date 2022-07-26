@@ -29,13 +29,20 @@ class ImportTopicsCommand extends Command
     {
         $this
             ->addArgument('topicsFile', InputArgument::OPTIONAL, 'Argument description')
-            ->addOption('option1', null, InputOption::VALUE_NONE, 'Option description')
+            ->addOption('force', null, InputOption::VALUE_NONE, 'Force reload')
         ;
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $io = new SymfonyStyle($input, $output);
+        $force = $input->getOption('force');
+        $topicCount = $this->topicsService->getTopicCount();
+        if ( $topicCount && !$force) {
+            $io->info(sprintf("%d topics already exist.", $topicCount));
+            return self::SUCCESS;
+        }
+
         if (!$topicsJsonFile = $input->getArgument('topicsFile')) {
             $topicsJsonFile = $this->bag->get('kernel.project_dir') . '/cptall-en-US.json';
         }
