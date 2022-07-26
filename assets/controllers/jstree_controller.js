@@ -27,8 +27,11 @@ export default class extends Controller {
     }
 
     search(event) {
-        console.error(event.currentTarget.value);
-        this.$element.jstree(true).search(event.currentTarget.value);
+        // this.$element.jstree(true).search(event.currentTarget.value, {
+        //     show_only_matches: true,
+        //     show_only_matches_children: true
+        // });
+        this.$element.jstree(true).search(event.currentTarget.value, false, true, true);
     }
 
     addListeners() {
@@ -45,6 +48,8 @@ export default class extends Controller {
     html(el) {
         // jQuery.tree.reference(el );
         this.$element = $(el);
+        // this.$element = jQuery.jstree.reference(el);
+        console.error(this.$element);
         console.error(this.pluginsValue);
         this.$element.jstree(
             {

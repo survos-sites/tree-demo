@@ -18,8 +18,8 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 )]
 class ImportTopicsCommand extends Command
 {
-    public function __construct(private TopicsService $topicsService,
-                                private ParameterBagInterface $bag,
+    public function __construct(private readonly TopicsService $topicsService,
+                                private readonly ParameterBagInterface $bag,
                                 string $name = null)
     {
         parent::__construct($name);

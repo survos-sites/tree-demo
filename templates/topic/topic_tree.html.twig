@@ -50,10 +50,10 @@
 
         {% tree e in entities %}
                 {% if treeloop.first %}<ul>{% endif %}
-                <li data-jstree='{"type":"{{ e.isDir ? 'dir' : e.extension }}"}'>
+                <li data-jstree='{"type":""}'>
 {#                        {{ treeloop.level }}#}
                         {{ e.name }}
-                    <sup>{{ e.isDir ? e.childCount }}</sup>
+                    <sup class="badge bg-info text-sm"><small>{{ e.childCount ? e.childCount }}</small></sup>
 {#                    <a href="#{{ e.id }}">#}
 {#                    </a>#}
                     {% subtree e.children %}
@@ -81,21 +81,5 @@
 
 
     {{ html|raw }}
-
-    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>
-
-    {% set apiUrl =  path('api_%s_get_collection'|format(entity), {_format: 'json'}) %}
-    Files from this repo (demo), using
-    <a target="_blank" href="{{ apiUrl }}">
-        {{ apiUrl }}
-    </a>
-
-
-    <div id="file_manager" class="demo"
-         data-api-base="{{ apiUrl }}"
-    >
-        {{ entity }}from this repo (demo), using {{ apiUrl }}
-
-    </div>
 
 {% endblock %}

@@ -6,14 +6,15 @@ dbname=jstree
 echo "drop database if exists $dbname; create database $dbname; grant all privileges on database $dbname to main; " | sudo -u postgres psql
 echo "database $dbname now ready for migrations or restore"
 
-#git clean -f migrations/app/V*.php
+git clean -f migrations/V*.php
 #bin/console doctrine:migrations:diff
 #bin/console doctrine:migrations:migrate
 
 #bin/console doctrine:schema:update --dump-sql --force
-#bin/console make:migration
+bin/console make:migration
 bin/console doctrine:migrations:migrate -n
 bin/console doctrine:fixtures:load -n
+bin/console app:load-directory-files
 
 bin/console app:import-topics
 

@@ -11,6 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Survos\Tree\Traits\TreeTrait;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
@@ -18,11 +19,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
     denormalizationContext: ['groups' => ["Default", "minimum", "browse"]],
 )]
 #[ApiFilter(OrderFilter::class, properties: ['marking', 'org', 'shortName', 'fullName'], arguments: ['orderParameterName' => 'order'])]
-#[ApiFilter(SearchFilter::class, properties: ["marking"=>"exact", 'local.id' => 'exact', 'id'=> 'exact', 'name' => 'partial'])]
+#[ApiFilter(SearchFilter::class, properties: ['id'=> 'exact', 'name' => 'partial', 'isDir' => 'exact'])]
 #[Gedmo\Tree(type: "nested")]
 #[ORM\Entity(repositoryClass: FileRepository::class)]
 class File implements \Stringable
 {
+    use TreeTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
@@ -34,29 +36,28 @@ class File implements \Stringable
     #[ORM\Column(type: 'string', length: 255, nullable: true)]
     private $path;
     #[ORM\Column(type: 'boolean')]
+    #[Groups(['minimum','search','jstree'])]
     private $isDir;
-    #[Gedmo\TreeLeft]
-
-    #[ORM\Column(type: 'integer')]
-    private $lft;
-
-    #[Gedmo\TreeLevel]
-    #[ORM\Column(type: 'integer')]
-    private $lvl;
-    #[Gedmo\TreeRight]
-    #[ORM\Column(type: 'integer')]
-    private $rgt;
-    #[Gedmo\TreeRoot]
-    #[ORM\ManyToOne(targetEntity: 'File')]
-    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
-    private $root;
-    #[Gedmo\TreeParent]
-    #[ORM\ManyToOne(targetEntity: 'File', inversedBy: 'children')]
-    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
-    private $parent;
-    #[ORM\OneToMany(targetEntity: 'File', mappedBy: 'parent')]
-    #[ORM\OrderBy(['lft' => 'ASC'])]
-    private $children;
+//    #[Gedmo\TreeLeft]
+//    #[ORM\Column(type: 'integer')]
+//    private $lft;
+//    #[Gedmo\TreeLevel]
+//    #[ORM\Column(type: 'integer')]
+//    private $lvl;
+//    #[Gedmo\TreeRight]
+//    #[ORM\Column(type: 'integer')]
+//    private $rgt;
+//    #[Gedmo\TreeRoot]
+//    #[ORM\ManyToOne(targetEntity: 'File')]
+//    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
+//    private $root;
+//    #[Gedmo\TreeParent]
+//    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'children')]
+//    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
+//    private $parent;
+//    #[ORM\OneToMany(targetEntity: self::class, mappedBy: 'parent')]
+//    #[ORM\OrderBy(['left' => 'ASC'])]
+//    private $children;
     public function __construct()
     {
         $this->children = new ArrayCollection();
@@ -95,94 +96,43 @@ class File implements \Stringable
 
         return $this;
     }
-    public function getLft(): ?int
-    {
-        return $this->lft;
-    }
-    public function setLft(int $lft): self
-    {
-        $this->lft = $lft;
-
-        return $this;
-    }
+//    public function getLft(): ?int
+//    {
+//        return $this->lft;
+//    }
+//    public function setLft(int $lft): self
+//    {
+//        $this->lft = $lft;
+//
+//        return $this;
+//    }
     public function getLvl(): ?int
     {
-        return $this->lvl;
+        return $this->level;
     }
-    public function setLvl(int $lvl): self
-    {
-        $this->lvl = $lvl;
-
-        return $this;
-    }
-    public function getRgt(): ?int
-    {
-        return $this->rgt;
-    }
-    public function setRgt(int $rgt): self
-    {
-        $this->rgt = $rgt;
-
-        return $this;
-    }
-    public function getRoot(): ?File
-    {
-        return $this->root;
-    }
-    public function setRoot(?File $root): self
-    {
-        $this->root = $root;
-
-        return $this;
-    }
-    public function getParent(): ?File
-    {
-        return $this->parent;
-    }
-    public function setParent(?File $parent): self
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
-    /**
-     * @return Collection|File[]
-     */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
-    public function addChild(Location $child): self
-    {
-        if (!$this->children->contains($child)) {
-            $this->children[] = $child;
-            $child->setParent($this);
-        }
-
-        return $this;
-    }
-    public function removeChild(Location $child): self
-    {
-        if ($this->children->removeElement($child)) {
-            // set the owning side to null (unless already changed)
-            if ($child->getParent() === $this) {
-                $child->setParent(null);
-            }
-        }
-
-        return $this;
-    }
-    public function getChildCount(): int
-    {
-        return $this->getChildren()->count();
-    }
-    #[Groups(['minimum','search','jstree'])]
-    public function getParentId(): ?int
-    {
-        return $this->getParent() ? $this->getParent()->getId() : null;
-    }
+//    public function setLvl(int $lvl): self
+//    {
+//        $this->lvl = $lvl;
+//
+//        return $this;
+//    }
+//    public function getRoot(): self
+//    {
+//        return $this->root;
+//    }
+//    public function setRoot(?File $root): self
+//    {
+//        $this->root = $root;
+//
+//        return $this;
+//    }
     public function __toString(): string
     {
         return (string) $this->getName();
+    }
+
+    public function getExtension(): ?string
+    {
+        return pathinfo($this->getName(), PATHINFO_EXTENSION);
     }
 }

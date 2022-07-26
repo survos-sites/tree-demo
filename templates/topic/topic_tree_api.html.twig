@@ -1,0 +1,27 @@
+{% extends 'layout.html.twig' %}
+
+{#{% set _sc = '@survos/tree-bundle/tree' %}#}
+    {% set _sc = 'api_tree' %}
+
+{% block title %}Directory Demo, uses twig-tree-tag, {{ _sc }}{% endblock %}
+
+{% block body %}
+
+    {% set _controller = '@survos/tree-bundle/api_tree' %}
+    {% set apiUrl = api_route(topicClass) %}
+    <h3>AJAX Tree, using {{ _controller }}</h3>
+    <div
+            {{ stimulus_controller(_controller, {
+                apiCall: apiUrl,
+                filter: filter
+            }) }}
+    >
+        <div {{ stimulus_target(_controller, 'message') }}>Messages go here.</div>
+
+        <ol {{ stimulus_target(_controller, 'ajax') }}>
+            Ajax tree will be populated here.
+        </ol>
+    </div>
+
+
+{% endblock %}

@@ -86,7 +86,7 @@ class AppController extends AbstractController
         );
         return $this->render('file/show.html.twig', [
             'entity' => $entity,
-            'entities' => $repo->findBy(['lvl' => 0]),
+            'entities' => $repo->findBy(['level' => 0]),
             'html' => ''// $htmlTree
         ]);
     }
