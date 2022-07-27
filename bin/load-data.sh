@@ -7,8 +7,7 @@ echo "drop database if exists $dbname; create database $dbname; grant all privil
 echo "database $dbname now ready for migrations or restore"
 
 git clean -f migrations/V*.php
-#bin/console doctrine:migrations:diff
-#bin/console doctrine:migrations:migrate
+bin/console doctrine:migrations:migrate -n --allow-no-migration
 
 #bin/console doctrine:schema:update --dump-sql --force
 bin/console make:migration

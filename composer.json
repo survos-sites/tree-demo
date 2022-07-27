@@ -103,7 +103,7 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "pre-update-cmd": "vendor/bin/phpstan analyse src/Entity",
+        "pre-update-cmd": "# vendor/bin/phpstan analyse src/Entity",
         "pre-commit-cmd": [
             "bin/console lint:twig",
             "php -v"

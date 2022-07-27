@@ -4128,7 +4128,7 @@
             "dist": {
                 "type": "path",
                 "url": "//home/tac/survos/bundles/tree-bundle",
-                "reference": "67c5a309ed5df17bc5034d934cb6ae0036882e51"
+                "reference": "e65e3e92fa1c9a343a1ae7fc4c66b86c2a452b67"
             },
             "require": {
                 "api-platform/core": "^2.7 || ^3.0",
