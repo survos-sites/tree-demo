@@ -7,6 +7,13 @@
 
 {% block body %}
 
+    <h3>Component</h3>
+    {% component api_tree with {
+        class: topicClass,
+    } %}
+    {% endcomponent %}
+
+
     {% set _controller = '@survos/tree-bundle/api_tree' %}
     {% set apiUrl = api_route(topicClass) %}
     <h3>AJAX Tree, using {{ _controller }}</h3>

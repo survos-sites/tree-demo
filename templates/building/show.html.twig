@@ -22,8 +22,16 @@
     {{ html_tree|escape }}
     {{ html_tree }}
 
+    <h3>api_tree Component</h3>
+    {% component api_tree with {
+        class: 'App\\Entity\\Location',
+    } %}
+    {% endcomponent %}
 
-    <h3>Tree Component</h3>
+    {% endblock %}
+
+{% block playground %}
+    <h3>Tree Component (HTML)</h3>
     {% component tree %}
         {% block data %}
             Data here.
