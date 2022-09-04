@@ -38,32 +38,7 @@ class AppMenu extends BaseAdminMenu
     public function buildMenu(MenuBuilder $builder, array $options)
     {
         $menu = $builder->root();
-        $buildingMenu = $this->addMenuItem($menu, ['menu_code' => 'building_dropdown', 'label' => 'Buildings']);
-        foreach (['index', 'new'] as $routeSuffix) {
-            $this->addMenuItem($buildingMenu, ['route' => 'building_' . $routeSuffix]);
-        }
-        foreach ($this->buildingRepository->findAll() as $building) {
-            $this->addMenuItem($buildingMenu, ['route' => 'building_show',
-                'label' => $building,
-                'rp'=> $building]);
-        }
 
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'app_tree_api']);
-
-        foreach (['files'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
-        }
-
-
-        $adminMenu = $this->addMenuItem($menu, ['menu_code' => 'admin_dropdown']);
-//        $this->addMenuItem($adminMenu, ['route' => 'easyadmin']);
-        $this->addMenuItem($adminMenu, ['route' => 'api_entrypoint']);
-        $this->addMenuItem($adminMenu, ['route' => 'api_doc']);
-
-        $this->addMenuItem($menu, ['route' => 'app_homepage', 'label' => "Home", 'icon' => 'fas fa-home']);
     }
 
 }

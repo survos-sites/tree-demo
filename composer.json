@@ -17,7 +17,8 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
-        "survos/base-bundle": "dev-master",
+        "survos/bootstrap-bundle": "*@dev",
+        "survos/inspection-bundle": "*@dev",
         "survos/tree-bundle": "*@dev",
         "survos/workflow-helper-bundle": "*@dev",
         "symfony/asset": "^6.0",
@@ -134,6 +135,14 @@
         }
     },
     "repositories": {
+        "bootstrap": {
+            "type": "path",
+            "url": "//home/tac/survos/bundles/bootstrap-bundle"
+        },
+        "inspection": {
+            "type": "path",
+            "url": "//home/tac/survos/bundles/inspection-bundle"
+        },
         "tree": {
             "type": "path",
             "url": "//home/tac/survos/bundles/tree-bundle"

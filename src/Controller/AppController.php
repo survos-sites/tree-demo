@@ -12,7 +12,7 @@ use App\Repository\TopicRepository;
 use App\Services\AppService;
 use App\Services\TopicsService;
 use Doctrine\ORM\EntityManagerInterface;
-use Survos\BaseBundle\Traits\JsonResponseTrait;
+use Survos\CoreBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;

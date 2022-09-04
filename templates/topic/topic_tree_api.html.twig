@@ -10,26 +10,27 @@
     <h3>Component</h3>
     {% component api_tree with {
         class: topicClass,
+        filter: filter|default({})
     } %}
     {% endcomponent %}
 
 
-    {% set _controller = '@survos/tree-bundle/api_tree' %}
-    {% set apiUrl = api_route(topicClass) %}
-    <h3>AJAX Tree, using {{ _controller }}</h3>
-    <a href="{{ apiUrl }}">{{ apiUrl }}</a>
-    <div
-            {{ stimulus_controller(_controller, {
-                apiCall: apiUrl,
-                filter: filter|default({})
-            }) }}
-    >
-        <div {{ stimulus_target(_controller, 'message') }}>Messages go here.</div>
+{#    {% set _controller = '@survos/tree-bundle/api_tree' %}#}
+{#    {% set apiUrl = api_route(topicClass) %}#}
+{#    <h3>AJAX Tree, using {{ _controller }}</h3>#}
+{#    <a href="{{ apiUrl }}">{{ apiUrl }}</a>#}
+{#    <div#}
+{#            {{ stimulus_controller(_controller, {#}
+{#                apiCall: apiUrl,#}
+{#                filter: filter|default({})#}
+{#            }) }}#}
+{#    >#}
+{#        <div {{ stimulus_target(_controller, 'message') }}>Messages go here.</div>#}
 
-        <ol {{ stimulus_target(_controller, 'ajax') }}>
-            Ajax tree will be populated here.
-        </ol>
-    </div>
+{#        <ol {{ stimulus_target(_controller, 'ajax') }}>#}
+{#            Ajax tree will be populated here.#}
+{#        </ol>#}
+{#    </div>#}
 
 
 {% endblock %}
