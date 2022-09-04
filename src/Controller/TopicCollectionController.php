@@ -38,7 +38,7 @@ class TopicCollectionController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/topic-tree-api', name: 'app_tree_api')]
+    #[Route(path: '/topic-tree-api', name: 'topic_tree_api')]
     public function topic_tree_api(Request $request)
     {
         return $this->render('topic/topic_tree_api.html.twig', [

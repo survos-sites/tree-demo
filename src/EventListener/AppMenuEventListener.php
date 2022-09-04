@@ -63,7 +63,7 @@ final class AppMenuEventListener
         $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
         $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
         $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'app_tree_api']);
+        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
 
         foreach (['files'] as $entityName) {
             $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
