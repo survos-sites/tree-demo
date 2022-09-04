@@ -84,7 +84,8 @@
 
     <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>
 
-    {% set apiUrl =  path('api_%s_get_collection'|format(entity), {_format: 'json'}) %}
+    {% set apiUrl = api_route(fileClass) %}
+{#        path('api_%s_get_collection'|format(entity), {_format: 'json'}) %}#}
     Files from this repo (demo), using
     <a target="_blank" href="{{ apiUrl }}">
         {{ apiUrl }}

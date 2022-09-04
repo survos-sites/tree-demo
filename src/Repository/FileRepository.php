@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\File;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
@@ -15,6 +16,12 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
  */
 class FileRepository extends NestedTreeRepository
 {
+
+    public function __construct(EntityManagerInterface $em)
+    {
+        parent::__construct($em, $em->getClassMetadata(File::class));
+    }
+
 //    public function __construct(ManagerRegistry $registry)
 //    {
 //        parent::__construct($registry, File::class);

@@ -11,14 +11,15 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 class TopicsService
 {
 
-    private TopicRepository $topicRepository;
+//    private TopicRepository $topicRepository;
 
     public function __construct(
+        private TopicRepository $topicRepository,
         private ParameterBagInterface $bag,
         private EntityManagerInterface $em,
     private LoggerInterface $logger)
     {
-        $this->topicRepository = $this->em->getRepository(Topic::class);
+//        $this->topicRepository = $this->em->getRepository(Topic::class);
     }
 
     public function getTopicCount() {
