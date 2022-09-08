@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "17cbd23991d39f5fff72dc337938f6b6",
+    "content-hash": "d891fb10d563dcf9e856640443f5ddd7",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3159,20 +3159,15 @@
         {
             "name": "survos/bootstrap-bundle",
             "version": "dev-master",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/survos/BootstrapBundle.git",
-                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427"
-            },
             "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/031132d4bc050548b3ac6d2e57fed381ee781427",
-                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427",
-                "shasum": ""
+                "type": "path",
+                "url": "//home/tac/survos/bundles/bootstrap-bundle",
+                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427"
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.2",
                 "php": "^8.1",
+                "survos/core-bundle": "^1.0",
                 "symfony/config": "^6.1",
                 "symfony/dependency-injection": "^6.1",
                 "symfony/http-kernel": "^6.1",
@@ -3185,7 +3180,6 @@
             "require-dev": {
                 "phpstan/phpstan": "^1.8"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -3200,7 +3194,14 @@
                     "Survos\\BootstrapBundle\\": "src/"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "test": [
+                    "vendor/bin/phpunit"
+                ],
+                "phpstan": [
+                    "vendor/bin/phpstan analyse"
+                ]
+            },
             "license": [
                 "MIT"
             ],
@@ -3211,11 +3212,9 @@
                 }
             ],
             "description": "Integrates a simple bootstrap theme in a Symfony application",
-            "support": {
-                "issues": "https://github.com/survos/BootstrapBundle/issues",
-                "source": "https://github.com/survos/BootstrapBundle/tree/master"
-            },
-            "time": "2022-09-08T01:17:07+00:00"
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "survos/core-bundle",

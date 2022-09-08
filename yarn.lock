@@ -4364,6 +4364,11 @@ statuses@2.0.1:
   resolved "https://registry.yarnpkg.com/statuses/-/statuses-1.5.0.tgz#161c7dac177659fd9811f43771fa99381478628c"
   integrity sha512-OpZ3zP+jT1PI7I8nemJX4AKmAX070ZkYPVWV/AaKTJl+tXCTGyVdC1a4SL8RUQYEwk/f34ZX8UTykN68FwrqAA==
 
+stimulus-content-loader@^4.0.1:
+  version "4.0.1"
+  resolved "https://registry.yarnpkg.com/stimulus-content-loader/-/stimulus-content-loader-4.0.1.tgz#8e57d519a28c9d74e082633037c0de67fc8640db"
+  integrity sha512-XztvmKLLbOQCgQLXuOagnU3/EA559xpXr2moUWwi2XP5LfDpM6EOFput5w4QVc07TLYCGrKsKe34fgwWSSEKqA==
+
 stimulus@^3.0.1:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/stimulus/-/stimulus-3.1.0.tgz#225298f1936f96b0eafa883b8b304266427912c3"
