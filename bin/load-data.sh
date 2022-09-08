@@ -1,10 +1,13 @@
-dbname=jstree
+#dbname=jstree
+#echo "drop database if exists $dbname; create database $dbname; grant all privileges on database $dbname to main; " | sudo -u postgres psql
+#echo "database $dbname now ready for migrations or restore"
 
-#heroku pg:reset --confirm jufj-scorecard  && echo "CREATE EXTENSION pg_trgm; CREATE EXTENSION \"uuid-ossp\";  CREATE EXTENSION hstore;" | heroku pg:psql
-#echo "create user main WITH ENCRYPTED PASSWORD 'main';" | sudo -u postgres psql
+bin/console doctrine:query:sql "drop table if exists doctrine_migration_versions"
+bin/console doctrine:schema:drop --force
 
-echo "drop database if exists $dbname; create database $dbname; grant all privileges on database $dbname to main; " | sudo -u postgres psql
-echo "database $dbname now ready for migrations or restore"
+#bin/console make:migration
+#git clean -f migrations && bin/console doctrine:migrations:migrate -n --allow-no-migration && bin/console make:migration
+#bin/console doctrine:migrations:migrate -n
 
 git clean -f migrations/V*.php
 bin/console doctrine:migrations:migrate -n --allow-no-migration
