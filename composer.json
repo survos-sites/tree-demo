@@ -135,18 +135,6 @@
         }
     },
     "repositories": {
-        "bootstrap": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/bootstrap-bundle"
-        },
-        "inspection": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/inspection-bundle"
-        },
-        "tree": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/tree-bundle"
-        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
