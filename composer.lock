@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "911ff43e4b3360c6d52917c3a607dbe3",
+    "content-hash": "17cbd23991d39f5fff72dc337938f6b6",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3162,12 +3162,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/BootstrapBundle.git",
-                "reference": "2bd8247f64a677b83e3536c1ab3f9e7fca724245"
+                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/2bd8247f64a677b83e3536c1ab3f9e7fca724245",
-                "reference": "2bd8247f64a677b83e3536c1ab3f9e7fca724245",
+                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/031132d4bc050548b3ac6d2e57fed381ee781427",
+                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427",
                 "shasum": ""
             },
             "require": {
@@ -3215,7 +3215,7 @@
                 "issues": "https://github.com/survos/BootstrapBundle/issues",
                 "source": "https://github.com/survos/BootstrapBundle/tree/master"
             },
-            "time": "2022-09-04T17:34:14+00:00"
+            "time": "2022-09-08T01:17:07+00:00"
         },
         {
             "name": "survos/core-bundle",

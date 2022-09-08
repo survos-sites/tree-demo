@@ -17,7 +17,7 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
-        "survos/bootstrap-bundle": "*@dev",
+        "survos/bootstrap-bundle": "^2.0-dev",
         "survos/inspection-bundle": "*@dev",
         "survos/tree-bundle": "*@dev",
         "survos/workflow-helper-bundle": "*@dev",
