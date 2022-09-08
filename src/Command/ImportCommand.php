@@ -14,12 +14,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 
 class ImportCommand extends Command
 {
-    private $importService;
-
-    public function __construct(ImportService $importService, string $name = null)
+    public function __construct(private readonly ImportService $importService, string $name = null)
     {
         parent::__construct($name);
-        $this->importService = $importService;
     }
 
     protected function configure()

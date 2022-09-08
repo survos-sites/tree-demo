@@ -28,7 +28,8 @@ END;
         $manager->persist($user);
 
         foreach (['Condo' => 'Bedroom 1,Bedroom 2,Bathroom',
-                     'House'=>'First Floor,Second Floor', 'Warehouse' => 'Storage Area 1, Storage Area 2']
+                     'House'=>'First Floor,Second Floor',
+                     'Warehouse' => 'Storage Area 1, Storage Area 2']
                  as $buildingName => $areas) {
             $building = (new Building($buildingName));
             $user

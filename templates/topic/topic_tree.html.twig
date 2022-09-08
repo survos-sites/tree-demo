@@ -50,10 +50,10 @@
 
         {% tree e in entities %}
                 {% if treeloop.first %}<ul>{% endif %}
-                <li data-jstree='{"type":"{{ e.isDir ? 'dir' : e.extension }}"}'>
+                <li data-jstree='{"type":""}'>
 {#                        {{ treeloop.level }}#}
                         {{ e.name }}
-                    <sup>{{ e.isDir ? e.childCount }}</sup>
+                    <sup class="badge bg-info text-sm"><small>{{ e.childCount ? e.childCount }}</small></sup>
 {#                    <a href="#{{ e.id }}">#}
 {#                    </a>#}
                     {% subtree e.children %}
@@ -81,7 +81,5 @@
 
 
     {{ html|raw }}
-
-    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>
 
 {% endblock %}

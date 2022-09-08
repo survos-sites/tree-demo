@@ -7,9 +7,8 @@
                     <th>Code</th>
                     <th>Name</th>
                     <th>Description</th>
-                    <th>Lft</th>
+                    <th>Child Count</th>
                     <th>Lvl</th>
-                    <th>Rgt</th>
             </tr>
     </thead>
     <tbody>
@@ -29,9 +28,8 @@
                     <td>{{ topic.code }}</td>
                     <td>{{ topic.name }}</td>
                     <td>{{ topic.description }}</td>
-                    <td>{{ topic.lft }}</td>
-                    <td>{{ topic.lvl }}</td>
-                    <td>{{ topic.rgt }}</td>
+                    <td>{{ topic.childCount }}</td>
+                    <td>{{ topic.level }}</td>
             </tr>
     {% else %}
     <tr>

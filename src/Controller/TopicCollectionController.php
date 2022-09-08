@@ -29,6 +29,24 @@ class TopicCollectionController extends AbstractController
 
     }
 
+    #[Route(path: '/topic-tree-html', name: 'app_tree_html')]
+    public function topic_tree_html(Request $request, TopicRepository $repo)
+    {
+        return $this->render('topic/topic_tree.html.twig', [
+            'entities' => $repo->findBy(['level' => 0]),
+            'html' => ''// $htmlTree
+        ]);
+    }
+
+    #[Route(path: '/topic-tree-api', name: 'app_tree_api')]
+    public function topic_tree_api(Request $request)
+    {
+        return $this->render('topic/topic_tree_api.html.twig', [
+            'topicClass' => Topic::class,
+            'html' => ''// $htmlTree
+        ]);
+    }
+
     #[Route(path: '/list/{marking}', name: 'topic_browse', methods: ['GET'])]
     public function browse(string $marking = Topic::PLACE_NEW): Response
     {

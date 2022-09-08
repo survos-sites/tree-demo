@@ -11,12 +11,9 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ScrapeCommand extends Command
 {
 
-    private $importService;
-
-    public function __construct(ImportService $importService, string $name = null)
+    public function __construct(private readonly ImportService $importService, string $name = null)
     {
         parent::__construct($name);
-        $this->importService = $importService;
     }
 
     protected function configure()
@@ -39,9 +36,9 @@ class ScrapeCommand extends Command
         $service = $this->importService;
 
         if ($table = $input->getOption('table')) {
-            $tables = array($table);
+            $tables = [$table];
         } else {
-            $tables = array('Measure','Protocol');
+            $tables = ['Measure', 'Protocol'];
         }
 
         if (!$input->getOption('scrape') && !$input->getOption('process')) {

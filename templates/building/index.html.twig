@@ -24,6 +24,7 @@
             <tr>
                 <th>Id</th>
                 <th>Name</th>
+                <th>#Locations</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -32,6 +33,7 @@
             <tr>
                 <td>{{ building.id }}</td>
                 <td>{{ building.name }}</td>
+                <td>{{ building.locations.count }}</td>
                 <td>
                     <a href="{{ path('building_show', building.rp) }}">show</a>
                     <a href="{{ path('building_edit', building.rp) }}">edit</a>

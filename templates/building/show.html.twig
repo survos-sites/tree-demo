@@ -1,9 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Building {{ building.name }}{% endblock %}
+{% block title %}Building: {{ building.name }} ({{ building.locations.count }} children){% endblock %}
+
+{% set html_tree %}
+    {% tree item in building.rootLocation.children %}
+        {{ treeloop.first ? '<ul>' }}
+        <li class="jstree-open">
+            #{{ treeloop.index }}
+            {{ item.name }}
+            {#        <a href="{{ path('build') }}">{{ item.name }}</a>#}
+            {% subtree item.children %}
+        </li>
+        {{ treeloop.last ? '</ul>' }}
+    {% endtree %}
+{% endset %}
 
 {% block body %}
-<h3>{{ block('title') }}</h3>
+<h1>{{ block('title') }}</h1>
+
+    <h3>Tree Data</h3>
+    {{ html_tree|escape }}
+    {{ html_tree }}
+
+    <h3>api_tree Component</h3>
+    {% component api_tree with {
+        class: 'App\\Entity\\Location',
+    } %}
+    {% endcomponent %}
+
+    {% endblock %}
+
+{% block playground %}
+    <h3>Tree Component (HTML)</h3>
+    {% component tree %}
+        {% block data %}
+            Data here.
+            {{ html_tree }}
+        {% endblock  %}
+    {% endcomponent %}
 
 {% set _controller = '@survos/tree-bundle/api_tree' %}
 {% set apiUrl = path('api_locations_get_collection') %}
@@ -22,16 +56,17 @@
 </div>
 
 
-{% set _controller = '@survos/tree-bundle/tree' %}
-{#{% set _controller = 'jstree' %}#}
+
+{#{% set _controller = '@survos/tree-bundle/tree' %}#}
+{% set _controller = 'jstree' %}
     {% if true %}
 <h3>HTML Tree, using stimulus {{ _controller }}</h3>
 <div
         {{ stimulus_controller(_controller) }}
-{#        {{ stimulus_target(_controller, 'html')#}
+        {{ stimulus_target(_controller, 'html')
         }}>
 
-{% tree item in building.locations %}
+{% tree item in [building.rootLocation] %}
     {% if treeloop.first %}<ul >{% endif %}
     <li class="jstree-open">
         #{{ treeloop.index }}

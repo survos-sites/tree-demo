@@ -13,37 +13,26 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\Finder\Finder;
 #[AsCommand( 'app:load-directory-files', description: 'Import a directory into a nested tree')]
 class LoadDirectoryFilesCommand extends Command
 {
-    /**
-     * @var EntityManagerInterface
-     */
-    private $em;
-    /**
-     * @var FileRepository
-     */
-    private $fileRepository;
-    /**
-     * @var AppService
-     */
-    private AppService $appService;
+    private readonly \App\Repository\FileRepository $fileRepository;
 
-    public function __construct(EntityManagerInterface $em, AppService $appService, string $name = null)
+    public function __construct(private readonly EntityManagerInterface $em,
+                                private readonly ParameterBagInterface $bag,
+                                private readonly AppService $appService, string $name = null)
     {
         parent::__construct($name);
-        $this->em = $em;
 
         $this->fileRepository = $em->getRepository(File::class);
-        $this->appService = $appService;
     }
 
     protected function configure()
     {
         $this
-            ->addArgument('dir', InputArgument::REQUIRED, 'path to directory root')
-            ->addOption('gitignore', null, InputOption::VALUE_NONE, 'Ignore .gitignore files')
+            ->addArgument('dir', InputArgument::OPTIONAL, 'path to directory root',  $this->bag->get('kernel.project_dir'))
         ;
     }
 
@@ -52,7 +41,7 @@ class LoadDirectoryFilesCommand extends Command
         $io = new SymfonyStyle($input, $output);
         $directory = $input->getArgument('dir');
 
-        $this->appService->importDirectory($directory, ['gitignore' => $input->getOption('gitignore')]);
+        $this->appService->importDirectory($directory);
         $this->em->flush();
         $io->success('Import complete');
 

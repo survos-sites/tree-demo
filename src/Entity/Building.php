@@ -6,7 +6,6 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Survos\BaseBundle\Entity\SurvosBaseEntity;
 use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
 
@@ -23,9 +22,7 @@ class Building  implements \Stringable, RouteParametersInterface
     private $user;
     #[ORM\OneToMany(targetEntity: 'App\Entity\Location', mappedBy: 'building', orphanRemoval: true, cascade: ['persist'])]
     private $locations;
-    /**
-     * @Gedmo\Slug(fields={"name"})
-     */
+    #[Gedmo\Slug(fields: ['name'])]
     #[ORM\Column(type: 'string', length: 255)]
     private $code;
     public function __construct(#[ORM\Column(type: 'string', length: 255)] private ?string $name = null)
@@ -102,5 +99,11 @@ class Building  implements \Stringable, RouteParametersInterface
     public function getUniqueIdentifiers(): array
     {
         return ['buildingId' => $this->getCode()];
+    }
+
+    public function getRootLocation(): ?Location
+    {
+        // or filter by no parent?
+        return $this->getLocations()->first() ?: null;
     }
 }
