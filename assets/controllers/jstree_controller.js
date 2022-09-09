@@ -7,7 +7,7 @@ import 'jstree';
 export default class extends Controller {
 
     static values = {
-        msg: {type: String, default: '/bill'},
+        msg: {type: String, default: ''},
         plugins: {type: Array, default: ['checkbox', 'theme', "types", 'sort']},
         types: {type: Object, default: {}}
         // interval: { type: Number, default: 5 },
@@ -63,6 +63,8 @@ export default class extends Controller {
             let node = instance.get_node(data.selected[i]);
             // r.push(instance.data('path'));
             console.log(node.data.path);
+            // instance.jstree().open(); // not sure how to do this.
+
             window.dispatchEvent(new CustomEvent('jstree', {
                 detail: {
                     data: node.data,

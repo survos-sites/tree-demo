@@ -1025,9 +1025,6 @@
 "@symfony/ux-chartjs@file:vendor/symfony/ux-chartjs/Resources/assets":
   version "1.1.0"
 
-"@symfony/ux-turbo@file:vendor/symfony/ux-turbo/Resources/assets":
-  version "0.1.0"
-
 "@symfony/webpack-encore@^3.0.0":
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/@symfony/webpack-encore/-/webpack-encore-3.1.0.tgz#908f5753d85bd631d7027da9d908b3cc836156d6"
@@ -3880,6 +3877,11 @@ pretty-error@^4.0.0:
   dependencies:
     lodash "^4.17.20"
     renderkid "^3.0.0"
+
+pretty-print-json@^1.2.6:
+  version "1.2.6"
+  resolved "https://registry.yarnpkg.com/pretty-print-json/-/pretty-print-json-1.2.6.tgz#181d5738129eccc60ad9895d926d21c0aed85d2e"
+  integrity sha512-TuLvJIaNu6UTNivY0ROA9zXhzdxl9CZA4q6A83xohLGdPKc8xTWp3UrSYEpZr5vBE89fRc12SZPyA12G8vpHkw==
 
 process-nextick-args@~2.0.0:
   version "2.0.1"

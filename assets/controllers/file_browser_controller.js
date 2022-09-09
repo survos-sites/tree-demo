@@ -18,11 +18,13 @@ export default class extends Controller {
         window.addEventListener('jstree', ev => {
 
             let data = ev.detail.data;
+            this.titleTarget.innerHTML = data.path;
+
             if (data.type == 'dir') {
+                this.contentTarget.innerHTML = data.path + ' is a directory';
                 return;
             }
 
-            this.titleTarget.innerHTML = data.path;
             let url = this.sourcePathValue + '?path=' + data.path;
 
             console.log('Received in file_browser ', ev);
@@ -37,8 +39,6 @@ export default class extends Controller {
                     return response.text();
                 })
                 .then((response) => {
-                    console.log(response);
-
                     this.contentTarget.innerHTML = 'content here. from ' + this.sourcePathValue + data.path;
                     this.contentTarget.innerHTML = response;
                 })

@@ -8,6 +8,12 @@
     <span class="bi-alarm"></span>
     <h3>{{ block('title') }}</h3>
 
+    {% set _sc = 'topic' %}
+    <div {{ stimulus_controller(_sc) }}>
+        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>
+        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div>
+    </div>
+
     <div class="row">
         <div class="col-md-3">
             {{ block('tree') }}
