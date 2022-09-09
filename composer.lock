@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a506ec1c80f7c2fe0a0b1b2bc5fe3767",
+    "content-hash": "d8bc34f949292403617e8aacd686cc11",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3159,10 +3159,16 @@
         {
             "name": "survos/bootstrap-bundle",
             "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/BootstrapBundle.git",
+                "reference": "fa4216bf6594273a533986f452e467a7e1b29e2d"
+            },
             "dist": {
-                "type": "path",
-                "url": "//home/tac/survos/bundles/bootstrap-bundle",
-                "reference": "031132d4bc050548b3ac6d2e57fed381ee781427"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/BootstrapBundle/zipball/fa4216bf6594273a533986f452e467a7e1b29e2d",
+                "reference": "fa4216bf6594273a533986f452e467a7e1b29e2d",
+                "shasum": ""
             },
             "require": {
                 "knplabs/knp-menu-bundle": "^3.2",
@@ -3180,6 +3186,7 @@
             "require-dev": {
                 "phpstan/phpstan": "^1.8"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -3194,14 +3201,7 @@
                     "Survos\\BootstrapBundle\\": "src/"
                 }
             },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3212,9 +3212,11 @@
                 }
             ],
             "description": "Integrates a simple bootstrap theme in a Symfony application",
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/survos/BootstrapBundle/issues",
+                "source": "https://github.com/survos/BootstrapBundle/tree/master"
+            },
+            "time": "2022-09-09T16:40:30+00:00"
         },
         {
             "name": "survos/core-bundle",
@@ -3329,10 +3331,16 @@
         {
             "name": "survos/tree-bundle",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/SurvosTreeBundle.git",
+                "reference": "d83a4eb78c61937186e83238ae715f43fd317939"
+            },
             "dist": {
-                "type": "path",
-                "url": "//home/tac/survos/bundles/tree-bundle",
-                "reference": "b87cdfd7f6a9fd9d34e7bb5f3944977a505da29d"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/SurvosTreeBundle/zipball/d83a4eb78c61937186e83238ae715f43fd317939",
+                "reference": "d83a4eb78c61937186e83238ae715f43fd317939",
+                "shasum": ""
             },
             "require": {
                 "api-platform/core": "^2.7 || ^3.0",
@@ -3359,6 +3367,7 @@
                 "symfony/var-dumper": "^6.1",
                 "symfony/webpack-encore-bundle": "^1.11"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -3373,11 +3382,7 @@
                     "Survos\\Tree\\": "src/"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3392,9 +3397,11 @@
                 "symfony-ux",
                 "symfony6"
             ],
-            "transport-options": {
-                "relative": false
-            }
+            "support": {
+                "issues": "https://github.com/survos/SurvosTreeBundle/issues",
+                "source": "https://github.com/survos/SurvosTreeBundle/tree/main"
+            },
+            "time": "2022-09-09T16:43:55+00:00"
         },
         {
             "name": "survos/workflow-helper-bundle",

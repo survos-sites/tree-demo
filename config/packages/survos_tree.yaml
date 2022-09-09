@@ -1,3 +1,3 @@
 #  ln -s ~/survos/bundles/tree-bundle/assets/src/controllers/sandbox_api_tree_controller.js assets/controllers/sandbox_api_tree_controller.js
 survos_tree:
-  stimulus_controller: sandbox_api_tree
+#  stimulus_controller: sandbox_api_tree
