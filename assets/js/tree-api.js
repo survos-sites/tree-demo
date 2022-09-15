@@ -1,8 +1,7 @@
 const $ = require('jquery');
 require('jstree');
 require('jquery-confirm');
-
-
+console.error('using tree-api.js');
 // global.$ = $; // hack if you need a global $
 
 const routes = require('../../public/js/fos_js_routes.json');

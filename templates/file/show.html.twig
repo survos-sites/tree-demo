@@ -1,16 +1,43 @@
 {% extends 'layout.html.twig' %}
 
 {#{% set _sc = '@survos/tree-bundle/tree' %}#}
-    {% set _sc = 'jstree' %}
 
-{% block title %}Directory Demo, uses twig-tree-tag, {{ _sc }}{% endblock %}
+{% block title %}{{ _self}} Demo, uses twig-tree-tag{% endblock %}
 
 {% block body %}
     <span class="bi-alarm"></span>
     <h3>{{ block('title') }}</h3>
 
+    {% set _sc = 'topic' %}
+    <div {{ stimulus_controller(_sc) }}>
+        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>
+        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-3">
+            {{ block('tree') }}
+        </div>
+        <div class="col-md-9">
+            {% set _sc = 'file_browser' %}
+            <div {{ stimulus_controller(_sc, {
+                sourcePath: path('app_file_source')
+            }) }}>
+                <h3 {{ stimulus_target(_sc, 'title') }}></h3>
+                <pre {{ stimulus_target(_sc, 'content') }}>
+                    put the file contents here.
+                </pre>
+            </div>
+        </div>
+    </div>
+
+    {% endblock %}
+
+{% block tree %}
+    {% set _sc = 'jstree' %}
     <div
             {{ stimulus_controller(_sc, {
+
                 "types" : {
                     "default" : {
                         "icon" : "bi-alarm"
@@ -50,7 +77,10 @@
 
         {% tree e in entities %}
                 {% if treeloop.first %}<ul>{% endif %}
-                <li data-jstree='{"type":"{{ e.isDir ? 'dir' : e.extension }}"}'>
+                <li
+                        data-path="{{ e.path }}"
+                        data-type="{{ e.isDir ? 'dir' : 'file' }}"
+                        data-jstree='{"path": "{{ e.path }}", "type":"{{ e.isDir ? 'dir' : e.extension }}"}}'>
 {#                        {{ treeloop.level }}#}
                         {{ e.name }}
                     <sup>{{ e.isDir ? e.childCount }}</sup>

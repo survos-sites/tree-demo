@@ -50,7 +50,9 @@ class AppService
             $name = $fileInfo->getFilename();
             $f = (new File())
                 ->setIsDir($fileInfo->isDir())
-                ->setName($name);
+                ->setPath($fileInfo->getRelativePathname())
+                ->setName($name)
+            ;
 
             if ($parentName = $fileInfo->getRelativePath()) {
                 // symbolic links, like base-bundle, don't work right

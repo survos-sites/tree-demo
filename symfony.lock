@@ -329,7 +329,7 @@
         "version": "1.1-dev"
     },
     "survos/workflow-helper-bundle": {
-        "version": "2.0-dev"
+        "version": "2.0.1"
     },
     "symfony/asset": {
         "version": "v5.1.5"
@@ -477,7 +477,7 @@
         }
     },
     "symfony/messenger": {
-        "version": "6.0",
+        "version": "6.1",
         "recipe": {
             "repo": "github.com/symfony/recipes",
             "branch": "main",
@@ -662,9 +662,6 @@
         "version": "v5.2.0"
     },
     "symfony/ux-chartjs": {
-        "version": "v2.1.1"
-    },
-    "symfony/ux-turbo": {
         "version": "v2.1.1"
     },
     "symfony/ux-twig-component": {

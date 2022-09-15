@@ -55,6 +55,16 @@ class AppController extends AbstractController
         return $this->redirectToRoute('app_tree', ['entity' => 'files']);
     }
 
+    #[Route(path: '/file-source', name: 'app_file_source')]
+    public function fileSource(Request $request, ParameterBagInterface $bag)
+    {
+        $directory = $bag->get('kernel.project_dir');
+        $filename = $directory . '/' . $request->get('path');
+        assert(file_exists($filename), "file $filename does not exist.");
+        // limit to text files?
+        $contents = file_get_contents($filename);
+        return new Response($contents);
+    }
     #[Route(path: '/knp-menu', name: 'app_knp_menu')]
     public function knpMenu(Request $request, AppService $appService, ParameterBagInterface $bag)
     {
