@@ -11,15 +11,14 @@
 
     <div class="introduction">
         {{ 'files.intro'|trans }}
-        {{ 'files.description'|trans }}
-         'files.description'|trans|markdown_to_html
+        {{ 'files.description'|trans|markdown_to_html }}
     </div>
 
-    {% set _sc = 'topic' %}
-    <div {{ stimulus_controller(_sc) }}>
-        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>
-        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div>
-    </div>
+{#    {% set _sc = 'topic' %}#}
+{#    <div {{ stimulus_controller(_sc) }}>#}
+{#        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>#}
+{#        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div>#}
+{#    </div>#}
 
     <div class="row">
         <div class="col-md-3">
@@ -41,6 +40,7 @@
     {% endblock %}
 
 {% block tree %}
+    <h1>This is a local test of jstree, NOT using the library</h1>
     {% set _sc = 'jstree' %}
     <div
             {{ stimulus_controller(_sc, {
@@ -119,7 +119,7 @@
 
     {{ html|raw }}
 
-    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>
+{#    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>#}
 
     {% set apiUrl = api_route(fileClass) %}
 {#        path('api_%s_get_collection'|format(entity), {_format: 'json'}) %}#}

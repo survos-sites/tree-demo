@@ -35,8 +35,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
         $this->addHeading($menu, label: "File Browser");
         foreach (['files'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
+            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_repo_files', 'rp' => ['entity' => $entityName]]);
         }
 
 
@@ -70,10 +69,6 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
         $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
 
-        $this->addHeading($menu, label: "File Browser");
-        foreach (['files'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
-        }
 
         $this->addHeading($menu, label: "API");
 

@@ -27,7 +27,7 @@ export default class extends Controller {
 
             let url = this.sourcePathValue + '?path=' + data.path;
 
-            console.log('Received in file_browser ', ev);
+            console.log('Received ' + ev.type + ' in file_browser_controller ', ev);
             console.warn(ev.type, data.path, data.jstree);
 
 

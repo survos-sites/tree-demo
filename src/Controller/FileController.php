@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\File;
+use App\Repository\FileRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,16 +19,13 @@ class FileController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/repo-files', name: 'app_file')]
-    public function files(Request $request, string $entity)
+    #[Route(path: '/repo-files', name: 'app_repo_files')]
+    public function files(Request $request, FileRepository $fileRepository)
     {
-        $repo = match($entity) {
-            'files' => $this->fileRepository,
-            'topics' => $this->topicRepository
-        };
 
+        // load files dynamically?  Skip repo?
         if (0)
-            $htmlTree = $repo->childrenHierarchy(
+            $htmlTree = $fileRepository->childrenHierarchy(
                 null, /* starting from root nodes */
                 false, /* false: load all children, true: only direct */
                 array(
@@ -41,8 +40,9 @@ class FileController extends AbstractController
                 true
             );
         return $this->render('file/show.html.twig', [
-            'entity' => $entity,
-            'entities' => $repo->findBy(['level' => 0]),
+            'entity' => 'file', // File::class,
+            'fileClass' => File::class,
+            'entities' => $fileRepository->findBy(['level' => 0]),
             'html' => ''// $htmlTree
         ]);
     }

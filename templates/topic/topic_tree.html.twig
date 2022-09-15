@@ -1,42 +1,15 @@
 {% extends 'layout.html.twig' %}
 
 {#{% set _sc = '@survos/tree-bundle/tree' %}#}
-    {% set _sc = 'jstree' %}
+{% set _sc = 'jstree' %}
 
-{% block title %}Directory Demo, uses twig-tree-tag, {{ _sc }}{% endblock %}
+    {% block title %}Topics ({{ _sc }}){% endblock %}
 
 {% block body %}
-    <span class="bi-alarm"></span>
     <h3>{{ block('title') }}</h3>
 
     <div
             {{ stimulus_controller(_sc, {
-                "types" : {
-                    "default" : {
-                        "icon" : "bi-alarm"
-                    },
-                    "php" : {
-                        "icon" : "bi bi-filetype-php"
-                    },
-                    "json" : {
-                        "icon" : "bi bi-filetype-json"
-                    },
-                    "js" : {
-                        "icon" : "bi bi-filetype-js"
-                    },
-                    "yaml" : {
-                        "icon" : "bi bi-filetype-yaml"
-                    },
-                    "css" : {
-                        "icon" : "bi bi-filetype-css"
-                    },
-                    "dir" : {
-                        "icon" : "bi bi-arrow-down-right-square"
-                    },
-                    "demo" : {
-                        "icon" : "glyphicon glyphicon-ok"
-                    }
-                },
                 plugins: ['search', 'sort', 'types']
             }) }}
     >

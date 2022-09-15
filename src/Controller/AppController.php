@@ -71,7 +71,7 @@ class AppController extends AbstractController
         return $this->render('menu.html.twig');
     }
 
-    #[Route(path: '/basic-{entity}', name: 'app_tree')]
+    #[Route(path: '/basic-{entity}', name: 'app_tree_entity')]
     public function files(Request $request, string $entity)
     {
         $repo = match($entity) {
