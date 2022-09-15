@@ -70,6 +70,13 @@ class TopicCollectionController extends AbstractController
         ]);
     }
 
+    #[Route('/overview', name: 'topic_overview')]
+    public function overview(): Response
+    {
+        return $this->render('topic/overview.html.twig', [
+        ]);
+    }
+
     #[Route('topic/new', name: 'topic_new')]
     public function new(Request $request): Response
     {

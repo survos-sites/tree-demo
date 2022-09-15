@@ -20,7 +20,6 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         private BuildingRepository $buildingRepository,
         private ?AuthorizationCheckerInterface $security=null)
     {
-
         $this->setAuthorizationChecker($this->security);
     }
 
@@ -32,7 +31,24 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
     public function appSidebarMenu(KnpMenuEvent $event): void
     {
         $menu = $event->getMenu();
-        $this->addMenuItem($menu, ['route' => 'app_homepage', 'label' => "Home", 'icon' => 'fas fa-home']);
+        $this->add($menu,  'app_homepage', label: 'home', icon: 'fas fa-home');
+
+        $this->addHeading($menu, label: "File Browser");
+        foreach (['files'] as $entityName) {
+            $this->
+            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
+            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
+        }
+
+
+
+        $this->addHeading($menu, label: "Topics");
+        $this->add($menu, 'topic_overview');
+        $this->add($menu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
+
+        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
+        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'app_tree_api']);
 
         $this->addHeading($menu, 'Inventory Demo');
         $this->add($menu, 'building_index', label: 'List');
@@ -46,20 +62,6 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         }
 
 
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
-
-        $this->addHeading($menu, label: "Topics");
-        $this->add($menu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
-
-        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'app_tree_api']);
-
-        $this->addHeading($menu, label: "File Browser");
-        foreach (['files'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => $entityName, 'route' => 'app_tree', 'rp' => ['entity' => $entityName]]);
-        }
-
 
         $this->addHeading($menu, label: "API");
 
@@ -68,6 +70,8 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
         $this->addMenuItem($menu, ['label' => 'Auth', 'style' => 'heading']);
         $this->authMenu($this->security, $menu);
+        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
+
     }
 
 }

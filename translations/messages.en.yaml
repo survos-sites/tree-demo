@@ -2,3 +2,12 @@ home:
     title: 'JS Tree + Symfony + Doctrine Tree'
     intro: 'Intro to JS Tree + Symfony + Doctrine Tree'
     description: 'Use Symfony to load and manipulate a tree'
+
+files:
+    title: File Browser
+    intro: Files are read with Symfony Finder (excluding .gitignore).
+    description: |
+        a long
+        *markdown* test
+        
+        A second paragraph

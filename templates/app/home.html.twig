@@ -3,23 +3,22 @@
 {% block title %}Basic HTML Demo{% endblock %}
 
 {% block body %}
-    JS Tree Home page
 
-    {% set _controller = '@survos/ux-tree/hello' %}
-    <div {{ stimulus_controller(_controller, {
-        title: 'testing bundle controller (stimulus)'
-    }) }}>
-        Hello controller. {{ _controller }}
-        <i>
-            <span {{ stimulus_target(_controller, 'msg') }}>
-                the msg target.
-            </span>
-
-        </i>
+    <h1>Survos Tree Bundle</h1>
+    <div>
+        Grab README.me from the bundle?  Or...
     </div>
 
-{#    <div {{ stimulus_controller('tour') }}>#}
-{#        Tour#}
-{#    </div>#}
+    <h2>A Stimulus Controller</h2>
+    <div>
+        At the most basic level, you can turn any tree into a dynamic tree by using the stimulus controller.  It's a bit of a yawn, but it gives developers a very fast way to implement it.  It requires you already have an unordered list.  In this case, we're just copying from the jstree documentation.
+    </div>
+    {{ component('divider') }}
+
+    <h2>{{ 'gedmo-tree.title'|trans }}</h2>
+    <div>
+        {{ 'gedmo-tree.intro'|trans }}
+    </div>
+    {{ component('divider') }}
 
 {% endblock %}

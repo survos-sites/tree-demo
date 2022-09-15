@@ -6,7 +6,14 @@
 
 {% block body %}
     <span class="bi-alarm"></span>
+
     <h3>{{ block('title') }}</h3>
+
+    <div class="introduction">
+        {{ 'files.intro'|trans }}
+        {{ 'files.description'|trans }}
+         'files.description'|trans|markdown_to_html
+    </div>
 
     {% set _sc = 'topic' %}
     <div {{ stimulus_controller(_sc) }}>
