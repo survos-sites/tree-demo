@@ -1,6 +1,6 @@
 # config/packages/api_platform.yaml
 api_platform:
-    metadata_backward_compatibility_layer: false
+#    metadata_backward_compatibility_layer: false
 
     mapping:
         paths:

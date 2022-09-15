@@ -11,13 +11,13 @@ use Symfony\Component\Finder\Finder;
 class AppService
 {
     private EntityManagerInterface $entityManager;
-    private FileRepository $fileRepository;
     private LoggerInterface $logger;
 
-    public function __construct(EntityManagerInterface $entityManager, LoggerInterface $logger)
+    public function __construct(EntityManagerInterface $entityManager,
+                                private FileRepository $fileRepository,
+                                LoggerInterface        $logger)
     {
         $this->entityManager = $entityManager;
-        $this->fileRepository = $entityManager->getRepository(File::class);
         $this->logger = $logger;
     }
 
@@ -33,8 +33,7 @@ class AppService
         $finder = new Finder();
         $finder
             ->ignoreVCSIgnored(true)
-            ->in($directory)
-        ;
+            ->in($directory);
 //        foreach ($finder->directories() as $directory) {
 //            dd($directory);
 //        }
@@ -54,7 +53,6 @@ class AppService
                 ->setPath($fileInfo->getRelativePathname())
                 ->setName($name)
             ;
-//            dd($fileInfo->getRelativePath(), $fileInfo->getRealPath(), $fileInfo);
 
             if ($parentName = $fileInfo->getRelativePath()) {
                 // symbolic links, like base-bundle, don't work right
@@ -80,8 +78,7 @@ class AppService
             } else {
                 $f
                     ->setIsDir(false)
-                    ->setName($fileInfo->getFilename())
-                ;
+                    ->setName($fileInfo->getFilename());
                 $this->logger->info(sprintf("Adding %s to %s", $f->getName(), $f->getParent()));
             }
         }
