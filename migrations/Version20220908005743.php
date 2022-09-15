@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20220726155128 extends AbstractMigration
+final class Version20220908005743 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -52,18 +52,18 @@ final class Version20220726155128 extends AbstractMigration
     {
         // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE SCHEMA public');
-        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB4D2A7E12');
-        $this->addSql('ALTER TABLE file DROP CONSTRAINT FK_8C9F3610727ACA70');
-        $this->addSql('ALTER TABLE file DROP CONSTRAINT FK_8C9F361079066886');
-        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB79066886');
-        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB727ACA70');
-        $this->addSql('ALTER TABLE topic DROP CONSTRAINT FK_9D40DE1B727ACA70');
-        $this->addSql('ALTER TABLE topic DROP CONSTRAINT FK_9D40DE1B79066886');
-        $this->addSql('ALTER TABLE building DROP CONSTRAINT FK_E16F61D4A76ED395');
         $this->addSql('DROP SEQUENCE building_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE file_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE location_id_seq CASCADE');
         $this->addSql('DROP SEQUENCE users_id_seq CASCADE');
+        $this->addSql('ALTER TABLE building DROP CONSTRAINT FK_E16F61D4A76ED395');
+        $this->addSql('ALTER TABLE file DROP CONSTRAINT FK_8C9F3610727ACA70');
+        $this->addSql('ALTER TABLE file DROP CONSTRAINT FK_8C9F361079066886');
+        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB79066886');
+        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB727ACA70');
+        $this->addSql('ALTER TABLE location DROP CONSTRAINT FK_5E9E89CB4D2A7E12');
+        $this->addSql('ALTER TABLE topic DROP CONSTRAINT FK_9D40DE1B727ACA70');
+        $this->addSql('ALTER TABLE topic DROP CONSTRAINT FK_9D40DE1B79066886');
         $this->addSql('DROP TABLE building');
         $this->addSql('DROP TABLE file');
         $this->addSql('DROP TABLE location');

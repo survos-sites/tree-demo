@@ -15,11 +15,6 @@ class TopicType extends AbstractType
             ->add('code')
             ->add('name')
             ->add('description')
-            ->add('lft')
-            ->add('lvl')
-            ->add('rgt')
-            ->add('root')
-            ->add('parent')
         ;
     }
 

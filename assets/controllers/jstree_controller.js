@@ -7,7 +7,7 @@ import 'jstree';
 export default class extends Controller {
 
     static values = {
-        msg: {type: String, default: '/bill'},
+        msg: {type: String, default: ''},
         plugins: {type: Array, default: ['checkbox', 'theme', "types", 'sort']},
         types: {type: Object, default: {}}
         // interval: { type: Number, default: 5 },
@@ -17,6 +17,14 @@ export default class extends Controller {
     static targets = ["html", "ajax"]
 
     connect() {
+
+        let msg = 'Hello from controller ' + this.identifier;
+        console.error(msg);
+        // this.html(this.element);
+        // // this.element.textContent = msg;
+        // if (this.hasHtmlTarget) {
+        //     this.html(this.htmlTarget);
+        // }
         console.log('hello from ' + this.identifier);
         // this.element.textContent = msg;
         if (this.hasHtmlTarget) {
@@ -24,6 +32,10 @@ export default class extends Controller {
         } else {
             console.error('Warning: no HTML target, so not rendered.');
         }
+
+        // window.addEventListener('jstree', (ev, data) => {
+        //     console.log("Event received", ev.type);
+        // })
     }
 
     search(event) {
@@ -42,6 +54,28 @@ export default class extends Controller {
                 console.warn('ready.jstree fired, so opening_all');
                 // $element.jstree('open_all');
             })
+    }
+
+    onChanged(event, data) {
+        var i, j, r = [];
+        let instance = data.instance;
+        for(i = 0, j = data.selected.length; i < j; i++) {
+            let node = instance.get_node(data.selected[i]);
+            // r.push(instance.data('path'));
+            console.log(node.data.path);
+            // instance.jstree().open(); // not sure how to do this.
+
+            window.dispatchEvent(new CustomEvent('jstree', {
+                detail: {
+                    data: node.data,
+                    msg: event.type}
+                }
+                ));
+            // let jsTreeData = JSON.parse(node.data.jstree);
+            // console.warn(jsTreeData, jsTreeData.path);
+        }
+        // console.log(r);
+        // console.log($(data).dataset);
     }
 
 

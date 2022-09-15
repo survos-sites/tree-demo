@@ -1,0 +1,17 @@
+survos_bootstrap:
+  auth_menu: true
+  routes:
+    login: app_login
+    logout: app_logout
+    register: app_register
+    offcanvas: app_settings
+  options:
+    allow_login: true
+    offcanvas:
+  menu_options:
+    project: null
+    projectCore: null
+    frontPage: false
+    showAppMenu: true
+
+
