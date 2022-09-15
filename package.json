@@ -1,18 +1,22 @@
 {
     "devDependencies": {
+        "@babel/core": "^7.19.1",
+        "@babel/preset-env": "^7.19.1",
         "@hotwired/stimulus": "^3.0.0",
         "@hotwired/turbo": "^7.0.1",
         "@survos/tree-bundle": "file:vendor/survos/tree-bundle/assets",
         "@survos/workflow-helper-bundle": "file:vendor/survos/workflow-helper-bundle/assets",
         "@symfony/stimulus-bridge": "^3.2.0",
         "@symfony/ux-chartjs": "file:vendor/symfony/ux-chartjs/Resources/assets",
-        "@symfony/webpack-encore": "^3.0.0",
+        "@symfony/webpack-encore": "^4.0.0",
         "chart.js": "^3.4.1",
         "core-js": "^3.23.0",
         "regenerator-runtime": "^0.13.9",
         "sass": "^1.50.0",
         "sass-loader": "^13.0.2",
         "stimulus": "^3.0.1",
+        "webpack": "^5.74.0",
+        "webpack-cli": "^4.10.0",
         "webpack-notifier": "^1.15.0"
     },
     "license": "UNLICENSED",
