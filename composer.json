@@ -11,7 +11,7 @@
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^2.8",
-        "doctrine/persistence": "^2.2",
+        "doctrine/persistence": "^3.0.0",
         "friendsofsymfony/jsrouting-bundle": "^3.1.1",
         "league/commonmark": "^2.3",
         "nelmio/cors-bundle": "^2.1",
@@ -142,10 +142,6 @@
         }
     },
     "repositories": {
-        "tree": {
-            "type": "path",
-            "url": "//home/tac/survos/bundles/tree-bundle"
-        }
     },
     "minimum-stability": "dev",
     "prefer-stable": true
