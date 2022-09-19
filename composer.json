@@ -20,7 +20,7 @@
         "stof/doctrine-extensions-bundle": "^1.4",
         "survos/bootstrap-bundle": "*@dev",
         "survos/inspection-bundle": "*@dev",
-        "survos/tree-bundle": "*@dev",
+        "survos/tree-bundle": "^1.2.0",
         "survos/workflow-helper-bundle": "^2.0",
         "symfony/asset": "^6.0",
         "symfony/console": "^6.0",
@@ -51,7 +51,7 @@
         "symfony/web-link": "^6.0",
         "symfony/webpack-encore-bundle": "^1.14",
         "symfony/yaml": "^6.0",
-        "tacman/twig-tree-tag": "^2.0",
+        "tacman/twig-tree-tag": "^v3.0.0",
         "twig/cssinliner-extra": "^3.0",
         "twig/extra-bundle": "^2.12|^3.0",
         "twig/inky-extra": "^3.0",
@@ -143,6 +143,5 @@
     },
     "repositories": {
     },
-    "minimum-stability": "dev",
     "prefer-stable": true
 }
