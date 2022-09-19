@@ -1,5 +1,8 @@
 <?php
 
+// see https://symfony.com/blog/new-in-symfony-5-1-single-command-applications
+// and https://github.com/zenstruck/console-extra
+
 namespace App\Command;
 
 use App\Services\TopicsService;
