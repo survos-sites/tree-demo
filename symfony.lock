@@ -319,6 +319,9 @@
     "survos/core-bundle": {
         "version": "1.0.7"
     },
+    "survos/crawler-bundle": {
+        "version": "dev-main"
+    },
     "survos/inspection-bundle": {
         "version": "dev-main"
     },

@@ -19,6 +19,7 @@
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
         "survos/bootstrap-bundle": "*@dev",
+        "survos/crawler-bundle": "*@dev",
         "survos/inspection-bundle": "*@dev",
         "survos/tree-bundle": "^1.2.0",
         "survos/workflow-helper-bundle": "^2.0",
@@ -138,10 +139,15 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "^6.1"
+            "require": "^6.1",
+            "endpoint": ["/home/tac/survos/survos/packages/recipes/index.json", "https://api.github.com/repos/survos/recipes/contents/index.json", "flex://defaults"]
         }
     },
     "repositories": {
+        "crawler": {
+            "type": "path",
+            "url": "//home/tac/survos/survos/packages/crawler-bundle"
+        }
     },
     "prefer-stable": true
 }

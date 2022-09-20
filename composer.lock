@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6abc92e168f795a386bdf3d166287094",
+    "content-hash": "438f7c74676c62fa216eb33b5a35756f",
     "packages": [
         {
             "name": "api-platform/core",
@@ -1807,6 +1807,61 @@
             "time": "2022-06-18T20:57:19+00:00"
         },
         {
+            "name": "fabpot/goutte",
+            "version": "v4.0.2",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/FriendsOfPHP/Goutte.git",
+                "reference": "f51940fbe0db060bc4fc0b3f1d19bc4ff3054b17"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/FriendsOfPHP/Goutte/zipball/f51940fbe0db060bc4fc0b3f1d19bc4ff3054b17",
+                "reference": "f51940fbe0db060bc4fc0b3f1d19bc4ff3054b17",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.1.3",
+                "symfony/browser-kit": "^4.4|^5.0|^6.0",
+                "symfony/css-selector": "^4.4|^5.0|^6.0",
+                "symfony/dom-crawler": "^4.4|^5.0|^6.0",
+                "symfony/http-client": "^4.4|^5.0|^6.0",
+                "symfony/mime": "^4.4|^5.0|^6.0"
+            },
+            "require-dev": {
+                "symfony/phpunit-bridge": "^5.0|^6.0"
+            },
+            "type": "application",
+            "autoload": {
+                "psr-4": {
+                    "Goutte\\": "Goutte"
+                },
+                "exclude-from-classmap": [
+                    "Goutte/Tests"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "A simple PHP Web Scraper",
+            "homepage": "https://github.com/FriendsOfPHP/Goutte",
+            "keywords": [
+                "scraper"
+            ],
+            "support": {
+                "issues": "https://github.com/FriendsOfPHP/Goutte/issues",
+                "source": "https://github.com/FriendsOfPHP/Goutte/tree/v4.0.2"
+            },
+            "time": "2021-12-17T17:15:01+00:00"
+        },
+        {
             "name": "fig/link-util",
             "version": "1.2.0",
             "source": {
@@ -2564,6 +2619,75 @@
                 "source": "https://github.com/lorenzo/pinky/tree/1.0.6"
             },
             "time": "2022-03-17T12:11:56+00:00"
+        },
+        {
+            "name": "masterminds/html5",
+            "version": "2.7.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/Masterminds/html5-php.git",
+                "reference": "897eb517a343a2281f11bc5556d6548db7d93947"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/897eb517a343a2281f11bc5556d6548db7d93947",
+                "reference": "897eb517a343a2281f11bc5556d6548db7d93947",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-dom": "*",
+                "ext-libxml": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8.35 || ^5.7.21 || ^6 || ^7"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.7-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Masterminds\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matt Butcher",
+                    "email": "technosophos@gmail.com"
+                },
+                {
+                    "name": "Matt Farina",
+                    "email": "matt@mattfarina.com"
+                },
+                {
+                    "name": "Asmir Mustafic",
+                    "email": "goetas@gmail.com"
+                }
+            ],
+            "description": "An HTML5 parser and serializer.",
+            "homepage": "http://masterminds.github.io/html5-php",
+            "keywords": [
+                "HTML5",
+                "dom",
+                "html",
+                "parser",
+                "querypath",
+                "serializer",
+                "xml"
+            ],
+            "support": {
+                "issues": "https://github.com/Masterminds/html5-php/issues",
+                "source": "https://github.com/Masterminds/html5-php/tree/2.7.6"
+            },
+            "time": "2022-08-18T16:18:26+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -3627,16 +3751,16 @@
         },
         {
             "name": "survos/core-bundle",
-            "version": "v1.2.3",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosCoreBundle.git",
-                "reference": "e52bb2aab564036b27a9498868d6ec176e80fa81"
+                "reference": "ffebaffd78b308479fad0fbd166758bb8a2b0f0e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosCoreBundle/zipball/e52bb2aab564036b27a9498868d6ec176e80fa81",
-                "reference": "e52bb2aab564036b27a9498868d6ec176e80fa81",
+                "url": "https://api.github.com/repos/survos/SurvosCoreBundle/zipball/ffebaffd78b308479fad0fbd166758bb8a2b0f0e",
+                "reference": "ffebaffd78b308479fad0fbd166758bb8a2b0f0e",
                 "shasum": ""
             },
             "require": {
@@ -3649,11 +3773,21 @@
                 "twig/twig": "^3.4"
             },
             "conflict": {
-                "survos/barcode-bundle": "<1.2.3",
-                "survos/faker-bundle": "<1.2.3",
-                "survos/first-package": "<1.2.3",
-                "survos/second-package": "<1.2.3",
-                "survos/tree-bundle": "<1.2.3"
+                "survos/api-grid-bundle": "<1.2.6",
+                "survos/auth-bundle": "<1.2.6",
+                "survos/barcode-bundle": "<1.2.6",
+                "survos/bootstrap-bundle": "<1.2.6",
+                "survos/crawler-bundle": "<1.2.6",
+                "survos/doc-bundle": "<1.2.6",
+                "survos/faker-bundle": "<1.2.6",
+                "survos/first-package": "<1.2.6",
+                "survos/grid-bundle": "<1.2.6",
+                "survos/html-prettify-bundle": "<1.2.6",
+                "survos/inspection-bundle": "<1.2.6",
+                "survos/maker-bundle": "<1.2.6",
+                "survos/second-package": "<1.2.6",
+                "survos/tree-bundle": "<1.2.6",
+                "survos/workflow-helper-bundle": "<1.2.6"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.8",
@@ -3688,32 +3822,106 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/SurvosCoreBundle/issues",
-                "source": "https://github.com/survos/SurvosCoreBundle/tree/v1.2.3"
+                "source": "https://github.com/survos/SurvosCoreBundle/tree/1.2.6"
             },
-            "time": "2022-09-19T14:54:53+00:00"
+            "time": "2022-09-19T17:31:46+00:00"
+        },
+        {
+            "name": "survos/crawler-bundle",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "//home/tac/survos/survos/packages/crawler-bundle",
+                "reference": "cb166e9727de62f975708a49f90ee54553b16963"
+            },
+            "require": {
+                "fabpot/goutte": "^4.0",
+                "php": "^8.1",
+                "symfony/config": "^6.1.0",
+                "symfony/dependency-injection": "^6.1.0",
+                "symfony/http-kernel": "^6.1.0",
+                "symfony/stopwatch": "^6.1"
+            },
+            "conflict": {
+                "survos/api-grid-bundle": "<1.2.6",
+                "survos/auth-bundle": "<1.2.6",
+                "survos/barcode-bundle": "<1.2.6",
+                "survos/bootstrap-bundle": "<1.2.6",
+                "survos/core-bundle": "<1.2.6",
+                "survos/doc-bundle": "<1.2.6",
+                "survos/faker-bundle": "<1.2.6",
+                "survos/first-package": "<1.2.6",
+                "survos/grid-bundle": "<1.2.6",
+                "survos/html-prettify-bundle": "<1.2.6",
+                "survos/inspection-bundle": "<1.2.6",
+                "survos/maker-bundle": "<1.2.6",
+                "survos/second-package": "<1.2.6",
+                "survos/tree-bundle": "<1.2.6",
+                "survos/workflow-helper-bundle": "<1.2.6"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "symfony": {
+                    "require": "^6.1"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Survos\\CrawlerBundle\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "Provides a way to create tests that crawl a site",
+            "transport-options": {
+                "relative": false
+            }
         },
         {
             "name": "survos/inspection-bundle",
-            "version": "v1.0.1",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosInspectionBundle.git",
-                "reference": "70d8e6a9ca6770f588d6fda9707a4a2c3781692e"
+                "reference": "3913e834820f7b722aaed3e7ca606096099e4ef5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosInspectionBundle/zipball/70d8e6a9ca6770f588d6fda9707a4a2c3781692e",
-                "reference": "70d8e6a9ca6770f588d6fda9707a4a2c3781692e",
+                "url": "https://api.github.com/repos/survos/SurvosInspectionBundle/zipball/3913e834820f7b722aaed3e7ca606096099e4ef5",
+                "reference": "3913e834820f7b722aaed3e7ca606096099e4ef5",
                 "shasum": ""
             },
             "require": {
-                "api-platform/core": "^2.7||^3.0",
+                "api-platform/core": "^2.7 || ^3.0",
                 "php": "^8.1",
-                "survos/core-bundle": "^1.0",
-                "symfony/config": "^6.1",
-                "symfony/dependency-injection": "^6.1",
-                "symfony/http-kernel": "^6.1",
+                "survos/core-bundle": "^1.2.6",
+                "symfony/config": "^6.1.0",
+                "symfony/dependency-injection": "^6.1.0",
+                "symfony/http-kernel": "^6.1.0",
                 "twig/twig": "^3.4"
+            },
+            "conflict": {
+                "survos/api-grid-bundle": "<1.2.6",
+                "survos/auth-bundle": "<1.2.6",
+                "survos/barcode-bundle": "<1.2.6",
+                "survos/bootstrap-bundle": "<1.2.6",
+                "survos/crawler-bundle": "<1.2.6",
+                "survos/doc-bundle": "<1.2.6",
+                "survos/faker-bundle": "<1.2.6",
+                "survos/first-package": "<1.2.6",
+                "survos/grid-bundle": "<1.2.6",
+                "survos/html-prettify-bundle": "<1.2.6",
+                "survos/maker-bundle": "<1.2.6",
+                "survos/second-package": "<1.2.6",
+                "survos/tree-bundle": "<1.2.6",
+                "survos/workflow-helper-bundle": "<1.2.6"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.8",
@@ -3722,10 +3930,10 @@
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "1.1-dev"
+                    "dev-main": "1.3-dev"
                 },
                 "symfony": {
-                    "require": "^6.1"
+                    "require": "^6.1.0"
                 }
             },
             "autoload": {
@@ -3746,22 +3954,22 @@
             "description": "Inspects Doctrine entities with APIPlatform attributes",
             "support": {
                 "issues": "https://github.com/survos/SurvosInspectionBundle/issues",
-                "source": "https://github.com/survos/SurvosInspectionBundle/tree/v1.0.1"
+                "source": "https://github.com/survos/SurvosInspectionBundle/tree/1.2.6"
             },
-            "time": "2022-08-02T12:24:23+00:00"
+            "time": "2022-09-19T17:31:46+00:00"
         },
         {
             "name": "survos/tree-bundle",
-            "version": "v1.2.3",
+            "version": "1.2.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosTreeBundle.git",
-                "reference": "fac472c4b626ce32fe0f96ce4744aea31eecc658"
+                "reference": "f4ea90d6c3b39c22f1db6305f3c4408250ba28c0"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosTreeBundle/zipball/fac472c4b626ce32fe0f96ce4744aea31eecc658",
-                "reference": "fac472c4b626ce32fe0f96ce4744aea31eecc658",
+                "url": "https://api.github.com/repos/survos/SurvosTreeBundle/zipball/f4ea90d6c3b39c22f1db6305f3c4408250ba28c0",
+                "reference": "f4ea90d6c3b39c22f1db6305f3c4408250ba28c0",
                 "shasum": ""
             },
             "require": {
@@ -3770,21 +3978,30 @@
                 "doctrine/orm": "^2.12",
                 "doctrine/persistence": "^2.0 || ^3.0",
                 "php": "^8.1",
-                "survos/core-bundle": "^1.2.3",
-                "survos/inspection-bundle": "^1.0",
+                "survos/core-bundle": "^1.2.6",
+                "survos/inspection-bundle": "^1.2.6",
                 "symfony/config": "^6.1.0",
                 "symfony/dependency-injection": "^6.1.0",
                 "symfony/http-kernel": "^6.1.0",
                 "symfony/options-resolver": "^6.1.0",
-                "symfony/ux-twig-component": "^2.2",
+                "symfony/ux-twig-component": "^2.3",
                 "tacman/twig-tree-tag": "^v3.0.0",
                 "twig/twig": "^3.4"
             },
             "conflict": {
-                "survos/barcode-bundle": "<1.2.3",
-                "survos/faker-bundle": "<1.2.3",
-                "survos/first-package": "<1.2.3",
-                "survos/second-package": "<1.2.3"
+                "survos/api-grid-bundle": "<1.2.6",
+                "survos/auth-bundle": "<1.2.6",
+                "survos/barcode-bundle": "<1.2.6",
+                "survos/bootstrap-bundle": "<1.2.6",
+                "survos/crawler-bundle": "<1.2.6",
+                "survos/doc-bundle": "<1.2.6",
+                "survos/faker-bundle": "<1.2.6",
+                "survos/first-package": "<1.2.6",
+                "survos/grid-bundle": "<1.2.6",
+                "survos/html-prettify-bundle": "<1.2.6",
+                "survos/maker-bundle": "<1.2.6",
+                "survos/second-package": "<1.2.6",
+                "survos/workflow-helper-bundle": "<1.2.6"
             },
             "require-dev": {
                 "phpstan/phpstan": "^1.8",
@@ -3826,9 +4043,9 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/SurvosTreeBundle/issues",
-                "source": "https://github.com/survos/SurvosTreeBundle/tree/v1.2.3"
+                "source": "https://github.com/survos/SurvosTreeBundle/tree/1.2.6"
             },
-            "time": "2022-09-19T14:54:50+00:00"
+            "time": "2022-09-19T17:31:46+00:00"
         },
         {
             "name": "survos/workflow-helper-bundle",
@@ -3977,6 +4194,77 @@
                 }
             ],
             "time": "2022-04-14T08:23:11+00:00"
+        },
+        {
+            "name": "symfony/browser-kit",
+            "version": "v6.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/browser-kit.git",
+                "reference": "2e3b6a4406c2af963c634d7bd0457402b67dcc56"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/2e3b6a4406c2af963c634d7bd0457402b67dcc56",
+                "reference": "2e3b6a4406c2af963c634d7bd0457402b67dcc56",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=8.1",
+                "symfony/dom-crawler": "^5.4|^6.0"
+            },
+            "require-dev": {
+                "symfony/css-selector": "^5.4|^6.0",
+                "symfony/http-client": "^5.4|^6.0",
+                "symfony/mime": "^5.4|^6.0",
+                "symfony/process": "^5.4|^6.0"
+            },
+            "suggest": {
+                "symfony/process": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\BrowserKit\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Simulates the behavior of a web browser, allowing you to make requests, click on links and submit forms programmatically",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/browser-kit/tree/v6.1.3"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-07-27T15:50:51+00:00"
         },
         {
             "name": "symfony/cache",
@@ -4659,6 +4947,76 @@
                 }
             ],
             "time": "2022-07-29T07:42:06+00:00"
+        },
+        {
+            "name": "symfony/dom-crawler",
+            "version": "v6.1.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/dom-crawler.git",
+                "reference": "8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c",
+                "reference": "8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c",
+                "shasum": ""
+            },
+            "require": {
+                "masterminds/html5": "^2.6",
+                "php": ">=8.1",
+                "symfony/polyfill-ctype": "~1.8",
+                "symfony/polyfill-mbstring": "~1.0"
+            },
+            "require-dev": {
+                "symfony/css-selector": "^5.4|^6.0"
+            },
+            "suggest": {
+                "symfony/css-selector": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Component\\DomCrawler\\": ""
+                },
+                "exclude-from-classmap": [
+                    "/Tests/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Eases DOM navigation for HTML and XML documents",
+            "homepage": "https://symfony.com",
+            "support": {
+                "source": "https://github.com/symfony/dom-crawler/tree/v6.1.4"
+            },
+            "funding": [
+                {
+                    "url": "https://symfony.com/sponsor",
+                    "type": "custom"
+                },
+                {
+                    "url": "https://github.com/fabpot",
+                    "type": "github"
+                },
+                {
+                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
+                    "type": "tidelift"
+                }
+            ],
+            "time": "2022-08-04T19:19:00+00:00"
         },
         {
             "name": "symfony/dotenv",
@@ -10433,75 +10791,6 @@
             "time": "2015-07-03T09:03:53+00:00"
         },
         {
-            "name": "masterminds/html5",
-            "version": "2.7.6",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "897eb517a343a2281f11bc5556d6548db7d93947"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/897eb517a343a2281f11bc5556d6548db7d93947",
-                "reference": "897eb517a343a2281f11bc5556d6548db7d93947",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-dom": "*",
-                "ext-libxml": "*",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7.21 || ^6 || ^7"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "2.7-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Masterminds\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Matt Butcher",
-                    "email": "technosophos@gmail.com"
-                },
-                {
-                    "name": "Matt Farina",
-                    "email": "matt@mattfarina.com"
-                },
-                {
-                    "name": "Asmir Mustafic",
-                    "email": "goetas@gmail.com"
-                }
-            ],
-            "description": "An HTML5 parser and serializer.",
-            "homepage": "http://masterminds.github.io/html5-php",
-            "keywords": [
-                "HTML5",
-                "dom",
-                "html",
-                "parser",
-                "querypath",
-                "serializer",
-                "xml"
-            ],
-            "support": {
-                "issues": "https://github.com/Masterminds/html5-php/issues",
-                "source": "https://github.com/Masterminds/html5-php/tree/2.7.6"
-            },
-            "time": "2022-08-18T16:18:26+00:00"
-        },
-        {
             "name": "myclabs/deep-copy",
             "version": "1.11.0",
             "source": {
@@ -12637,52 +12926,68 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosMakerBundle.git",
-                "reference": "c7e2232dfb909f1633c118b191ebbb1b8d205216"
+                "reference": "efa62ca47186434fac4da881e3256196ca887ca2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/SurvosMakerBundle/zipball/c7e2232dfb909f1633c118b191ebbb1b8d205216",
-                "reference": "c7e2232dfb909f1633c118b191ebbb1b8d205216",
+                "url": "https://api.github.com/repos/survos/SurvosMakerBundle/zipball/efa62ca47186434fac4da881e3256196ca887ca2",
+                "reference": "efa62ca47186434fac4da881e3256196ca887ca2",
                 "shasum": ""
             },
             "require": {
-                "php": ">= 8.0",
-                "symfony/config": "^6.0",
-                "symfony/console": "^6.0",
-                "symfony/options-resolver": "^6.0",
-                "symfony/string": "^6.0",
-                "symfony/workflow": "^6.0",
+                "php": "^8.1",
+                "symfony/config": "^6.1.0",
+                "symfony/console": "^6.1.0",
+                "symfony/options-resolver": "^6.1.0",
+                "symfony/string": "^6.1.0",
+                "symfony/workflow": "^6.1.0",
                 "twig/twig": "^3.4"
             },
+            "conflict": {
+                "survos/api-grid-bundle": "<1.2.6",
+                "survos/auth-bundle": "<1.2.6",
+                "survos/barcode-bundle": "<1.2.6",
+                "survos/bootstrap-bundle": "<1.2.6",
+                "survos/core-bundle": "<1.2.6",
+                "survos/crawler-bundle": "<1.2.6",
+                "survos/doc-bundle": "<1.2.6",
+                "survos/faker-bundle": "<1.2.6",
+                "survos/first-package": "<1.2.6",
+                "survos/grid-bundle": "<1.2.6",
+                "survos/html-prettify-bundle": "<1.2.6",
+                "survos/inspection-bundle": "<1.2.6",
+                "survos/second-package": "<1.2.6",
+                "survos/tree-bundle": "<1.2.6",
+                "survos/workflow-helper-bundle": "<1.2.6"
+            },
             "require-dev": {
-                "doctrine/doctrine-bundle": "^2.0",
-                "doctrine/orm": "^2.3",
+                "doctrine/doctrine-bundle": "^2.7",
+                "doctrine/orm": "^2.12",
                 "haydenpierce/class-finder": "^0.4.3",
-                "phpstan/phpstan": "^1.4",
+                "phpstan/phpstan": "^1.8",
                 "rector/rector": "^0.13.9",
                 "sensio/framework-extra-bundle": "^6.2",
                 "squizlabs/php_codesniffer": "^3.7",
-                "survos/bootstrap-bundle": "^2.0",
-                "symfony/form": ">= 6.0",
-                "symfony/http-client": "^6.0",
+                "symfony/form": "^6.1.0",
+                "symfony/http-client": "^6.1.0",
                 "symfony/maker-bundle": "^1.38",
-                "symfony/phpunit-bridge": "^6.0",
+                "symfony/phpunit-bridge": "^6.1.0",
                 "symfony/polyfill-php80": "^1.16.0",
-                "symfony/process": "^6.0",
-                "symfony/security-core": "^6.0",
-                "symfony/security-csrf": "^6.0",
-                "symfony/twig-bundle": ">= 6.0",
-                "symfony/validator": ">= 6.0",
-                "symfony/yaml": "^6.0"
+                "symfony/process": "^6.1.0",
+                "symfony/security-core": "^6.1.0",
+                "symfony/security-csrf": "^6.1.0",
+                "symfony/twig-bundle": "^6.1.0",
+                "symfony/validator": "^6.1.0",
+                "symfony/yaml": "^6.1.0"
             },
             "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.1.0-dev"
+                    "dev-main": "1.3-dev"
                 },
                 "symfony": {
-                    "require": "^6.1",
+                    "require": "^6.1.0",
                     "allow-contrib": "true",
                     "id": "maker-bundle.survos.com"
                 }
@@ -12712,78 +13017,7 @@
                 "issues": "https://github.com/survos/SurvosMakerBundle/issues",
                 "source": "https://github.com/survos/SurvosMakerBundle/tree/main"
             },
-            "time": "2022-09-04T17:33:57+00:00"
-        },
-        {
-            "name": "symfony/browser-kit",
-            "version": "v6.1.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/browser-kit.git",
-                "reference": "2e3b6a4406c2af963c634d7bd0457402b67dcc56"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/browser-kit/zipball/2e3b6a4406c2af963c634d7bd0457402b67dcc56",
-                "reference": "2e3b6a4406c2af963c634d7bd0457402b67dcc56",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.1",
-                "symfony/dom-crawler": "^5.4|^6.0"
-            },
-            "require-dev": {
-                "symfony/css-selector": "^5.4|^6.0",
-                "symfony/http-client": "^5.4|^6.0",
-                "symfony/mime": "^5.4|^6.0",
-                "symfony/process": "^5.4|^6.0"
-            },
-            "suggest": {
-                "symfony/process": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\BrowserKit\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Simulates the behavior of a web browser, allowing you to make requests, click on links and submit forms programmatically",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/browser-kit/tree/v6.1.3"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-07-27T15:50:51+00:00"
+            "time": "2022-09-20T01:37:32+00:00"
         },
         {
             "name": "symfony/debug-bundle",
@@ -12862,76 +13096,6 @@
                 }
             ],
             "time": "2022-07-20T13:46:29+00:00"
-        },
-        {
-            "name": "symfony/dom-crawler",
-            "version": "v6.1.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/symfony/dom-crawler.git",
-                "reference": "8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/symfony/dom-crawler/zipball/8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c",
-                "reference": "8cb4c6e6c8d30c26f70529ed5e50d79a09576c0c",
-                "shasum": ""
-            },
-            "require": {
-                "masterminds/html5": "^2.6",
-                "php": ">=8.1",
-                "symfony/polyfill-ctype": "~1.8",
-                "symfony/polyfill-mbstring": "~1.0"
-            },
-            "require-dev": {
-                "symfony/css-selector": "^5.4|^6.0"
-            },
-            "suggest": {
-                "symfony/css-selector": ""
-            },
-            "type": "library",
-            "autoload": {
-                "psr-4": {
-                    "Symfony\\Component\\DomCrawler\\": ""
-                },
-                "exclude-from-classmap": [
-                    "/Tests/"
-                ]
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Fabien Potencier",
-                    "email": "fabien@symfony.com"
-                },
-                {
-                    "name": "Symfony Community",
-                    "homepage": "https://symfony.com/contributors"
-                }
-            ],
-            "description": "Eases DOM navigation for HTML and XML documents",
-            "homepage": "https://symfony.com",
-            "support": {
-                "source": "https://github.com/symfony/dom-crawler/tree/v6.1.4"
-            },
-            "funding": [
-                {
-                    "url": "https://symfony.com/sponsor",
-                    "type": "custom"
-                },
-                {
-                    "url": "https://github.com/fabpot",
-                    "type": "github"
-                },
-                {
-                    "url": "https://tidelift.com/funding/github/packagist/symfony/symfony",
-                    "type": "tidelift"
-                }
-            ],
-            "time": "2022-08-04T19:19:00+00:00"
         },
         {
             "name": "symfony/maker-bundle",
@@ -13242,6 +13406,7 @@
     "minimum-stability": "stable",
     "stability-flags": {
         "survos/bootstrap-bundle": 20,
+        "survos/crawler-bundle": 20,
         "survos/inspection-bundle": 20,
         "roave/security-advisories": 20,
         "hgtan/symfony-pre-commit": 20,
