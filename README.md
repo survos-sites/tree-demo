@@ -2,6 +2,7 @@
 
 ## Quick Start
 
+```bash
 git clone git@github.com:survos/jstree-demo.git
 cd jstree-demo/
 composer install
@@ -17,6 +18,7 @@ symfony proxy:domain:attach jstree-demo
 symfony server:start -d
 
 # OR php -S localhost:8300 -t public/
+```
 
 
 ## Example
