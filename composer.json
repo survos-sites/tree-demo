@@ -22,7 +22,7 @@
         "survos/crawler-bundle": "*@dev",
         "survos/inspection-bundle": "*@dev",
         "survos/tree-bundle": "^1.2.0",
-        "survos/workflow-helper-bundle": "^2.0",
+        "survos/workflow-helper-bundle": "^1.4",
         "symfony/asset": "^6.0",
         "symfony/console": "^6.0",
         "symfony/dotenv": "^6.0",
@@ -140,13 +140,7 @@
         "symfony": {
             "allow-contrib": true,
             "require": "^6.1",
-            "endpoint": ["/home/tac/survos/survos/packages/recipes/index.json", "https://api.github.com/repos/survos/recipes/contents/index.json", "flex://defaults"]
-        }
-    },
-    "repositories": {
-        "crawler": {
-            "type": "path",
-            "url": "//home/tac/survos/survos/packages/crawler-bundle"
+            "endpoint": ["/home/tac/g/survos/survos/packages/recipes/index.json", "https://api.github.com/repos/survos/recipes/contents/index.json", "flex://defaults"]
         }
     },
     "prefer-stable": true

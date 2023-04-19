@@ -1,5 +1,5 @@
 survos_bootstrap:
-  auth_menu: true
+#  auth_menu: true
   routes:
     login: app_login
     logout: app_logout

@@ -44,7 +44,7 @@ class AppController extends AbstractController
     public function loadTopics(Request $request, TopicsService $topicsService)
     {
             $topicsService->importTopics();
-            return $this->redirectToRoute('app_tree', ['entity' => 'topics']);
+            return $this->redirectToRoute('topic_index', ['entity' => 'topics']);
     }
 
     #[Route(path: '/load-files', name: 'app_load_files')]
@@ -52,7 +52,7 @@ class AppController extends AbstractController
     {
         $directory = $bag->get('kernel.project_dir');
         $appService->importDirectory($directory);
-        return $this->redirectToRoute('app_tree', ['entity' => 'files']);
+        return $this->redirectToRoute('app_repo_files', ['entity' => 'files']);
     }
 
     #[Route(path: '/file-source', name: 'app_file_source')]

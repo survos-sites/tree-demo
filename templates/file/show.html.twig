@@ -40,7 +40,8 @@
     {% endblock %}
 
 {% block tree %}
-    <h1>This is a local test of jstree, NOT using the library</h1>
+    <a href="{{ path('app_load_files') }}">Reload files</a>
+    <h1>This is a local test of jstree stimulus controller, NOT using the bundle library</h1>
     {% set _sc = 'jstree' %}
     <div
             {{ stimulus_controller(_sc, {
