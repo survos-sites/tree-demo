@@ -58,9 +58,9 @@ class BuildingController extends AbstractController
         $url = $router->generate('building_locations', ['buildingId' => $building->getCode()]); // $building->getrp());
         assert($url == $expected, $url . " should be " . $expected );
 
-        $x = $iriConverter->getIriFromResource(Building::class, operation: (new GetCollection())->withClass(Location::class));
-        $x = $iriConverter->getIriFromResource(Location::class, operation: (new GetCollection())->withClass(Building::class));
-        assert($x == '/api/locations', $x);
+        $url = $iriConverter->getIriFromResource(Building::class, operation: (new GetCollection())->withClass(Location::class));
+        assert($url == $expected, $url . " should be " . $expected );
+        $url = $iriConverter->getIriFromResource(Location::class, operation: (new GetCollection())->withClass(Building::class));
 
 
 
