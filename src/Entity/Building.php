@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Metadata\ApiProperty;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
@@ -16,6 +17,7 @@ class Building  implements \Stringable, RouteParametersInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[ApiProperty(identifier: false)]
     private $id;
     #[ORM\ManyToOne(targetEntity: 'App\Entity\User', inversedBy: 'buildings')]
     #[ORM\JoinColumn(nullable: false)]
@@ -24,6 +26,7 @@ class Building  implements \Stringable, RouteParametersInterface
     private $locations;
     #[Gedmo\Slug(fields: ['name'])]
     #[ORM\Column(type: 'string', length: 255)]
+    #[ApiProperty(identifier: true)]
     private $code;
     public function __construct(#[ORM\Column(type: 'string', length: 255)] private ?string $name = null)
     {

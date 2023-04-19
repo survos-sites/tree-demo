@@ -17,6 +17,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
 use Survos\Tree\Traits\TreeTrait;
+use Survos\Tree\TreeInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(
@@ -27,7 +28,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiFilter(PropertyFilter::class)]
 #[Gedmo\Tree(type:"nested")]
 #[ORM\Entity(repositoryClass: TopicRepository::class)]
-class Topic implements \Stringable, RouteParametersInterface
+class Topic implements \Stringable, RouteParametersInterface, TreeInterface
 {
     use TreeTrait;
     use RouteParametersTrait;
@@ -101,44 +102,12 @@ class Topic implements \Stringable, RouteParametersInterface
 
         return $this;
     }
-    public function getParent(): ?Topic
-    {
-        return $this->parent;
-    }
-    public function setParent(?Topic $parent): self
-    {
-        $this->parent = $parent;
-
-        return $this;
-    }
     /**
      * @return Collection|Topic[]
      */
     public function getChildren(): Collection
     {
         return $this->children;
-    }
-    public function addChild(Topic $child): self
-    {
-        if (!$this->children->contains($child)) {
-            $this->children[] = $child;
-            $this->childCount++;
-            $child->setParent($this);
-        }
-
-        return $this;
-    }
-    public function removeChild(Topic $child): self
-    {
-        if ($this->children->removeElement($child)) {
-            $this->childCount--;
-            // set the owning side to null (unless already changed)
-            if ($child->getParent() === $this) {
-                $child->setParent(null);
-            }
-        }
-
-        return $this;
     }
     public function getData(): string|bool
     {
@@ -165,16 +134,5 @@ class Topic implements \Stringable, RouteParametersInterface
         return $this->getCode();
     }
 
-    public function getChildCount(): ?int
-    {
-        return $this->childCount;
-    }
-
-    public function setChildCount(int $childCount): self
-    {
-        $this->childCount = $childCount;
-
-        return $this;
-    }
 
 }

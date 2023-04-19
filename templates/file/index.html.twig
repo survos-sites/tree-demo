@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FileController!{% endblock %}
+    {% block title %}Directory Demo, uses twig-tree-tag{% endblock %}
 
 {% block body %}
 <style>
@@ -9,12 +9,29 @@
 </style>
 
 <div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/tac/survos/demos/jstree-demo/src/Controller/FileController.php'|file_link(0) }}">src/Controller/FileController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/tac/survos/demos/jstree-demo/templates/file/index.html.twig'|file_link(0) }}">templates/file/index.html.twig</a></code></li>
-    </ul>
+    {#{% set _sc = '@survos/tree-bundle/tree' %}#}
+
+
+        <div class="row">
+            <div class="col-md-5">
+                <h3>Component api_tree {{ fileClass }}</h3>
+                <div class="">
+                    {% component api_tree with {
+                        class: fileClass,
+                    } %}
+                    {% endcomponent %}
+                </div>
+            </div>
+            <div class="col-md-7">
+                {% set _sc = 'topic' %}
+                <div {{ stimulus_controller(_sc) }}>
+                    <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>
+                    <div {{ stimulus_target(_sc, 'results') }}>TOPIC results</div>
+                </div>
+            </div>
+        </div>
+
+
 </div>
 {% endblock %}

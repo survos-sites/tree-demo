@@ -1,5 +1,24 @@
 # JS-TREE and Doctrine Tree Extension
 
+## Quick Start
+
+git clone git@github.com:survos/jstree-demo.git
+cd jstree-demo/
+composer install
+yarn install && yarn dev
+bin/console d:database:create
+bin/console d:schema:update --force --complete
+bin/console doctrine:fixtures:load -n
+bin/console app:import-topics 
+bin/console app:load-directory-files  
+
+# 
+symfony proxy:domain:attach jstree-demo
+symfony server:start -d
+
+# OR php -S localhost:8300 -t public/
+
+
 ## Example
 
 https://jstree-symfony-demo.herokuapp.com
@@ -34,9 +53,9 @@ stof_doctrine_extensions:
 ## Create the entity
 
 ```bash
-bin/console make:entity Location
-    code, string, 32
+bin/console make:entity File
     name, string, 80
+    path, string, 80
 ```
 
 Add the tree properties.  Change 'Location' to your class name if necessary.

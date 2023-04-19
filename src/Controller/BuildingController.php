@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use ApiPlatform\Api\IriConverterInterface;
+use ApiPlatform\Metadata\GetCollection;
 use App\Entity\Building;
 use App\Entity\Location;
 use App\Form\BuildingType;
@@ -11,6 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\RouterInterface;
 
 #[Route(path: '/building')]
 class BuildingController extends AbstractController
@@ -44,13 +47,43 @@ class BuildingController extends AbstractController
         ]);
     }
     #[Route(path: '/show/{buildingId}', name: 'building_show', methods: ['GET'])]
-    public function show(Building $building, EntityManagerInterface $entityManager) : Response
+    public function show(Building $building, EntityManagerInterface $entityManager, RouterInterface $router, IriConverterInterface $iriConverter) : Response
     {
+
+        $x = $iriConverter->getIriFromResource(Location::class, operation: new GetCollection());
+        assert($x == '/api/locations');
+
+        // pass context?
+        $expected = sprintf("/api/building/%s/locations", $building->getCode());
+        $url = $router->generate('building_locations', ['buildingId' => $building->getCode()]); // $building->getrp());
+        assert($url == $expected, $url . " should be " . $expected );
+
+        $x = $iriConverter->getIriFromResource(Building::class, operation: (new GetCollection())->withClass(Location::class));
+        $x = $iriConverter->getIriFromResource(Location::class, operation: (new GetCollection())->withClass(Building::class));
+        assert($x == '/api/locations', $x);
+
+
+
+//        $operation = (new GetCollection())->withClass(Location::class);
+//        // hacks...
+//        $url = ($iriConverter->getIriFromResource($building, operation:$operation));
+////        $url = ($iriConverter->getIriFromResource($building, operation:$operation, context: ['building_id' => $building->getId()]));
+//
+////        dd($url, $operation);
+//
+//
+//        $routerProphecy = $this->prophesize(RouterInterface::class);
+//
+//        $routerProphecy->generate($operationName, ['id' => 1], UrlGeneratorInterface::ABS_URL)->shouldBeCalled()->willReturn('/dummies/1/foo');
+
+
         $repo = $entityManager->getRepository(Location::class);
         return $this->render('building/show.html.twig', [
+            'apiUrl' => $url,
             'filter' => [
                 'building' => '/api/buildings/' . $building->getId()
             ],
+
 //            'tree' => $repo->childrenHierarchy( $repo->findOneBy(['name' => $building->getName()]), true,
 //                ['html' => true, 'decorate' => true]  ),
             'building' => $building,

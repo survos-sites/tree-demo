@@ -29,6 +29,8 @@ class TopicsService
     public function importTopics(?string $topicsJsonFile=null)
     {
         if (!$topicsJsonFile) {
+
+            // https://cv.iptc.org/newscodes/mediatopic/?lang=en-US&format=json
             $topicsJsonFile = $this->bag->get('topics_json_file');
         }
 

@@ -18,15 +18,12 @@ use Symfony\Component\Finder\Finder;
 #[AsCommand( 'app:load-directory-files', description: 'Import a directory into a nested tree')]
 class LoadDirectoryFilesCommand extends Command
 {
-    private readonly \App\Repository\FileRepository $fileRepository;
-
     public function __construct(private readonly EntityManagerInterface $em,
                                 private readonly ParameterBagInterface $bag,
                                 private readonly AppService $appService, string $name = null)
     {
         parent::__construct($name);
 
-        $this->fileRepository = $em->getRepository(File::class);
     }
 
     protected function configure()

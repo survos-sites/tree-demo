@@ -4,6 +4,8 @@ namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Serializer\Filter\PropertyFilter;
 use App\Repository\LocationRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -12,6 +14,8 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Survos\Tree\Traits\TreeTrait;
+use Survos\Tree\TreeInterface;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
@@ -21,12 +25,26 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 #[ApiResource(
     normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','rp']],
 )]
-
+#[ApiResource(
+    uriTemplate: '/building/{buildingId}/locations.{_format}',
+    shortName: 'Location',
+    operations: [new GetCollection(
+        name: 'building_locations',
+        normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','rp']],
+    )],
+    uriVariables: [
+        'buildingId' => new Link(
+            fromProperty: 'locations',
+            fromClass: Building::class,
+        ),
+    ],
+)]
 #[ApiFilter(PropertyFilter::class)]
 #[ApiFilter(SearchFilter::class, properties: ['building' => 'exact'])]
-class Location implements \Stringable, RouteParametersInterface
+class Location implements \Stringable, RouteParametersInterface, TreeInterface
 {
     use RouteParametersTrait;
+    use TreeTrait;
 
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -35,15 +53,6 @@ class Location implements \Stringable, RouteParametersInterface
     #[ORM\Column(type: 'string', length: 32)]
     #[Gedmo\Slug(fields: ['name'])]
     private $code;
-    #[ORM\Column(type: 'integer')]
-    #[Gedmo\TreeLeft]
-    private $lft;
-    #[ORM\Column(type: 'integer')]
-    #[Gedmo\TreeLevel]
-    private $lvl;
-    #[ORM\Column(type: 'integer')]
-    #[Gedmo\TreeRight]
-    private $rgt;
     #[ORM\ManyToOne(targetEntity: Location::class)]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
     #[Gedmo\TreeRoot]
@@ -52,16 +61,13 @@ class Location implements \Stringable, RouteParametersInterface
     #[ORM\ManyToOne(targetEntity: 'Location', inversedBy: 'children')]
     #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
     #[Gedmo\TreeParent]
-    private $parent;
-    #[ORM\OneToMany(targetEntity: 'Location', mappedBy: 'parent')]
-    #[ORM\OrderBy(['lft' => 'ASC'])]
-    private $children;
+    protected $parent;
     #[ORM\Column(type: 'integer', nullable: true)]
     private $orderIdx;
     #[Assert\Valid]
-    #[ORM\ManyToOne(targetEntity: \App\Entity\Building::class, inversedBy: 'locations')]
+    #[ORM\ManyToOne(targetEntity: Building::class, inversedBy: 'locations')]
     #[ORM\JoinColumn(nullable: false)]
-    private $building;
+    private Building $building;
     public function __construct(#[ORM\Column(type: 'string', length: 80)] private ?string $name = null)
     {
         $this->children = new ArrayCollection();
@@ -90,36 +96,6 @@ class Location implements \Stringable, RouteParametersInterface
 
         return $this;
     }
-    public function getLft(): ?int
-    {
-        return $this->lft;
-    }
-    public function setLft(int $lft): self
-    {
-        $this->lft = $lft;
-
-        return $this;
-    }
-    public function getLvl(): ?int
-    {
-        return $this->lvl;
-    }
-    public function setLvl(int $lvl): self
-    {
-        $this->lvl = $lvl;
-
-        return $this;
-    }
-    public function getRgt(): ?int
-    {
-        return $this->rgt;
-    }
-    public function setRgt(int $rgt): self
-    {
-        $this->rgt = $rgt;
-
-        return $this;
-    }
     public function getRoot(): ?self
     {
         return $this->root;
@@ -139,43 +115,21 @@ class Location implements \Stringable, RouteParametersInterface
     {
         return $this->getParent() ? $this->getParent()->getId() : null;
     }
-    public function setParent(?self $parent): self
-    {
-        $this->parent = $parent;
-        if ($parent) {
-            $this->parent->getBuilding()->addLocation($this);
-        }
 
+    public function setParent(?TreeInterface $parent): TreeInterface
+    {
+        /** @var Location $parent */
+        if ($parent) {
+            $parent->getBuilding()->addLocation($this);
+        }
+        $this->parent = $parent;
         return $this;
     }
+
+
     /**
      * @return Collection|Location[]
      */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
-    public function addChild(Location $child): self
-    {
-        if (!$this->children->contains($child)) {
-            $this->children[] = $child;
-            $child->setParent($this);
-        }
-
-        return $this;
-    }
-    public function removeChild(Location $child): self
-    {
-        if ($this->children->contains($child)) {
-            $this->children->removeElement($child);
-            // set the owning side to null (unless already changed)
-            if ($child->getParent() === $this) {
-                $child->setParent(null);
-            }
-        }
-
-        return $this;
-    }
     public function getOrderIdx(): ?int
     {
         return $this->orderIdx;

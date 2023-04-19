@@ -1,6 +1,7 @@
 {
     "type": "project",
     "license": "proprietary",
+    "description": "Demo project for jstree and survos/tree-bundle  ",
     "require": {
         "php": ">= 8.1",
         "ext-ctype": "*",
@@ -18,10 +19,10 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "sensio/framework-extra-bundle": "^6.0",
         "stof/doctrine-extensions-bundle": "^1.4",
-        "survos/bootstrap-bundle": "*@dev",
-        "survos/crawler-bundle": "*@dev",
-        "survos/inspection-bundle": "*@dev",
-        "survos/tree-bundle": "^1.2.0",
+        "survos/bootstrap-bundle": "^1.4",
+        "survos/crawler-bundle": "^1.4",
+        "survos/inspection-bundle": "^1.4",
+        "survos/tree-bundle": "*@dev",
         "survos/workflow-helper-bundle": "^1.4",
         "symfony/asset": "^6.0",
         "symfony/console": "^6.0",
@@ -110,6 +111,7 @@
         "pre-update-cmd": "# vendor/bin/phpstan analyse src/Entity",
         "pre-commit-cmd": [
             "bin/console lint:twig",
+            "# add this to endpoint? /home/tac/g/survos/survos/packages/recipes/index.json",
             "php -v"
         ],
         "auto-scripts": {
@@ -139,9 +141,11 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "^6.1",
-            "endpoint": ["/home/tac/g/survos/survos/packages/recipes/index.json", "https://api.github.com/repos/survos/recipes/contents/index.json", "flex://defaults"]
+            "require": "^6.2",
+            "endpoint": ["https://api.github.com/repos/survos/recipes/contents/index.json", "flex://defaults"]
         }
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+    }
 }

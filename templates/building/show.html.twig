@@ -22,8 +22,10 @@
     {{ html_tree|escape }}
     {{ html_tree }}
 
-    <h3>api_tree Component</h3>
+    <h3>api_tree Component with {{  apiUrl }}</h3>
     {% component api_tree with {
+        apiUrl: apiUrl,
+        caller: 'caller?',
         class: 'App\\Entity\\Location',
     } %}
     {% endcomponent %}
@@ -40,8 +42,8 @@
     {% endcomponent %}
 
 {% set _controller = '@survos/tree-bundle/api_tree' %}
-{% set apiUrl = path('api_locations_get_collection') %}
-<h3>AJAX Tree, using {{ _controller }}</h3>
+{#{% set apiUrl = path('api_locations_get_collection') %}#}
+<h3>AJAX Tree, using {{ _controller }} and {{ apiUrl }}</h3>
 <div
 {{ stimulus_controller(_controller, {
     apiCall: apiUrl,

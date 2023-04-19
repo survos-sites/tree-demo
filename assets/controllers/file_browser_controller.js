@@ -20,7 +20,7 @@ export default class extends Controller {
             let data = ev.detail.data;
             this.titleTarget.innerHTML = data.path;
 
-            if (data.type == 'dir') {
+            if (data.type === 'dir') {
                 this.contentTarget.innerHTML = data.path + ' is a directory';
                 return;
             }
