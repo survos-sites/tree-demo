@@ -5,13 +5,43 @@
 {% block body %}
 
     <h1>Survos Tree Bundle</h1>
-    <div>
-        Grab README.me from the bundle?  Or...
-    </div>
+    See https://stackoverflow.com/questions/8326482/how-to-render-a-tree-in-twig for the solution using macros
+    {% set food = [
+        {name: 'fruit', children: [
+            {name: 'apple', children: [
+                {name: 'Granny Smith'},
+                {name: 'Gala'},
+                {name: 'Fuji'},
+            ]},
+            {name: 'banana'}
+        ]},
+        {name: 'veggies', children: [
+            {name: 'peas'},
+            {name: 'carrots'},
+            {name: 'beets'}
+        ]},
+
+    ] %}
+
+    <h2>Food Tree</h2>
+    {% set _sc = '@survos/tree-bundle/tree' %}
+<div {{ stimulus_controller(_sc) }} {{ stimulus_target(_sc, 'html') }}>
+    {% tree item in food %}
+
+        {% if treeloop.first %}<ul>{% endif %}
+        <li>
+            {{ item.name }}
+            {% subtree item.children|default([]) %}
+        </li>
+        {% if treeloop.last %}</ul>{% endif %}
+    {% endtree %}
+</div>
 
     <h2>A Stimulus Controller</h2>
     <div>
-        At the most basic level, you can turn any tree into a dynamic tree by using the stimulus controller.  It's a bit of a yawn, but it gives developers a very fast way to implement it.  It requires you already have an unordered list.  In this case, we're just copying from the jstree documentation.
+        At the most basic level, you can turn any tree into a dynamic tree by using the stimulus controller. It's a bit
+        of a yawn, but it gives developers a very fast way to implement it. It requires you already have an unordered
+        list. In this case, we're just copying from the jstree documentation.
     </div>
     {{ component('divider') }}
 

@@ -1,8 +1,8 @@
 {% extends 'layout.html.twig' %}
 
-{#{% set _sc = '@survos/tree-bundle/tree' %}#}
+{# {% set _sc = '@survos/tree-bundle/tree' %} #}
 
-{% block title %}{{ _self}} Demo, uses twig-tree-tag{% endblock %}
+{% block title %}{{ _self }} Demo, uses twig-tree-tag{% endblock %}
 
 {% block body %}
     <span class="bi-alarm"></span>
@@ -14,11 +14,11 @@
         {{ 'files.description'|trans|markdown_to_html }}
     </div>
 
-{#    {% set _sc = 'topic' %}#}
-{#    <div {{ stimulus_controller(_sc) }}>#}
-{#        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3>#}
-{#        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div>#}
-{#    </div>#}
+    {#    {% set _sc = 'topic' %} #}
+    {#    <div {{ stimulus_controller(_sc) }}> #}
+    {#        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3> #}
+    {#        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div> #}
+    {#    </div> #}
 
     <div class="row">
         <div class="col-md-3">
@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    {% endblock %}
+{% endblock %}
 
 {% block tree %}
     <a href="{{ path('app_load_files') }}">Reload files</a>
@@ -79,51 +79,52 @@
         <input
                 {{ stimulus_action(_sc, 'search') }}
                 type="text"
-                value="" class="input" style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;" />
+                value="" class="input"
+                style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
 
-        <div             {{ stimulus_target(_sc, 'html') }}>
+        <div {{ stimulus_target(_sc, 'html') }}>
 
-        {% tree e in entities %}
+            {% tree e in entities %}
                 {% if treeloop.first %}<ul>{% endif %}
                 <li
                         data-path="{{ e.path }}"
                         data-type="{{ e.isDir ? 'dir' : 'file' }}"
                         data-jstree='{"path": "{{ e.path }}", "type":"{{ e.isDir ? 'dir' : e.extension }}"}}'>
-{#                        {{ treeloop.level }}#}
-                        {{ e.name }}
+                    {#                        {{ treeloop.level }} #}
+                    {{ e.name }}
                     <sup>{{ e.isDir ? e.childCount }}</sup>
-{#                    <a href="#{{ e.id }}">#}
-{#                    </a>#}
+                    {#                    <a href="#{{ e.id }}"> #}
+                    {#                    </a> #}
                     {% subtree e.children %}
                 </li>
                 {% if treeloop.last %}</ul>{% endif %}
             {% endtree %}
-    </div>
+        </div>
 
     </div>
 
 
-{#    {% set _sc = 'jstree' %}#}
-{#    <div {{ stimulus_controller(_sc) }}>#}
-{#        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html') }}>#}
-{#            {% if html|default(false) %}#}
-{#                {{ html|raw }}#}
-{#            {% else %}#}
-{#                <ul>#}
-{#                    <li>Root node 1</li>#}
-{#                    <li>Root node 2</li>#}
-{#                </ul>#}
-{#            {% endif %}#}
-{#        </div>#}
-{#    </div>#}
+    {#    {% set _sc = 'jstree' %} #}
+    {#    <div {{ stimulus_controller(_sc) }}> #}
+    {#        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html') }}> #}
+    {#            {% if html|default(false) %} #}
+    {#                {{ html|raw }} #}
+    {#            {% else %} #}
+    {#                <ul> #}
+    {#                    <li>Root node 1</li> #}
+    {#                    <li>Root node 2</li> #}
+    {#                </ul> #}
+    {#            {% endif %} #}
+    {#        </div> #}
+    {#    </div> #}
 
 
     {{ html|raw }}
 
-{#    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a>#}
+    {#    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a> #}
 
     {% set apiUrl = api_route(fileClass) %}
-{#        path('api_%s_get_collection'|format(entity), {_format: 'json'}) %}#}
+    {#        path('api_%s_get_collection'|format(entity), {_format: 'json'}) %} #}
     Files from this repo (demo), using
     <a target="_blank" href="{{ apiUrl }}">
         {{ apiUrl }}

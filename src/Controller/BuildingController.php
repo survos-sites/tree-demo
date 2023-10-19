@@ -50,17 +50,22 @@ class BuildingController extends AbstractController
     public function show(Building $building, EntityManagerInterface $entityManager, RouterInterface $router, IriConverterInterface $iriConverter) : Response
     {
 
-        $x = $iriConverter->getIriFromResource(Location::class, operation: new GetCollection());
-        assert($x == '/api/locations');
+        // debugging iriConverter with related classes
+        if (false) {
+            $x = $iriConverter->getIriFromResource(Location::class, operation: new GetCollection());
+            assert($x == '/api/locations');
 
-        // pass context?
-        $expected = sprintf("/api/building/%s/locations", $building->getCode());
-        $url = $router->generate('building_locations', ['buildingId' => $building->getCode()]); // $building->getrp());
-        assert($url == $expected, $url . " should be " . $expected );
+            // pass context?
+            $expected = sprintf("/api/building/%s/locations", $building->getCode());
+            $url = $router->generate('building_locations', ['buildingId' => $building->getCode()]); // $building->getrp());
+            assert($url == $expected, $url . " should be " . $expected );
 
+            $url = $iriConverter->getIriFromResource(Building::class, operation: (new GetCollection())->withClass(Location::class));
+            assert($url == $expected, $url . " should be " . $expected );
+            $url = $iriConverter->getIriFromResource(Location::class, operation: (new GetCollection())->withClass(Building::class));
+
+        }
         $url = $iriConverter->getIriFromResource(Building::class, operation: (new GetCollection())->withClass(Location::class));
-        assert($url == $expected, $url . " should be " . $expected );
-        $url = $iriConverter->getIriFromResource(Location::class, operation: (new GetCollection())->withClass(Building::class));
 
 
 
