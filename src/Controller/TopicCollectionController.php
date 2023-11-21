@@ -15,13 +15,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Survos\WorkflowBundle\Traits\HandleTransitionsTrait;
 
 #[Route('/topic')]
 class TopicCollectionController extends AbstractController
 {
-
-    use HandleTransitionsTrait;
 
 
     public function __construct(private EntityManagerInterface $entityManager)

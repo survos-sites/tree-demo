@@ -110,6 +110,12 @@ class AppController extends AbstractController
         return $this->render('app/basic-html.html.twig', []);
     }
 
+    #[Route(path: '/module', name: 'app_module')]
+    public function module(TopicRepository $topicRepository)
+    {
+        return $this->render('app/module.html.twig', []);
+    }
+
     #[Route(path: '/', name: 'app_homepage')]
     public function home()
     {

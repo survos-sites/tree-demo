@@ -4,6 +4,8 @@
 
 {% block body %}
 
+    <div {{ stimulus_controller('hello') }}>HI</div>
+
     <h1>Survos Tree Bundle</h1>
     See https://stackoverflow.com/questions/8326482/how-to-render-a-tree-in-twig for the solution using macros
     {% set food = [
@@ -23,11 +25,17 @@
 
     ] %}
 
+{#    <twig:tree>#}
+{#        <twig:tree_li>#}
+{#            {{ item.name }}#}
+{#            {% subtree item.children|default([]) %}#}
+{#        </twig:tree_li>#}
+{#    </twig:tree>#}
+
     <h2>Food Tree</h2>
     {% set _sc = '@survos/tree-bundle/tree' %}
 <div {{ stimulus_controller(_sc) }} {{ stimulus_target(_sc, 'html') }}>
     {% tree item in food %}
-
         {% if treeloop.first %}<ul>{% endif %}
         <li>
             {{ item.name }}

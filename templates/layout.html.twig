@@ -6,13 +6,14 @@
 
 
     {% block javascripts %}
-        {{ parent() }}
-        {{ encore_entry_script_tags('app') }}
+{#        {{ parent() }}#}
+        {{ importmap('app') }}
+{#        {{ encore_entry_script_tags('app') }}#}
     {% endblock %}
 
     {% block stylesheets %}
-        {{ parent() }}
-        {{ encore_entry_link_tags('app') }}
+{#        {{ parent() }}#}
+{#        {{ encore_entry_link_tags('app') }}#}
     {% endblock %}
 
 

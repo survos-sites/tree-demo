@@ -2,11 +2,34 @@
 
 {% block title %}Basic HTML Demo{% endblock %}
 
+{% block sidebar '' %}
+
 {% block javascripts %}
-    {{ parent() }}
+    {# loads the importmap() #}
+{#    {{ parent() }}#}
+
+    <script type="module">
+        import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
+        import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'
+
+        // const el = document.querySelector("#html1");
+        // let $el = jquery.jstree.reference(el);
+
+        console.log('calling jstree()');
+        $('#html1').jstree();
+
+        // jquery('#html1').jstree(
+        //     {
+        //         "plugins": ['checkbox', 'theme', "html_data", "types"]
+        //     }
+        // );
+    </script>
+
 {% endblock %}
 
 {% block stylesheets %}
+    <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
+
     {{ parent() }}
     <style>
         #jstree1, #jstree2, .jstree-basic {
@@ -21,34 +44,44 @@
 {% endblock %}
 
 {% block body %}
+
+    <h1>#html1</h1>
+    <ul id="html1">
+        <li>Root node 1</li>
+        <li>Root node 2</li>
+        <li>Root node 3</li>
+    </ul>
+
+    {% endblock %}
+{% block stimulus %}
     {% set _sc = '@survos/tree-bundle/tree' %}
 
     {% for block_name in ['root_nodes', 'nodes_with_children'] %}
         <h3>{{ block_name|title }}</h3>
-<div {{ stimulus_controller(_sc) }}>
-    <div {{ stimulus_target(_sc, 'html') }}>
-        {{ block(block_name) }}
-    </div>
-</div>
+        <div {{ stimulus_controller(_sc) }}>
+            <div {{ stimulus_target(_sc, 'html') }}>
+                {{ block(block_name) }}
+            </div>
+        </div>
     {% endfor %}
 
 {% endblock %}
 
 {% block root_nodes %}
-            <ul>
-                <li class="jstree-open">Root node 1</li>
-                <li>Root node 2
-                </li>
-            </ul>
+    <ul id="html1">
+        <li class="jstree-open">Root node 1</li>
+        <li>Root node 2
+        </li>
+    </ul>
 {% endblock %}
 
 {% block nodes_with_children %}
-                <ul>
-                    <li>Root node 1
-                        <ul>
-                            <li>Child node 1</li>
-                            <li><a href="#">nodes_with_children node 2</a></li>
-                        </ul>
-                    </li>
-                </ul>
+    <ul>
+        <li>Root node 1
+            <ul>
+                <li>Child node 1</li>
+                <li><a href="#">nodes_with_children node 2</a></li>
+            </ul>
+        </li>
+    </ul>
 {% endblock %}

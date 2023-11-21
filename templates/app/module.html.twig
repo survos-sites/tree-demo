@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Basic HTML Demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
+
+    <script type="module">
+        import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
+        import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'
+
+        console.log('calling jstree()');
+        $('#html1').jstree();
+    </script>
+</head>
+<body>
+
+<h1>#html1</h1>
+
+<div id="html1">
+    <ul>
+        <li class="jstree-open" id="node_1">Root
+            <ul>
+                <li>
+                    <a href="#" class="jstree-clicked">Child</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
+

@@ -1,4 +1,11 @@
 {% extends 'layout.html.twig' %}
 
+    {% block javascripts %}
+            {{ importmap('app') }}
+    {% endblock %}
 
+    {% block stylesheets %}
+            {{ ux_controller_link_tags() }}
+    {% endblock %}
 
+{% block footer '' %}

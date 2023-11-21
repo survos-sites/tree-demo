@@ -9,12 +9,6 @@
                 "enabled": true,
                 "fetch": "lazy"
             }
-        },
-        "@survos/workflow-helper-bundle": {
-            "workflow": {
-                "enabled": true,
-                "fetch": "eager"
-            }
         }
     },
     "entrypoints": []
