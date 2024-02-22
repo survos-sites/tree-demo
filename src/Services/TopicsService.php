@@ -43,8 +43,9 @@ class TopicsService
             $topic = (new Topic())
                 ->setCode($topicCode)
 //                ->setChildCount(count($cSet->narrower))
-                ->setName($cSet->prefLabel->{'en-US'})
-                ->setDescription($cSet->definition->{'en-US'});
+                ->setName($cSet->prefLabel->{'en-US'}??'no-name');
+            $topic
+                ->setDescription($cSet->definition->{'en-US'}??"no description");
             $this->em->persist($topic);
             $topics[$topicCode] = $topic;
 
