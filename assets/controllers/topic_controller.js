@@ -1,5 +1,5 @@
 import {Controller} from '@hotwired/stimulus';
-import { prettyPrintJson } from 'pretty-print-json';
+// import { prettyPrintJson } from 'pretty-print-json';
 /*
 * The following line makes this controller "lazy": it won't be downloaded until needed
 * See https://github.com/symfony/stimulus-bridge#lazy-controllers

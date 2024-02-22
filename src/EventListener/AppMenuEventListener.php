@@ -6,10 +6,12 @@ use App\Repository\BuildingRepository;
 use Survos\BootstrapBundle\Event\KnpMenuEvent;
 use Survos\BootstrapBundle\Traits\KnpMenuHelperInterface;
 use Survos\BootstrapBundle\Traits\KnpMenuHelperTrait;
+use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
+#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'appSidebarMenu')]
 #[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'appSidebarMenu')]
 #[AsEventListener(event: KnpMenuEvent::FOOTER_MENU, method: 'footerMenu')]
 final class AppMenuEventListener implements KnpMenuHelperInterface
@@ -18,9 +20,10 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
     public function __construct(
         private BuildingRepository $buildingRepository,
-        private ?AuthorizationCheckerInterface $security=null)
+        private ?Security $security,
+        private ?AuthorizationCheckerInterface $authorizationChecker=null)
     {
-        $this->setAuthorizationChecker($this->security);
+        $this->setAuthorizationChecker($this->authorizationChecker);
     }
 
     public function footerMenu(KnpMenuEvent $event): void
@@ -40,14 +43,13 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         }
 
 
+        $subMenu = $this->addSubmenu($menu, label: "Topics");
+        $this->add($subMenu, 'topic_overview');
+        $this->add($subMenu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
 
-        $this->addHeading($menu, label: "Topics");
-        $this->add($menu, 'topic_overview');
-        $this->add($menu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
-
-        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
+        $this->addMenuItem($subMenu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($subMenu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
+        $this->addMenuItem($subMenu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
 
         $this->addHeading($menu, 'Inventory Demo');
         $this->add($menu, 'building_index', label: 'List');
@@ -77,7 +79,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         $this->add($menu, 'api_doc', external: true);
 
         $this->addMenuItem($menu, ['label' => 'Auth', 'style' => 'heading']);
-        $this->authMenu($this->security, $menu);
+        $this->authMenu($this->authorizationChecker, $this->security, $menu);
         $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
 
     }

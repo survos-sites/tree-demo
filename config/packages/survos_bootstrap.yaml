@@ -7,7 +7,6 @@ survos_bootstrap:
     offcanvas: app_settings
   options:
     allow_login: true
-    offcanvas:
   menu_options:
     project: null
     projectCore: null

@@ -18,27 +18,26 @@ return [
         'path' => './assets/app.js',
         'entrypoint' => true,
     ],
-//    'bootstrap' => [
-//        'version' => '5.3.2',
-//    ],
-//    '@popperjs/core' => [
-//        'version' => '2.11.8',
-//    ],
-//    'bootstrap/dist/css/bootstrap.min.css' => [
-//        'version' => '5.3.2',
-//        'type' => 'css',
-//    ],
-//    'jstree' => [
-//        'version' => '3.3.16',
-//    ],
-//    'jquery' => [
-//        'version' => '3.7.1',
-//    ],
-//    'jstree/dist/themes/default/style.min.css' => [
-//        'version' => '3.3.16',
-//        'type' => 'css',
-//    ],
-//    '@hotwired/stimulus' => [
-//        'version' => '3.2.2',
-//    ],
+    '@hotwired/stimulus' => [
+        'version' => '3.2.2',
+    ],
+    'bootstrap' => [
+        'version' => '5.3.2',
+    ],
+    '@popperjs/core' => [
+        'version' => '2.11.8',
+    ],
+    'bootstrap/dist/css/bootstrap.min.css' => [
+        'version' => '5.3.2',
+        'type' => 'css',
+    ],
+    '@symfony/stimulus-bundle' => [
+        'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
+    ],
+    'jquery' => [
+        'version' => '3.7.1',
+    ],
+    'jstree' => [
+        'version' => '3.3.16',
+    ],
 ];

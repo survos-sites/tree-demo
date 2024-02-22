@@ -2,10 +2,18 @@
 
     {% block javascripts %}
             {{ importmap('app') }}
+{#        <script type="module">#}
+{#            import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'#}
+{#            import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'#}
+{#            $('#html1').jstree();#}
+{#        </script>#}
+
     {% endblock %}
 
     {% block stylesheets %}
-            {{ ux_controller_link_tags() }}
+        {{ parent() }}
+        <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
     {% endblock %}
+
 
 {% block footer '' %}
