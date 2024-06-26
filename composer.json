@@ -146,13 +146,5 @@
     },
     "prefer-stable": true,
     "repositories": {
-        "core": {
-            "type": "path",
-            "url": "../survos/packages/core-bundle"
-        },
-        "tree": {
-            "type": "path",
-            "url": "../survos/packages/tree-bundle"
-        }
     }
 }
