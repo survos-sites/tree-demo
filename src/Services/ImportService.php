@@ -2,8 +2,6 @@
 
 namespace App\Services;
 
-use AppBundle\Entity\Survey;
-use AppBundle\Utility;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use PhenxBundle\Entity\Domain;
@@ -15,18 +13,17 @@ use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Output\Output;
 use Symfony\Component\Console\Output\OutputInterface;
-use Symfony\Component\DependencyInjection\ContainerAwareTrait;
+use Symfony\Component\Routing\RouterInterface;
 
 class ImportService
 {
-    use ContainerAwareTrait;
-
     private $csvFile;
 
     /** @var EntityManager $em */
     private $em;
 
-    public function __construct(EntityManagerInterface $em, $rootPath = '', $csvFile = '')
+    public function __construct(private RouterInterface $router,
+                                EntityManagerInterface $em, $rootPath = '', $csvFile = '')
     {
         $this->em = $em;
         // $dir = new FileLocator([$rootPath.'/Resources/data']); // , __DIR__.'/../Resources/data']);
@@ -35,8 +32,7 @@ class ImportService
 
     public function getJsonUrl(PhenxProtocol $protocol)
     {
-        $router = $this->container->get('router');
-        return $router->generate('phenx_protocol_json', ['phenxId' => $protocol->getPhenxId()], $router::ABSOLUTE_URL);
+        return $this->router->generate('phenx_protocol_json', ['phenxId' => $protocol->getPhenxId()], $router::ABSOLUTE_URL);
     }
 
 
