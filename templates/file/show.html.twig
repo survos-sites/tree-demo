@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {# {% set _sc = '@survos/tree-bundle/tree' %} #}
 
@@ -26,6 +26,7 @@
         </div>
         <div class="col-md-9">
             {% set _sc = 'file_browser' %}
+{#            {% set _sc = '@survos/tree-bundle/tree' %}#}
             <div {{ stimulus_controller(_sc, {
                 sourcePath: path('app_file_source')
             }) }}>
@@ -43,6 +44,7 @@
     <a href="{{ path('app_load_files') }}">Reload files</a>
     <h1>This is a local test of jstree stimulus controller, NOT using the bundle library</h1>
     {% set _sc = 'jstree' %}
+{#    {% set _sc = '@survos/tree-bundle/tree' %}#}
     <div
             {{ stimulus_controller(_sc, {
 

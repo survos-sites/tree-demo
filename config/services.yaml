@@ -22,11 +22,6 @@ services:
             - '../src/Entity/'
             - '../src/Kernel.php'
 
-    twig.tree:
-        class: JordanLev\TwigTreeTag\Twig\Extension\TreeExtension
-        tags:
-            - { name: twig.extension }
-
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
 

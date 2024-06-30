@@ -1,4 +1,4 @@
-{% extends 'layout.html.twig' %}
+{% extends 'base.html.twig' %}
 
 {% set _sc = '@survos/tree-bundle/tree' %}
 {#{% set _sc = 'jstree' %}#}
@@ -7,6 +7,11 @@
 
 {% block body %}
     <h3>{{ block('title') }}</h3>
+
+    {{ _sc }}
+    <div {{ stimulus_controller(_sc) }} {{ stimulus_target(_sc, 'html') }}>
+        {{ block('tree_html') }}
+    </div>
 
     <div
             {{ stimulus_controller(_sc, {
@@ -21,7 +26,7 @@
 
         <div             {{ stimulus_target(_sc, 'html') }}>
 
-        {% tree e in entities %}
+            {% tree e in entities %}
                 {% if treeloop.first %}<ul>{% endif %}
                 <li data-jstree='{"type":""}'>
 {#                        {{ treeloop.level }}#}
@@ -55,4 +60,20 @@
 
     {{ html|raw }}
 
+    <h3>Simple Tree</h3>
+    {{ block('tree_html') }}
+
+
+
+{% endblock %}
+
+{% block tree_html %}
+    {% tree item in entities %}
+        {% if treeloop.first %}<ul>{% endif %}
+        <li>
+            {{ item.name }}
+            {% subtree item.children|default([]) %}
+        </li>
+        {% if treeloop.last %}</ul>{% endif %}
+    {% endtree %}
 {% endblock %}

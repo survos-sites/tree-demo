@@ -1,6 +1,7 @@
 {
     "type": "project",
     "license": "proprietary",
+    "name": "survos-sites/tree",
     "description": "Demo project for jstree and survos/tree-bundle  ",
     "minimum-stability": "dev",
     "require": {
@@ -63,11 +64,12 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "roave/security-advisories": "dev-latest",
         "doctrine/doctrine-fixtures-bundle": "^3.3",
         "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^9.5",
         "rector/rector": "^0.15",
+        "roave/security-advisories": "dev-latest",
+        "survos/deployment-bundle": "^1.5",
         "survos/maker-bundle": "dev-main",
         "symfony/browser-kit": "^6.4",
         "symfony/css-selector": "^6.4",

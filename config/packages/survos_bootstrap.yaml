@@ -12,5 +12,8 @@ survos_bootstrap:
     projectCore: null
     frontPage: false
     showAppMenu: true
+  app:
+    code: tree
+    abbr: <b>tree</b>Demo
 
 

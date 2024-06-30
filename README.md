@@ -3,10 +3,9 @@
 ## Quick Start
 
 ```bash
-git clone git@github.com:survos/jstree-demo.git
-cd jstree-demo/
+git clone git@github.com:survos-sites/tree-demo.git
+cd tree-demo/
 composer install
-yarn install && yarn dev
 bin/console d:database:create
 bin/console d:schema:update --force --complete
 bin/console doctrine:fixtures:load -n
@@ -14,7 +13,7 @@ bin/console app:import-topics
 bin/console app:load-directory-files  
 
 # 
-symfony proxy:domain:attach jstree-demo
+symfony proxy:domain:attach tree
 symfony server:start -d
 
 # OR php -S localhost:8300 -t public/
@@ -23,7 +22,7 @@ symfony server:start -d
 
 ## Example
 
-https://jstree-symfony-demo.herokuapp.com
+https://tree.survos.com
 
 ## Relevant Links
 
@@ -70,11 +69,6 @@ use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
 #[ORM\Entity(repositoryClass: BuildingRepository::class)]
 #[Gedmo\Tree(type:"nested")] // <-- Add This
 
-/**
- * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
- * @Gedmo\Tree(type="nested") 
- */
- #[Gedmo\Tree(type:"nested") // <-- Add This
 ...
     /**
      * @ORM\Column(type="string", length=32)
@@ -83,6 +77,9 @@ use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
     private $code;
 
 ```   
+
+use tree trait!!
+
 
 ```php
     /**

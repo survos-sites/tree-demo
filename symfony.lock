@@ -310,6 +310,9 @@
     "survos/crawler-bundle": {
         "version": "dev-main"
     },
+    "survos/deployment-bundle": {
+        "version": "1.5.242"
+    },
     "survos/inspection-bundle": {
         "version": "dev-main"
     },

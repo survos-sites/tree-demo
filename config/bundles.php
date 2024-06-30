@@ -25,4 +25,5 @@ return [
     Survos\CrawlerBundle\SurvosCrawlerBundle::class => ['all' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Survos\Tree\SurvosTreeBundle::class => ['all' => true],
+    Survos\DeploymentBundle\SurvosDeploymentBundle::class => ['dev' => true, 'test' => true],
 ];
