@@ -1,7 +1,8 @@
-const $ = require('jquery');
-require('jstree');
-require('jquery-confirm');
+const $ = import('jquery');
+import('jstree');
+import('jquery-confirm');
 
+import FileManagerApp from './FileManagerApp.js'
 // global.$ = $; // hack if you need a global $
 
 const routes = require('../../public/js/fos_js_routes.json');
@@ -9,7 +10,7 @@ import Routing from '../../vendor/friendsofsymfony/jsrouting-bundle/Resources/pu
 Routing.setRoutingData(routes);
 
 const swal = require('sweetalert');
-import {LocationManagerApp} from './LocationManagerApp';
+import LocationManagerApp from './LocationManagerApp.js';
 
 const locationManager = new LocationManagerApp($('.js-demo'));
 
