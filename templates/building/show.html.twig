@@ -18,6 +18,10 @@
 {% block body %}
 <h1>{{ block('title') }}</h1>
 
+    {{ dump(building) }}
+    {{ dump(building.rootLocation) }}
+    {{ dump(building.rootLocation.children|length) }}
+
     <h3>Tree Data</h3>
     {{ html_tree|escape }}
     {{ html_tree }}

@@ -23,7 +23,7 @@
         "survos/core-bundle": "*@dev",
         "survos/crawler-bundle": "^1.4",
         "survos/inspection-bundle": "^1.4",
-        "survos/tree-bundle": "dev-main",
+        "survos/tree-bundle": "*",
         "symfony/asset": "^6.4",
         "symfony/asset-mapper": "^6.4",
         "symfony/console": "^6.4",

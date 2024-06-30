@@ -67,10 +67,14 @@ Two parts, the header, set the slugger on 'code', and then add the properties.
 // Location.php (the entity class)
 use Gedmo\Mapping\Annotation as Gedmo; // <-- Add this
 
+#[ORM\Entity(repositoryClass: BuildingRepository::class)]
+#[Gedmo\Tree(type:"nested")] // <-- Add This
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\LocationRepository")
- * @Gedmo\Tree(type="nested") <-- Add This
+ * @Gedmo\Tree(type="nested") 
  */
+ #[Gedmo\Tree(type:"nested") // <-- Add This
 ...
     /**
      * @ORM\Column(type="string", length=32)

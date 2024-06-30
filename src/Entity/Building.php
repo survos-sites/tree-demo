@@ -3,17 +3,23 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiProperty;
+use App\Repository\BuildingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Tree\Traits\NestedSetEntity;
 use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Survos\Tree\Traits\TreeTrait;
+use Survos\Tree\TreeInterface;
 
-#[ORM\Entity(repositoryClass: 'App\Repository\BuildingRepository')]
-class Building  implements \Stringable, RouteParametersInterface
+#[ORM\Entity(repositoryClass: BuildingRepository::class)]
+#[Gedmo\Tree(type:"nested")]
+class Building  implements \Stringable, RouteParametersInterface, TreeInterface
 {
     use RouteParametersTrait;
+    use TreeTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]

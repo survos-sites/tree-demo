@@ -1,7 +1,8 @@
 {% extends 'layout.html.twig' %}
 
     {% block javascripts %}
-            {{ importmap('app') }}
+        {{ parent() }}
+{#            {{ importmap('app') }}#}
 {#        <script type="module">#}
 {#            import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'#}
 {#            import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'#}
@@ -12,7 +13,7 @@
 
     {% block stylesheets %}
         {{ parent() }}
-        <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
+{#        <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">#}
     {% endblock %}
 
 

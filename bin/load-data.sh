@@ -8,7 +8,8 @@
 
 #bin/console make:migration
 #git clean -f migrations && bin/console doctrine:migrations:migrate -n --allow-no-migration && bin/console make:migration
-bin/console doctrine:migrations:migrate -n
+
+#bin/console doctrine:migrations:migrate -n
 
 #git clean -f migrations/V*.php
 #bin/console doctrine:migrations:migrate -n --allow-no-migration

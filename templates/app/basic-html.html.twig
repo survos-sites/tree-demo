@@ -6,7 +6,7 @@
 
 {% block javascripts %}
     {# loads the importmap() #}
-{#    {{ parent() }}#}
+    {{ parent() }}
 
     <script type="module">
         import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
@@ -28,6 +28,7 @@
 {% endblock %}
 
 {% block stylesheets %}
+    {{ parent() }}
     <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
 
     {{ parent() }}

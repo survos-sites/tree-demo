@@ -1,14 +1,15 @@
-{% extends 'base.html.twig' %}
+{% extends 'layout.html.twig' %}
 
 {% block title %}Basic HTML Demo{% endblock %}
 
 {% block javascripts %}
 {{ parent() }}
 <script type="module">
+    console.warn('tree-test in home.html.twig')
     import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
     // this adds jstree to jquery
     import 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'
-    $('#tree-test').jstree();
+    // $('#tree-test').jstree();
 </script>
 {% endblock %}
 
@@ -36,12 +37,12 @@
 
     ] %}
 
-{#    <twig:tree>#}
-{#        <twig:tree_li>#}
-{#            {{ item.name }}#}
-{#            {% subtree item.children|default([]) %}#}
-{#        </twig:tree_li>#}
-{#    </twig:tree>#}
+    <twig:tree>
+        <twig:tree_li>
+            {{ item.name }}
+            {% subtree item.children|default([]) %}
+        </twig:tree_li>
+    </twig:tree>
 
     <h2>Food Tree</h2>
     {% set _sc = '@survos/tree-bundle/tree' %}

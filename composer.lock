@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bf394283ca507aff4b70ede15820590c",
+    "content-hash": "d6f1898a8d563f7e1b39402eb109d710",
     "packages": [
         {
             "name": "api-platform/core",
@@ -4115,7 +4115,7 @@
         },
         {
             "name": "survos/tree-bundle",
-            "version": "dev-main",
+            "version": "1.5.241",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosTreeBundle.git",
@@ -4153,7 +4153,6 @@
                 "symfony/twig-bundle": "^6.4 || ^7.0",
                 "symfony/var-dumper": "^7.0 || ^6.4"
             },
-            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
                 "branch-alias": {
@@ -14065,7 +14064,6 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "survos/core-bundle": 20,
-        "survos/tree-bundle": 20,
         "symfony/stimulus-bundle": 20,
         "roave/security-advisories": 20,
         "hgtan/symfony-pre-commit": 20,

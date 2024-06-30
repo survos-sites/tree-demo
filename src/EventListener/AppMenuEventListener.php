@@ -11,8 +11,8 @@ use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'appSidebarMenu')]
-#[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'appSidebarMenu')]
+#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'appNavbarMenu')]
+//#[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'appSidebarMenu')]
 #[AsEventListener(event: KnpMenuEvent::FOOTER_MENU, method: 'footerMenu')]
 final class AppMenuEventListener implements KnpMenuHelperInterface
 {
@@ -31,15 +31,15 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         [$menu, $options] = [$event->getMenu(), $event->getOptions()];
     }
 
-    public function appSidebarMenu(KnpMenuEvent $event): void
+    public function appNavbarMenu(KnpMenuEvent $event): void
     {
         $menu = $event->getMenu();
         $this->add($menu,  'app_homepage', label: 'home', icon: 'fas fa-home');
 
-        $this->addHeading($menu, label: "File Browser");
+        $subMenu = $this->addSubmenu($menu, label: "File Browser");
         foreach (['files'] as $entityName) {
-            $this->addMenuItem($menu, ['label' => 'Files (custom)', 'route' => 'app_repo_files']);
-            $this->addMenuItem($menu, ['label' => 'Files (API Tree)', 'route' => 'app_file_overview', 'rp' => ['entity' => $entityName]]);
+            $this->addMenuItem($subMenu, ['label' => 'Files (custom)', 'route' => 'app_repo_files']);
+            $this->addMenuItem($subMenu, ['label' => 'Files (API Tree)', 'route' => 'app_file_overview', 'rp' => ['entity' => $entityName]]);
         }
 
 
@@ -56,6 +56,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         if ($this->isGranted('ROLE_USER')) {
             $this->add($menu, 'building_new', label: 'Create New Building');
         }
+        return;
 
         $subMenu = $this->addSubmenu($menu, "Buildings");
         foreach ($this->buildingRepository->findAll() as $building) {
@@ -77,6 +78,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
         $this->add($menu, 'api_entrypoint', external: true);
         $this->add($menu, 'api_doc', external: true);
+
 
         $this->addMenuItem($menu, ['label' => 'Auth', 'style' => 'heading']);
         $this->authMenu($this->authorizationChecker, $this->security, $menu);
