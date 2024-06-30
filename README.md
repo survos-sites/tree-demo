@@ -7,7 +7,7 @@ git clone git@github.com:survos-sites/tree-demo.git
 cd tree-demo/
 composer install
 bin/console d:database:create
-bin/console d:schema:update --force --complete
+# bin/console d:schema:update --force --complete
 bin/console doctrine:fixtures:load -n
 bin/console app:import-topics 
 bin/console app:load-directory-files  
