@@ -1,11 +1,11 @@
 {
-    "name": "init",
+    "name": "tree",
     "description": "A repo, maybe get this from github",
     "keywords": [
         "php",
         "symfony"
     ],
-    "repository": "https:\/\/github.com\/survos-sites\/init",
+    "repository": "https:\/\/github.com\/survos-sites\/tree-demo",
     "scripts": {
         "dokku": {
             "predeploy": "bin\/console importmap:install && bin\/console asset-map:compile",
