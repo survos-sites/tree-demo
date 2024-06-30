@@ -1,9 +1,10 @@
 {
     "name": "tree",
-    "description": "A repo, maybe get this from github",
+    "description": "survos/tree-bundle demo",
     "keywords": [
         "php",
-        "symfony"
+        "symfony",
+        "tree"
     ],
     "repository": "https:\/\/github.com\/survos-sites\/tree-demo",
     "scripts": {

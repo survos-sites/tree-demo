@@ -10,7 +10,7 @@ Routing.setRoutingData(routes);
 
 const swal = require('sweetalert');
 
-import {LocationManagerApp} from './LocationManagerApp';
+import {LocationManagerApp} from './LocationManagerApp.js';
 
 // pass in the jQuery element
 const $locationManager = $('#location_manager');
