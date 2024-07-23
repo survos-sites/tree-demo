@@ -19,18 +19,6 @@
     "composer/package-versions-deprecated": {
         "version": "1.11.99"
     },
-    "doctrine/annotations": {
-        "version": "1.0",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "master",
-            "version": "1.0",
-            "ref": "a2759dd6123694c8d901d0ec80006e044c2e6457"
-        },
-        "files": [
-            "config/routes/annotations.yaml"
-        ]
-    },
     "doctrine/cache": {
         "version": "1.10.2"
     },
@@ -119,9 +107,6 @@
     "fig/link-util": {
         "version": "1.1.1"
     },
-    "friendsofphp/proxy-manager-lts": {
-        "version": "v1.0.3"
-    },
     "friendsofsymfony/jsrouting-bundle": {
         "version": "2.3",
         "recipe": {
@@ -142,9 +127,6 @@
     },
     "knplabs/knp-menu-bundle": {
         "version": "v3.2.0"
-    },
-    "laminas/laminas-code": {
-        "version": "3.4.1"
     },
     "lorenzo/pinky": {
         "version": "1.0.5"
@@ -279,9 +261,6 @@
     },
     "sebastian/recursion-context": {
         "version": "4.0.4"
-    },
-    "sebastian/resource-operations": {
-        "version": "3.0.3"
     },
     "sebastian/type": {
         "version": "2.3.4"
@@ -565,9 +544,6 @@
     },
     "symfony/property-info": {
         "version": "v5.1.5"
-    },
-    "symfony/proxy-manager-bridge": {
-        "version": "v5.2.3"
     },
     "symfony/routing": {
         "version": "5.1",
