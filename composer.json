@@ -3,17 +3,17 @@
     "license": "proprietary",
     "name": "survos-sites/tree",
     "description": "Demo project for jstree and survos/tree-bundle  ",
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
-        "php": "^8.2",
+        "php": "^8.3",
         "ext-ctype": "*",
         "ext-iconv": "*",
-        "api-platform/core": "^3.0",
+        "api-platform/core": "^4.0",
         "composer/package-versions-deprecated": ">=1.11.99.5",
         "doctrine/doctrine-bundle": "^2.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^3.2",
-        "doctrine/persistence": "^3.0.0",
+        "doctrine/persistence": "^3.0.0||^4.0",
         "friendsofsymfony/jsrouting-bundle": "^3.1.1",
         "league/commonmark": "^2.3",
         "nelmio/cors-bundle": "^2.1",
@@ -62,10 +62,10 @@
         "twig/twig": "^3.0"
     },
     "require-dev": {
-        "doctrine/doctrine-fixtures-bundle": "^3.3",
+        "doctrine/doctrine-fixtures-bundle": "^3.3||^4.0",
         "hgtan/symfony-pre-commit": "dev-master",
         "phpunit/phpunit": "^11.2",
-        "rector/rector": "^1.2.1",
+        "rector/rector": "^2.0",
         "roave/security-advisories": "dev-latest",
         "survos/deployment-bundle": "^1.5",
         "survos/maker-bundle": "^1.5",
@@ -83,9 +83,10 @@
         },
         "sort-packages": true,
         "allow-plugins": {
+            "endroid/installer": true,
+            "survos/installer": true,
             "symfony/flex": true,
-            "symfony/runtime": true,
-            "endroid/installer": true
+            "symfony/runtime": true
         }
     },
     "autoload": {
@@ -141,7 +142,7 @@
     "extra": {
         "symfony": {
             "allow-contrib": true,
-            "require": "^7.1"
+            "require": "^7.3"
         }
     },
     "prefer-stable": true

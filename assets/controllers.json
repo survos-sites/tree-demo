@@ -1,5 +1,12 @@
 {
     "controllers": {
+        "@survos/bootstrap-bundle": {
+            "search": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": []
+            }
+        },
         "@survos/tree-bundle": {
             "tree": {
                 "enabled": true,
