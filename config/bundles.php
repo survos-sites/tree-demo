@@ -27,5 +27,4 @@ return [
     Survos\Tree\SurvosTreeBundle::class => ['all' => true],
     Survos\DeploymentBundle\SurvosDeploymentBundle::class => ['dev' => true, 'test' => true],
     Symfony\UX\Icons\UXIconsBundle::class => ['all' => true],
-    Bizkit\VersioningBundle\BizkitVersioningBundle::class => ['all' => true],
 ];
