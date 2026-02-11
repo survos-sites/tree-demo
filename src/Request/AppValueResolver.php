@@ -42,7 +42,8 @@ class AppValueResolver implements ValueResolverInterface
         $repository = $this->entityManager->getRepository($argumentType);
         $instance =  match ($argumentType) {
             Topic::class,
-            Building::class => $repository->findOneBy(['code' => $idFieldValue]),
+            Building::class => $repository->findOneBy(['code' => $idFieldValue])
+                ?? (is_numeric($idFieldValue) ? $repository->find((int) $idFieldValue) : null),
             default => null
         };
         assert($instance, "Missing $argumentType");

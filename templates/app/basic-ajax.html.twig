@@ -1,113 +1,27 @@
-
 {% extends 'base.html.twig' %}
 
 {% block title %}Basic AJAX Demo{% endblock %}
 
-
-{% block javascripts %}
-{{ parent() }}
-{{ encore_entry_script_tags('building_show') }}
-{% endblock %}
-
 {% block body %}
+    <h1>Building Locations (AJAX)</h1>
+    <p class="text-muted">Data is loaded from the database through API Platform and rendered via <code>@survos/tree-bundle/api_tree</code>.</p>
 
-    {% set CONTROLLER = 'hello' %}
-    <div {{ stimulus_controller(CONTROLLER) }}>
-        <div {{ stimulus_target(CONTROLLER, 'hello') }}>
-            Waiting to connect...
-        </div>
-    </div>
-    {# this is really for basic-ajax, which we've lost...
-    {% set url =  path('app_tree_fetch', {file: 'alt-format.json'}) %}
-    #}
-    {# need format, since default format is json+ld #}
-    <h1>{{ building }}</h1>
-    {% set apiUrl =  path('api_locations_get_collection') %}
+    {% set apiUrl = path('building_locations', { buildingId: building.code, _format: 'json' }) %}
 
-    <div class="row">
+    <div class="row g-3">
         <div class="col-md-8">
-            {{ block('tree') }}
-            <div id="jstree_demo2" class="demo" style="margin-top:1em; min-height:200px;"><code>jstree_demo2</code></div>
-
-            The API URL IS {{ apiUrl }}
-
-
-            This is kinda cool, too.: <a href="https://github.com/alesmit/jquery-hortree">jquery-hortree</a>
-
-            <hr />
-
-
+            {% component api_tree with {
+                apiUrl: apiUrl,
+                class: 'App\\Entity\\Location'
+            } %}
+            {% endcomponent %}
         </div>
 
         <div class="col-md-4">
-            <h3>Location Editor</h3>
-
-            <h3>Events</h3>
-            <div id="jstree_event_log"></div>
+            <div {{ stimulus_controller('topic') }}>
+                <h3 {{ stimulus_target('topic', 'title') }}>Selection</h3>
+                <pre class="border rounded p-2 bg-white" {{ stimulus_target('topic', 'results') }}>Waiting for selection...</pre>
+            </div>
         </div>
     </div>
-
-
-{% endblock %}
-
-{% block tree %}
-    {# ... box widget with defaults ... #}
-    {% embed '@SurvosBase/Widgets/box-widget.html.twig' %}
-
-        {% import '@SurvosBase/Macros/buttons.html.twig'  as btn %}
-        {% block box_title %}Location API{% endblock %}
-        {% block box_body %}
-            <div class="callout callout-info">
-                <div id="location_manager" class="js-demo"
-                     data-api-base="{{ apiUrl }}"
-                     data-building-id="{{ building.id }}"
-                >
-                </div>
-
-                <a target="_blank" href="{{ apiUrl }}">
-                    {{ apiUrl }}
-                </a>
-                {{ building.id }}
-                {{ building.name }}
-
-            </div>
-        {% endblock %}
-
-        {% block box_footer %}
-            <div class="pull-right">
-                    <span id="config"
-                          data-save-url="{{ path('app_tree_save') }}"
-                          data-api-url="{{ apiUrl }}"
-                    ></span>
-
-                {{ btn.link_button('api_locations_get_collection',apiUrl) }}
-            </div>
-        {% endblock %}
-    {% endembed %}
-
-{% endblock %}
-
-{% block basic_ajax %}
-    Need to enable basic-ajax.js
-<div class="container" id="content">
-    <div class="row page" id="demo">
-        <div class="col-md-12">
-            <h3>API Platform AJAX demo</h3>
-            <div class="row">
-                <div class="col-md-4 col-sm-8 col-xs-8">
-                    <button type="button" class="btn btn-success btn-sm js-create" ><i class="glyphicon glyphicon-asterisk"></i> Create</button>
-                    <button type="button" class="btn btn-warning btn-sm js-rename" ><i class="glyphicon glyphicon-pencil"></i> Rename</button>
-                    <button type="button" class="btn btn-danger btn-sm js-delete" ><i class="glyphicon glyphicon-remove"></i> Delete</button>
-
-                    <button id="js_save_button" type="button" class="btn btn-primary btn-sm"><i class="fas fa-upload"></i> Save</button>
-                </div>
-                <div class="col-md-2 col-sm-4 col-xs-4" style="text-align:right;">
-                    <label for="demo_q"></label><input type="text" value="" style="box-shadow:inset 0 0 4px #eee; width:120px; margin:0; padding:6px 12px; border-radius:4px; border:1px solid silver; font-size:1.1em;" id="demo_q" placeholder="Search" />
-                </div>
-            </div>
-
-        </div>
-    </div>
-</div>
-
 {% endblock %}

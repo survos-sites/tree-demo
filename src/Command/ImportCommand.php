@@ -19,7 +19,7 @@ class ImportCommand extends Command
         parent::__construct($name);
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('phenx:dd')
             ->setDescription('Imports the Data Dictionary from Phenx')

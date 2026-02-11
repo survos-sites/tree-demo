@@ -13,9 +13,6 @@
             "src/Entity/.gitignore"
         ]
     },
-    "behat/transliterator": {
-        "version": "v1.3.0"
-    },
     "bizkit/versioning-bundle": {
         "version": "1.2",
         "recipe": {
@@ -142,9 +139,6 @@
     },
     "lorenzo/pinky": {
         "version": "1.0.5"
-    },
-    "masterminds/html5": {
-        "version": "2.7.5"
     },
     "monolog/monolog": {
         "version": "2.1.1"
@@ -306,9 +300,6 @@
     },
     "survos/inspection-bundle": {
         "version": "dev-main"
-    },
-    "survos/maker-bundle": {
-        "version": "2.1.0"
     },
     "survos/tree-bundle": {
         "version": "1.5.241"

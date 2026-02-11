@@ -4,13 +4,6 @@
 
 {% block javascripts %}
 {{ parent() }}
-<script type="module">
-    console.warn('tree-test in home.html.twig')
-    import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
-    // this adds jstree to jquery
-    import 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'
-    // $('#tree-test').jstree();
-</script>
 {% endblock %}
 
 
@@ -37,16 +30,72 @@
 
 
 <h1>Food Tree</h1>
-
-<h2>Using Tree tag only</h2>
-{{ block('food_tree') }}
-
 {% set _sc = '@survos/tree-bundle/tree' %}
-<h2>Using Tree tag with {{ _sc }}</h2>
 
-<div id="tree-test" {{ stimulus_controller(_sc) }} {{ stimulus_target(_sc, 'html') }}>
-    {{ block('food_tree') }}
+<style>
+    .tree-demo-grid .card { height: 100%; }
+    .tree-demo-grid .card-body { max-height: 420px; overflow: auto; }
+    .tree-debug-log { min-height: 120px; white-space: pre-wrap; }
+</style>
+
+<div class="row g-3 tree-demo-grid">
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header"><strong>1) Twig Tree Tag Only</strong></div>
+            <div class="card-body">
+                {{ block('food_tree') }}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header"><strong>2) Stimulus Tree (Toggle + Events)</strong></div>
+            <div class="card-body">
+                <div id="tree-test" {{ stimulus_controller(_sc) }} {{ stimulus_target(_sc, 'html') }}>
+                    {{ block('food_tree') }}
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-lg-4">
+        <div class="card">
+            <div class="card-header"><strong>3) Stimulus Tree + Checkbox + Search</strong></div>
+            <div class="card-body">
+                <input
+                    class="form-control form-control-sm mb-2"
+                    placeholder="Search nodes"
+                    {{ stimulus_action(_sc, 'search', 'input') }}
+                />
+                <div
+                    id="tree-checkbox"
+                    {{ stimulus_controller(_sc, { checkboxes: true, plugins: ['checkbox'] }) }}
+                    {{ stimulus_target(_sc, 'html') }}
+                >
+                    {{ block('food_tree') }}
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
+
+<h3 class="mt-4">Event Log</h3>
+<pre id="tree-debug-log" class="tree-debug-log border rounded p-2">Listening for jstree/apitree_changed...</pre>
+
+<script type="module">
+    const log = document.getElementById('tree-debug-log');
+    const write = (label, detail) => {
+        const line = `[${new Date().toLocaleTimeString()}] ${label} ${JSON.stringify(detail)}`;
+        console.debug(line);
+        if (log) {
+            log.textContent = `${line}\n${log.textContent}`;
+        }
+    };
+    window.addEventListener('jstree', (event) => write('jstree', event.detail));
+    window.addEventListener('apitree_changed', (event) => write('apitree_changed', event.detail));
+    window.addEventListener('jstree.ready', (event) => write('jstree.ready', event.detail));
+</script>
 
 
     <h2>A Stimulus Controller</h2>
@@ -73,7 +122,6 @@
         </li>
         {% if treeloop.last %}</ul>{% endif %}
     {% endtree %}
-</div>
 {% endblock %}
 
     {# under development #}
@@ -84,4 +132,3 @@
 {#            {% subtree item.children|default([]) %}#}
 {#        </twig:tree_li>#}
 {#    </twig:tree>#}
-

@@ -1,48 +1,30 @@
-import {Controller} from '@hotwired/stimulus';
-// import { prettyPrintJson } from 'pretty-print-json';
-/*
-* The following line makes this controller "lazy": it won't be downloaded until needed
-* See https://github.com/symfony/stimulus-bridge#lazy-controllers
-*/
-/* stimulusFetch: 'lazy' */
+import { Controller } from '@hotwired/stimulus';
+
 export default class extends Controller {
-    static targets = ['results', 'title']
-    // ...
-    static values = {
-        description: {type: String, default: ''},
-    }
+    static targets = ['results', 'title'];
 
     connect() {
-        super.connect();
-        this.titleTarget.innerHTML = "Connecting " + this.identifier;
-        this.resultsTarget.innerHTML = "startup: results will go here. " + this.identifier;
-
-        window.addEventListener('apitree:connect', ev => {
-            console.error(ev.type);
-        });
-
-        // window.addEventListener('jstree', this.receivedEvent);
-        this.resultsTarget.innerHTML = "adding listener";
-        this.that = this;
-        // window.addEventListener('apitree_changed', this.receivedEvent);
-        window.addEventListener('apitree_changed', ev => {
-            this.resultsTarget.innerHTML = 'helllo?';
-            let data = ev.detail;
-            console.warn(data.hydra);
-            this.resultsTarget.innerHTML = data.hydra.description;
-            this.titleTarget.innerHTML = data.hydra.name;
-
-        });
+        this.onTreeChanged = this.onTreeChanged.bind(this);
+        this.titleTarget.textContent = 'Waiting for tree selection';
+        this.resultsTarget.textContent = 'Select a node in a tree to inspect payload data.';
+        window.addEventListener('apitree_changed', this.onTreeChanged);
     }
 
-    receivedEvent(ev) {
-        this.that.resultsTarget.innerHTML = "adding receivedEvent";
-        let data = ev.detail;
-        console.log(data.hydra);
+    disconnect() {
+        window.removeEventListener('apitree_changed', this.onTreeChanged);
+    }
 
-        // this.that.resultsTarget.innerHTML = "NEW results will go here. " + this.identifier;
-        // this.topicResultsTarget.innerHTML = JSON.stringify(data.hydra);
-        // console.log(Object.keys(data));
-        // console.log(data.original, data.original.hydra);
+    onTreeChanged(event) {
+        const payload = event.detail || {};
+        const nodeData = payload.data || payload.hydra || payload.node?.data || null;
+
+        if (!nodeData) {
+            this.titleTarget.textContent = 'Node selected';
+            this.resultsTarget.textContent = JSON.stringify(payload, null, 2);
+            return;
+        }
+
+        this.titleTarget.textContent = nodeData.name || nodeData.title || nodeData.path || 'Node selected';
+        this.resultsTarget.textContent = JSON.stringify(nodeData, null, 2);
     }
 }

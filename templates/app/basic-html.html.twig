@@ -8,29 +8,9 @@
     {# loads the importmap() #}
     {{ parent() }}
 
-    <script type="module">
-        import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'
-        import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'
-
-        // const el = document.querySelector("#html1");
-        // let $el = jquery.jstree.reference(el);
-
-        console.log('calling jstree()');
-        $('#html1').jstree();
-
-        // jquery('#html1').jstree(
-        //     {
-        //         "plugins": ['checkbox', 'theme', "html_data", "types"]
-        //     }
-        // );
-    </script>
-
 {% endblock %}
 
 {% block stylesheets %}
-    {{ parent() }}
-    <link href="https://cdn.jsdelivr.net/npm/jstree@3.3.16/dist/themes/default/style.min.css" rel="stylesheet">
-
     {{ parent() }}
     <style>
         #jstree1, #jstree2, .jstree-basic {

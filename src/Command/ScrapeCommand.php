@@ -16,7 +16,7 @@ class ScrapeCommand extends Command
         parent::__construct($name);
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this->setName('phenx:scrape')
             ->setDescription('Scrape PhenxToolkit.org for data')

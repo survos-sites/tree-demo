@@ -11,14 +11,13 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Serializer\Filter\PropertyFilter;
 use App\Repository\TopicRepository;
 use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
 use Survos\Tree\Traits\TreeTrait;
 use Survos\Tree\TreeInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Attribute\Groups;
 
 #[ApiResource(
     normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','transitions', 'rp']],
@@ -35,23 +34,27 @@ class Topic implements \Stringable, RouteParametersInterface, TreeInterface
     final const PLACE_NEW='new';
     const JOIN_COLUMN_NAME='id';
 
-    #[Gedmo\TreeParent]
-    #[ORM\ManyToOne(targetEntity: self::class, inversedBy: 'children')]
-    #[ORM\JoinColumn(referencedColumnName: 'code', onDelete: 'CASCADE')]
-    protected $parent;
-
-
     #[ORM\Id]
-    #[ORM\Column(type: 'string', length: 10)]
+    #[ORM\GeneratedValue]
+    #[ORM\Column(type: 'integer')]
+    private ?int $id = null;
+
+    #[ORM\Column(type: 'string', length: 10, unique: true)]
     #[Groups(['minimum','search','jstree'])]
     #[ApiProperty(identifier: true)]
-    private $code;
+    private ?string $code = null;
     #[ORM\Column(type: 'string', length: 255)]
     #[Groups(['minimum','search','jstree'])]
-    private $name;
+    private ?string $name = null;
     #[ORM\Column(type: 'text')]
     #[Groups(['minimum','search','jstree'])]
-    private $description;
+    private ?string $description = null;
+
+    public function getId(): ?int
+    {
+        return $this->id;
+    }
+
     public function getCode(): ?string
     {
         return $this->code;
@@ -83,32 +86,11 @@ class Topic implements \Stringable, RouteParametersInterface, TreeInterface
         return $this;
     }
 
-    #[Gedmo\TreeRoot]
-    #[ORM\ManyToOne(targetEntity: self::class)]
-    #[ORM\JoinColumn(referencedColumnName: 'code', onDelete: 'CASCADE')]
-    private $root;
-
     public function __construct()
     {
         $this->children = new ArrayCollection();
     }
-    public function getRoot(): ?Topic
-    {
-        return $this->root;
-    }
-    public function setRoot(?Topic $root): self
-    {
-        $this->root = $root;
 
-        return $this;
-    }
-    /**
-     * @return Collection|Topic[]
-     */
-    public function getChildren(): Collection
-    {
-        return $this->children;
-    }
     public function getData(): string|bool
     {
         return json_encode($this, JSON_THROW_ON_ERROR);
@@ -126,12 +108,6 @@ class Topic implements \Stringable, RouteParametersInterface, TreeInterface
     public function getParentId(): ?string
     {
         return $this->getParent() ? $this->getParent()->getCode() : null;
-    }
-
-    #[Groups(['minimum','search','jstree'])]
-    public function getId(): ?string
-    {
-        return $this->getCode();
     }
 
 

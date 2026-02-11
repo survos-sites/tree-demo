@@ -26,7 +26,7 @@ class LoadDirectoryFilesCommand extends Command
 
     }
 
-    protected function configure()
+    protected function configure(): void
     {
         $this
             ->addArgument('dir', InputArgument::OPTIONAL, 'path to directory root',  $this->bag->get('kernel.project_dir'))

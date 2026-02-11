@@ -15,11 +15,11 @@
     {% for topic in topics %}
     <tr>
         <td>
-            <a href="{{ path('topic_show', topic.rp) }}">
+            <a href="{{ path('topic_show', {topicId: topic.code}) }}">
                 <span class="fas fa-eye"></span>
                 <i class="bi bi-info"></i>
             </a>
-            <a href="{{ path('topic_edit', topic.rp) }}">
+            <a href="{{ path('topic_edit', {topicId: topic.code}) }}">
                 <span class="fas fa-edit"></span>
                 <i class="bi bi-pencil"></i>
             </a>

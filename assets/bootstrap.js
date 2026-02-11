@@ -2,5 +2,4 @@ import { startStimulusApp } from '@symfony/stimulus-bundle';
 
 const app = startStimulusApp();
 app.debug = true;
-// register any custom, 3rd party controllers here
-// app.register('some_controller_name', SomeImportedController);
+console.log('stimulus is loaded.');

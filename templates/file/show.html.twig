@@ -1,143 +1,62 @@
 {% extends 'base.html.twig' %}
 
-{# {% set _sc = '@survos/tree-bundle/tree' %} #}
-
-{% block title %}{{ _self }} Demo, uses twig-tree-tag{% endblock %}
+{% block title %}Repository Files{% endblock %}
 
 {% block body %}
-    <span class="bi-alarm"></span>
+    <h1>Repository Files</h1>
 
-    <h3>{{ block('title') }}</h3>
-
-    <div class="introduction">
+    <div class="introduction mb-3">
         {{ 'files.intro'|trans }}
         {{ 'files.description'|trans|markdown_to_html }}
     </div>
 
-    {#    {% set _sc = 'topic' %} #}
-    {#    <div {{ stimulus_controller(_sc) }}> #}
-    {#        <h3 {{ stimulus_target(_sc, 'title') }}>TOPIC title</h3> #}
-    {#        <div {{ stimulus_target(_sc, 'topic_results') }}>TOPIC results</div> #}
-    {#    </div> #}
+    <div class="row g-3">
+        <div class="col-md-4">
+            <a class="btn btn-outline-secondary btn-sm mb-2" href="{{ path('app_load_files') }}">Reload Files</a>
 
-    <div class="row">
-        <div class="col-md-3">
-            {{ block('tree') }}
-        </div>
-        <div class="col-md-9">
-            {% set _sc = 'file_browser' %}
-{#            {% set _sc = '@survos/tree-bundle/tree' %}#}
+            {% set _sc = '@survos/tree-bundle/tree' %}
             <div {{ stimulus_controller(_sc, {
-                sourcePath: path('app_file_source')
+                types: {
+                    default: { icon: 'bi bi-folder2-open' },
+                    dir: { icon: 'bi bi-folder2-open' },
+                    file: { icon: 'bi bi-file-earmark' },
+                    php: { icon: 'bi bi-filetype-php' },
+                    json: { icon: 'bi bi-filetype-json' },
+                    js: { icon: 'bi bi-filetype-js' },
+                    yaml: { icon: 'bi bi-filetype-yaml' },
+                    css: { icon: 'bi bi-filetype-css' }
+                },
+                plugins: ['search', 'sort', 'types']
             }) }}>
-                <h3 {{ stimulus_target(_sc, 'title') }}></h3>
-                <pre {{ stimulus_target(_sc, 'content') }}>
-                    put the file contents here.
-                </pre>
+                <input
+                        {{ stimulus_action(_sc, 'search') }}
+                        type="search"
+                        class="form-control form-control-sm mb-2"
+                        placeholder="Search files"
+                />
+
+                <div {{ stimulus_target(_sc, 'html') }}>
+                    {% tree e in entities %}
+                        {% if treeloop.first %}<ul>{% endif %}
+                        <li
+                                data-path="{{ e.path }}"
+                                data-type="{{ e.isDir ? 'dir' : 'file' }}"
+                                data-jstree='{"path": "{{ e.path }}", "type":"{{ e.isDir ? 'dir' : e.extension }}"}'>
+                            {{ e.name }}
+                            {% subtree e.children %}
+                        </li>
+                        {% if treeloop.last %}</ul>{% endif %}
+                    {% endtree %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-8">
+            {% set _sc = 'file_browser' %}
+            <div {{ stimulus_controller(_sc, { sourcePath: path('app_file_source') }) }}>
+                <h3 {{ stimulus_target(_sc, 'title') }}>Select a file</h3>
+                <pre class="border rounded p-3 bg-white" {{ stimulus_target(_sc, 'content') }}>File contents will appear here.</pre>
             </div>
         </div>
     </div>
-
-{% endblock %}
-
-{% block tree %}
-    <a href="{{ path('app_load_files') }}">Reload files</a>
-    <h1>This is a local test of jstree stimulus controller, NOT using the bundle library</h1>
-    {% set _sc = 'jstree' %}
-{#    {% set _sc = '@survos/tree-bundle/tree' %}#}
-    <div
-            {{ stimulus_controller(_sc, {
-
-                "types" : {
-                    "default" : {
-                        "icon" : "bi-alarm"
-                    },
-                    "php" : {
-                        "icon" : "bi bi-filetype-php"
-                    },
-                    "json" : {
-                        "icon" : "bi bi-filetype-json"
-                    },
-                    "js" : {
-                        "icon" : "bi bi-filetype-js"
-                    },
-                    "yaml" : {
-                        "icon" : "bi bi-filetype-yaml"
-                    },
-                    "css" : {
-                        "icon" : "bi bi-filetype-css"
-                    },
-                    "dir" : {
-                        "icon" : "bi bi-arrow-down-right-square"
-                    },
-                    "demo" : {
-                        "icon" : "glyphicon glyphicon-ok"
-                    }
-                },
-                plugins: ['search', 'sort', 'types']
-            }) }}
-    >
-
-        <input
-                {{ stimulus_action(_sc, 'search') }}
-                type="text"
-                value="" class="input"
-                style="margin:0em auto 1em auto; display:block; padding:4px; border-radius:4px; border:1px solid silver;"/>
-
-        <div {{ stimulus_target(_sc, 'html') }}>
-
-            {% tree e in entities %}
-                {% if treeloop.first %}<ul>{% endif %}
-                <li
-                        data-path="{{ e.path }}"
-                        data-type="{{ e.isDir ? 'dir' : 'file' }}"
-                        data-jstree='{"path": "{{ e.path }}", "type":"{{ e.isDir ? 'dir' : e.extension }}"}}'>
-                    {#                        {{ treeloop.level }} #}
-                    {{ e.name }}
-                    <sup>{{ e.isDir ? e.childCount }}</sup>
-                    {#                    <a href="#{{ e.id }}"> #}
-                    {#                    </a> #}
-                    {% subtree e.children %}
-                </li>
-                {% if treeloop.last %}</ul>{% endif %}
-            {% endtree %}
-        </div>
-
-    </div>
-
-
-    {#    {% set _sc = 'jstree' %} #}
-    {#    <div {{ stimulus_controller(_sc) }}> #}
-    {#        <div id="html1" class="jstree-basic" {{ stimulus_target(_sc, 'html') }}> #}
-    {#            {% if html|default(false) %} #}
-    {#                {{ html|raw }} #}
-    {#            {% else %} #}
-    {#                <ul> #}
-    {#                    <li>Root node 1</li> #}
-    {#                    <li>Root node 2</li> #}
-    {#                </ul> #}
-    {#            {% endif %} #}
-    {#        </div> #}
-    {#    </div> #}
-
-
-    {{ html|raw }}
-
-    {#    <a class="btn btn-danger" href="{{ path('app_load_' ~ entity) }}">Reload {{ entity }}</a> #}
-
-    {% set apiUrl = api_route(fileClass) %}
-    {#        path('api_%s_get_collection'|format(entity), {_format: 'json'}) %} #}
-    Files from this repo (demo), using
-    <a target="_blank" href="{{ apiUrl }}">
-        {{ apiUrl }}
-    </a>
-
-
-    <div id="file_manager" class="demo"
-         data-api-base="{{ apiUrl }}"
-    >
-        {{ entity }}from this repo (demo), using {{ apiUrl }}
-
-    </div>
-
 {% endblock %}

@@ -3,8 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Location;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\ORM\EntityManagerInterface;
 use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 /**
@@ -17,6 +16,10 @@ use Gedmo\Tree\Entity\Repository\NestedTreeRepository;
 
 class LocationRepository extends NestedTreeRepository // was ServiceEntityRepository
 {
+    public function __construct(EntityManagerInterface $em)
+    {
+        parent::__construct($em, $em->getClassMetadata(Location::class));
+    }
 
     // /**
     //  * @return Location[] Returns an array of Location objects

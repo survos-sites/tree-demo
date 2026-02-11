@@ -16,7 +16,7 @@ use Survos\CoreBundle\Entity\RouteParametersInterface;
 use Survos\CoreBundle\Entity\RouteParametersTrait;
 use Survos\Tree\Traits\TreeTrait;
 use Survos\Tree\TreeInterface;
-use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Serializer\Attribute\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 
@@ -53,15 +53,6 @@ class Location implements \Stringable, RouteParametersInterface, TreeInterface
     #[ORM\Column(type: 'string', length: 32)]
     #[Gedmo\Slug(fields: ['name'])]
     private $code;
-    #[ORM\ManyToOne(targetEntity: Location::class)]
-    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
-    #[Gedmo\TreeRoot]
-    private $root;
-    #[Assert\Valid]
-    #[ORM\ManyToOne(targetEntity: 'Location', inversedBy: 'children')]
-    #[ORM\JoinColumn(referencedColumnName: 'id', onDelete: 'CASCADE')]
-    #[Gedmo\TreeParent]
-    protected $parent;
     #[ORM\Column(type: 'integer', nullable: true)]
     private $orderIdx;
     #[Assert\Valid]
@@ -96,34 +87,10 @@ class Location implements \Stringable, RouteParametersInterface, TreeInterface
 
         return $this;
     }
-    public function getRoot(): ?self
-    {
-        return $this->root;
-    }
-    public function setRoot(?self $root): self
-    {
-        $this->root = $root;
-
-        return $this;
-    }
-    public function getParent(): ?Location
-    {
-        return $this->parent;
-    }
     #[Groups(['Default'])]
     public function getParentId(): ?int
     {
         return $this->getParent() ? $this->getParent()->getId() : null;
-    }
-
-    public function setParent(?TreeInterface $parent): TreeInterface
-    {
-        /** @var Location $parent */
-        if ($parent) {
-            $parent->getBuilding()->addLocation($this);
-        }
-        $this->parent = $parent;
-        return $this;
     }
 
 

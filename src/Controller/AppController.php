@@ -5,7 +5,6 @@ namespace App\Controller;
 use App\Entity\Building;
 use App\Entity\File;
 use App\Entity\Location;
-use App\Entity\Topic;
 use App\Repository\FileRepository;
 use App\Repository\LocationRepository;
 use App\Repository\TopicRepository;
@@ -18,19 +17,21 @@ use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 class AppController extends AbstractController
 {
     use JsonResponseTrait;
-    private FileRepository $fileRepository;
-    private TopicRepository $topicRepository;
 
-    public function __construct(private EntityManagerInterface $entityManager )
-    {
-        $this->fileRepository = $this->entityManager->getRepository(File::class);
-        $this->topicRepository = $this->entityManager->getRepository(Topic::class);
-    }
+    public function __construct(
+        private readonly EntityManagerInterface $entityManager,
+        private readonly FileRepository $fileRepository,
+        private readonly TopicRepository $topicRepository,
+        private readonly LocationRepository $locationRepository,
+        private readonly TopicsService $topicsService,
+        private readonly AppService $appService,
+        private readonly ParameterBagInterface $bag,
+    ) {}
 
     #[Route(path: '/basic-ajax/{buildingId}', name: 'app_basic_ajax')]
     public function basic_ajax(Building $building)
@@ -41,32 +42,33 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/load-topics', name: 'app_load_topics')]
-    public function loadTopics(Request $request, TopicsService $topicsService)
+    public function loadTopics(): Response
     {
-            $topicsService->importTopics();
-            return $this->redirectToRoute('topic_index', ['entity' => 'topics']);
+        $this->topicsService->importTopics();
+        return $this->redirectToRoute('topic_index', ['entity' => 'topics']);
     }
 
     #[Route(path: '/load-files', name: 'app_load_files')]
-    public function loadFiles(Request $request, AppService $appService, ParameterBagInterface $bag)
+    public function loadFiles(): Response
     {
-        $directory = $bag->get('kernel.project_dir');
-        $appService->importDirectory($directory);
+        $directory = $this->bag->get('kernel.project_dir');
+        $this->appService->importDirectory($directory);
         return $this->redirectToRoute('app_repo_files', ['entity' => 'files']);
     }
 
     #[Route(path: '/file-source', name: 'app_file_source')]
-    public function fileSource(Request $request, ParameterBagInterface $bag)
+    public function fileSource(Request $request): Response
     {
-        $directory = $bag->get('kernel.project_dir');
+        $directory = $this->bag->get('kernel.project_dir');
         $filename = $directory . '/' . $request->get('path');
         assert(file_exists($filename), "file $filename does not exist.");
         // limit to text files?
         $contents = file_get_contents($filename);
         return new Response($contents);
     }
+
     #[Route(path: '/knp-menu', name: 'app_knp_menu')]
-    public function knpMenu(Request $request, AppService $appService, ParameterBagInterface $bag)
+    public function knpMenu(): Response
     {
         return $this->render('menu.html.twig');
     }
@@ -104,14 +106,14 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/html-demos', name: 'app_basic_html')]
-    public function html(TopicRepository $topicRepository)
+    public function html(): Response
     {
-        $count = $topicRepository->count([]);
+        $count = $this->topicRepository->count([]);
         return $this->render('app/basic-html.html.twig', []);
     }
 
     #[Route(path: '/module', name: 'app_module')]
-    public function module(TopicRepository $topicRepository)
+    public function module(): Response
     {
         return $this->render('app/module.html.twig', []);
     }
@@ -137,12 +139,11 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/fetch.{_format}', name: 'app_tree_fetch')]
-    public function fetch(Request $request, EntityManagerInterface $em, $_format='json')
+    public function fetch(Request $request, $_format='json'): JsonResponse
     {
-        $repository = $em->getRepository(Location::class);
         /** @var Location $location */
         $data = [];
-        foreach ($repository->findAll() as $location) {
+        foreach ($this->locationRepository->findAll() as $location) {
             array_push($data, [
                 'id' => $location->getCode(),
                 'data' => ['databaseId' => $location->getId()],
@@ -154,21 +155,21 @@ class AppController extends AbstractController
     }
 
     #[Route(path: '/save.{_format}', name: 'app_tree_save')]
-    public function save(Request $request, EntityManagerInterface $em, $_format='html')
+    public function save(Request $request, $_format='html'): Response
     {
-        $repo = $em->getRepository(Location::class);
+        $repo = $this->locationRepository;
         $data = $request->get('json');
         // create nodes that don't exist.  Codes, though, are locked.
         foreach ($data as $node) {
             $node = (object)$node;
             if (!$location = $repo->findOneBy(['code' => $node->id])) {
                 $location = (new Location());
-                $em->persist($location);
+                $this->entityManager->persist($location);
             }
             $location->setName($node->text);
             $location->setParent($node->parent === '#' ? null : $repo->findOneBy(['code' => $node->parent]));
         }
-        $em->flush();
+        $this->entityManager->flush();
         $data = ['status' => 'ok'];
         return $this->jsonResponse($data, $request);
     }

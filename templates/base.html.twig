@@ -4,8 +4,7 @@
         {{ parent() }}
 {#            {{ importmap('app') }}#}
 {#        <script type="module">#}
-{#            import $ from 'https://cdn.jsdelivr.net/npm/jquery@3.7.1/+esm'#}
-{#            import jstree from 'https://cdn.jsdelivr.net/npm/jstree@3.3.16/+esm'#}
+{#            import jstree from 'https://cdn.jsdelivr.net/npm/@tacman1123/jstree-esm@3.4.0/+esm'#}
 {#            $('#html1').jstree();#}
 {#        </script>#}
 
@@ -13,7 +12,6 @@
 
     {% block stylesheets %}
         {{ parent() }}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jstree/3.2.1/themes/default/style.min.css" />
     {% endblock %}
 
 

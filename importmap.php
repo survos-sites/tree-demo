@@ -33,9 +33,19 @@ return [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
     'jquery' => [
-        'version' => '3.7.1',
+        'version' => '4.0.0',
     ],
-    'jstree' => [
-        'version' => '3.3.16',
+    '@tacman1123/jstree-esm' => [
+        'path' => '@tacman1123/jstree-esm-local/jstree.esm.mjs',
+    ],
+    '@tacman1123/jstree-esm/module' => [
+        'path' => '@tacman1123/jstree-esm-local/jstree.module.mjs',
+    ],
+    '@tacman1123/jstree-esm/jquery-plugin' => [
+        'path' => '@tacman1123/jstree-esm-local/dist/jstree.js',
+    ],
+    '@tacman1123/jstree-esm/dist/themes/default/style.css' => [
+        'path' => '@tacman1123/jstree-esm-local/dist/themes/default/style.css',
+        'type' => 'css',
     ],
 ];

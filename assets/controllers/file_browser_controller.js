@@ -6,48 +6,55 @@ import { Controller } from '@hotwired/stimulus';
 */
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
-    static targets = ['content', 'title']
+    static targets = ['content', 'title'];
     static values = {
-        sourcePath: {type: String, default: ''},
-    }
+        sourcePath: { type: String, default: '' },
+    };
 
     connect() {
-        super.connect();
-        console.log(this.sourcePathValue);
+        this.onTreeChanged = this.onTreeChanged.bind(this);
+        window.addEventListener('apitree_changed', this.onTreeChanged);
+    }
 
-        window.addEventListener('jstree', ev => {
+    disconnect() {
+        window.removeEventListener('apitree_changed', this.onTreeChanged);
+    }
 
-            let data = ev.detail.data;
-            this.titleTarget.innerHTML = data.path;
+    async onTreeChanged(event) {
+        const payload = event.detail || {};
+        const node = payload.data || payload.hydra || payload.node?.data || null;
+        if (!node) {
+            return;
+        }
 
-            if (data.type === 'dir') {
-                this.contentTarget.innerHTML = data.path + ' is a directory';
-                return;
+        const path = node.path || payload.node?.data?.path;
+        if (!path) {
+            return;
+        }
+
+        this.titleTarget.textContent = path;
+
+        const nodeType = node.type || payload.node?.type;
+        const isDirectory = node.isDir === true || nodeType === 'dir';
+        if (isDirectory) {
+            this.contentTarget.textContent = `${path} is a directory.`;
+            return;
+        }
+
+        if (!this.sourcePathValue) {
+            this.contentTarget.textContent = 'No sourcePath configured.';
+            return;
+        }
+
+        const url = `${this.sourcePathValue}?path=${encodeURIComponent(path)}`;
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`${response.status} ${response.statusText}`);
             }
-
-            let url = this.sourcePathValue + '?path=' + data.path;
-
-            console.log('Received ' + ev.type + ' in file_browser_controller ', ev);
-            console.warn(ev.type, data.path, data.jstree);
-
-
-            fetch(url)
-                .then((response) => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not OK');
-                    }
-                    return response.text();
-                })
-                .then((response) => {
-                    this.contentTarget.innerHTML = 'content here. from ' + this.sourcePathValue + data.path;
-                    this.contentTarget.innerHTML = response;
-                })
-                .catch((error) => {
-                    console.error('There has been a problem with your fetch operation:', error);
-                });
-
-
-        });
-
+            this.contentTarget.textContent = await response.text();
+        } catch (error) {
+            this.contentTarget.textContent = `Failed to load ${path}: ${error}`;
+        }
     }
 }
