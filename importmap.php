@@ -36,16 +36,16 @@ return [
         'version' => '4.0.0',
     ],
     '@tacman1123/jstree-esm' => [
-        'path' => '@tacman1123/jstree-esm-local/jstree.esm.mjs',
-    ],
-    '@tacman1123/jstree-esm/module' => [
-        'path' => '@tacman1123/jstree-esm-local/jstree.module.mjs',
-    ],
-    '@tacman1123/jstree-esm/jquery-plugin' => [
-        'path' => '@tacman1123/jstree-esm-local/dist/jstree.js',
+        'version' => '4.0.0',
     ],
     '@tacman1123/jstree-esm/dist/themes/default/style.css' => [
-        'path' => '@tacman1123/jstree-esm-local/dist/themes/default/style.css',
+        'version' => '4.0.0',
         'type' => 'css',
+    ],
+    '@tacman1123/jstree-esm/jquery-plugin' => [
+        'version' => '4.0.0',
+    ],
+    '@tacman1123/jstree-esm/module' => [
+        'version' => '4.0.0',
     ],
 ];
