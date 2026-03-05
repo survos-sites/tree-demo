@@ -132,6 +132,19 @@ Practical guidance:
 
 This gives a stable base theme while still using components where they are most useful.
 
+## Testing JSTree with a Local Copy
+
+If you want to test a local development version of jstree-esm, add a path mapping
+to your Symfony `asset_mapper.yaml`:
+
+```yaml
+framework:
+  asset_mapper:
+    paths:
+      '/path/to/local/jstree': '@tacman1123/jstree-esm'
+```
+This allows Symfony to load the assets from your local directory instead of the CDN.
+
 ## Relevant Links
 
 - Demo: https://tree.survos.com
