@@ -9,7 +9,8 @@
         <div class="col-md-5">
             {% component api_tree with {
                 class: topicClass,
-                filter: filter|default({})
+                filter: filter|default({}),
+                editable: true
             } %}
             {% endcomponent %}
         </div>

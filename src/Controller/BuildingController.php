@@ -41,9 +41,9 @@ class BuildingController extends AbstractController
 
             return $this->redirectToRoute('building_index');
         }
-        return $this->renderForm('building/new.html.twig', [
+        return $this->render('building/new.html.twig', [
             'building' => $building,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
     #[Route(path: '/show/{buildingId}', name: 'building_show', methods: ['GET'])]

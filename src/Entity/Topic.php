@@ -4,10 +4,11 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Metadata\ApiFilter;
+use ApiPlatform\Doctrine\Orm\Filter\ExactFilter;
+use ApiPlatform\Doctrine\Orm\Filter\PartialSearchFilter;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\QueryParameter;
 use ApiPlatform\Serializer\Filter\PropertyFilter;
 use App\Repository\TopicRepository;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -22,9 +23,13 @@ use Symfony\Component\Serializer\Attribute\Groups;
 #[ApiResource(
     normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','transitions', 'rp']],
     denormalizationContext: ['groups' => ["Default", "minimum", "browse"]],
+    parameters: [
+        'name' => new QueryParameter(filter: new PartialSearchFilter(), property: 'name'),
+        'parentId' => new QueryParameter(filter: new ExactFilter(), property: 'parentId'),
+        'code' => new QueryParameter(filter: new ExactFilter(), property: 'code'),
+        'properties' => new QueryParameter(filter: new PropertyFilter()),
+    ],
 )]
-#[ApiFilter(SearchFilter::class, properties: ['name' => 'partial', 'parentId' => 'exact', 'code' => 'exact'])]
-#[ApiFilter(PropertyFilter::class)]
 #[Gedmo\Tree(type:"nested")]
 #[ORM\Entity(repositoryClass: TopicRepository::class)]
 class Topic implements \Stringable, RouteParametersInterface, TreeInterface
