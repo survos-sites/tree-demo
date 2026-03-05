@@ -1871,7 +1871,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     controllers_json?: scalar|Param|null, // Default: "%kernel.project_dir%/assets/controllers.json"
  * }
  * @psalm-type SurvosTreeConfig = array{
- *     stimulus_controller?: scalar|Param|null, // Default: "@survos/tree-bundle/tree"
+ *     tree_stimulus_controller?: scalar|Param|null, // Default: "@survos/tree-bundle/tree"
+ *     api_tree_stimulus_controller?: scalar|Param|null, // Default: "@survos/tree-bundle/api_tree"
+ *     stimulus_controller?: scalar|Param|null, // Deprecated: The "stimulus_controller" option is deprecated, use "api_tree_stimulus_controller" and/or "tree_stimulus_controller" instead. // Default: null
  * }
  * @psalm-type SurvosDeploymentConfig = array{
  *     enabled?: bool|Param, // Default: true
