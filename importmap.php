@@ -52,4 +52,11 @@ return [
     '@tacman1123/jstree-esm' => [
         'version' => '4.1.1',
     ],
+    '@tabler/core' => [
+        'version' => '1.4.0',
+    ],
+    '@tabler/core/dist/css/tabler.min.css' => [
+        'version' => '1.4.0',
+        'type' => 'css',
+    ],
 ];
