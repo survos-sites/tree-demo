@@ -3610,16 +3610,16 @@
         },
         {
             "name": "survos/inspection-bundle",
-            "version": "2.0.117",
+            "version": "2.0.119",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/inspection-bundle.git",
-                "reference": "f1ba1ef2e09861537b10a3138d5397c78f75dfb5"
+                "reference": "3ce4521a8d62edee867c8ce18ab98a833a7aa719"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/inspection-bundle/zipball/f1ba1ef2e09861537b10a3138d5397c78f75dfb5",
-                "reference": "f1ba1ef2e09861537b10a3138d5397c78f75dfb5",
+                "url": "https://api.github.com/repos/survos/inspection-bundle/zipball/3ce4521a8d62edee867c8ce18ab98a833a7aa719",
+                "reference": "3ce4521a8d62edee867c8ce18ab98a833a7aa719",
                 "shasum": ""
             },
             "require": {
@@ -3665,7 +3665,7 @@
             "description": "Inspects Doctrine entities with APIPlatform attributes",
             "support": {
                 "issues": "https://github.com/survos/inspection-bundle/issues",
-                "source": "https://github.com/survos/inspection-bundle/tree/2.0.117"
+                "source": "https://github.com/survos/inspection-bundle/tree/2.0.119"
             },
             "funding": [
                 {
@@ -3673,7 +3673,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-02-11T22:13:59+00:00"
+            "time": "2026-03-05T12:36:49+00:00"
         },
         {
             "name": "survos/installer",
@@ -13831,7 +13831,7 @@
         },
         {
             "name": "survos/deployment-bundle",
-            "version": "2.0.117",
+            "version": "2.0.119",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/deployment-bundle.git",
@@ -13879,7 +13879,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/deployment-bundle/issues",
-                "source": "https://github.com/survos/deployment-bundle/tree/2.0.117"
+                "source": "https://github.com/survos/deployment-bundle/tree/2.0.119"
             },
             "funding": [
                 {

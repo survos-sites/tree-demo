@@ -35,17 +35,21 @@ return [
     'jquery' => [
         'version' => '4.0.0',
     ],
-    '@tacman1123/jstree-esm' => [
-        'version' => '4.0.0',
-    ],
     '@tacman1123/jstree-esm/dist/themes/default/style.css' => [
-        'version' => '4.0.0',
+        'version' => '4.1.1',
         'type' => 'css',
     ],
     '@tacman1123/jstree-esm/jquery-plugin' => [
-        'version' => '4.0.0',
+        'version' => '4.1.1',
     ],
     '@tacman1123/jstree-esm/module' => [
-        'version' => '4.0.0',
+        'version' => '4.1.1',
+    ],
+    '@tacman1123/jstree-esm/dist/themes/modern/style.css' => [
+        'version' => '4.1.1',
+        'type' => 'css',
+    ],
+    '@tacman1123/jstree-esm' => [
+        'version' => '4.1.1',
     ],
 ];
