@@ -1,0 +1,57 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Twig Browser Demo{% endblock %}
+
+{% block body %}
+    <h1 class="mb-3">Twig Browser Demo</h1>
+    <p class="text-muted">Table-driven render tests using a shared Twig fixture and expected output cases.</p>
+
+    {% set _sc = 'twig_browser_demo' %}
+    <section
+        class="card"
+        {{ stimulus_controller(_sc, {
+            routeMap: {
+                app_homepage: path('app_homepage'),
+                app_tree_json: path('app_tree_json', {_format: 'json'})
+            }
+        }) }}
+    >
+        <div class="card-body" {{ stimulus_action(_sc, 'chooseCase', 'click') }}>
+            <div class="alert alert-info py-2" {{ stimulus_target(_sc, 'status') }}>Running render cases...</div>
+
+            <h3 class="h6 mt-3">Test Cases</h3>
+            <div class="border rounded p-2 mb-3" style="max-height: 18rem; overflow: auto;" {{ stimulus_target(_sc, 'cases') }}></div>
+
+            <div class="row g-3">
+                <div class="col-lg-6">
+                    <h3 class="h6">Twig Block</h3>
+                    <pre class="border rounded p-2 bg-light text-dark small mb-0" style="max-height: 10rem; overflow: auto; white-space: pre-wrap;" {{ stimulus_target(_sc, 'source') }}></pre>
+                </div>
+                <div class="col-lg-6">
+                    <h3 class="h6">Variables (JSON)</h3>
+                    <pre class="border rounded p-2 bg-light text-dark small mb-0" style="max-height: 10rem; overflow: auto;" {{ stimulus_target(_sc, 'vars') }}></pre>
+                </div>
+            </div>
+
+            <h3 class="h6 mt-3">Rendered Output</h3>
+            <div class="d-flex justify-content-end mb-2">
+                <button class="btn btn-sm btn-outline-secondary" {{ stimulus_action(_sc, 'showHtmlOutput') }}>View HTML Output</button>
+            </div>
+            <div class="border rounded p-3" {{ stimulus_target(_sc, 'rendered') }}></div>
+
+            <div class="modal fade" tabindex="-1" aria-hidden="true" {{ stimulus_target(_sc, 'htmlModal') }}>
+                <div class="modal-dialog modal-lg modal-dialog-scrollable">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title">Rendered HTML Output</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <pre class="border rounded p-2 bg-light small mb-0" {{ stimulus_target(_sc, 'htmlModalBody') }}></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -16,6 +16,36 @@
                 "enabled": true,
                 "fetch": "lazy"
             }
+        },
+        "@survos/api-grid-bundle": {
+            "api_grid": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "datatables.net-columncontrol-bs5/css/columnControl.bootstrap5.min.css": true,
+                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": true,
+                    "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css": true,
+                    "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css": true,
+                    "datatables.net-scroller-bs5/css/scroller.bootstrap5.min.css": true,
+                    "datatables.net-searchpanes-bs5/css/searchPanes.bootstrap5.min.css": true,
+                    "datatables.net-searchbuilder-bs5/css/searchBuilder.bootstrap5.min.css": true,
+                    "datatables.net-select-bs5/css/select.bootstrap5.min.css": true
+                }
+            },
+            "grid": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "datatables.net-columncontrol-bs5/css/columnControl.bootstrap5.min.css": true,
+                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": true,
+                    "datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css": true,
+                    "datatables.net-responsive-bs5/css/responsive.bootstrap5.min.css": true,
+                    "datatables.net-scroller-bs5/css/scroller.bootstrap5.min.css": true,
+                    "datatables.net-searchpanes-bs5/css/searchPanes.bootstrap5.min.css": true,
+                    "datatables.net-searchbuilder-bs5/css/searchBuilder.bootstrap5.min.css": true,
+                    "datatables.net-select-bs5/css/select.bootstrap5.min.css": true
+                }
+            }
         }
     },
     "entrypoints": []

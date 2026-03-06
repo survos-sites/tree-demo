@@ -60,10 +60,18 @@ class TopicCollectionController extends AbstractController
     }
 
     #[Route('/index', name: 'topic_index')]
-    public function index(TopicRepository $topicRepository): Response
+    public function index(Request $request): Response
     {
+        $query = $request->query;
+        $filter = array_filter([
+            'name' => $query->get('name'),
+            'code' => $query->get('code'),
+            'parentId' => $query->get('parentId'),
+        ], static fn ($value) => $value !== null && $value !== '');
+
         return $this->render('topic/index.html.twig', [
-            'topics' => $topicRepository->findBy([], [], 30),
+            'topicClass' => Topic::class,
+            'filter' => $filter,
         ]);
     }
 

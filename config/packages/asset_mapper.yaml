@@ -3,3 +3,5 @@ framework:
         # The paths to make available to the asset mapper.
         paths:
             'assets/': ''
+            '/home/tac/tacman/twig-browser/src': 'twig-browser/src'
+            '/home/tac/tacman/twig-browser/adapters': 'twig-browser/adapters'

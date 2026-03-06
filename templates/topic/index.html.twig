@@ -2,12 +2,76 @@
 
 {% block title %}Topic index{% endblock %}
 
-
 {% block body %}
     <h1>Topic index</h1>
-    <a href="{{ path('app_load_topics') }}">Reload Topics</a>
 
-    {% include "topic/_table.html.twig" %}
+    <div class="d-flex gap-2 mb-3">
+        <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_load_topics') }}">Reload Topics</a>
+        <a class="btn btn-sm btn-primary" href="{{ path('topic_new') }}">
+            <span class="bi bi-plus"></span>
+            New Topic
+        </a>
+    </div>
 
-    <a class="btn btn-primary" href="{{ path('topic_new') }}"><span class="fas fa-plus"></span>New  Topic</a>
+    {% set currentFilter = filter|default({}) %}
+
+    <form class="row g-2 align-items-end mb-3" method="get" action="{{ path('topic_index') }}">
+        <div class="col-md-4">
+            <label class="form-label form-label-sm" for="topic-filter-name">Name contains</label>
+            <input id="topic-filter-name" name="name" class="form-control form-control-sm" value="{{ currentFilter.name|default('') }}" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label form-label-sm" for="topic-filter-code">Code</label>
+            <input id="topic-filter-code" name="code" class="form-control form-control-sm" value="{{ currentFilter.code|default('') }}" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label form-label-sm" for="topic-filter-parent">Parent code</label>
+            <input id="topic-filter-parent" name="parentId" class="form-control form-control-sm" value="{{ currentFilter.parentId|default('') }}" />
+        </div>
+        <div class="col-md-2 d-flex gap-2">
+            <button class="btn btn-sm btn-outline-primary w-100" type="submit">Apply</button>
+            <a class="btn btn-sm btn-outline-secondary" href="{{ path('topic_index') }}">Clear</a>
+        </div>
+    </form>
+
+    {% set columns = [
+        {name: '_actions', title: '', sortable: false, searchable: false, prefix: 'topic_', actions: ['show', 'edit']},
+        {name: 'code', sortable: true, searchable: true, browsable: true},
+        {name: 'name', sortable: true, searchable: true, browsable: true},
+        {name: 'description', searchable: true},
+        {name: 'parentId', title: 'Parent', browsable: true},
+    ] %}
+
+    {% set apiGetCollectionUrl = api_route(topicClass) %}
+
+    <twig:api_grid
+        :class="topicClass"
+        :apiGetCollectionUrl="apiGetCollectionUrl"
+        :columns="columns"
+        :filter="currentFilter"
+        :caller="_self"
+        :searchPanes="false"
+        :columnControl="true"
+    >
+        <twig:block name="_actions">
+            <div class="d-flex gap-2">
+                <a href="{{ path('topic_show', {topicId: row.code}) }}" title="Show">
+                    <i class="bi bi-eye"></i>
+                </a>
+                <a href="{{ path('topic_edit', {topicId: row.code}) }}" title="Edit">
+                    <i class="bi bi-pencil"></i>
+                </a>
+            </div>
+        </twig:block>
+
+        <twig:block name="code">
+            <code>{{ row.code }}</code>
+        </twig:block>
+
+        <twig:block name="description">
+            <span class="d-inline-block text-truncate" style="max-width: 30rem;" title="{{ row.description }}">
+                {{ row.description }}
+            </span>
+        </twig:block>
+    </twig:api_grid>
 {% endblock %}

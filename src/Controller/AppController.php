@@ -118,6 +118,12 @@ class AppController extends AbstractController
         return $this->render('app/module.html.twig', []);
     }
 
+    #[Route(path: '/twig-browser-demo', name: 'app_twig_browser_demo')]
+    public function twigBrowserDemo(): Response
+    {
+        return $this->render('app/twig-browser-demo.html.twig', []);
+    }
+
     #[Route(path: '/', name: 'app_homepage')]
     public function home()
     {

@@ -23,7 +23,7 @@ use function Symfony\Component\String\u;
 
 class AppMenu extends BaseAdminMenu
 {
-    use AdminMenuTrait;
+    use AdminMenuTratit;
 
     public function __construct(private AuthorizationCheckerInterface $security,
                                 protected Environment $twig,

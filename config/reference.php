@@ -1894,6 +1894,27 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  *     ignore_not_found?: bool|Param, // Ignore error when an icon is not found. Set to 'true' to fail silently. // Default: false
  * }
+ * @psalm-type SurvosJsTwigConfig = array{
+ *     debug?: bool|Param, // Default: false
+ *     version?: scalar|Param|null, // Default: 1
+ *     db?: scalar|Param|null, // Default: "db"
+ *     stores?: list<array{ // Default: []
+ *         batch?: int|Param, // batch size when loading api // Default: null
+ *         name?: scalar|Param|null, // the store name
+ *         schema?: scalar|Param|null, // the index definition
+ *         url?: scalar|Param|null, // the API to use to load if empty. json-ld iterates through pages
+ *         response_key?: scalar|Param|null, // key if API returns an object response, e.g. dummyjson returns {'products': [...]}
+ *     }>,
+ * }
+ * @psalm-type SurvosApiGridConfig = array{
+ *     stimulus_controller?: scalar|Param|null, // The stimulus controller to use, should extend @survos/api-grid-bundle/api_grid // Default: "@survos/api-grid-bundle/api_grid"
+ *     grid_stimulus_controller?: scalar|Param|null, // Default: "@survos/api-grid-bundle/grid"
+ *     meiliHost?: scalar|Param|null, // Default: "%env(MEILI_SERVER)%"
+ *     meiliKey?: scalar|Param|null, // Default: "%env(MEILI_API_KEY)%"
+ *     meiliPrefix?: scalar|Param|null, // Default: "%env(MEILI_PREFIX)%"
+ *     passLocale?: bool|Param, // Default: false
+ *     maxValuesPerFacet?: int|Param, // https://www.meilisearch.com/docs/reference/api/settings#faceting-object // Default: 1000
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -1918,6 +1939,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     stimulus?: StimulusConfig,
  *     survos_tree?: SurvosTreeConfig,
  *     ux_icons?: UxIconsConfig,
+ *     survos_js_twig?: SurvosJsTwigConfig,
+ *     survos_api_grid?: SurvosApiGridConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -1946,6 +1969,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_tree?: SurvosTreeConfig,
  *         survos_deployment?: SurvosDeploymentConfig,
  *         ux_icons?: UxIconsConfig,
+ *         survos_js_twig?: SurvosJsTwigConfig,
+ *         survos_api_grid?: SurvosApiGridConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -1971,6 +1996,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         stimulus?: StimulusConfig,
  *         survos_tree?: SurvosTreeConfig,
  *         ux_icons?: UxIconsConfig,
+ *         survos_js_twig?: SurvosJsTwigConfig,
+ *         survos_api_grid?: SurvosApiGridConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -1999,6 +2026,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_tree?: SurvosTreeConfig,
  *         survos_deployment?: SurvosDeploymentConfig,
  *         ux_icons?: UxIconsConfig,
+ *         survos_js_twig?: SurvosJsTwigConfig,
+ *         survos_api_grid?: SurvosApiGridConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,
