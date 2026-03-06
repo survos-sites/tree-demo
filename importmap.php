@@ -19,12 +19,12 @@ return [
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
-    '@tacman1123/twig-browser/testing/detailContextHeader' => [
-        'version' => '0.2.2',
-    ],
     '@survos/api-grid-bundle' => [
         'path' => '@survos/api-grid/package.json',
         'type' => 'json',
+    ],
+    '@tacman1123/twig-browser/testing/detailContextHeader' => [
+        'version' => '0.2.2',
     ],
     '@hotwired/stimulus' => [
         'version' => '3.2.2',
@@ -173,9 +173,6 @@ return [
     ],
     '@tacman1123/twig-browser/adapters/symfony' => [
         'version' => '0.2.2',
-    ],
-    'twig' => [
-        'version' => '1.17.1',
     ],
     'locutus/php/strings/sprintf' => [
         'version' => '3.0.9',
