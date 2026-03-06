@@ -1,10 +1,10 @@
 import { Controller } from '@hotwired/stimulus';
-import { createEngine } from '@survos/twig-browser/createEngine';
-import { installSymfonyTwigAPI } from '@survos/twig-browser/adapters/symfony';
+import { createEngine } from '@tacman1123/twig-browser';
+import { installSymfonyTwigAPI } from '@tacman1123/twig-browser/adapters/symfony';
 import {
     detailContextHeaderCases,
     detailContextHeaderTemplate,
-} from '@survos/twig-browser/testing/detailContextHeader';
+} from '@tacman1123/twig-browser/testing/detailContextHeader';
 
 function normalizeHtmlForCompare(html) {
     return html

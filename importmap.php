@@ -19,23 +19,8 @@ return [
     '@symfony/stimulus-bundle' => [
         'path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js',
     ],
-    '@survos/twig-browser' => [
-        'path' => 'twig-browser/src/index.js',
-    ],
-    '@survos/twig-browser/createEngine' => [
-        'path' => 'twig-browser/src/engine/createEngine.js',
-    ],
-    '@survos/twig-browser/compileTwigBlocks' => [
-        'path' => 'twig-browser/src/compat/compileTwigBlocks.js',
-    ],
-    '@survos/twig-browser/twigRender' => [
-        'path' => 'twig-browser/src/compat/twigRender.js',
-    ],
-    '@survos/twig-browser/testing/detailContextHeader' => [
-        'path' => 'twig-browser/src/testing/detailContextHeader.cases.js',
-    ],
-    '@survos/twig-browser/adapters/symfony' => [
-        'path' => 'twig-browser/adapters/symfony/installSymfonyTwigAPI.js',
+    '@tacman1123/twig-browser/testing/detailContextHeader' => [
+        'version' => '0.2.2',
     ],
     '@survos/api-grid-bundle' => [
         'path' => '@survos/api-grid/package.json',
