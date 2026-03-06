@@ -43,14 +43,14 @@ return [
         'version' => '4.1.1',
     ],
     '@tacman1123/jstree-esm/module' => [
-        'version' => '4.1.1',
+        'version' => '4.1.3',
     ],
     '@tacman1123/jstree-esm/dist/themes/modern/style.css' => [
         'version' => '4.1.1',
         'type' => 'css',
     ],
     '@tacman1123/jstree-esm' => [
-        'version' => '4.1.1',
+        'version' => '4.1.3',
     ],
     '@tabler/core' => [
         'version' => '1.4.0',
