@@ -25,3 +25,5 @@
 .castor.stub.php
 npm_recovery_codes.txt
 .npmrc
+config.bat
+node_modules
