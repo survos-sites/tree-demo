@@ -1,22 +1,5 @@
 {
     "controllers": {
-        "@survos/bootstrap-bundle": {
-            "search": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": []
-            }
-        },
-        "@survos/tree-bundle": {
-            "tree": {
-                "enabled": true,
-                "fetch": "lazy"
-            },
-            "api_tree": {
-                "enabled": true,
-                "fetch": "lazy"
-            }
-        },
         "@survos/api-grid-bundle": {
             "api_grid": {
                 "enabled": true,
@@ -45,6 +28,35 @@
                     "datatables.net-searchbuilder-bs5/css/searchBuilder.bootstrap5.min.css": true,
                     "datatables.net-select-bs5/css/select.bootstrap5.min.css": true
                 }
+            }
+        },
+        "@survos/bootstrap-bundle": {
+            "search": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": []
+            }
+        },
+        "@survos/js-twig-bundle": {
+            "dexie": {
+                "enabled": true,
+                "fetch": "eager",
+                "autoimport": []
+            },
+            "js_twig": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": []
+            }
+        },
+        "@survos/tree-bundle": {
+            "tree": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "api_tree": {
+                "enabled": true,
+                "fetch": "lazy"
             }
         }
     },

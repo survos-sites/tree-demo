@@ -3388,7 +3388,7 @@
         },
         {
             "name": "survos/api-grid-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosApiGridBundle.git",
@@ -3472,7 +3472,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/SurvosApiGridBundle/issues",
-                "source": "https://github.com/survos/SurvosApiGridBundle/tree/2.0.124"
+                "source": "https://github.com/survos/SurvosApiGridBundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -3484,16 +3484,16 @@
         },
         {
             "name": "survos/bootstrap-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/bootstrap-bundle.git",
-                "reference": "cae46a87bdcac390d52fa6c0f24645b2a05673a5"
+                "reference": "ce1c36c0ab55a1801e1ca4885b35d7f6ea4f9e47"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/bootstrap-bundle/zipball/cae46a87bdcac390d52fa6c0f24645b2a05673a5",
-                "reference": "cae46a87bdcac390d52fa6c0f24645b2a05673a5",
+                "url": "https://api.github.com/repos/survos/bootstrap-bundle/zipball/ce1c36c0ab55a1801e1ca4885b35d7f6ea4f9e47",
+                "reference": "ce1c36c0ab55a1801e1ca4885b35d7f6ea4f9e47",
                 "shasum": ""
             },
             "require": {
@@ -3550,7 +3550,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/bootstrap-bundle/issues",
-                "source": "https://github.com/survos/bootstrap-bundle/tree/2.0.124"
+                "source": "https://github.com/survos/bootstrap-bundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -3558,11 +3558,11 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-05T17:30:22+00:00"
+            "time": "2026-03-08T15:50:25+00:00"
         },
         {
             "name": "survos/core-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/core-bundle.git",
@@ -3621,7 +3621,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/core-bundle/issues",
-                "source": "https://github.com/survos/core-bundle/tree/2.0.124"
+                "source": "https://github.com/survos/core-bundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -3633,7 +3633,7 @@
         },
         {
             "name": "survos/crawler-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/crawler-bundle.git",
@@ -3706,7 +3706,7 @@
         },
         {
             "name": "survos/inspection-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/inspection-bundle.git",
@@ -3761,7 +3761,7 @@
             "description": "Inspects Doctrine entities with APIPlatform attributes",
             "support": {
                 "issues": "https://github.com/survos/inspection-bundle/issues",
-                "source": "https://github.com/survos/inspection-bundle/tree/2.0.124"
+                "source": "https://github.com/survos/inspection-bundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -3837,16 +3837,16 @@
         },
         {
             "name": "survos/js-twig-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/js-twig-bundle.git",
-                "reference": "5dd854d309ecfe5a418176325c539ce3586789b5"
+                "reference": "106049b6361652c9eabd12f02e5d7e63983911a7"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/js-twig-bundle/zipball/5dd854d309ecfe5a418176325c539ce3586789b5",
-                "reference": "5dd854d309ecfe5a418176325c539ce3586789b5",
+                "url": "https://api.github.com/repos/survos/js-twig-bundle/zipball/106049b6361652c9eabd12f02e5d7e63983911a7",
+                "reference": "106049b6361652c9eabd12f02e5d7e63983911a7",
                 "shasum": ""
             },
             "require": {
@@ -3884,7 +3884,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/js-twig-bundle/issues",
-                "source": "https://github.com/survos/js-twig-bundle/tree/2.0.124"
+                "source": "https://github.com/survos/js-twig-bundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -3892,7 +3892,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-06T17:41:30+00:00"
+            "time": "2026-03-08T15:50:27+00:00"
         },
         {
             "name": "survos/tree-bundle",
@@ -11927,18 +11927,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/Roave/SecurityAdvisories.git",
-                "reference": "258001d8c6f3310f9731d8987139aa64cccd8dc9"
+                "reference": "3d966c87be1b67611dbac8a4f02b35d9dcc4c060"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/258001d8c6f3310f9731d8987139aa64cccd8dc9",
-                "reference": "258001d8c6f3310f9731d8987139aa64cccd8dc9",
+                "url": "https://api.github.com/repos/Roave/SecurityAdvisories/zipball/3d966c87be1b67611dbac8a4f02b35d9dcc4c060",
+                "reference": "3d966c87be1b67611dbac8a4f02b35d9dcc4c060",
                 "shasum": ""
             },
             "conflict": {
                 "3f/pygmentize": "<1.2",
                 "adaptcms/adaptcms": "<=1.3",
-                "admidio/admidio": "<=4.3.16",
+                "admidio/admidio": "<5.0.6",
                 "adodb/adodb-php": "<=5.22.9",
                 "aheinze/cockpit": "<2.2",
                 "aimeos/ai-admin-graphql": ">=2022.04.1,<2022.10.10|>=2023.04.1,<2023.10.6|>=2024.04.1,<2024.07.2",
@@ -11989,7 +11989,7 @@
                 "automattic/jetpack": "<9.8",
                 "awesome-support/awesome-support": "<=6.0.7",
                 "aws/aws-sdk-php": "<3.368",
-                "azuracast/azuracast": "<=0.23.1",
+                "azuracast/azuracast": "<=0.23.3",
                 "b13/seo_basics": "<0.8.2",
                 "backdrop/backdrop": "<=1.32",
                 "backpack/crud": "<3.4.9",
@@ -12075,8 +12075,8 @@
                 "cosenary/instagram": "<=2.3",
                 "couleurcitron/tarteaucitron-wp": "<0.3",
                 "cpsit/typo3-mailqueue": "<0.4.3|>=0.5,<0.5.1",
-                "craftcms/cms": "<4.17.0.0-beta2|>=5,<5.9.0.0-beta2",
-                "craftcms/commerce": ">=4.0.0.0-RC1-dev,<=4.10|>=5,<=5.5.1",
+                "craftcms/cms": "<4.17.3|>=5,<5.9.6",
+                "craftcms/commerce": ">=4,<4.11|>=5,<5.6",
                 "craftcms/composer": ">=4.0.0.0-RC1-dev,<=4.10|>=5.0.0.0-RC1-dev,<=5.5.1",
                 "craftcms/craft": ">=3.5,<=4.16.17|>=5.0.0.0-RC1-dev,<=5.8.21",
                 "croogo/croogo": "<=4.0.7",
@@ -12211,6 +12211,7 @@
                 "flarum/flarum": "<0.1.0.0-beta8",
                 "flarum/framework": "<1.8.10",
                 "flarum/mentions": "<1.6.3",
+                "flarum/nicknames": "<1.8.3",
                 "flarum/sticky": ">=0.1.0.0-beta14,<=0.1.0.0-beta15",
                 "flarum/tags": "<=0.1.0.0-beta13",
                 "floriangaerber/magnesium": "<0.3.1",
@@ -12257,7 +12258,7 @@
                 "gp247/core": "<1.1.24",
                 "gree/jose": "<2.2.1",
                 "gregwar/rst": "<1.0.3",
-                "grumpydictator/firefly-iii": "<6.1.17",
+                "grumpydictator/firefly-iii": "<6.1.17|>=6.4.23,<=6.5",
                 "gugoan/economizzer": "<=0.9.0.0-beta1",
                 "guzzlehttp/guzzle": "<6.5.8|>=7,<7.4.5",
                 "guzzlehttp/oauth-subscriber": "<0.8.1",
@@ -12358,7 +12359,7 @@
                 "lavalite/cms": "<=10.1",
                 "lavitto/typo3-form-to-database": "<2.2.5|>=3,<3.2.2|>=4,<4.2.3|>=5,<5.0.2",
                 "lcobucci/jwt": ">=3.4,<3.4.6|>=4,<4.0.4|>=4.1,<4.1.5",
-                "league/commonmark": "<2.7",
+                "league/commonmark": "<=2.8",
                 "league/flysystem": "<1.1.4|>=2,<2.1.1",
                 "league/oauth2-server": ">=8.3.2,<8.4.2|>=8.5,<8.5.3",
                 "leantime/leantime": "<3.3",
@@ -12657,7 +12658,7 @@
                 "slim/slim": "<2.6",
                 "slub/slub-events": "<3.0.3",
                 "smarty/smarty": "<4.5.3|>=5,<5.1.1",
-                "snipe/snipe-it": "<=8.3.4",
+                "snipe/snipe-it": "<8.3.7",
                 "socalnick/scn-social-auth": "<1.15.2",
                 "socialiteproviders/steam": "<1.1",
                 "solspace/craft-freeform": "<4.1.29|>=5,<=5.14.6",
@@ -12694,7 +12695,7 @@
                 "sylius/grid-bundle": "<1.10.1",
                 "sylius/paypal-plugin": "<1.6.2|>=1.7,<1.7.2|>=2,<2.0.2",
                 "sylius/resource-bundle": ">=1,<1.3.14|>=1.4,<1.4.7|>=1.5,<1.5.2|>=1.6,<1.6.4",
-                "sylius/sylius": "<1.12.19|>=1.13.0.0-alpha1,<1.13.4",
+                "sylius/sylius": "<1.9.12|>=1.10,<1.10.16|>=1.11,<1.11.17|>=1.12.0.0-alpha1,<1.12.19|>=1.13.0.0-alpha1,<1.13.4",
                 "symbiote/silverstripe-multivaluefield": ">=3,<3.1",
                 "symbiote/silverstripe-queuedjobs": ">=3,<3.0.2|>=3.1,<3.1.4|>=4,<4.0.7|>=4.1,<4.1.2|>=4.2,<4.2.4|>=4.3,<4.3.3|>=4.4,<4.4.3|>=4.5,<4.5.1|>=4.6,<4.6.4",
                 "symbiote/silverstripe-seed": "<6.0.3",
@@ -12822,8 +12823,9 @@
                 "wallabag/wallabag": "<2.6.11",
                 "wanglelecc/laracms": "<=1.0.3",
                 "wapplersystems/a21glossary": "<=0.4.10",
-                "web-auth/webauthn-framework": ">=3.3,<3.3.4|>=4.5,<4.9",
-                "web-auth/webauthn-lib": ">=4.5,<4.9",
+                "web-auth/webauthn-framework": "<5.2.4",
+                "web-auth/webauthn-lib": "<5.2.4",
+                "web-auth/webauthn-symfony-bundle": "<5.2.4",
                 "web-feet/coastercms": "==5.5",
                 "web-tp3/wec_map": "<3.0.3",
                 "webbuilders-group/silverstripe-kapost-bridge": "<0.4",
@@ -12848,7 +12850,8 @@
                 "wpanel/wpanel4-cms": "<=4.3.1",
                 "wpcloud/wp-stateless": "<3.2",
                 "wpglobus/wpglobus": "<=1.9.6",
-                "wwbn/avideo": "<=21",
+                "wpmetabox/meta-box": "<5.11.2",
+                "wwbn/avideo": "<25",
                 "xataface/xataface": "<3",
                 "xpressengine/xpressengine": "<3.0.15",
                 "yab/quarx": "<2.4.5",
@@ -12946,7 +12949,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-03-05T22:09:25+00:00"
+            "time": "2026-03-10T20:10:40+00:00"
         },
         {
             "name": "sebastian/cli-parser",
@@ -13988,7 +13991,7 @@
         },
         {
             "name": "survos/deployment-bundle",
-            "version": "2.0.124",
+            "version": "2.0.125",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/deployment-bundle.git",
@@ -14036,7 +14039,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/deployment-bundle/issues",
-                "source": "https://github.com/survos/deployment-bundle/tree/2.0.124"
+                "source": "https://github.com/survos/deployment-bundle/tree/2.0.125"
             },
             "funding": [
                 {
@@ -14455,5 +14458,5 @@
         "ext-iconv": "*"
     },
     "platform-dev": {},
-    "plugin-api-version": "2.9.0"
+    "plugin-api-version": "2.6.0"
 }

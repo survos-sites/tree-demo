@@ -285,6 +285,9 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "survos/api-grid-bundle": {
+        "version": "2.0.125"
+    },
     "survos/bootstrap-bundle": {
         "version": "dev-master"
     },
@@ -299,6 +302,9 @@
     },
     "survos/inspection-bundle": {
         "version": "dev-main"
+    },
+    "survos/js-twig-bundle": {
+        "version": "2.0.125"
     },
     "survos/tree-bundle": {
         "version": "1.5.241"

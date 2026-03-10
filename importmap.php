@@ -40,7 +40,7 @@ return [
         'type' => 'css',
     ],
     'jquery' => [
-        'version' => '4.0.0',
+        'version' => '3.7.1',
     ],
     '@tacman1123/jstree-esm/dist/themes/default/style.css' => [
         'version' => '4.1.3',
@@ -85,7 +85,7 @@ return [
         'version' => '2.3.6',
     ],
     'datatables.net-bs5' => [
-        'version' => '2.3.7',
+        'version' => '2.1.6',
     ],
     'datatables.net-buttons-bs5' => [
         'version' => '3.2.6',
@@ -103,7 +103,7 @@ return [
         'version' => '1.8.4',
     ],
     'datatables.net-select-bs5' => [
-        'version' => '3.1.3',
+        'version' => '2.1.0',
     ],
     'datatables.net-columncontrol' => [
         'version' => '1.2.1',
@@ -112,7 +112,7 @@ return [
         'version' => '1.2.1',
     ],
     'datatables.net' => [
-        'version' => '2.3.7',
+        'version' => '2.1.6',
     ],
     'datatables.net-buttons' => [
         'version' => '3.2.6',
@@ -130,14 +130,14 @@ return [
         'version' => '1.8.4',
     ],
     'datatables.net-select' => [
-        'version' => '3.1.3',
+        'version' => '2.1.0',
     ],
     'perfect-scrollbar/css/perfect-scrollbar.min.css' => [
         'version' => '1.5.6',
         'type' => 'css',
     ],
     'datatables.net-bs5/css/dataTables.bootstrap5.min.css' => [
-        'version' => '2.3.7',
+        'version' => '2.1.6',
         'type' => 'css',
     ],
     'datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' => [
@@ -161,7 +161,7 @@ return [
         'type' => 'css',
     ],
     'datatables.net-select-bs5/css/select.bootstrap5.min.css' => [
-        'version' => '3.1.3',
+        'version' => '2.1.0',
         'type' => 'css',
     ],
     'datatables.net-columncontrol-bs5/css/columnControl.bootstrap5.min.css' => [
@@ -169,10 +169,10 @@ return [
         'type' => 'css',
     ],
     '@tacman1123/twig-browser' => [
-        'version' => '0.2.2',
+        'version' => '0.4.12',
     ],
     '@tacman1123/twig-browser/adapters/symfony' => [
-        'version' => '0.2.2',
+        'version' => '0.4.12',
     ],
     'locutus/php/strings/sprintf' => [
         'version' => '3.0.9',
@@ -203,5 +203,8 @@ return [
     ],
     'dexie' => [
         'version' => '4.3.0',
+    ],
+    '@tacman1123/twig-browser/src/compat/compileTwigBlocks.js' => [
+        'version' => '0.4.12',
     ],
 ];

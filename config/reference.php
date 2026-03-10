@@ -1898,6 +1898,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     debug?: bool|Param, // Default: false
  *     version?: scalar|Param|null, // Default: 1
  *     db?: scalar|Param|null, // Default: "db"
+ *     routing?: array{
+ *         routes_to_expose?: list<scalar|Param|null>,
+ *     },
  *     stores?: list<array{ // Default: []
  *         batch?: int|Param, // batch size when loading api // Default: null
  *         name?: scalar|Param|null, // the store name
