@@ -36,10 +36,11 @@
 
     {% set columns = [
         {name: '_actions', title: '', sortable: false, searchable: false, prefix: 'topic_', actions: ['show', 'edit']},
+        {name: 'level', title: 'Level'},
         {name: 'code', sortable: true, searchable: true, browsable: true},
         {name: 'name', sortable: true, searchable: true, browsable: true},
         {name: 'description', searchable: true},
-        {name: 'parentId', title: 'Parent', browsable: true},
+        {name: 'parentId', title: 'Parent'},
     ] %}
 
     {% set apiGetCollectionUrl = api_route(topicClass) %}

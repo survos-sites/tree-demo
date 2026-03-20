@@ -40,7 +40,7 @@ return [
         'type' => 'css',
     ],
     'jquery' => [
-        'version' => '3.7.1',
+        'version' => '4.0.0',
     ],
     '@tacman1123/jstree-esm/dist/themes/default/style.css' => [
         'version' => '4.1.3',
@@ -85,7 +85,7 @@ return [
         'version' => '2.3.6',
     ],
     'datatables.net-bs5' => [
-        'version' => '2.1.6',
+        'version' => '2.3.7',
     ],
     'datatables.net-buttons-bs5' => [
         'version' => '3.2.6',
@@ -112,7 +112,7 @@ return [
         'version' => '1.2.1',
     ],
     'datatables.net' => [
-        'version' => '2.1.6',
+        'version' => '2.3.7',
     ],
     'datatables.net-buttons' => [
         'version' => '3.2.6',
@@ -137,7 +137,7 @@ return [
         'type' => 'css',
     ],
     'datatables.net-bs5/css/dataTables.bootstrap5.min.css' => [
-        'version' => '2.1.6',
+        'version' => '2.3.7',
         'type' => 'css',
     ],
     'datatables.net-buttons-bs5/css/buttons.bootstrap5.min.css' => [
@@ -169,10 +169,10 @@ return [
         'type' => 'css',
     ],
     '@tacman1123/twig-browser' => [
-        'version' => '0.4.12',
+        'version' => '0.4.14',
     ],
     '@tacman1123/twig-browser/adapters/symfony' => [
-        'version' => '0.4.12',
+        'version' => '0.4.14',
     ],
     'locutus/php/strings/sprintf' => [
         'version' => '3.0.9',
@@ -204,7 +204,13 @@ return [
     'dexie' => [
         'version' => '4.3.0',
     ],
+    '@survos/js-twig-bundle/twig_api' => [
+        'path' => './vendor/survos/js-twig-bundle/assets/src/lib/twig_api.js',
+    ],
+    '@survos/js-twig-bundle/twig_blocks' => [
+        'path' => './vendor/survos/js-twig-bundle/assets/src/lib/twig_blocks.js',
+    ],
     '@tacman1123/twig-browser/src/compat/compileTwigBlocks.js' => [
-        'version' => '0.4.12',
+        'version' => '0.4.14',
     ],
 ];
