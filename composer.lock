@@ -8,16 +8,16 @@
     "packages": [
         {
             "name": "api-platform/core",
-            "version": "v4.3.0",
+            "version": "v4.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/api-platform/core.git",
-                "reference": "01e3a1b526c58ac6153b6bd563370f435ce84c85"
+                "reference": "bb36677b9e948661f2afe3d6a9a9721b541b2b5d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/api-platform/core/zipball/01e3a1b526c58ac6153b6bd563370f435ce84c85",
-                "reference": "01e3a1b526c58ac6153b6bd563370f435ce84c85",
+                "url": "https://api.github.com/repos/api-platform/core/zipball/bb36677b9e948661f2afe3d6a9a9721b541b2b5d",
+                "reference": "bb36677b9e948661f2afe3d6a9a9721b541b2b5d",
                 "shasum": ""
             },
             "require": {
@@ -226,9 +226,9 @@
             ],
             "support": {
                 "issues": "https://github.com/api-platform/core/issues",
-                "source": "https://github.com/api-platform/core/tree/v4.3.0"
+                "source": "https://github.com/api-platform/core/tree/v4.3.1"
             },
-            "time": "2026-03-13T15:10:20+00:00"
+            "time": "2026-03-20T10:57:31+00:00"
         },
         {
             "name": "behat/mink",
@@ -701,16 +701,16 @@
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.4.2",
+            "version": "4.4.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "476f7f0fa6ea4aa5364926db7fabdf6049075722"
+                "reference": "61e730f1658814821a85f2402c945f3883407dec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/476f7f0fa6ea4aa5364926db7fabdf6049075722",
-                "reference": "476f7f0fa6ea4aa5364926db7fabdf6049075722",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/61e730f1658814821a85f2402c945f3883407dec",
+                "reference": "61e730f1658814821a85f2402c945f3883407dec",
                 "shasum": ""
             },
             "require": {
@@ -787,7 +787,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.4.2"
+                "source": "https://github.com/doctrine/dbal/tree/4.4.3"
             },
             "funding": [
                 {
@@ -803,7 +803,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-02-26T12:12:19+00:00"
+            "time": "2026-03-20T08:52:12+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -3393,7 +3393,7 @@
         },
         {
             "name": "survos/api-grid-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/SurvosApiGridBundle.git",
@@ -3477,7 +3477,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/SurvosApiGridBundle/issues",
-                "source": "https://github.com/survos/SurvosApiGridBundle/tree/2.0.161"
+                "source": "https://github.com/survos/SurvosApiGridBundle/tree/2.0.164"
             },
             "funding": [
                 {
@@ -3489,7 +3489,7 @@
         },
         {
             "name": "survos/bootstrap-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/bootstrap-bundle.git",
@@ -3555,7 +3555,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/bootstrap-bundle/issues",
-                "source": "https://github.com/survos/bootstrap-bundle/tree/2.0.161"
+                "source": "https://github.com/survos/bootstrap-bundle/tree/2.0.164"
             },
             "funding": [
                 {
@@ -3567,7 +3567,7 @@
         },
         {
             "name": "survos/core-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/core-bundle.git",
@@ -3626,7 +3626,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/core-bundle/issues",
-                "source": "https://github.com/survos/core-bundle/tree/2.0.161"
+                "source": "https://github.com/survos/core-bundle/tree/2.0.164"
             },
             "funding": [
                 {
@@ -3638,7 +3638,7 @@
         },
         {
             "name": "survos/crawler-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/crawler-bundle.git",
@@ -3711,7 +3711,7 @@
         },
         {
             "name": "survos/inspection-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/inspection-bundle.git",
@@ -3766,7 +3766,7 @@
             "description": "Inspects Doctrine entities with APIPlatform attributes",
             "support": {
                 "issues": "https://github.com/survos/inspection-bundle/issues",
-                "source": "https://github.com/survos/inspection-bundle/tree/2.0.161"
+                "source": "https://github.com/survos/inspection-bundle/tree/2.0.164"
             },
             "funding": [
                 {
@@ -3842,7 +3842,7 @@
         },
         {
             "name": "survos/js-twig-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/js-twig-bundle.git",
@@ -3889,7 +3889,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/js-twig-bundle/issues",
-                "source": "https://github.com/survos/js-twig-bundle/tree/2.0.161"
+                "source": "https://github.com/survos/js-twig-bundle/tree/2.0.164"
             },
             "funding": [
                 {
@@ -3905,12 +3905,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/tree-bundle.git",
-                "reference": "af509d4bf098892de1202303ce3956e595757b85"
+                "reference": "aa3337ba5de112e608efe82bc83cfa9c3c56c291"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/tree-bundle/zipball/af509d4bf098892de1202303ce3956e595757b85",
-                "reference": "af509d4bf098892de1202303ce3956e595757b85",
+                "url": "https://api.github.com/repos/survos/tree-bundle/zipball/aa3337ba5de112e608efe82bc83cfa9c3c56c291",
+                "reference": "aa3337ba5de112e608efe82bc83cfa9c3c56c291",
                 "shasum": ""
             },
             "require": {
@@ -3972,7 +3972,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/tree-bundle/issues",
-                "source": "https://github.com/survos/tree-bundle/tree/2.0.154"
+                "source": "https://github.com/survos/tree-bundle/tree/2.0.163"
             },
             "funding": [
                 {
@@ -3980,7 +3980,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-03-19T08:42:28+00:00"
+            "time": "2026-03-20T13:36:26+00:00"
         },
         {
             "name": "symfony/asset",
@@ -14007,7 +14007,7 @@
         },
         {
             "name": "survos/deployment-bundle",
-            "version": "2.0.161",
+            "version": "2.0.164",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/deployment-bundle.git",
@@ -14055,7 +14055,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/deployment-bundle/issues",
-                "source": "https://github.com/survos/deployment-bundle/tree/2.0.161"
+                "source": "https://github.com/survos/deployment-bundle/tree/2.0.164"
             },
             "funding": [
                 {
