@@ -2,7 +2,7 @@
 
 namespace App\Controller;
 
-use ApiPlatform\Api\IriConverterInterface;
+use ApiPlatform\Metadata\IriConverterInterface;
 use ApiPlatform\Metadata\GetCollection;
 use App\Entity\Building;
 use App\Entity\Location;

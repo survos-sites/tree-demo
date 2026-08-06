@@ -1,8 +1,9 @@
 <?php
 namespace App\Api\Filter;
 
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Filter\FilterInterface;
-use ApiPlatform\Core\Bridge\Doctrine\Orm\Util\QueryNameGeneratorInterface;
+use ApiPlatform\Doctrine\Orm\Filter\FilterInterface;
+use ApiPlatform\Doctrine\Orm\Util\QueryNameGeneratorInterface;
+use ApiPlatform\Metadata\Operation;
 use App\Entity\Building;
 use Doctrine\ORM\QueryBuilder;
 use Symfony\Component\HttpFoundation\RequestStack;
@@ -23,12 +24,12 @@ class BuildingScopeFilter implements FilterInterface
      * @param QueryBuilder $queryBuilder
      * @param QueryNameGeneratorInterface $queryNameGenerator
      * @param string $resourceClass
-     * @param string|null $operationName
      */
-    public function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
+    public function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, ?Operation $operation = null, array $context = []): void
     {
         if (method_exists($resourceClass, 'setBuilding')) {
-            $filteredBuilding = $this->requestStack->getCurrentRequest()->get('buildingId');
+            $request = $this->requestStack->getCurrentRequest();
+            $filteredBuilding = $request->attributes->get('buildingId') ?? $request->query->get('buildingId') ?? $request->request->get('buildingId');
             // @todo: get the building from the url, check permissions
 //            $this->addBuildingFilter($queryBuilder, $filteredBuilding);
         }
