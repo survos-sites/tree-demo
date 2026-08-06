@@ -285,6 +285,12 @@
             "config/packages/stof_doctrine_extensions.yaml"
         ]
     },
+    "survos/api-grid-bundle": {
+        "version": "2.15.22"
+    },
+    "survos/atlas-bundle": {
+        "version": "2.8.4"
+    },
     "survos/bootstrap-bundle": {
         "version": "dev-master"
     },
@@ -297,11 +303,23 @@
     "survos/deployment-bundle": {
         "version": "1.5.242"
     },
+    "survos/field-bundle": {
+        "version": "2.8.4"
+    },
     "survos/inspection-bundle": {
         "version": "dev-main"
     },
+    "survos/js-twig-bundle": {
+        "version": "2.18.4"
+    },
+    "survos/kit-bundle": {
+        "version": "2.8.4"
+    },
     "survos/tree-bundle": {
         "version": "1.5.241"
+    },
+    "survos/tui-extras-bundle": {
+        "version": "2.10.19"
     },
     "symfony/asset": {
         "version": "v5.1.5"

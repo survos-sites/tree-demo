@@ -6,6 +6,11 @@ use App\Entity\Topic;
 use App\Repository\TopicRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Attribute\Argument;
+use Symfony\Component\Console\Attribute\Option;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Style\SymfonyStyle;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 
 class TopicsService
@@ -24,6 +29,30 @@ class TopicsService
 
     public function getTopicCount() {
         return $this->topicRepository->count([]);
+    }
+
+    #[AsCommand('app:import-topics', 'Import the IPTC Media Topics concept scheme (cv.iptc.org/newscodes/mediatopic) into Topic')]
+    public function importTopicsCommand(
+        SymfonyStyle $io,
+        #[Argument('Path to a Media Topics JSON export (omit to use the topics_json_file parameter)')]
+        ?string $topicsFile = null,
+        #[Option('Re-import even if topics already exist')]
+        bool $force = false,
+    ): int {
+        $topicCount = $this->getTopicCount();
+        if ($topicCount && !$force) {
+            $io->info(sprintf('%d topics already exist.', $topicCount));
+
+            return Command::SUCCESS;
+        }
+
+        $topicsJsonFile = $topicsFile ?? $this->bag->get('kernel.project_dir') . '/cptall-en-US.json';
+        assert(file_exists($topicsJsonFile));
+        $this->importTopics($topicsJsonFile);
+
+        $io->success(sprintf('%d topics imported.', $this->getTopicCount()));
+
+        return Command::SUCCESS;
     }
 
     public function importTopics(?string $topicsJsonFile=null)
