@@ -16,11 +16,9 @@ return [
     FOS\JsRoutingBundle\FOSJsRoutingBundle::class => ['all' => true],
     Symfony\Bundle\SecurityBundle\SecurityBundle::class => ['all' => true],
     Stof\DoctrineExtensionsBundle\StofDoctrineExtensionsBundle::class => ['all' => true],
-    Survos\CoreBundle\SurvosCoreBundle::class => ['all' => true],
     Symfony\UX\TwigComponent\TwigComponentBundle::class => ['all' => true],
     Survos\InspectionBundle\SurvosInspectionBundle::class => ['all' => true],
     Knp\Bundle\MenuBundle\KnpMenuBundle::class => ['all' => true],
-    Survos\BootstrapBundle\SurvosBootstrapBundle::class => ['all' => true],
     Survos\CrawlerBundle\SurvosCrawlerBundle::class => ['all' => true],
     Symfony\UX\StimulusBundle\StimulusBundle::class => ['all' => true],
     Survos\Tree\SurvosTreeBundle::class => ['all' => true],
@@ -32,4 +30,5 @@ return [
     Survos\AtlasBundle\SurvosAtlasBundle::class => ['all' => true],
     Survos\FieldBundle\SurvosFieldBundle::class => ['all' => true],
     Survos\ApiGridBundle\SurvosApiGridBundle::class => ['all' => true],
+    Survos\TablerBundle\SurvosTablerBundle::class => ['all' => true],
 ];

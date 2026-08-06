@@ -11,7 +11,7 @@ use App\Repository\TopicRepository;
 use App\Services\AppService;
 use App\Services\TopicsService;
 use Doctrine\ORM\EntityManagerInterface;
-use Survos\CoreBundle\Traits\JsonResponseTrait;
+use Survos\TablerBundle\Traits\JsonResponseTrait;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -60,7 +60,8 @@ class AppController extends AbstractController
     public function fileSource(Request $request): Response
     {
         $directory = $this->bag->get('kernel.project_dir');
-        $filename = $directory . '/' . $request->get('path');
+        $path = $request->attributes->get('path') ?? $request->query->get('path') ?? $request->request->get('path');
+        $filename = $directory . '/' . $path;
         assert(file_exists($filename), "file $filename does not exist.");
         // limit to text files?
         $contents = file_get_contents($filename);
@@ -164,7 +165,7 @@ class AppController extends AbstractController
     public function save(Request $request, $_format='html'): Response
     {
         $repo = $this->locationRepository;
-        $data = $request->get('json');
+        $data = $request->attributes->get('json') ?? $request->query->get('json') ?? $request->request->get('json');
         // create nodes that don't exist.  Codes, though, are locked.
         foreach ($data as $node) {
             $node = (object)$node;

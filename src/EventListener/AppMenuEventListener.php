@@ -3,17 +3,17 @@
 namespace App\EventListener;
 
 use App\Repository\BuildingRepository;
-use Survos\BootstrapBundle\Event\KnpMenuEvent;
-use Survos\BootstrapBundle\Traits\KnpMenuHelperInterface;
-use Survos\BootstrapBundle\Traits\KnpMenuHelperTrait;
+use Survos\TablerBundle\Event\MenuEvent;
+use Survos\TablerBundle\Traits\KnpMenuHelperInterface;
+use Survos\TablerBundle\Traits\KnpMenuHelperTrait;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'appNavbarMenu')]
-//#[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'appSidebarMenu')]
-#[AsEventListener(event: KnpMenuEvent::FOOTER_MENU, method: 'footerMenu')]
+#[AsEventListener(event: MenuEvent::NAVBAR_MENU, method: 'appNavbarMenu')]
+//#[AsEventListener(event: MenuEvent::SIDEBAR, method: 'appSidebarMenu')]
+#[AsEventListener(event: MenuEvent::FOOTER, method: 'footerMenu')]
 final class AppMenuEventListener implements KnpMenuHelperInterface
 {
     use KnpMenuHelperTrait;
@@ -26,15 +26,15 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         $this->setAuthorizationChecker($this->authorizationChecker);
     }
 
-    public function footerMenu(KnpMenuEvent $event): void
-    {
-        [$menu, $options] = [$event->getMenu(), $event->getOptions()];
-    }
-
-    public function appNavbarMenu(KnpMenuEvent $event): void
+    public function footerMenu(MenuEvent $event): void
     {
         $menu = $event->getMenu();
-        $this->add($menu,  'app_homepage', label: 'home', icon: 'fas fa-home');
+    }
+
+    public function appNavbarMenu(MenuEvent $event): void
+    {
+        $menu = $event->getMenu();
+        $this->add($menu,  'app_homepage', label: 'home', icon: 'tabler:home');
 
         $subMenu = $this->addSubmenu($menu, label: "File Browser");
         foreach (['files'] as $entityName) {
@@ -45,9 +45,9 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
         $subMenu = $this->addSubmenu($menu, label: "Topics");
         $this->add($subMenu, 'topic_overview');
-        $this->add($subMenu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
+        $this->add($subMenu, 'topic_index', label: "Topics Table", icon: "tabler:tree");
 
-        $this->addMenuItem($subMenu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($subMenu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'tabler:home']);
         $this->addMenuItem($subMenu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
         $this->addMenuItem($subMenu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
 
@@ -64,12 +64,12 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
         }
 
 
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'tabler:home']);
 
         $this->addHeading($menu, label: "Topics");
-        $this->add($menu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
+        $this->add($menu, 'topic_index', label: "Topics Table", icon: "tabler:tree");
 
-        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'tabler:home']);
         $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
         $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
 
@@ -82,7 +82,7 @@ final class AppMenuEventListener implements KnpMenuHelperInterface
 
         $this->addMenuItem($menu, ['label' => 'Auth', 'style' => 'heading']);
         $this->authMenu($this->authorizationChecker, $this->security, $menu);
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
+        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'tabler:home']);
 
     }
 

@@ -16,11 +16,11 @@
     <tr>
         <td>
             <a href="{{ path('topic_show', {topicId: topic.code}) }}">
-                <span class="fas fa-eye"></span>
+                {{ ux_icon('tabler:eye') }}
                 <i class="bi bi-info"></i>
             </a>
             <a href="{{ path('topic_edit', {topicId: topic.code}) }}">
-                <span class="fas fa-edit"></span>
+                {{ ux_icon('tabler:edit') }}
                 <i class="bi bi-pencil"></i>
             </a>
         </td>

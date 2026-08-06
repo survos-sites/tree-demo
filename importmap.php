@@ -24,10 +24,10 @@
  */
 return [
     'app' => ['path' => './assets/app.js', 'entrypoint' => true],
+    '@survos/js-twig/generated/fos_routes.js' => ['path' => './var/js_twig_bundle/generated/fos_routes.js'],
     '@symfony/stimulus-bundle' => ['path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js'],
     '@tacman1123/twig-browser/testing/detailContextHeader' => ['version' => '0.2.2'],
     '@hotwired/stimulus' => ['version' => '3.2.2'],
-    'bootstrap' => ['version' => '5.3.8'],
     '@popperjs/core' => ['version' => '2.11.8'],
     'jquery' => ['version' => '4.0.0'],
     '@tacman1123/jstree-esm/dist/themes/default/style.css' => ['version' => '4.1.3', 'type' => 'css'],
@@ -35,7 +35,7 @@ return [
     '@tacman1123/jstree-esm/module' => ['version' => '4.1.3'],
     '@tacman1123/jstree-esm/dist/themes/modern/style.css' => ['version' => '4.1.3', 'type' => 'css'],
     '@tacman1123/jstree-esm' => ['version' => '4.1.3'],
-    '@tabler/core' => ['version' => '1.4.0'],
+    '@tabler/core' => ['path' => './vendor-patched/@tabler/core/tabler.esm.js'],
     'axios' => ['version' => '1.13.6'],
     'fos-routing' => ['version' => '0.0.6'],
     'perfect-scrollbar' => ['version' => '1.5.6'],
@@ -74,7 +74,6 @@ return [
     'locutus/php/datetime/date' => ['version' => '3.0.9'],
     'locutus/php/var/boolval' => ['version' => '3.0.9'],
     'dexie' => ['version' => '4.3.0'],
-    'bootstrap/dist/css/bootstrap.min.css' => ['version' => '5.3.8', 'type' => 'css'],
     '@tabler/core/dist/css/tabler.min.css' => ['version' => '1.4.0', 'type' => 'css'],
     'perfect-scrollbar/css/perfect-scrollbar.min.css' => ['version' => '1.5.6', 'type' => 'css'],
     '@tacman1123/twig-browser/src/compat/compileTwigBlocks.js' => ['version' => '1.0.0'],
@@ -82,4 +81,9 @@ return [
     'escape-html' => ['version' => '1.0.3'],
     '@survos/api-grid-bundle' => ['path' => '@survos/api-grid/package.json', 'type' => 'json'],
     'marked' => ['version' => '18.0.9'],
+    'flag-icons/css/flag-icons.min.css' => ['version' => '7.5.0', 'type' => 'css'],
+    '@floating-ui/dom' => ['version' => '1.8.0'],
+    '@floating-ui/core' => ['version' => '1.8.0'],
+    '@floating-ui/utils' => ['version' => '0.2.12'],
+    '@floating-ui/utils/dom' => ['version' => '0.2.12'],
 ];

@@ -1,0 +1,12 @@
+survos_tabler:
+    routes:
+        login: app_login
+        logout: app_logout
+        register: app_register
+        settings: app_settings
+    options:
+        theme: tabler
+    menu_options: {  }
+    app:
+        code: tree
+        abbr: <b>tree</b>Demo

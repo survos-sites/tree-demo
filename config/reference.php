@@ -738,7 +738,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         enabled?: bool|Param, // Default: false
  *     },
  *     html?: bool|array{
- *         enabled?: bool|Param, // Default: false
+ *         enabled?: bool|Param, // Default: true
  *     },
  *     markdown?: bool|array{
  *         enabled?: bool|Param, // Default: true
@@ -1852,10 +1852,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     skip_translation_on_load?: bool|Param, // Default: false
  *     metadata_cache_pool?: scalar|Param|null, // Default: null
  * }
- * @psalm-type SurvosCoreConfig = array{
- *     enabled?: bool|Param, // Default: true
- *     dd?: bool|Param, // Default: true
- * }
  * @psalm-type TwigComponentConfig = array{
  *     defaults?: array<string, Param|string|array{ // Default: []
  *         template_directory?: scalar|Param|null, // Default: "components"
@@ -1882,34 +1878,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     },
  *     templating?: bool|Param, // Default: false
  *     default_renderer?: scalar|Param|null, // Default: "twig"
- * }
- * @psalm-type SurvosBootstrapConfig = array{
- *     app?: array{
- *         impersonate?: array<string, scalar|Param|null>,
- *         social?: array<string, scalar|Param|null>,
- *         code?: scalar|Param|null, // project code, default for repo, dokku deployment, etc. // Default: "my-project"
- *         abbr?: scalar|Param|null, // text abbreviation // Default: "my<b>Project</b>"
- *         logo?: scalar|Param|null, // Default: null
- *         logo_small?: scalar|Param|null, // Default: null
- *     },
- *     routes?: array{
- *         home?: scalar|Param|null, // name of the homepage route // Default: "app_homepage"
- *         login?: scalar|Param|null, // name of the login // Default: "app_login"
- *         homepage?: scalar|Param|null, // name of the home routes // Default: "app_homepage"
- *         logout?: scalar|Param|null, // name of the logout route // Default: "app_logout"
- *         offcanvas?: scalar|Param|null, // name of the offcanvas route (e.g. a settings sidebar) // Default: "app_settings"
- *         register?: scalar|Param|null, // name of the register route // Default: "app_register"
- *         search?: scalar|Param|null, // multi-entity search route // Default: false
- *     },
- *     options?: array{
- *         theme?: scalar|Param|null, // theme name // Default: "bootswatch"
- *         layout_direction?: scalar|Param|null, // Default: "horizontal"
- *         offcanvas?: scalar|Param|null, // Offcanvas position (top,bottom,start,end // Default: "end"
- *         allow_login?: bool|Param, // Login route exists // Default: false
- *         show_locale_dropdown?: bool|Param, // Add a locale dropdown to the navbar // Default: false
- *     },
- *     menu_options?: array<string, scalar|Param|null>,
- *     impersonate?: array<string, scalar|Param|null>,
  * }
  * @psalm-type SurvosCrawlerConfig = array{
  *     routes_enabled?: bool|Param, // Set false to manage this bundle's routes manually in your app. Bundles exposing sensitive routes (e.g. running console commands) should default this off. // Default: true
@@ -1994,6 +1962,78 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     passLocale?: bool|Param, // Default: false
  *     maxValuesPerFacet?: int|Param, // https://www.meilisearch.com/docs/reference/api/settings#faceting-object // Default: 1000
  * }
+ * @psalm-type SurvosTablerConfig = array{
+ *     icons?: array{
+ *         prefix?: scalar|Param|null, // Default: "tabler"
+ *         aliases?: array<string, scalar|Param|null>,
+ *         presets?: array<string, array{ // Default: []
+ *             icon?: scalar|Param|null,
+ *             class?: scalar|Param|null, // Default: ""
+ *         }>,
+ *     },
+ *     app?: array{
+ *         code?: scalar|Param|null, // Default: "my-project"
+ *         title?: scalar|Param|null, // Default: "My Project"
+ *         description?: scalar|Param|null, // Default: ""
+ *         abbr?: scalar|Param|null, // Default: "my<b>Project</b>"
+ *         logo?: scalar|Param|null, // Default: null
+ *         logo_small?: scalar|Param|null, // Default: null
+ *         homepage_route?: scalar|Param|null, // Default: null
+ *         homepage_url?: scalar|Param|null, // Default: null
+ *         links?: array{
+ *             github?: scalar|Param|null, // Default: null
+ *             docs?: scalar|Param|null, // Default: null
+ *             sponsor?: scalar|Param|null, // Default: null
+ *             site?: scalar|Param|null, // Default: null
+ *             contact?: scalar|Param|null, // Default: null
+ *         },
+ *         social?: array<string, scalar|Param|null>,
+ *         meta?: array{
+ *             og_image?: scalar|Param|null, // Default: null
+ *             twitter_site?: scalar|Param|null, // Default: null
+ *             theme_color?: scalar|Param|null, // Default: null
+ *         },
+ *         header?: array{
+ *             locale_switcher?: bool|Param, // Default: true
+ *             container?: scalar|Param|null, // Default: "container-fluid"
+ *             auth?: array{
+ *                 enabled?: bool|Param, // Default: true
+ *                 show_login?: bool|Param, // Default: true
+ *                 show_user_menu?: bool|Param, // Default: true
+ *                 routes?: array{
+ *                     login?: scalar|Param|null, // Default: "app_login"
+ *                     logout?: scalar|Param|null, // Default: "app_logout"
+ *                     register?: scalar|Param|null, // Default: "app_register"
+ *                     profile?: scalar|Param|null, // Default: "app_profile"
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     routes?: array{
+ *         home?: scalar|Param|null, // Default: "app_homepage"
+ *         login?: scalar|Param|null, // Default: null
+ *         logout?: scalar|Param|null, // Default: null
+ *         register?: scalar|Param|null, // Default: null
+ *         profile?: scalar|Param|null, // Default: null
+ *         settings?: scalar|Param|null, // Default: null
+ *         search?: scalar|Param|null, // Default: null
+ *     },
+ *     debug?: array{
+ *         menu_slots?: bool|Param, // Default: false
+ *         admin_toolbar?: bool|Param, // Render the orange admin menu toolbar (navbar_admin) for admins/debug. Defaults to the TABLER_ADMIN_TOOLBAR env var (1); developers can set TABLER_ADMIN_TOOLBAR=0 in .env.local to hide it. // Default: "%env(bool:TABLER_ADMIN_TOOLBAR)%"
+ *     },
+ *     options?: array{
+ *         theme?: scalar|Param|null, // Default: "tabler"
+ *         layout?: "horizontal"|"dashboard"|"vertical"|"condensed"|Param, // Default: "horizontal"
+ *         dark_mode?: bool|Param, // Default: false
+ *         show_locale_dropdown?: bool|Param, // Default: true
+ *     },
+ *     menu_options?: array<string, scalar|Param|null>,
+ *     impersonate?: array<string, scalar|Param|null>,
+ *     routes_enabled?: bool|Param, // Set false to manage this bundle's routes manually in your app. Bundles exposing sensitive routes (e.g. running console commands) should default this off. // Default: true
+ *     route_prefix?: scalar|Param|null, // URL prefix applied to all routes from this bundle. // Default: ""
+ *     locale_prefix?: bool|Param, // Prepend {_locale} (constrained to kernel.enabled_locales) to this bundle's route prefix, e.g. /{_locale}/f instead of /f -- for bundles whose routes are meant to be shared/bookmarked, so the URL itself carries the locale instead of a query param. // Default: false
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -2009,11 +2049,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     fos_js_routing?: FosJsRoutingConfig,
  *     security?: SecurityConfig,
  *     stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *     survos_core?: SurvosCoreConfig,
  *     twig_component?: TwigComponentConfig,
  *     survos_inspection?: SurvosInspectionConfig,
  *     knp_menu?: KnpMenuConfig,
- *     survos_bootstrap?: SurvosBootstrapConfig,
  *     survos_crawler?: SurvosCrawlerConfig,
  *     stimulus?: StimulusConfig,
  *     survos_tree?: SurvosTreeConfig,
@@ -2021,6 +2059,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     survos_js_twig?: SurvosJsTwigConfig,
  *     survos_field?: SurvosFieldConfig,
  *     survos_api_grid?: SurvosApiGridConfig,
+ *     survos_tabler?: SurvosTablerConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -2039,11 +2078,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         survos_core?: SurvosCoreConfig,
  *         twig_component?: TwigComponentConfig,
  *         survos_inspection?: SurvosInspectionConfig,
  *         knp_menu?: KnpMenuConfig,
- *         survos_bootstrap?: SurvosBootstrapConfig,
  *         survos_crawler?: SurvosCrawlerConfig,
  *         stimulus?: StimulusConfig,
  *         survos_tree?: SurvosTreeConfig,
@@ -2052,6 +2089,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
+ *         survos_tabler?: SurvosTablerConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -2068,11 +2106,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         survos_core?: SurvosCoreConfig,
  *         twig_component?: TwigComponentConfig,
  *         survos_inspection?: SurvosInspectionConfig,
  *         knp_menu?: KnpMenuConfig,
- *         survos_bootstrap?: SurvosBootstrapConfig,
  *         survos_crawler?: SurvosCrawlerConfig,
  *         stimulus?: StimulusConfig,
  *         survos_tree?: SurvosTreeConfig,
@@ -2080,6 +2116,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
+ *         survos_tabler?: SurvosTablerConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -2098,11 +2135,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
- *         survos_core?: SurvosCoreConfig,
  *         twig_component?: TwigComponentConfig,
  *         survos_inspection?: SurvosInspectionConfig,
  *         knp_menu?: KnpMenuConfig,
- *         survos_bootstrap?: SurvosBootstrapConfig,
  *         survos_crawler?: SurvosCrawlerConfig,
  *         stimulus?: StimulusConfig,
  *         survos_tree?: SurvosTreeConfig,
@@ -2111,6 +2146,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
+ *         survos_tabler?: SurvosTablerConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

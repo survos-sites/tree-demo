@@ -9,16 +9,18 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Gedmo\Tree\Traits\NestedSetEntity;
-use Survos\CoreBundle\Entity\RouteParametersInterface;
-use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Survos\FieldBundle\Attribute\RouteIdentity;
+use Survos\FieldBundle\Entity\RouteParametersInterface;
+use Survos\FieldBundle\Entity\RouteIdentityTrait;
 use Survos\Tree\Traits\TreeTrait;
 use Survos\Tree\TreeInterface;
 
 #[ORM\Entity(repositoryClass: BuildingRepository::class)]
 #[Gedmo\Tree(type:"nested")]
+#[RouteIdentity(field: 'code', key: 'buildingId')]
 class Building  implements \Stringable, RouteParametersInterface, TreeInterface
 {
-    use RouteParametersTrait;
+    use RouteIdentityTrait;
     use TreeTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -103,11 +105,6 @@ class Building  implements \Stringable, RouteParametersInterface, TreeInterface
         $this->code = $code;
 
         return $this;
-    }
-
-    public function getUniqueIdentifiers(): array
-    {
-        return ['buildingId' => $this->getCode()];
     }
 
     public function getRootLocation(): ?Location

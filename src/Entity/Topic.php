@@ -14,8 +14,9 @@ use App\Repository\TopicRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Survos\CoreBundle\Entity\RouteParametersInterface;
-use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Survos\FieldBundle\Attribute\RouteIdentity;
+use Survos\FieldBundle\Entity\RouteParametersInterface;
+use Survos\FieldBundle\Entity\RouteIdentityTrait;
 use Survos\Tree\Traits\TreeTrait;
 use Survos\Tree\TreeInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -32,10 +33,11 @@ use Symfony\Component\Serializer\Attribute\Groups;
 )]
 #[Gedmo\Tree(type:"nested")]
 #[ORM\Entity(repositoryClass: TopicRepository::class)]
+#[RouteIdentity(field: 'code', key: 'topicId')]
 class Topic implements \Stringable, RouteParametersInterface, TreeInterface
 {
     use TreeTrait;
-    use RouteParametersTrait;
+    use RouteIdentityTrait;
     final const PLACE_NEW='new';
     const JOIN_COLUMN_NAME='id';
 
@@ -104,11 +106,6 @@ class Topic implements \Stringable, RouteParametersInterface, TreeInterface
     {
         return sprintf("%s %s", $this->getName(), $this->getCode());
     }
-    public function getUniqueIdentifiers(): array
-    {
-        return ['topicId' => $this->getCode()];
-    }
-
     #[Groups(['minimum','search','jstree'])]
     public function getParentId(): ?string
     {

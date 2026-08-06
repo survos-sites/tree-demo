@@ -3,7 +3,7 @@
 {% block title %}BASE Topic{% endblock %}
 
 {% block page_title %}{{ topic }}{% endblock %}
-{% block page_subtitle %}{{ app.request.get('_route') }}{% endblock %}
+{% block page_subtitle %}{{ app.request.attributes.get('_route') }}{% endblock %}
 
 {% block body %}
 

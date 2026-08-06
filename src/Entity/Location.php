@@ -12,8 +12,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Survos\CoreBundle\Entity\RouteParametersInterface;
-use Survos\CoreBundle\Entity\RouteParametersTrait;
+use Survos\FieldBundle\Attribute\RouteIdentity;
+use Survos\FieldBundle\Entity\RouteParametersInterface;
+use Survos\FieldBundle\Entity\RouteIdentityTrait;
 use Survos\Tree\Traits\TreeTrait;
 use Survos\Tree\TreeInterface;
 use Symfony\Component\Serializer\Attribute\Groups;
@@ -41,9 +42,10 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 )]
 #[ApiFilter(PropertyFilter::class)]
 #[ApiFilter(SearchFilter::class, properties: ['building' => 'exact'])]
+#[RouteIdentity(field: 'id', key: 'locationId')]
 class Location implements \Stringable, RouteParametersInterface, TreeInterface
 {
-    use RouteParametersTrait;
+    use RouteIdentityTrait;
     use TreeTrait;
 
     #[ORM\Id]

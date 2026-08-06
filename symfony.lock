@@ -315,6 +315,9 @@
     "survos/kit-bundle": {
         "version": "2.8.4"
     },
+    "survos/tabler-bundle": {
+        "version": "2.18.18"
+    },
     "survos/tree-bundle": {
         "version": "1.5.241"
     },

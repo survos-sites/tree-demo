@@ -14,13 +14,6 @@
                 }
             }
         },
-        "@survos/bootstrap-bundle": {
-            "search": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": []
-            }
-        },
         "@survos/js-twig-bundle": {
             "dexie": {
                 "enabled": true,
@@ -31,6 +24,28 @@
                 "enabled": true,
                 "fetch": "lazy",
                 "autoimport": []
+            }
+        },
+        "@survos/tabler-bundle": {
+            "accordion": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "search": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "clipboard": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "closeable": {
+                "enabled": true,
+                "fetch": "lazy"
+            },
+            "tooltip": {
+                "enabled": true,
+                "fetch": "lazy"
             }
         },
         "@survos/tree-bundle": {
