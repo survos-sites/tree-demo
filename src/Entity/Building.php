@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiResource;
 use App\Repository\BuildingRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -17,6 +18,7 @@ use Survos\Tree\TreeInterface;
 
 #[ORM\Entity(repositoryClass: BuildingRepository::class)]
 #[Gedmo\Tree(type:"nested")]
+#[ApiResource]
 #[RouteIdentity(field: 'code', key: 'buildingId')]
 class Building  implements \Stringable, RouteParametersInterface, TreeInterface
 {
