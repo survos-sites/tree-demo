@@ -5,11 +5,10 @@
     "description": "Demo project for jstree and survos/tree-bundle  ",
     "minimum-stability": "stable",
     "require": {
-        "php": "^8.4",
+        "php": "^8.5",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "api-platform/core": "^4.0",
-        "composer/package-versions-deprecated": ">=1.11.99.5",
         "doctrine/doctrine-bundle": "^3.2",
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^3.2",
@@ -20,10 +19,8 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "stof/doctrine-extensions-bundle": "^1.4",
         "survos/api-grid-bundle": "*",
-        "survos/bootstrap-bundle": "^2.0",
         "survos/core-bundle": "^2.0",
         "survos/crawler-bundle": "^2.0",
-        "survos/inspection-bundle": "^2.0",
         "survos/js-twig-bundle": "*",
         "survos/tree-bundle": "dev-main",
         "symfony/asset": "^8.0",
@@ -46,12 +43,12 @@
         "symfony/runtime": "^8.0",
         "symfony/security-bundle": "^8.0",
         "symfony/serializer": "^8.0",
-        "symfony/stimulus-bundle": "^2.32",
+        "symfony/stimulus-bundle": "^3.0",
         "symfony/string": "^8.0",
         "symfony/translation": "^8.0",
         "symfony/twig-bundle": "^8.0",
         "symfony/uid": "^8.0",
-        "symfony/ux-icons": "^2.32",
+        "symfony/ux-icons": "^3.0",
         "symfony/validator": "^8.0",
         "symfony/web-link": "^8.0",
         "symfony/yaml": "^8.0",
@@ -62,7 +59,12 @@
         "twig/intl-extra": "^3.4",
         "twig/markdown-extra": "^3.0",
         "twig/string-extra": "^3.0",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "survos/simple-datatables-bundle": "^2.31.7",
+        "survos/tabler-bundle": "^2.5",
+        "survos/field-bundle": "^2.5",
+        "ext-intl": "*",
+        "ext-pdo_pgsql": "*"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3||^4.0",
@@ -134,7 +136,6 @@
             "bin/console doctrine:migrations:migrate -n --allow-no-migration ",
             "# bin/console app:import-topics"
         ],
-
         "post-update-cmd": [
             "@auto-scripts"
         ]
@@ -146,6 +147,9 @@
         "symfony": {
             "allow-contrib": true,
             "require": "^8.0"
+        },
+        "symfony/flex": {
+            "synchronize_package_json": false
         }
     },
     "prefer-stable": true

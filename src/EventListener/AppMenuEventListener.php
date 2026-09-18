@@ -1,89 +1,37 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\EventListener;
 
-use App\Repository\BuildingRepository;
-use Survos\BootstrapBundle\Event\KnpMenuEvent;
-use Survos\BootstrapBundle\Traits\KnpMenuHelperInterface;
-use Survos\BootstrapBundle\Traits\KnpMenuHelperTrait;
+use Survos\TablerBundle\Event\MenuEvent;
+use Survos\TablerBundle\Traits\KnpMenuHelperTrait;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\EventDispatcher\Attribute\AsEventListener;
-use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Security\Core\Authorization\AuthorizationCheckerInterface;
 
-#[AsEventListener(event: KnpMenuEvent::NAVBAR_MENU, method: 'appNavbarMenu')]
-//#[AsEventListener(event: KnpMenuEvent::SIDEBAR_MENU, method: 'appSidebarMenu')]
-#[AsEventListener(event: KnpMenuEvent::FOOTER_MENU, method: 'footerMenu')]
-final class AppMenuEventListener implements KnpMenuHelperInterface
+final class AppMenuEventListener
 {
     use KnpMenuHelperTrait;
 
     public function __construct(
-        private BuildingRepository $buildingRepository,
-        private ?Security $security,
-        private ?AuthorizationCheckerInterface $authorizationChecker=null)
+        #[Autowire('%kernel.debug%')] private readonly bool $debug,
+        private readonly Security $security,
+    ) {}
+
+    #[AsEventListener(event: MenuEvent::NAVBAR_MENU)]
+    public function navigation(MenuEvent $event): void
     {
-        $this->setAuthorizationChecker($this->authorizationChecker);
-    }
-
-    public function footerMenu(KnpMenuEvent $event): void
-    {
-        [$menu, $options] = [$event->getMenu(), $event->getOptions()];
-    }
-
-    public function appNavbarMenu(KnpMenuEvent $event): void
-    {
-        $menu = $event->getMenu();
-        $this->add($menu,  'app_homepage', label: 'home', icon: 'fas fa-home');
-
-        $subMenu = $this->addSubmenu($menu, label: "File Browser");
-        foreach (['files'] as $entityName) {
-            $this->addMenuItem($subMenu, ['label' => 'Files (custom)', 'route' => 'app_repo_files']);
-            $this->addMenuItem($subMenu, ['label' => 'Files (API Tree)', 'route' => 'app_file_overview', 'rp' => ['entity' => $entityName]]);
+        $this->add($event->menu, 'app_homepage', label: 'Overview', icon: 'tabler:home');
+        $this->add($event->menu, 'topics_playground', label: 'Table playground', icon: 'tabler:table');
+        $this->add($event->menu, 'app_tree_html', label: 'Topic tree', icon: 'tabler:hierarchy');
+        $this->add($event->menu, 'topic_index', label: 'API grid', icon: 'tabler:layout-grid');
+        $more = $this->addSubmenu($event->menu, label: 'More demos', icon: 'tabler:dots');
+        $this->add($more, 'topic_tree_api', label: 'API tree');
+        if ($this->debug || $this->security->isGranted('ROLE_ADMIN')) {
+            $this->add($more, 'app_repo_files', label: 'File browser');
         }
-
-
-        $subMenu = $this->addSubmenu($menu, label: "Topics");
-        $this->add($subMenu, 'topic_overview');
-        $this->add($subMenu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
-
-        $this->addMenuItem($subMenu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($subMenu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($subMenu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
-
-        $this->addHeading($menu, 'Inventory Demo');
-        $this->add($menu, 'building_index', label: 'List');
-        if ($this->isGranted('ROLE_USER')) {
-            $this->add($menu, 'building_new', label: 'Create New Building');
-        }
-        return;
-
-        $subMenu = $this->addSubmenu($menu, "Buildings");
-        foreach ($this->buildingRepository->findAll() as $building) {
-            $this->add($subMenu, 'building_show', $building, $building->getName());
-        }
-
-
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
-
-        $this->addHeading($menu, label: "Topics");
-        $this->add($menu, 'topic_index', label: "Topics Table", icon: "fas fa-tree");
-
-        $this->addMenuItem($menu, ['route' => 'topic_index', 'label' => 'Topics Grid', 'icon' => 'fas fa-home']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree HTML', 'route' => 'app_tree_html']);
-        $this->addMenuItem($menu, ['label' => 'Topic Tree API', 'route' => 'topic_tree_api']);
-
-
-        $this->addHeading($menu, label: "API");
-
-        $this->add($menu, 'api_entrypoint', external: true);
-        $this->add($menu, 'api_doc', external: true);
-
-
-        $this->addMenuItem($menu, ['label' => 'Auth', 'style' => 'heading']);
-        $this->authMenu($this->authorizationChecker, $this->security, $menu);
-        $this->addMenuItem($menu, ['route' => 'app_basic_html', 'icon' => 'fas fa-home']);
-
+        $this->add($more, 'building_index', label: 'Inventory');
+        $this->add($more, 'app_twig_browser_demo', label: 'Twig browser');
     }
-
 }

@@ -1,35 +1,15 @@
-{% extends "@SurvosBootstrap/%s/base.html.twig"|format(theme) %}
+{% extends '@SurvosTabler/layout/base.html.twig' %}
 
-{% block page_content %}
-    {{ block('body') }}
+{% block title %}Tree & Table Playground{% endblock %}
+{% block page_header %}{% endblock %}
+{% block stylesheets %}
+    <link rel="icon" type="image/svg+xml" href="{{ path('survos_tabler_favicon') }}">
 {% endblock %}
-
-
-    {% block javascripts %}
-{#        {{ parent() }}#}
-        {{ importmap('app') }}
-{#        {{ encore_entry_script_tags('app') }}#}
-    {% endblock %}
-
-    {% block stylesheets %}
-{#        {{ parent() }}#}
-{#        {{ encore_entry_link_tags('app') }}#}
-    {% endblock %}
-
-
+{% block javascripts %}{{ importmap('app') }}{% endblock %}
 {% block footer %}
-    <footer class="main-footer">
-        <!-- To the right -->
-        <div class="pull-right hidden-xs">
-
+    <footer class="footer footer-transparent d-print-none">
+        <div class="container-xl text-secondary">
+            Tree & Table Playground · <a href="https://cv.iptc.org/newscodes/mediatopic/">IPTC Media Topics</a>
         </div>
-        <!-- Default to the left -->
-        <strong>js-tree, adminlte, doctrine tree extension</strong>
     </footer>
 {% endblock %}
-
-{% block logo_mini %}<b>Tree</b>{% endblock %}
-{% block logo_large '<b>Tree</b> Data' %}
-
-{% block page_title 'Hierarchical Data Demo' %}
-{% block page_subtitle 'With JS-Tree and Nested Sets' %}

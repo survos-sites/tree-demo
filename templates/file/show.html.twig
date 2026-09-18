@@ -17,14 +17,14 @@
             {% set _sc = '@survos/tree-bundle/tree' %}
             <div {{ stimulus_controller(_sc, {
                 types: {
-                    default: { icon: 'bi bi-folder2-open' },
-                    dir: { icon: 'bi bi-folder2-open' },
-                    file: { icon: 'bi bi-file-earmark' },
-                    php: { icon: 'bi bi-filetype-php' },
-                    json: { icon: 'bi bi-filetype-json' },
-                    js: { icon: 'bi bi-filetype-js' },
-                    yaml: { icon: 'bi bi-filetype-yaml' },
-                    css: { icon: 'bi bi-filetype-css' }
+                    default: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:folder-open')|url_encode },
+                    dir: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:folder-open')|url_encode },
+                    file: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file')|url_encode },
+                    php: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file-type-php')|url_encode },
+                    json: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file-type-js')|url_encode },
+                    js: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file-type-js')|url_encode },
+                    yaml: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file-settings')|url_encode },
+                    css: { icon: 'data:image/svg+xml,' ~ ux_icon('tabler:file-type-css')|url_encode }
                 },
                 plugins: ['search', 'sort', 'types']
             }) }}>

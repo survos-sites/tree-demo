@@ -11,7 +11,7 @@ use Symfony\Component\Console\Output\OutputInterface;
 class ScrapeCommand extends Command
 {
 
-    public function __construct(private readonly ImportService $importService, string $name = null)
+    public function __construct(private readonly ImportService $importService, ?string $name = null)
     {
         parent::__construct($name);
     }

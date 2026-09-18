@@ -1,0 +1,7 @@
+/.git
+/.env.local
+/.env.*.local
+/config/secrets/dev
+/tests
+/node_modules
+/var

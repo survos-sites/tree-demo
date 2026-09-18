@@ -32,6 +32,8 @@
         </tbody>
     </table>
 
+    {% if app.debug or is_granted('ROLE_ADMIN') %}
     <a class="btn btn-primary" href="{{ path('topic_edit', topic.rp) }}">edit</a>
     {{ include('topic/_delete_form.html.twig') }}
+    {% endif %}
 {% endblock %}

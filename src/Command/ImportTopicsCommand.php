@@ -23,7 +23,7 @@ class ImportTopicsCommand extends Command
 {
     public function __construct(private readonly TopicsService $topicsService,
                                 private readonly ParameterBagInterface $bag,
-                                string $name = null)
+                                ?string $name = null)
     {
         parent::__construct($name);
     }

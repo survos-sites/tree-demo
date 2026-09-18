@@ -127,7 +127,7 @@ class AppController extends AbstractController
     #[Route(path: '/', name: 'app_homepage')]
     public function home()
     {
-        return $this->render('app/home.html.twig', []);
+        return $this->render('app/home.html.twig', ['topicCount' => $this->topicRepository->count([])]);
     }
 
     private function getSampleJson() {

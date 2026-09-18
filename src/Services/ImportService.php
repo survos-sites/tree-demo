@@ -47,7 +47,7 @@ class ImportService
         return $this;
     }
 
-    public function importTree($import_type = 'domain', Output $output = null, $refresh = null)
+    public function importTree($import_type = 'domain', ?Output $output = null, $refresh = null)
     {
         // creates the csv file to be imported by import_class (to phenx_data)
         //

@@ -25,7 +25,7 @@ class BuildingScopeFilter implements FilterInterface
      * @param string $resourceClass
      * @param string|null $operationName
      */
-    public function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, string $operationName = null)
+    public function apply(QueryBuilder $queryBuilder, QueryNameGeneratorInterface $queryNameGenerator, string $resourceClass, ?string $operationName = null)
     {
         if (method_exists($resourceClass, 'setBuilding')) {
             $filteredBuilding = $this->requestStack->getCurrentRequest()->get('buildingId');

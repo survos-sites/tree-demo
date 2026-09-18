@@ -5,13 +5,16 @@
 {% block body %}
     <h1>Topic index</h1>
 
+    {% if app.debug or is_granted('ROLE_ADMIN') %}
     <div class="d-flex gap-2 mb-3">
         <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_load_topics') }}">Reload Topics</a>
         <a class="btn btn-sm btn-primary" href="{{ path('topic_new') }}">
-            <span class="bi bi-plus"></span>
+            {{ ux_icon('tabler:plus') }}
             New Topic
         </a>
     </div>
+
+    {% endif %}
 
     {% set currentFilter = filter|default({}) %}
 
@@ -50,17 +53,14 @@
         :columns="columns"
         :filter="currentFilter"
         :caller="_self"
-        :searchPanes="false"
         :columnControl="true"
     >
         <twig:block name="_actions">
             <div class="d-flex gap-2">
                 <a href="{{ path('topic_show', {topicId: row.code}) }}" title="Show">
-                    <i class="bi bi-eye"></i>
+                    Show
                 </a>
-                <a href="{{ path('topic_edit', {topicId: row.code}) }}" title="Edit">
-                    <i class="bi bi-pencil"></i>
-                </a>
+
             </div>
         </twig:block>
 

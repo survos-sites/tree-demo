@@ -1,0 +1,14 @@
+survos_tabler:
+    app:
+        code: tree-demo
+        title: Tree & Table Playground
+        abbr: Tree & Table
+        description: Explore IPTC topics as tables and trees.
+        homepage_route: app_homepage
+        header:
+            layout: compact
+    routes:
+        home: app_homepage
+    options:
+        theme: tabler
+        layout: horizontal

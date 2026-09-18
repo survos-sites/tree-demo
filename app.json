@@ -1,36 +1,38 @@
 {
-    "name": "tree",
-    "description": "survos/tree-bundle demo",
-    "keywords": [
-        "php",
-        "symfony",
-        "tree"
-    ],
-    "repository": "https:\/\/github.com\/survos-sites\/tree-demo",
-    "scripts": {
-        "dokku": {
-            "predeploy": "bin\/console importmap:install && bin\/console asset-map:compile",
-            "postdeploy": ""
-        }
-    },
-    "env": {
-        "SECRET_TOKEN": {
-            "description": "A secret key for verifying the integrity of signed cookies.",
-            "value": "secret"
-        },
-        "WEB_CONCURRENCY": {
-            "description": "The number of processes to run.",
-            "generator": "echo 5"
-        }
-    },
-    "image": "gliderlabs\/herokuish",
-    "addons": [
-        "dokku-postgres",
-        "dokku-redis"
-    ],
+    "name": "tree-demo",
+    "description": "Twig table components and topic trees with Symfony UX and Tabler",
+    "repository": "https://github.com/survos-sites/tree-demo",
     "buildpacks": [
         {
-            "url": "https:\/\/github.com\/heroku\/heroku-buildpack-php.git"
+            "url": "https://github.com/heroku/heroku-buildpack-php.git"
         }
-    ]
+    ],
+    "env": {
+        "APP_ENV": {
+            "value": "prod"
+        },
+        "APP_DEBUG": {
+            "value": "0"
+        },
+        "WEB_CONCURRENCY": {
+            "value": "2"
+        }
+    },
+    "scripts": {
+        "dokku": {
+            "predeploy": "php bin/console importmap:install && php bin/console asset-map:compile && php bin/console doctrine:migrations:migrate --no-interaction --allow-no-migration"
+        }
+    },
+    "healthchecks": {
+        "web": [
+            {
+                "type": "startup",
+                "name": "http",
+                "path": "/health",
+                "attempts": 5,
+                "timeout": 10,
+                "wait": 10
+            }
+        ]
+    }
 }

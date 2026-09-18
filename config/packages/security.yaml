@@ -35,3 +35,11 @@ security:
     access_control:
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
+
+when@prod:
+    security:
+        access_control:
+            - { path: '^/(admin|load-topics|load-files|file-source|repo-files)(/|$)', roles: ROLE_ADMIN }
+            - { path: '^/api', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
+            - { path: '^/(topic|building|location|file)(/.*)?/(new|edit|delete)(/|$)', roles: ROLE_ADMIN }
+            - { path: '^/', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
