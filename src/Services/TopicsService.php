@@ -1,90 +1,65 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Services;
 
 use App\Entity\Topic;
 use App\Repository\TopicRepository;
 use Doctrine\ORM\EntityManagerInterface;
-use Psr\Log\LoggerInterface;
-use Symfony\Component\DependencyInjection\ParameterBag\ParameterBagInterface;
+use Survos\MediaTopics\MediaTopics;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Attribute\Option;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Style\SymfonyStyle;
 
-class TopicsService
+final class TopicsService
 {
-
-//    private TopicRepository $topicRepository;
-
     public function __construct(
-        private TopicRepository $topicRepository,
-        private ParameterBagInterface $bag,
-        private EntityManagerInterface $em,
-    private LoggerInterface $logger)
-    {
-//        $this->topicRepository = $this->em->getRepository(Topic::class);
+        private readonly TopicRepository $topicRepository,
+        private readonly EntityManagerInterface $em,
+        private readonly MediaTopics $mediaTopics,
+    ) {}
+
+    #[AsCommand('app:import-topics', 'Load the IPTC Media Topics tree from survos/media-topics-bundle')]
+    public function importTopicsCommand(
+        SymfonyStyle $io,
+        #[Option('Replace the topics already loaded')] bool $force = false,
+    ): int {
+        if (($count = $this->getTopicCount()) && !$force) {
+            $io->info(sprintf('%d topics already exist.', $count));
+
+            return Command::SUCCESS;
+        }
+        $this->importTopics();
+        $io->success(sprintf('%d topics imported (IPTC Media Topics %s).', $this->getTopicCount(), $this->mediaTopics->version()));
+
+        return Command::SUCCESS;
     }
 
-    public function getTopicCount() {
+    public function getTopicCount(): int
+    {
         return $this->topicRepository->count([]);
     }
 
-    public function importTopics(?string $topicsJsonFile=null)
+    /** Replaces the topic table with the topics currently in use; retired ones are left out of the demo tree. */
+    public function importTopics(): void
     {
-        if (!$topicsJsonFile) {
+        $this->em->createQuery('delete from '.Topic::class)->execute();
 
-            // https://cv.iptc.org/newscodes/mediatopic/?lang=en-US&format=json
-            $topicsJsonFile = $this->bag->get('topics_json_file');
-        }
-
-        $this->em->createQuery("delete from " . Topic::class)->execute();
-
-        $data = json_decode(file_get_contents($topicsJsonFile))->conceptSet;
         $topics = [];
-        foreach ($data as $cSet) {
-            $topicCode = $this->getCode($cSet->qcode, ':');
+        // Parents come before their children, so each parent is already persisted.
+        foreach ($this->mediaTopics as $id => $mediaTopic) {
             $topic = (new Topic())
-                ->setCode($topicCode)
-//                ->setChildCount(count($cSet->narrower))
-                ->setName($cSet->prefLabel->{'en-US'}??'no-name');
-            $topic
-                ->setDescription($cSet->definition->{'en-US'}??"no description");
-            $this->em->persist($topic);
-            $topics[$topicCode] = $topic;
-
-            // not in order, e.g. 20001181, so defer until later
-//            if (isset($cSet->broader)) {
-//                $parentCode = $this->getCode($cSet->broader[0], '/');
-//                assert(array_key_exists($parentCode, $topics), "Missing $parentCode");
-//                $topics[$parentCode]->addChild($topic);
-//            }
-
-        }
-        $this->logger->info("Topics loaded, now setting parents");
-
-        reset($data);
-        foreach ($data as $cSet) {
-            $topicCode = $this->getCode($cSet->qcode, ':');
-            $topic = $topics[$topicCode];
-            if (isset($cSet->broader)) {
-                $parentCode = $this->getCode($cSet->broader[0], '/');
-                $topics[$parentCode]->addChild($topic);
-//                $topic->setParent($topics[$parentCode]);
-            } else {
-//                $topic->setParent(null);
+                ->setCode((string) $id)
+                ->setName($mediaTopic->label('en-US'))
+                ->setDescription($mediaTopic->definition('en-US') ?: 'no description');
+            if ($mediaTopic->parentId !== null) {
+                $topic->setParent($topics[$mediaTopic->parentId]);
             }
+            $this->em->persist($topic);
+            $topics[$id] = $topic;
         }
-        $this->logger->info("Flushing...");
         $this->em->flush();
-
-//        foreach ($data->hasTopConcept as $topConcept) {
-//            $code = explode('/', $topConcept);
-//            $numericCode = $code[5];
-//            dd($topic[$numericCode]);
-//        }
     }
-
-    private function getCode(string $string, string $delimiter = '/'): string
-    {
-        return current(array_slice(explode($delimiter, $string), -1));
-    }
-
-
 }

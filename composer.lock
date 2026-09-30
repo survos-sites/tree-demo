@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "2955ba519bb14fcca25110e5c29919bb",
+    "content-hash": "b4ac3df9ff71f023282d29bcf12c989f",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3977,6 +3977,135 @@
                 }
             ],
             "time": "2026-09-15T10:39:16+00:00"
+        },
+        {
+            "name": "survos/media-topics",
+            "version": "2.34.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/media-topics.git",
+                "reference": "60ba055f3c34deaac7e1d4596c1519ba626e9e8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/media-topics/zipball/60ba055f3c34deaac7e1d4596c1519ba626e9e8d",
+                "reference": "60ba055f3c34deaac7e1d4596c1519ba626e9e8d",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^13.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Survos\\MediaTopics\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "IPTC Media Topics and Genre as a PHP library: the pinned vocabularies with hierarchy, translations, Wikidata and Subject Code mappings",
+            "keywords": [
+                "IPTC",
+                "classification",
+                "genre",
+                "media-topics",
+                "newscodes",
+                "taxonomy",
+                "vocabulary"
+            ],
+            "support": {
+                "issues": "https://github.com/survos/media-topics/issues",
+                "source": "https://github.com/survos/media-topics/tree/2.34.22"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-30T12:30:45+00:00"
+        },
+        {
+            "name": "survos/media-topics-bundle",
+            "version": "2.34.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/media-topics-bundle.git",
+                "reference": "a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/media-topics-bundle/zipball/a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5",
+                "reference": "a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^8.5",
+                "survos/kit-bundle": "^2.5",
+                "survos/media-topics": "^2.34",
+                "symfony/config": "^8.1",
+                "symfony/console": "^8.1",
+                "symfony/dependency-injection": "^8.1",
+                "symfony/framework-bundle": "^8.1",
+                "symfony/http-kernel": "^8.1"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0",
+                "phpunit/phpunit": "^13.0",
+                "survos/command-bundle": "^2.34",
+                "symfony/http-client": "^8.1"
+            },
+            "suggest": {
+                "survos/command-bundle": "Exposes the browse and search commands as MCP agent tools.",
+                "symfony/http-client": "Needed by media-topics:download to fetch a newer release from IPTC."
+            },
+            "type": "symfony-bundle",
+            "autoload": {
+                "psr-4": {
+                    "Survos\\MediaTopicsBundle\\": "src/",
+                    "Survos\\MediaTopicsBundle\\Tests\\": "tests/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "IPTC Media Topics in a Symfony app: the vocabulary as a service, plus console commands and agent tools to browse and search it",
+            "keywords": [
+                "IPTC",
+                "media-topics",
+                "newscodes",
+                "taxonomy",
+                "vocabulary"
+            ],
+            "support": {
+                "issues": "https://github.com/survos/media-topics-bundle/issues",
+                "source": "https://github.com/survos/media-topics-bundle/tree/2.34.22"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-30T12:30:43+00:00"
         },
         {
             "name": "survos/simple-datatables-bundle",

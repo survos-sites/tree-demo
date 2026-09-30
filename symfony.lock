@@ -327,6 +327,9 @@
     "survos/kit-bundle": {
         "version": "2.5.0"
     },
+    "survos/media-topics-bundle": {
+        "version": "2.34.22"
+    },
     "survos/simple-datatables-bundle": {
         "version": "2.5.0"
     },
