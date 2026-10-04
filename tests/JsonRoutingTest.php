@@ -53,7 +53,7 @@ final class JsonRoutingTest extends KernelTestCase
         foreach ([
             'controllers/twig_browser_demo_controller.js',
             '@survos/tree/src/controllers/api_tree_controller.js',
-            '@survos/api-grid/src/controllers/api_grid_controller.js',
+            '@survos/api-grid-bundle/src/controllers/api_grid_controller.js',
         ] as $logicalPath) {
             $asset = $mapper->getAsset($logicalPath);
             self::assertNotNull($asset, $logicalPath);
