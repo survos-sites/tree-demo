@@ -9,12 +9,7 @@
     {% set _sc = 'twig_browser_demo' %}
     <section
         class="card"
-        {{ stimulus_controller(_sc, {
-            routeMap: {
-                app_homepage: path('app_homepage'),
-                app_tree_json: path('app_tree_json', {_format: 'json'})
-            }
-        }) }}
+        {{ stimulus_controller(_sc) }}
     >
         <div class="card-body" {{ stimulus_action(_sc, 'chooseCase', 'click') }}>
             <div class="alert alert-info py-2" {{ stimulus_target(_sc, 'status') }}>Running render cases...</div>

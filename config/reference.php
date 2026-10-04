@@ -687,7 +687,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         signing_algorithm?: scalar|Param|null, // Default: "sha256"
  *         routing?: array<string, array{ // Default: []
  *             service?: scalar|Param|null,
- *             secret?: scalar|Param|null, // The secret used to verify incoming request signatures. It must be set in production: with an empty value, requests from any sender are accepted. // Default: ""
+ *             secret?: scalar|Param|null, // The secret used to verify incoming request signatures. It must be set in production: with an empty value, depending on the parser, requests from any sender are accepted or every request is rejected. // Default: ""
  *         }>,
  *     },
  *     remote_event?: bool|array{ // RemoteEvent configuration
@@ -1205,7 +1205,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     inflector?: scalar|Param|null, // Specify an inflector to use. // Default: "api_platform.metadata.inflector"
  *     validator?: array{
  *         serialize_payload_fields?: mixed, // Set to null to serialize all payload fields when a validation error is thrown, or set the fields you want to include explicitly. // Default: []
- *         query_parameter_validation?: bool|Param, // Deprecated: Will be removed in API Platform 5.0. // Default: true
+ *         query_parameter_validation?: bool|Param, // Deprecated: The "query_parameter_validation" configuration is deprecated and will be removed in API Platform 5.0. // Default: true
  *     },
  *     jsonapi?: array{
  *         use_iri_as_id?: bool|Param|null, // Set to false to use entity identifiers instead of IRIs as the "id" field in JSON:API responses. Defaults to true; this default will change to false in API Platform 5.0. // Default: null
@@ -1228,7 +1228,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     enable_head_request_optimization?: bool|Param, // Skip response body construction on HEAD requests so collections are not iterated. Disable to process HEAD identically to GET. // Default: true
  *     enable_profiler?: bool|Param, // Enable the data collector and the WebProfilerBundle integration. // Default: true
  *     enable_phpdoc_parser?: bool|Param, // Enable resource metadata collector using PHPStan PhpDocParser. // Default: true
- *     enable_link_security?: bool|Param, // Deprecated: This option is always enabled and will be removed in API Platform 5.0. // Enable security for Links (sub resources). // Default: true
+ *     enable_link_security?: bool|Param, // Deprecated: The "enable_link_security" configuration is deprecated, this option is always enabled and will be removed in API Platform 5.0. // Enable security for Links (sub resources). // Default: true
  *     collection?: array{
  *         exists_parameter_name?: scalar|Param|null, // The name of the query parameter to filter on nullable field values. // Default: "exists"
  *         order?: scalar|Param|null, // The default order of results. // Default: "ASC"
@@ -1495,19 +1495,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         ...<string, mixed>
  *     },
  *     ...<string, mixed>
- * }
- * @psalm-type FosJsRoutingConfig = array{
- *     serializer?: scalar|Param|null,
- *     routes_to_expose?: list<scalar|Param|null>,
- *     router?: scalar|Param|null, // Default: "router"
- *     request_context_base_url?: scalar|Param|null, // Default: null
- *     cache_control?: array{
- *         public?: bool|Param, // Default: false
- *         expires?: scalar|Param|null, // Default: null
- *         maxage?: scalar|Param|null, // Default: null
- *         smaxage?: scalar|Param|null, // Default: null
- *         vary?: list<scalar|Param|null>,
- *     },
  * }
  * @psalm-type SecurityConfig = array{
  *     access_denied_url?: scalar|Param|null, // Default: null
@@ -1796,9 +1783,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *             lifetime?: int|Param, // Default: 31536000
  *             path?: scalar|Param|null, // Default: "/"
  *             domain?: scalar|Param|null, // Default: null
- *             secure?: true|false|"auto"|Param, // Default: "auto"
+ *             secure?: true|false|"auto"|Param, // Defaults to the value of "framework.session.cookie_secure", or to "auto".
  *             httponly?: bool|Param, // Default: true
- *             samesite?: null|"lax"|"strict"|"none"|Param, // Default: "lax"
+ *             samesite?: null|"lax"|"strict"|"none"|Param, // Defaults to the value of "framework.session.cookie_samesite", or to "lax".
  *             always_remember_me?: bool|Param, // Default: false
  *             remember_me_parameter?: scalar|Param|null, // Default: "_remember_me"
  *         },
@@ -1985,6 +1972,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     max_page_length?: int|Param, // Upper bound applied to the DataTables "length" parameter on Ajax requests. "length=-1" (show all) is honored only when the table declares -1 in lengthMenu(); otherwise it is capped to this value. // Default: 1000
  *     options?: array{
  *         language?: scalar|Param|null, // Default: "en-GB"
+ *         stateSave?: bool|Param,
+ *         showHeaderResetButton?: bool|Param,
  *         layout?: mixed, // Default: {"topStart":"pageLength","topEnd":"search","bottomStart":"info","bottomEnd":"paging"}
  *         lengthMenu?: list<scalar|Param|null>,
  *         pageLength?: int|Param,
@@ -2099,6 +2088,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         dark_mode?: bool|Param, // Default: false
  *         show_locale_dropdown?: bool|Param, // Default: true
  *     },
+ *     auto_breadcrumbs?: bool|Param, // Build the BREADCRUMB slot from the page's entities: each object option whose class has a #[RouteMeta(entity:, purpose: Show)] route becomes a crumb. See BreadcrumbMenuSubscriber. // Default: false
  *     menu_options?: array<string, scalar|Param|null>,
  *     impersonate?: array<string, scalar|Param|null>,
  *     routes_enabled?: bool|Param, // Set false to manage this bundle's routes manually in your app. Bundles exposing sensitive routes (e.g. running console commands) should default this off. // Default: true
@@ -2122,7 +2112,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     doctrine_migrations?: DoctrineMigrationsConfig,
  *     nelmio_cors?: NelmioCorsConfig,
  *     api_platform?: ApiPlatformConfig,
- *     fos_js_routing?: FosJsRoutingConfig,
  *     security?: SecurityConfig,
  *     stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *     survos_core?: SurvosCoreConfig,
@@ -2155,7 +2144,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         maker?: MakerConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *         api_platform?: ApiPlatformConfig,
- *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *         survos_core?: SurvosCoreConfig,
@@ -2187,7 +2175,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         doctrine_migrations?: DoctrineMigrationsConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *         api_platform?: ApiPlatformConfig,
- *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *         survos_core?: SurvosCoreConfig,
@@ -2220,7 +2207,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         doctrine_migrations?: DoctrineMigrationsConfig,
  *         nelmio_cors?: NelmioCorsConfig,
  *         api_platform?: ApiPlatformConfig,
- *         fos_js_routing?: FosJsRoutingConfig,
  *         security?: SecurityConfig,
  *         stof_doctrine_extensions?: StofDoctrineExtensionsConfig,
  *         survos_core?: SurvosCoreConfig,

@@ -11,7 +11,7 @@
                     <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
                 {% endif %}
                 {% if app.user %}
-                    <p>You are signed in as {{ app.user.userIdentifier }}. <a href="{{ path('app_logout') }}">Sign out</a></p>
+                    <p>You are signed in as {{ app.user.userIdentifier }}. <a href="{{ logout_path() }}">Sign out</a></p>
                 {% endif %}
                 <div class="mb-3">
                     <label for="inputEmail" class="form-label">Email</label>
@@ -27,5 +27,6 @@
                 </div>
             </div>
         </form>
+        <p class="text-center mt-3">New here? <a href="{{ path('app_register') }}">Create an account</a></p>
     </div>
 {% endblock %}

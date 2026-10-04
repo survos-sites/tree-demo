@@ -15,7 +15,6 @@
         "doctrine/doctrine-migrations-bundle": "^3.0",
         "doctrine/orm": "^3.2",
         "doctrine/persistence": "^3.0.0||^4.0",
-        "friendsofsymfony/jsrouting-bundle": "^3.1.1",
         "league/commonmark": "^2.3",
         "nelmio/cors-bundle": "^2.1",
         "phpdocumentor/reflection-docblock": "^5.2",
@@ -123,7 +122,6 @@
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "importmap:install": "symfony-cmd",
-            "fos:js-routing:dump --format=json --target=public/js/fos_js_routes.json": "symfony-cmd",
             "assets:install --symlink --relative %PUBLIC_DIR%": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"
         },
@@ -153,5 +151,39 @@
             "synchronize_package_json": false
         }
     },
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": [
+        {
+            "type": "path",
+            "url": "../mono/bu/*",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "survos/api-grid-bundle": "2.34.32",
+                    "survos/atlas-bundle": "2.34.29",
+                    "survos/core-bundle": "2.34.29",
+                    "survos/crawler-bundle": "2.33.0",
+                    "survos/field-bundle": "2.34.29",
+                    "survos/js-twig-bundle": "2.34.34",
+                    "survos/kit-bundle": "2.34.29",
+                    "survos/media-topics-bundle": "2.34.22",
+                    "survos/simple-datatables-bundle": "2.34.29",
+                    "survos/tabler-bundle": "2.34.35",
+                    "survos/tree-bundle": "dev-main",
+                    "survos/deployment-bundle": "2.34.29"
+                }
+            }
+        },
+        {
+            "type": "path",
+            "url": "../mono/lib/*",
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "survos/debug-utils": "2.33.0",
+                    "survos/media-topics": "2.34.22"
+                }
+            }
+        }
+    ]
 }

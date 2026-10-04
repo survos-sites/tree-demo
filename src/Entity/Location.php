@@ -1,7 +1,14 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Entity;
 
+use App\State\InventoryProcessor;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
@@ -23,21 +30,18 @@ use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
 #[ORM\Entity(repositoryClass: LocationRepository::class)]
 #[Gedmo\Tree(type: 'nested')]
 #[ApiResource(
-    normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','rp']],
+    operations: [new GetCollection(), new Get(), new Post(), new Patch(), new Delete()],
+    security: "is_granted('ROLE_USER')",
+    normalizationContext: ['groups' => ['inventory:read']],
+    denormalizationContext: ['groups' => ['inventory:write', 'browse']],
+    processor: InventoryProcessor::class,
 )]
 #[ApiResource(
     uriTemplate: '/building/{buildingId}/locations.{_format}',
-    shortName: 'Location',
-    operations: [new GetCollection(
-        name: 'building_locations',
-        normalizationContext: ['groups' => ['Default','jstree','minimum', 'marking','rp']],
-    )],
-    uriVariables: [
-        'buildingId' => new Link(
-            fromProperty: 'locations',
-            fromClass: Building::class,
-        ),
-    ],
+    operations: [new GetCollection(name: 'building_locations')],
+    security: "is_granted('ROLE_USER')",
+    normalizationContext: ['groups' => ['inventory:read']],
+    uriVariables: ['buildingId' => new Link(fromProperty: 'locations', fromClass: Building::class)],
 )]
 #[ApiFilter(PropertyFilter::class)]
 #[ApiFilter(SearchFilter::class, properties: ['building' => 'exact'])]
@@ -49,6 +53,7 @@ class Location implements \Stringable, RouteParametersInterface, TreeInterface
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column(type: 'integer')]
+    #[Groups(['inventory:read'])]
     private $id;
     #[ORM\Column(type: 'string', length: 32)]
     #[Gedmo\Slug(fields: ['name'])]
@@ -58,8 +63,14 @@ class Location implements \Stringable, RouteParametersInterface, TreeInterface
     #[Assert\Valid]
     #[ORM\ManyToOne(targetEntity: Building::class, inversedBy: 'locations')]
     #[ORM\JoinColumn(nullable: false)]
-    private Building $building;
-    public function __construct(#[ORM\Column(type: 'string', length: 80)] private ?string $name = null)
+    private ?Building $building = null;
+    public function __construct(
+        #[ORM\Column(type: 'string', length: 80)]
+        #[Groups(['inventory:read', 'inventory:write'])]
+        #[Assert\NotBlank]
+        #[Assert\Length(max: 80)]
+        private ?string $name = null,
+    )
     {
         $this->children = new ArrayCollection();
     }
@@ -87,7 +98,7 @@ class Location implements \Stringable, RouteParametersInterface, TreeInterface
 
         return $this;
     }
-    #[Groups(['Default'])]
+    #[Groups(['inventory:read'])]
     public function getParentId(): ?int
     {
         return $this->getParent() ? $this->getParent()->getId() : null;

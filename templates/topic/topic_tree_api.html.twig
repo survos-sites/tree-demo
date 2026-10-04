@@ -10,8 +10,15 @@
             {% component api_tree with {
                 class: topicClass,
                 filter: filter|default({}),
-                editable: true
+                editable: true,
+                caller: _self,
+                selectedId: app.request.query.get('selectedId')
             } %}
+                <twig:block name="api_tree_content">
+                    <h5>{{ item.name ?? node.name }}</h5>
+                    <p>{{ item.description ?? node.description }}</p>
+                    <p class="text-muted">Right-click a node to add, rename, or delete it.</p>
+                </twig:block>
             {% endcomponent %}
         </div>
 

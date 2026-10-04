@@ -33,14 +33,6 @@ class AppController extends AbstractController
         private readonly ParameterBagInterface $bag,
     ) {}
 
-    #[Route(path: '/basic-ajax/{buildingId}', name: 'app_basic_ajax')]
-    public function basic_ajax(Building $building)
-    {
-        return $this->render('app/basic-ajax.html.twig', [
-            'building' => $building
-        ]);
-    }
-
     #[Route(path: '/load-topics', name: 'app_load_topics')]
     public function loadTopics(): Response
     {
@@ -124,7 +116,7 @@ class AppController extends AbstractController
         return $this->render('app/twig-browser-demo.html.twig', []);
     }
 
-    #[Route(path: '/', name: 'app_homepage')]
+    #[Route(path: '/', name: 'app_homepage', options: ['expose' => true])]
     public function home()
     {
         return $this->render('app/home.html.twig', ['topicCount' => $this->topicRepository->count([])]);
@@ -137,48 +129,11 @@ class AppController extends AbstractController
     }
 
 
-    #[Route(path: '/tree-json.{_format}', name: 'app_tree_json')]
+    #[Route(path: '/tree-json.{_format}', name: 'app_tree_json', options: ['expose' => true])]
     public function treeJson(Request $request, $_format='html')
     {
         $data = array_map(function($name) { return ['text' =>  $name];}, ['Basement', 'First Floor', 'Second Floor', 'Attic']);
         return $this->jsonResponse($data, $request);
     }
-
-    #[Route(path: '/fetch.{_format}', name: 'app_tree_fetch')]
-    public function fetch(Request $request, $_format='json'): JsonResponse
-    {
-        /** @var Location $location */
-        $data = [];
-        foreach ($this->locationRepository->findAll() as $location) {
-            array_push($data, [
-                'id' => $location->getCode(),
-                'data' => ['databaseId' => $location->getId()],
-                'text' => $location->getName(),
-                'parent' => $location->getParent() ? $location->getParent()->getCode() : '#'
-            ]);
-        }
-        return new JsonResponse($data);
-    }
-
-    #[Route(path: '/save.{_format}', name: 'app_tree_save')]
-    public function save(Request $request, $_format='html'): Response
-    {
-        $repo = $this->locationRepository;
-        $data = $request->get('json');
-        // create nodes that don't exist.  Codes, though, are locked.
-        foreach ($data as $node) {
-            $node = (object)$node;
-            if (!$location = $repo->findOneBy(['code' => $node->id])) {
-                $location = (new Location());
-                $this->entityManager->persist($location);
-            }
-            $location->setName($node->text);
-            $location->setParent($node->parent === '#' ? null : $repo->findOneBy(['code' => $node->parent]));
-        }
-        $this->entityManager->flush();
-        $data = ['status' => 'ok'];
-        return $this->jsonResponse($data, $request);
-    }
-
 
 }

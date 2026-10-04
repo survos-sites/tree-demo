@@ -6,7 +6,6 @@
 namespace App\Controller;
 
 use App\Entity\Topic;
-use App\Form\TopicType;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Repository\TopicRepository;
 
@@ -35,7 +34,7 @@ class TopicCollectionController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/topic-tree-api', name: 'topic_tree_api')]
+    #[Route(path: '/topic-tree-api', name: 'topic_tree_api', options: ['expose' => true])]
     public function topic_tree_api(Request $request)
     {
         return $this->render('topic/topic_tree_api.html.twig', [
@@ -82,24 +81,4 @@ class TopicCollectionController extends AbstractController
         ]);
     }
 
-    #[Route('/new', name: 'topic_new')]
-    public function new(Request $request): Response
-    {
-        $topic = new Topic();
-        $form = $this->createForm(TopicType::class, $topic);
-        $form->handleRequest($request);
-
-        if ($form->isSubmitted() && $form->isValid()) {
-            $entityManager = $this->entityManager;
-            $entityManager->persist($topic);
-            $entityManager->flush();
-
-            return $this->redirectToRoute('topic_index');
-        }
-
-        return $this->render('topic/new.html.twig', [
-            'topic' => $topic,
-            'form' => $form->createView(),
-        ]);
-    }
 }

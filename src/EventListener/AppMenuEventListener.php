@@ -28,10 +28,10 @@ final class AppMenuEventListener
         $this->add($event->menu, 'topic_index', label: 'API grid', icon: 'tabler:layout-grid', translationDomain: 'routing');
         $more = $this->addSubmenu($event->menu, label: 'More demos', icon: 'tabler:dots', translationDomain: 'routing');
         $this->add($more, 'topic_tree_api', label: 'API tree', translationDomain: 'routing');
-        if ($this->debug || $this->security->isGranted('ROLE_ADMIN')) {
+        if ($this->security->isGranted('ROLE_ADMIN')) {
             $this->add($more, 'app_repo_files', label: 'File browser', translationDomain: 'routing');
         }
-        $this->add($more, 'building_index', label: 'Inventory', translationDomain: 'routing');
+        $this->add($more, 'app_inventory', label: 'My inventory', translationDomain: 'routing');
         $this->add($more, 'app_twig_browser_demo', label: 'Twig browser', translationDomain: 'routing');
     }
 }

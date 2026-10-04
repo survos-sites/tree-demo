@@ -22,7 +22,18 @@ security:
             security: false
         main:
             lazy: true
-            provider: users_in_memory
+            provider: database_users
+            form_login:
+                login_path: app_login
+                check_path: app_login
+                username_parameter: email
+                password_parameter: password
+                enable_csrf: true
+                default_target_path: app_inventory
+            logout:
+                path: app_logout
+                target: app_login
+                enable_csrf: true
 
             # activate different ways to authenticate
             # https://symfony.com/doc/current/security.html#the-firewall
@@ -33,6 +44,11 @@ security:
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
     access_control:
+        - { path: '^/(login|register)$', roles: PUBLIC_ACCESS }
+        - { path: '^/(inventory|building|basic-ajax)(/|$)', roles: ROLE_USER }
+        - { path: '^/api/(locations|building)(/|$|\.)', roles: ROLE_USER }
+        - { path: '^/(load-topics|load-files|file-source|repo-files|file-overview)(/|$)', roles: ROLE_ADMIN }
+        - { path: '^/api/files(/|$|\.)', roles: ROLE_ADMIN }
         # - { path: ^/admin, roles: ROLE_ADMIN }
         # - { path: ^/profile, roles: ROLE_USER }
 
@@ -40,6 +56,7 @@ when@prod:
     security:
         access_control:
             - { path: '^/(admin|load-topics|load-files|file-source|repo-files)(/|$)', roles: ROLE_ADMIN }
+            - { path: '^/api/(locations|building)(/|$|\.)', roles: ROLE_USER }
             - { path: '^/api', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
-            - { path: '^/(topic|building|location|file)(/.*)?/(new|edit|delete)(/|$)', roles: ROLE_ADMIN }
+            - { path: '^/(building|location|file)(/.*)?/(new|edit|delete)(/|$)', roles: ROLE_ADMIN }
             - { path: '^/', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }

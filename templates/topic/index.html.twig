@@ -8,10 +8,7 @@
     {% if app.debug or is_granted('ROLE_ADMIN') %}
     <div class="d-flex gap-2 mb-3">
         <a class="btn btn-sm btn-outline-secondary" href="{{ path('app_load_topics') }}">Reload Topics</a>
-        <a class="btn btn-sm btn-primary" href="{{ path('topic_new') }}">
-            {{ ux_icon('tabler:plus') }}
-            New Topic
-        </a>
+
     </div>
 
     {% endif %}
@@ -38,7 +35,7 @@
     </form>
 
     {% set columns = [
-        {name: '_actions', title: '', sortable: false, searchable: false, prefix: 'topic_', actions: ['show', 'edit']},
+        {name: 'tree', title: 'Tree', sortable: false, searchable: false},
         {name: 'code', sortable: true, searchable: true, browsable: true},
         {name: 'name', sortable: true, searchable: true, browsable: true},
         {name: 'description', searchable: true},
@@ -55,13 +52,8 @@
         :caller="_self"
         :columnControl="true"
     >
-        <twig:block name="_actions">
-            <div class="d-flex gap-2">
-                <a href="{{ path('topic_show', {topicId: row.code}) }}" title="Show">
-                    Show
-                </a>
-
-            </div>
+        <twig:block name="tree">
+            <a href="{{ path('topic_tree_api', {selectedId: row.code}) }}">Open in tree</a>
         </twig:block>
 
         <twig:block name="code">

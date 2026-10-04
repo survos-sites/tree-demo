@@ -35,11 +35,11 @@
         >
             <twig:block name="code"><code>{{ row.code }}</code></twig:block>
             <twig:block name="name">
-                <a href="{{ path('topic_show', {topicId: row.code}) }}">{{ row.name }}</a>
+                <a href="{{ path('topic_tree_api', {selectedId: row.code}) }}">{{ row.name }}</a>
             </twig:block>
             <twig:block name="parentId">
                 {% if row.parent %}
-                    <a href="{{ path('topic_show', {topicId: row.parent.code}) }}">{{ row.parent.name }}</a>
+                    <a href="{{ path('topic_tree_api', {selectedId: row.parent.code}) }}">{{ row.parent.name }}</a>
                 {% else %}
                     <span class="badge bg-secondary-lt">Top-level topic</span>
                 {% endif %}
