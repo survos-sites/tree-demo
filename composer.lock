@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "9d9a5a846df8c0f1432be62b35d73ead",
+    "content-hash": "2134482b7d069c677e7ab22c53ad03d3",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3342,11 +3342,17 @@
         },
         {
             "name": "survos/api-grid-bundle",
-            "version": "2.34.32",
+            "version": "2.34.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/api-grid-bundle.git",
+                "reference": "7078505f47fc3214fd36dcb128bee641f5ebc167"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/api-grid-bundle",
-                "reference": "8a91117358d7fa8310ce273d09740ceea5d2c4d0"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/api-grid-bundle/zipball/7078505f47fc3214fd36dcb128bee641f5ebc167",
+                "reference": "7078505f47fc3214fd36dcb128bee641f5ebc167",
+                "shasum": ""
             },
             "require": {
                 "api-platform/symfony": "^4.1 || ^5.0",
@@ -3391,11 +3397,11 @@
             },
             "type": "symfony-bundle",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.1-dev"
-                },
                 "symfony": {
                     "require": "^7.4||^8.1"
+                },
+                "branch-alias": {
+                    "dev-main": "2.1-dev"
                 }
             },
             "autoload": {
@@ -3403,11 +3409,7 @@
                     "Survos\\ApiGridBundle\\": "src/"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3422,18 +3424,31 @@
                 "symfony-bundle",
                 "symfony-ux"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/api-grid-bundle/issues",
+                "source": "https://github.com/survos/api-grid-bundle/tree/2.34.38"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-04T18:02:34+00:00"
         },
         {
             "name": "survos/atlas-bundle",
             "version": "2.34.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/atlas-bundle.git",
+                "reference": "a78dd84fb834a7701b01c2a5b5751353d1b8fe2b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/atlas-bundle",
-                "reference": "52eb0d2429d855910507039f0eea064784b7bb7a"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/atlas-bundle/zipball/a78dd84fb834a7701b01c2a5b5751353d1b8fe2b",
+                "reference": "a78dd84fb834a7701b01c2a5b5751353d1b8fe2b",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3451,11 +3466,11 @@
             },
             "type": "symfony-bundle",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.0-dev"
-                },
                 "symfony": {
                     "require": "^7.4||^8.1"
+                },
+                "branch-alias": {
+                    "dev-main": "2.0-dev"
                 }
             },
             "autoload": {
@@ -3463,11 +3478,7 @@
                     "Survos\\AtlasBundle\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\AtlasBundle\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3488,18 +3499,31 @@
                 "routes",
                 "symfony"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/atlas-bundle/issues",
+                "source": "https://github.com/survos/atlas-bundle/tree/2.34.29"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-01T17:15:13+00:00"
         },
         {
             "name": "survos/core-bundle",
             "version": "2.34.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/core-bundle.git",
+                "reference": "a0fa34c906be4bde8b3c8a5c13c30a9fa2776623"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/core-bundle",
-                "reference": "1ab0f67b98d3e6cbfa238d0d85999c130fc76138"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/core-bundle/zipball/a0fa34c906be4bde8b3c8a5c13c30a9fa2776623",
+                "reference": "a0fa34c906be4bde8b3c8a5c13c30a9fa2776623",
+                "shasum": ""
             },
             "require": {
                 "doctrine/common": "^3.5",
@@ -3538,6 +3562,7 @@
                     "Survos\\CoreBundle\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3545,18 +3570,31 @@
             "keywords": [
                 "symfony entity routing"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/core-bundle/issues",
+                "source": "https://github.com/survos/core-bundle/tree/2.34.29"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-01T17:15:17+00:00"
         },
         {
             "name": "survos/crawler-bundle",
             "version": "2.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/crawler-bundle.git",
+                "reference": "8e6c8098906ac0c5aeaecf452dbdeb8f5f438b45"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/crawler-bundle",
-                "reference": "3bdb98a7c0222cbaaf1b5f4f91836ef3e26e2a96"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/crawler-bundle/zipball/8e6c8098906ac0c5aeaecf452dbdeb8f5f438b45",
+                "reference": "8e6c8098906ac0c5aeaecf452dbdeb8f5f438b45",
+                "shasum": ""
             },
             "require": {
                 "doctrine/orm": "^3.4|^4.0",
@@ -3594,6 +3632,7 @@
                     "Survos\\CrawlerBundle\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3610,18 +3649,31 @@
                 "symfony",
                 "testiong"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/crawler-bundle/issues",
+                "source": "https://github.com/survos/crawler-bundle/tree/2.33.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-15T13:40:41+00:00"
         },
         {
             "name": "survos/debug-utils",
             "version": "2.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/debug-utils.git",
+                "reference": "49633bdc7ed16ff8d7c194fd4681aa5e42d60600"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/lib/debug-utils",
-                "reference": "98b4aefe25c07b5cbf99056e4d7d2cb9abf35edc"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/debug-utils/zipball/49633bdc7ed16ff8d7c194fd4681aa5e42d60600",
+                "reference": "49633bdc7ed16ff8d7c194fd4681aa5e42d60600",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5"
@@ -3637,11 +3689,7 @@
                     "Survos\\DebugUtils\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\DebugUtils\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3652,18 +3700,31 @@
                 }
             ],
             "description": "Development assertion helpers that show acceptable values on failure",
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/debug-utils/issues",
+                "source": "https://github.com/survos/debug-utils/tree/2.33.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-06-09T21:17:06+00:00"
         },
         {
             "name": "survos/field-bundle",
             "version": "2.34.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/field-bundle.git",
+                "reference": "55f6d3f0f9a3bd4a37a34309613d2c7bfcc780aa"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/field-bundle",
-                "reference": "6cec1f2bb7822a74e50c05acf6cb7903765c3734"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/field-bundle/zipball/55f6d3f0f9a3bd4a37a34309613d2c7bfcc780aa",
+                "reference": "55f6d3f0f9a3bd4a37a34309613d2c7bfcc780aa",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3696,11 +3757,7 @@
                     "Survos\\FieldBundle\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\FieldBundle\\Tests\\": "tests/"
-                }
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3715,18 +3772,31 @@
                 "search",
                 "symfony"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/field-bundle/issues",
+                "source": "https://github.com/survos/field-bundle/tree/2.34.29"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-01T17:15:21+00:00"
         },
         {
             "name": "survos/grid-bundle",
-            "version": "2.34.32",
+            "version": "2.33.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/grid-bundle.git",
+                "reference": "61e7cc4122f6163095ed9087048220ccca159e67"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/grid-bundle",
-                "reference": "fa6d6e93c8c791904f4f3be98ce02d1df61074bf"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/grid-bundle/zipball/61e7cc4122f6163095ed9087048220ccca159e67",
+                "reference": "61e7cc4122f6163095ed9087048220ccca159e67",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3753,11 +3823,11 @@
             },
             "type": "symfony-bundle",
             "extra": {
-                "branch-alias": {
-                    "dev-main": "2.0-dev"
-                },
                 "symfony": {
                     "require": "^7.3"
+                },
+                "branch-alias": {
+                    "dev-main": "2.0-dev"
                 }
             },
             "autoload": {
@@ -3765,11 +3835,7 @@
                     "Survos\\Grid\\": "src/"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3784,18 +3850,31 @@
                 "symfony-ux",
                 "symfony6"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/grid-bundle/issues",
+                "source": "https://github.com/survos/grid-bundle/tree/2.33.0"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-08-08T11:55:27+00:00"
         },
         {
             "name": "survos/js-twig-bundle",
-            "version": "2.34.34",
+            "version": "2.34.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/js-twig-bundle.git",
+                "reference": "ca49761792749154f31154d9ea16b463e86cd11c"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/js-twig-bundle",
-                "reference": "7cbca932731ff055acbfa4b33f7d1934de3a6e1f"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/js-twig-bundle/zipball/ca49761792749154f31154d9ea16b463e86cd11c",
+                "reference": "ca49761792749154f31154d9ea16b463e86cd11c",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3823,6 +3902,7 @@
                     "Survos\\JsTwigBundle\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3830,18 +3910,31 @@
             "keywords": [
                 "symfony-ux"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/js-twig-bundle/issues",
+                "source": "https://github.com/survos/js-twig-bundle/tree/2.34.38"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-04T18:03:08+00:00"
         },
         {
             "name": "survos/kit-bundle",
             "version": "2.34.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/kit-bundle.git",
+                "reference": "c6e1eca7c01590978b8153e1c48be20cf3468638"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/kit-bundle",
-                "reference": "ce9ba44fd0b0db2ada921e76462e8e2238dae747"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/kit-bundle/zipball/c6e1eca7c01590978b8153e1c48be20cf3468638",
+                "reference": "c6e1eca7c01590978b8153e1c48be20cf3468638",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3874,6 +3967,7 @@
                     "Survos\\Kit\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3884,18 +3978,31 @@
                 "symfony",
                 "traits"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/kit-bundle/issues",
+                "source": "https://github.com/survos/kit-bundle/tree/2.34.29"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-01T17:15:17+00:00"
         },
         {
             "name": "survos/media-topics",
             "version": "2.34.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/media-topics.git",
+                "reference": "60ba055f3c34deaac7e1d4596c1519ba626e9e8d"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/lib/media-topics",
-                "reference": "c291c6b63f375ebc198bbfe4c75f1b708eb74bf5"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/media-topics/zipball/60ba055f3c34deaac7e1d4596c1519ba626e9e8d",
+                "reference": "60ba055f3c34deaac7e1d4596c1519ba626e9e8d",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5"
@@ -3909,16 +4016,7 @@
                     "Survos\\MediaTopics\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\MediaTopics\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "test": [
-                    "phpunit"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3930,26 +4028,39 @@
             ],
             "description": "IPTC Media Topics and Genre as a PHP library: the pinned vocabularies with hierarchy, translations, Wikidata and Subject Code mappings",
             "keywords": [
+                "IPTC",
                 "classification",
                 "genre",
-                "iptc",
                 "media-topics",
                 "newscodes",
                 "taxonomy",
                 "vocabulary"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/media-topics/issues",
+                "source": "https://github.com/survos/media-topics/tree/2.34.22"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-30T12:30:45+00:00"
         },
         {
             "name": "survos/media-topics-bundle",
             "version": "2.34.22",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/media-topics-bundle.git",
+                "reference": "a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/media-topics-bundle",
-                "reference": "c4593886f3a1fb0fd8fdafafd9661bb76b6b3645"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/media-topics-bundle/zipball/a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5",
+                "reference": "a4aa7e3569098c76a74bc5fb0ace96b9bc83c1e5",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -3978,6 +4089,7 @@
                     "Survos\\MediaTopicsBundle\\Tests\\": "tests/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -3989,24 +4101,37 @@
             ],
             "description": "IPTC Media Topics in a Symfony app: the vocabulary as a service, plus console commands and agent tools to browse and search it",
             "keywords": [
-                "iptc",
+                "IPTC",
                 "media-topics",
                 "newscodes",
                 "taxonomy",
                 "vocabulary"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/media-topics-bundle/issues",
+                "source": "https://github.com/survos/media-topics-bundle/tree/2.34.22"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-09-30T12:30:43+00:00"
         },
         {
             "name": "survos/simple-datatables-bundle",
             "version": "2.34.29",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/simple-datatables-bundle.git",
+                "reference": "346511d57e23907a6f82ca36eca13a54f7b3d06f"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/simple-datatables-bundle",
-                "reference": "81c59e1b1a0e1d48e685796733fdbb4e4c83428b"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/simple-datatables-bundle/zipball/346511d57e23907a6f82ca36eca13a54f7b3d06f",
+                "reference": "346511d57e23907a6f82ca36eca13a54f7b3d06f",
+                "shasum": ""
             },
             "require": {
                 "pentiminax/ux-datatables": "^1.0",
@@ -4044,11 +4169,7 @@
                     "Survos\\SimpleDatatables\\": "src/"
                 }
             },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4063,18 +4184,31 @@
                 "symfony-ux",
                 "symfony6"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/simple-datatables-bundle/issues",
+                "source": "https://github.com/survos/simple-datatables-bundle/tree/2.34.29"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-01T17:15:22+00:00"
         },
         {
             "name": "survos/tabler-bundle",
-            "version": "2.34.35",
+            "version": "2.34.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/tabler-bundle.git",
+                "reference": "c661251e6e41136d2a27437910909b1ad8d2667b"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/tabler-bundle",
-                "reference": "5c366c581c8ceafab62a99bbdcf8d896fa08780e"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/tabler-bundle/zipball/c661251e6e41136d2a27437910909b1ad8d2667b",
+                "reference": "c661251e6e41136d2a27437910909b1ad8d2667b",
+                "shasum": ""
             },
             "require": {
                 "doctrine/common": "^3.0",
@@ -4126,12 +4260,12 @@
             },
             "type": "symfony-bundle",
             "extra": {
+                "symfony": {
+                    "id": "tabler-bundle.survos.com",
+                    "allow-contrib": true
+                },
                 "branch-alias": {
                     "dev-master": "3.x-dev"
-                },
-                "symfony": {
-                    "allow-contrib": true,
-                    "id": "tabler-bundle.survos.com"
                 }
             },
             "autoload": {
@@ -4139,23 +4273,7 @@
                     "Survos\\TablerBundle\\": "src"
                 }
             },
-            "scripts": {
-                "test": [
-                    "vendor/bin/phpunit"
-                ],
-                "test-ci": [
-                    "vendor/bin/phpunit --coverage-text --coverage-clover=build/coverage.xml coverage"
-                ],
-                "test-coverage": [
-                    "php -d xdebug.mode=coverage vendor/bin/phpunit --coverage-html build/coverage"
-                ],
-                "test-cs": [
-                    "vendor/bin/phpcs"
-                ],
-                "test-phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4170,18 +4288,31 @@
                 "symfony",
                 "symfony-ux"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/tabler-bundle/issues",
+                "source": "https://github.com/survos/tabler-bundle/tree/2.34.38"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-04T18:03:15+00:00"
         },
         {
             "name": "survos/tree-bundle",
             "version": "dev-main",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/tree-bundle.git",
+                "reference": "03bdb52b633a557b1d127766e60c305a2866c9de"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/tree-bundle",
-                "reference": "13da8770138b3ddfae6ca052b15ab626c0a3e7ac"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/tree-bundle/zipball/03bdb52b633a557b1d127766e60c305a2866c9de",
+                "reference": "03bdb52b633a557b1d127766e60c305a2866c9de",
+                "shasum": ""
             },
             "require": {
                 "doctrine/doctrine-bundle": "^3.0",
@@ -4210,13 +4341,14 @@
                 "symfony/twig-bundle": "^8.1",
                 "symfony/var-dumper": "^8.1"
             },
+            "default-branch": true,
             "type": "symfony-bundle",
             "extra": {
-                "branch-alias": {
-                    "dev-master": "1.4-dev"
-                },
                 "symfony": {
                     "require": "^7.0 || ^6.3"
+                },
+                "branch-alias": {
+                    "dev-master": "1.4-dev"
                 }
             },
             "autoload": {
@@ -4224,16 +4356,7 @@
                     "Survos\\Tree\\": "src/"
                 }
             },
-            "autoload-dev": {
-                "psr-4": {
-                    "Survos\\Tree\\Tests\\": "tests/"
-                }
-            },
-            "scripts": {
-                "phpstan": [
-                    "vendor/bin/phpstan analyse"
-                ]
-            },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -4248,10 +4371,17 @@
                 "hierarchical",
                 "symfony-ux"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/tree-bundle/issues",
+                "source": "https://github.com/survos/tree-bundle/tree/2.34.38"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-04T18:03:13+00:00"
         },
         {
             "name": "symfony/asset",
@@ -14646,11 +14776,17 @@
         },
         {
             "name": "survos/deployment-bundle",
-            "version": "2.34.29",
+            "version": "2.34.38",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/survos/deployment-bundle.git",
+                "reference": "5e7660ab2d7bdf6c2da97190663c8068ebf5bcaf"
+            },
             "dist": {
-                "type": "path",
-                "url": "../mono/bu/deployment-bundle",
-                "reference": "f0aa3cd52215fcc41c46418373fe6ae7e87024cf"
+                "type": "zip",
+                "url": "https://api.github.com/repos/survos/deployment-bundle/zipball/5e7660ab2d7bdf6c2da97190663c8068ebf5bcaf",
+                "reference": "5e7660ab2d7bdf6c2da97190663c8068ebf5bcaf",
+                "shasum": ""
             },
             "require": {
                 "php": "^8.5",
@@ -14677,6 +14813,7 @@
                     "Survos\\DeploymentBundle\\": "src/"
                 }
             },
+            "notification-url": "https://packagist.org/downloads/",
             "license": [
                 "MIT"
             ],
@@ -14686,10 +14823,17 @@
                 "symfony",
                 "symfony-ux"
             ],
-            "transport-options": {
-                "symlink": true,
-                "relative": true
-            }
+            "support": {
+                "issues": "https://github.com/survos/deployment-bundle/issues",
+                "source": "https://github.com/survos/deployment-bundle/tree/2.34.38"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/kbond",
+                    "type": "github"
+                }
+            ],
+            "time": "2026-10-04T18:03:09+00:00"
         },
         {
             "name": "symfony/debug-bundle",

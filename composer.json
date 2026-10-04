@@ -152,54 +152,5 @@
             "synchronize_package_json": false
         }
     },
-    "prefer-stable": true,
-    "repositories": [
-        {
-            "type": "path",
-            "url": "../mono/bu/*",
-            "only": [
-                "survos/grid-bundle",
-                "survos/api-grid-bundle"
-            ],
-            "options": {
-                "symlink": true,
-                "versions": {
-                    "survos/grid-bundle": "2.34.32",
-                    "survos/api-grid-bundle": "2.34.32"
-                }
-            }
-        },
-        {
-            "type": "path",
-            "url": "../mono/bu/*",
-            "options": {
-                "symlink": true,
-                "versions": {
-                    "survos/api-grid-bundle": "2.34.32",
-                    "survos/atlas-bundle": "2.34.29",
-                    "survos/core-bundle": "2.34.29",
-                    "survos/crawler-bundle": "2.33.0",
-                    "survos/field-bundle": "2.34.29",
-                    "survos/js-twig-bundle": "2.34.34",
-                    "survos/kit-bundle": "2.34.29",
-                    "survos/media-topics-bundle": "2.34.22",
-                    "survos/simple-datatables-bundle": "2.34.29",
-                    "survos/tabler-bundle": "2.34.35",
-                    "survos/tree-bundle": "dev-main",
-                    "survos/deployment-bundle": "2.34.29"
-                }
-            }
-        },
-        {
-            "type": "path",
-            "url": "../mono/lib/*",
-            "options": {
-                "symlink": true,
-                "versions": {
-                    "survos/debug-utils": "2.33.0",
-                    "survos/media-topics": "2.34.22"
-                }
-            }
-        }
-    ]
+    "prefer-stable": true
 }
