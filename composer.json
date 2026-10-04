@@ -64,7 +64,8 @@
         "twig/intl-extra": "^3.4",
         "twig/markdown-extra": "^3.0",
         "twig/string-extra": "^3.0",
-        "twig/twig": "^3.0"
+        "twig/twig": "^3.0",
+        "survos/grid-bundle": "^2.5"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.3||^4.0",
@@ -153,6 +154,21 @@
     },
     "prefer-stable": true,
     "repositories": [
+        {
+            "type": "path",
+            "url": "../mono/bu/*",
+            "only": [
+                "survos/grid-bundle",
+                "survos/api-grid-bundle"
+            ],
+            "options": {
+                "symlink": true,
+                "versions": {
+                    "survos/grid-bundle": "2.34.32",
+                    "survos/api-grid-bundle": "2.34.32"
+                }
+            }
+        },
         {
             "type": "path",
             "url": "../mono/bu/*",

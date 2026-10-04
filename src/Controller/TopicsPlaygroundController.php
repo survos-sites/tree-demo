@@ -15,8 +15,8 @@ final class TopicsPlaygroundController extends AbstractController
     #[Route('/playground/topics', name: 'topics_playground', methods: ['GET'])]
     public function __invoke(Request $request, TopicRepository $topics): Response
     {
-        $backend = $request->query->getString('backend', 'ux');
-        if (!in_array($backend, ['ux', 'simple', 'plain'], true)) {
+        $backend = $request->query->getString('backend', 'grid');
+        if (!in_array($backend, ['grid', 'grid-responsive', 'ux', 'simple', 'plain'], true)) {
             throw $this->createNotFoundException('Unknown table backend.');
         }
 

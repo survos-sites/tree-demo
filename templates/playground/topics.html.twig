@@ -6,7 +6,7 @@
     <h1>Topics table playground</h1>
     <p>{{ topics|length|number_format }} IPTC topics. Compare the same rows and Twig column blocks across table backends.</p>
     <nav class="d-flex flex-wrap gap-2 mb-3" aria-label="Table backends">
-        {% for value, label in {ux: 'UX DataTables', simple: 'Simple DataTables', plain: 'Plain HTML'} %}
+        {% for value, label in {grid: 'Grid', 'grid-responsive': 'Grid + Responsive', ux: 'UX DataTables', simple: 'Simple DataTables', plain: 'Plain HTML'} %}
             <a class="btn {{ backend == value ? 'btn-primary' : 'btn-outline-primary' }}"
                {% if backend == value %}aria-current="page"{% endif %}
                href="{{ path('topics_playground', {backend: value}) }}">{{ label }}</a>
@@ -17,6 +17,36 @@
     {% if topics is empty %}
         <p>No topics have been loaded yet.</p>
     {% else %}
+        {% if backend in ['grid', 'grid-responsive'] %}
+        <twig:grid
+            :extensions="backend == 'grid-responsive' ? ['responsive'] : []"
+            :options="backend == 'grid-responsive' ? {responsive: true} : {}"
+            :data="topics"
+            :columns="[
+                {name: 'code', title: 'Code'},
+                {name: 'name', title: 'Topic'},
+                {name: 'parentId', title: 'Parent'},
+                {name: 'description', title: 'Description'}
+            ]"
+            tableId="topics-playground"
+            :pageLength="25"
+            scrollY=""
+            :trans="false"
+            :info="true"
+        >
+            <twig:block name="code"><code>{{ row.code }}</code></twig:block>
+            <twig:block name="name">
+                <a href="{{ path('topic_tree_api', {selectedId: row.code}) }}">{{ row.name }}</a>
+            </twig:block>
+            <twig:block name="parentId">
+                {% if row.parent %}
+                    <a href="{{ path('topic_tree_api', {selectedId: row.parent.code}) }}">{{ row.parent.name }}</a>
+                {% else %}
+                    <span class="badge bg-secondary-lt">Top-level topic</span>
+                {% endif %}
+            </twig:block>
+        </twig:grid>
+        {% else %}
         <twig:simple_datatables
             :backend="backend == 'plain' ? 'ux' : backend"
             :useDatatables="backend != 'plain'"
@@ -45,5 +75,6 @@
                 {% endif %}
             </twig:block>
         </twig:simple_datatables>
+        {% endif %}
     {% endif %}
 {% endblock %}

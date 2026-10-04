@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7903fd27d5d3be2ca8739aa62777c6c4",
+    "content-hash": "9d9a5a846df8c0f1432be62b35d73ead",
     "packages": [
         {
             "name": "api-platform/core",
@@ -3346,7 +3346,7 @@
             "dist": {
                 "type": "path",
                 "url": "../mono/bu/api-grid-bundle",
-                "reference": "b06d41dab38034d4e8d70f6c4c30127fe9a83d1e"
+                "reference": "8a91117358d7fa8310ce273d09740ceea5d2c4d0"
             },
             "require": {
                 "api-platform/symfony": "^4.1 || ^5.0",
@@ -3355,6 +3355,7 @@
                 "doctrine/persistence": "^4.1",
                 "php": "^8.5",
                 "survos/field-bundle": "^2.5",
+                "survos/grid-bundle": "^2.5",
                 "survos/js-twig-bundle": "^2.5",
                 "survos/kit-bundle": "^2.5",
                 "symfony/config": "^7.4||^8.1",
@@ -3386,7 +3387,6 @@
             "suggest": {
                 "api-platform/doctrine-common": "doctrine integration",
                 "api-platform/symfony": "For javascript-based grid rendering",
-                "friendsofsymfony/jsrouting-bundle": "use path() in javascript grid rendering",
                 "monolog/monolog": "Allows more advanced logging of the application flow"
             },
             "type": "symfony-bundle",
@@ -3714,6 +3714,75 @@
                 "metadata",
                 "search",
                 "symfony"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
+            "name": "survos/grid-bundle",
+            "version": "2.34.32",
+            "dist": {
+                "type": "path",
+                "url": "../mono/bu/grid-bundle",
+                "reference": "fa6d6e93c8c791904f4f3be98ce02d1df61074bf"
+            },
+            "require": {
+                "php": "^8.5",
+                "survos/field-bundle": "^2.5",
+                "survos/kit-bundle": "^2.5",
+                "symfony/config": "^8.1",
+                "symfony/dependency-injection": "^8.1",
+                "symfony/http-kernel": "^8.1",
+                "symfony/options-resolver": "^8.1",
+                "symfony/stimulus-bundle": "^3",
+                "symfony/ux-twig-component": "^3",
+                "twig/twig": "^3.4|^4.0"
+            },
+            "require-dev": {
+                "phpstan/phpstan": "^2.0",
+                "symfony/browser-kit": "^8.1",
+                "symfony/framework-bundle": "^8.1",
+                "symfony/phpunit-bridge": "^8.1",
+                "symfony/twig-bundle": "^8.1",
+                "symfony/var-dumper": "^8.1"
+            },
+            "suggest": {
+                "survos/api-grid-bundle": "For ApiPlatform-backed AJAX grids with facets/searchBuilder/bulk actions"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "branch-alias": {
+                    "dev-main": "2.0-dev"
+                },
+                "symfony": {
+                    "require": "^7.3"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Survos\\Grid\\": "src/"
+                }
+            },
+            "scripts": {
+                "phpstan": [
+                    "vendor/bin/phpstan analyse"
+                ]
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Tac Tacelosky",
+                    "email": "tacman@gmail.com"
+                }
+            ],
+            "description": "The basics: render a plain in-memory or single-fetch table with Twig + Stimulus + DataTables.net (v3). No ApiPlatform required — see survos/api-grid-bundle for that.",
+            "keywords": [
+                "symfony-ux",
+                "symfony6"
             ],
             "transport-options": {
                 "symlink": true,

@@ -32,4 +32,5 @@ return [
     Survos\FieldBundle\SurvosFieldBundle::class => ['all' => true],
     Survos\TablerBundle\SurvosTablerBundle::class => ['all' => true],
     Survos\MediaTopicsBundle\SurvosMediaTopicsBundle::class => ['all' => true],
+    Survos\Grid\SurvosGridBundle::class => ['all' => true],
 ];

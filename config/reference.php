@@ -1954,7 +1954,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     routes_enabled?: bool|Param, // Set false to manage this bundle's routes manually in your app. Bundles exposing sensitive routes (e.g. running console commands) should default this off. // Default: true
  *     route_prefix?: scalar|Param|null, // URL prefix applied to all routes from this bundle. // Default: ""
  *     locale_prefix?: bool|Param, // Prepend {_locale} (constrained to kernel.enabled_locales) to this bundle's route prefix, e.g. /{_locale}/f instead of /f -- for bundles whose routes are meant to be shared/bookmarked, so the URL itself carries the locale instead of a query param. // Default: false
- *     stimulus_controller?: scalar|Param|null, // The stimulus controller to use, should extend @survos/api-grid/api-grid // Default: "@survos/api-grid/api-grid"
+ *     stimulus_controller?: scalar|Param|null, // The stimulus controller to use, should extend survos--api-grid-bundle--api-grid // Default: "survos--api-grid-bundle--api-grid"
  *     meiliHost?: scalar|Param|null, // Default: "%env(MEILI_SERVER)%"
  *     meiliKey?: scalar|Param|null, // Default: "%env(MEILI_API_KEY)%"
  *     meiliPrefix?: scalar|Param|null, // Default: "%env(MEILI_PREFIX)%"
@@ -2100,6 +2100,9 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     genre_file?: scalar|Param|null, // IPTC Genre JSON export to read; default: the release pinned in survos/media-topics // Default: null
  *     locale?: scalar|Param|null, // Locale the commands show when none is given // Default: "en-GB"
  * }
+ * @psalm-type SurvosGridConfig = array{
+ *     stimulus_controller?: scalar|Param|null, // Default: "survos--grid-bundle--grid"
+ * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
  *     parameters?: ParametersConfig,
@@ -2129,6 +2132,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     survos_field?: SurvosFieldConfig,
  *     survos_tabler?: SurvosTablerConfig,
  *     survos_media_topics?: SurvosMediaTopicsConfig,
+ *     survos_grid?: SurvosGridConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -2162,6 +2166,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
+ *         survos_grid?: SurvosGridConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -2192,6 +2197,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
+ *         survos_grid?: SurvosGridConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -2225,6 +2231,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
+ *         survos_grid?: SurvosGridConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

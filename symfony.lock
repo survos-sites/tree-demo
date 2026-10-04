@@ -306,6 +306,9 @@
     "survos/field-bundle": {
         "version": "2.31.3"
     },
+    "survos/grid-bundle": {
+        "version": "2.34.32"
+    },
     "survos/inspection-bundle": {
         "version": "dev-main"
     },
