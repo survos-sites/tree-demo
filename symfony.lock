@@ -288,6 +288,9 @@
     "survos/api-grid-bundle": {
         "version": "2.0.125"
     },
+    "survos/atlas-bundle": {
+        "version": "2.34.29"
+    },
     "survos/bootstrap-bundle": {
         "version": "dev-master"
     },
@@ -300,11 +303,20 @@
     "survos/deployment-bundle": {
         "version": "1.5.242"
     },
+    "survos/field-bundle": {
+        "version": "2.34.29"
+    },
+    "survos/grid-bundle": {
+        "version": "2.34.39"
+    },
     "survos/inspection-bundle": {
         "version": "dev-main"
     },
     "survos/js-twig-bundle": {
         "version": "2.0.125"
+    },
+    "survos/kit-bundle": {
+        "version": "2.35.1"
     },
     "survos/tree-bundle": {
         "version": "1.5.241"
