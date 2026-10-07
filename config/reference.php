@@ -1960,40 +1960,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         transports?: list<scalar|Param|null>,
  *     },
  * }
- * @psalm-type DataTablesConfig = array{
- *     max_page_length?: int|Param, // Upper bound applied to the DataTables "length" parameter on Ajax requests. "length=-1" (show all) is honored only when the table declares -1 in lengthMenu(); otherwise it is capped to this value. // Default: 1000
- *     options?: array{
- *         language?: scalar|Param|null, // Default: "en-GB"
- *         stateSave?: bool|Param,
- *         showHeaderResetButton?: bool|Param,
- *         layout?: mixed, // Default: {"topStart":"pageLength","topEnd":"search","bottomStart":"info","bottomEnd":"paging"}
- *         lengthMenu?: list<scalar|Param|null>,
- *         pageLength?: int|Param,
- *         paging?: array{
- *             boundaryNumbers?: bool|Param, // Default: true
- *             buttons?: int|Param, // Default: 7
- *             firstLast?: bool|Param, // Default: true
- *             numbers?: bool|Param, // Default: true
- *             previousNext?: bool|Param, // Default: true
- *         },
- *     },
- *     table_attributes?: array{
- *         class?: scalar|Param|null, // Default: "table"
- *     },
- *     extensions?: array{
- *         buttons?: list<scalar|Param|null>,
- *         select?: array{
- *             style?: scalar|Param|null, // Default: "single"
- *         },
- *     },
- *     edit_modal?: array{
- *         template?: scalar|Param|null, // Default: "@PentiminaxDataTables/modal/datatables/edit_modal.html.twig"
- *         body_template?: scalar|Param|null, // Default: "@PentiminaxDataTables/modal/datatables/_form_body.html.twig"
- *         default_title?: scalar|Param|null, // Default: "Edit"
- *     },
- * }
  * @psalm-type SurvosSimpleDatatablesConfig = array{
- *     backend?: "simple"|"ux"|Param, // Default: "simple"
  *     stimulus_controller?: scalar|Param|null, // Default: "@survos/simple-datatables-bundle/table"
  *     per_page?: int|Param, // Default: 10
  *     searchable?: bool|Param, // Default: true
@@ -2119,7 +2086,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     survos_js_twig?: SurvosJsTwigConfig,
  *     survos_api_grid?: SurvosApiGridConfig,
  *     survos_kit?: SurvosKitConfig,
- *     data_tables?: DataTablesConfig,
  *     survos_simple_datatables?: SurvosSimpleDatatablesConfig,
  *     survos_field?: SurvosFieldConfig,
  *     survos_tabler?: SurvosTablerConfig,
@@ -2153,7 +2119,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
  *         survos_kit?: SurvosKitConfig,
- *         data_tables?: DataTablesConfig,
  *         survos_simple_datatables?: SurvosSimpleDatatablesConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,
@@ -2184,7 +2149,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
  *         survos_kit?: SurvosKitConfig,
- *         data_tables?: DataTablesConfig,
  *         survos_simple_datatables?: SurvosSimpleDatatablesConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,
@@ -2218,7 +2182,6 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_js_twig?: SurvosJsTwigConfig,
  *         survos_api_grid?: SurvosApiGridConfig,
  *         survos_kit?: SurvosKitConfig,
- *         data_tables?: DataTablesConfig,
  *         survos_simple_datatables?: SurvosSimpleDatatablesConfig,
  *         survos_field?: SurvosFieldConfig,
  *         survos_tabler?: SurvosTablerConfig,

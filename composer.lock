@@ -294,16 +294,16 @@
         },
         {
             "name": "composer/semver",
-            "version": "3.5.0",
+            "version": "3.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer/semver.git",
-                "reference": "f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5"
+                "reference": "528948210cc46f967a4b98e83b19e76f2b504993"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/composer/semver/zipball/f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5",
-                "reference": "f7a296f4c4cf8cb8bb83e35d6951a406bb11afa5",
+                "url": "https://api.github.com/repos/composer/semver/zipball/528948210cc46f967a4b98e83b19e76f2b504993",
+                "reference": "528948210cc46f967a4b98e83b19e76f2b504993",
                 "shasum": ""
             },
             "require": {
@@ -355,7 +355,7 @@
             "support": {
                 "irc": "ircs://irc.libera.chat:6697/composer",
                 "issues": "https://github.com/composer/semver/issues",
-                "source": "https://github.com/composer/semver/tree/3.5.0"
+                "source": "https://github.com/composer/semver/tree/3.5.1"
             },
             "funding": [
                 {
@@ -367,7 +367,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-09-24T14:38:51+00:00"
+            "time": "2026-10-05T13:12:12+00:00"
         },
         {
             "name": "dflydev/dot-access-data",
@@ -2637,103 +2637,6 @@
             "time": "2026-07-17T23:02:45+00:00"
         },
         {
-            "name": "pentiminax/ux-datatables",
-            "version": "v1.1.1",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/pentiminax/ux-datatables.git",
-                "reference": "8eadecfae42eb7e1aeb93ee9d2477fa86944b815"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/pentiminax/ux-datatables/zipball/8eadecfae42eb7e1aeb93ee9d2477fa86944b815",
-                "reference": "8eadecfae42eb7e1aeb93ee9d2477fa86944b815",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.3",
-                "symfony/config": "^7.0 || ^8.0",
-                "symfony/dependency-injection": "^7.0 || ^8.0",
-                "symfony/deprecation-contracts": "^2.5 || ^3.0",
-                "symfony/http-kernel": "^7.0 || ^8.0",
-                "symfony/property-access": "^7.0 || ^8.0",
-                "symfony/security-bundle": "^7.0 || ^8.0",
-                "symfony/security-csrf": "^7.0 || ^8.0",
-                "symfony/stimulus-bundle": "^2.0 || ^3.0"
-            },
-            "conflict": {
-                "symfony/flex": "<1.13"
-            },
-            "require-dev": {
-                "api-platform/core": "^3.0 || ^4.0 || ^5.0",
-                "doctrine/orm": "^3.0",
-                "friendsofphp/php-cs-fixer": "^3.95",
-                "openspout/openspout": "^4.0",
-                "phpunit/phpunit": "^12.0",
-                "symfony/asset-mapper": "^7.0 || ^8.0",
-                "symfony/browser-kit": "^7.0 || ^8.0",
-                "symfony/css-selector": "^7.0 || ^8.0",
-                "symfony/dom-crawler": "^7.0 || ^8.0",
-                "symfony/expression-language": "^7.0 || ^8.0",
-                "symfony/form": "^7.0 || ^8.0",
-                "symfony/framework-bundle": "^7.0 || ^8.0",
-                "symfony/maker-bundle": "^1.66",
-                "symfony/mercure-bundle": "^0.5.0",
-                "symfony/phpunit-bridge": "^7.0 || ^8.0",
-                "symfony/property-info": "^7.0 || ^8.0",
-                "symfony/translation": "^7.0 || ^8.0",
-                "symfony/twig-bundle": "^7.0 || ^8.0",
-                "symfony/var-dumper": "^7.0 || ^8.0",
-                "symfony/web-profiler-bundle": "^7.0 || ^8.0"
-            },
-            "suggest": {
-                "api-platform/core": "To auto-detect columns from API Platform metadata.",
-                "openspout/openspout": "To enable server-side CSV and XLSX export via Button::csv(serverSide: true) and Button::excel(serverSide: true).",
-                "symfony/browser-kit": "To test your tables with Pentiminax\\UX\\DataTables\\Test\\DataTableTestCase.",
-                "symfony/css-selector": "To let DataTableTestCase::dataTableView() locate a rendered table in the page.",
-                "symfony/dom-crawler": "To assert on client-side tables with DataTableTestCase::dataTableView().",
-                "symfony/expression-language": "To use Symfony Expression objects with setPermission().",
-                "symfony/form": "To enable inline edit modal with auto-generated forms.",
-                "symfony/maker-bundle": "To use the make:datatable command.",
-                "symfony/mercure-bundle": "To enable real-time DataTable updates via Mercure SSE.",
-                "symfony/translation": "To translate DataTable column titles and the filter bar labels (Filters/Reset/Apply/All).",
-                "symfony/twig-bundle": "To render edit form and TwigColumn"
-            },
-            "type": "symfony-bundle",
-            "extra": {
-                "thanks": {
-                    "url": "https://github.com/symfony/ux",
-                    "name": "symfony/ux"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Pentiminax\\UX\\DataTables\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Tanguy Lemarié",
-                    "email": "tanguy.lemarie6@gmail.com"
-                }
-            ],
-            "description": "DataTables.net integration for Symfony",
-            "homepage": "https://github.com/pentiminax/ux-datatables",
-            "keywords": [
-                "datatables",
-                "symfony-ux"
-            ],
-            "support": {
-                "issues": "https://github.com/pentiminax/ux-datatables/issues",
-                "source": "https://github.com/pentiminax/ux-datatables/tree/v1.1.1"
-            },
-            "time": "2026-10-01T13:15:35+00:00"
-        },
-        {
             "name": "phpdocumentor/reflection-common",
             "version": "2.2.1",
             "source": {
@@ -3873,16 +3776,16 @@
         },
         {
             "name": "survos/js-twig-bundle",
-            "version": "2.34.38",
+            "version": "2.35.6",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/js-twig-bundle.git",
-                "reference": "ca49761792749154f31154d9ea16b463e86cd11c"
+                "reference": "944852d90b3f0cca71a31bec7f94e8f371a0fc8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/js-twig-bundle/zipball/ca49761792749154f31154d9ea16b463e86cd11c",
-                "reference": "ca49761792749154f31154d9ea16b463e86cd11c",
+                "url": "https://api.github.com/repos/survos/js-twig-bundle/zipball/944852d90b3f0cca71a31bec7f94e8f371a0fc8e",
+                "reference": "944852d90b3f0cca71a31bec7f94e8f371a0fc8e",
                 "shasum": ""
             },
             "require": {
@@ -3921,7 +3824,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/js-twig-bundle/issues",
-                "source": "https://github.com/survos/js-twig-bundle/tree/2.34.38"
+                "source": "https://github.com/survos/js-twig-bundle/tree/2.35.6"
             },
             "funding": [
                 {
@@ -3929,7 +3832,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-04T18:03:08+00:00"
+            "time": "2026-10-05T11:50:37+00:00"
         },
         {
             "name": "survos/kit-bundle",
@@ -4130,20 +4033,19 @@
         },
         {
             "name": "survos/simple-datatables-bundle",
-            "version": "2.35.1",
+            "version": "2.35.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/simple-datatables-bundle.git",
-                "reference": "5720b5b773a1209aefc3b1a54bb062e8918ae509"
+                "reference": "29184293be48674079e4b502c70d8e928d3fa8c9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/simple-datatables-bundle/zipball/5720b5b773a1209aefc3b1a54bb062e8918ae509",
-                "reference": "5720b5b773a1209aefc3b1a54bb062e8918ae509",
+                "url": "https://api.github.com/repos/survos/simple-datatables-bundle/zipball/29184293be48674079e4b502c70d8e928d3fa8c9",
+                "reference": "29184293be48674079e4b502c70d8e928d3fa8c9",
                 "shasum": ""
             },
             "require": {
-                "pentiminax/ux-datatables": "^1.0",
                 "php": "^8.5",
                 "survos/kit-bundle": "^2.5",
                 "symfony/config": "^7.4||^8.1",
@@ -4195,7 +4097,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/simple-datatables-bundle/issues",
-                "source": "https://github.com/survos/simple-datatables-bundle/tree/2.35.1"
+                "source": "https://github.com/survos/simple-datatables-bundle/tree/2.35.7"
             },
             "funding": [
                 {
@@ -4203,20 +4105,20 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-04T18:47:28+00:00"
+            "time": "2026-10-05T13:03:21+00:00"
         },
         {
             "name": "survos/tabler-bundle",
-            "version": "2.34.38",
+            "version": "2.35.14",
             "source": {
                 "type": "git",
                 "url": "https://github.com/survos/tabler-bundle.git",
-                "reference": "c661251e6e41136d2a27437910909b1ad8d2667b"
+                "reference": "e03890d7a5e6354cde728c4a0e3e163195978bdf"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/survos/tabler-bundle/zipball/c661251e6e41136d2a27437910909b1ad8d2667b",
-                "reference": "c661251e6e41136d2a27437910909b1ad8d2667b",
+                "url": "https://api.github.com/repos/survos/tabler-bundle/zipball/e03890d7a5e6354cde728c4a0e3e163195978bdf",
+                "reference": "e03890d7a5e6354cde728c4a0e3e163195978bdf",
                 "shasum": ""
             },
             "require": {
@@ -4299,7 +4201,7 @@
             ],
             "support": {
                 "issues": "https://github.com/survos/tabler-bundle/issues",
-                "source": "https://github.com/survos/tabler-bundle/tree/2.34.38"
+                "source": "https://github.com/survos/tabler-bundle/tree/2.35.14"
             },
             "funding": [
                 {
@@ -4307,7 +4209,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2026-10-04T18:03:15+00:00"
+            "time": "2026-10-06T20:24:30+00:00"
         },
         {
             "name": "survos/tree-bundle",
@@ -7295,16 +7197,16 @@
         },
         {
             "name": "symfony/polyfill-deepclone",
-            "version": "v1.43.0",
+            "version": "v1.43.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-deepclone.git",
-                "reference": "8db92c5508a3f7f82d8688d32f0a4868a26e58ad"
+                "reference": "aaba44b6ee7299ae65717811c55b57ab9bc0fedd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-deepclone/zipball/8db92c5508a3f7f82d8688d32f0a4868a26e58ad",
-                "reference": "8db92c5508a3f7f82d8688d32f0a4868a26e58ad",
+                "url": "https://api.github.com/repos/symfony/polyfill-deepclone/zipball/aaba44b6ee7299ae65717811c55b57ab9bc0fedd",
+                "reference": "aaba44b6ee7299ae65717811c55b57ab9bc0fedd",
                 "shasum": ""
             },
             "require": {
@@ -7358,7 +7260,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-deepclone/tree/v1.43.0"
+                "source": "https://github.com/symfony/polyfill-deepclone/tree/v1.43.1"
             },
             "funding": [
                 {
@@ -7378,7 +7280,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-30T09:07:27+00:00"
+            "time": "2026-10-06T19:46:18+00:00"
         },
         {
             "name": "symfony/polyfill-intl-grapheme",
