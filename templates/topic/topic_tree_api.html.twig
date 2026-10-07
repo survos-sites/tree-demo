@@ -5,29 +5,28 @@
 {% block body %}
     <h1>Topics (API Tree)</h1>
 
-    <twig:apiTreeBrowser
-        :resourceClass="topicClass"
-        :filter="filter|default({})"
-        :editable="true"
-        :openAll="true"
-        :selectFirst="false"
-        :caller="_self"
-    >
-        <twig:block name="nodeLabel">
-            LABEL
-            {{ node.name ?? node.title ?? node.code ?? node.id }}
-            <small class="text-muted">({{ node.childCount ?? 0 }})</small>
-        </twig:block>
+    <div class="row g-3">
+        <div class="col-md-5">
+            {% component api_tree with {
+                class: topicClass,
+                filter: filter|default({}),
+                editable: true,
+                caller: _self,
+                selectedId: app.request.query.get('selectedId')
+            } %}
+                <twig:block name="api_tree_content">
+                    <h5>{{ item.name ?? node.name }}</h5>
+                    <p>{{ item.description ?? node.description }}</p>
+                    <p class="text-muted">Right-click a node to add, rename, or delete it.</p>
+                </twig:block>
+            {% endcomponent %}
+        </div>
 
-        <twig:block name="api_tree_content">
-            api_tree_content
-            {% set item = record ?? node %}
-            <div class="fw-semibold">{{ item.name ?? item.title ?? item.code ?? item.id }}</div>
-            <div class="small text-muted">Code: {{ item.code ?? '—' }}</div>
-            <div class="small text-muted">Children: {{ item.childCount ?? 0 }}</div>
-            {% if item.description is defined and item.description %}
-                <div class="mt-2 small">{{ item.description }}</div>
-            {% endif %}
-        </twig:block>
-    </twig:apiTreeBrowser>
+    {#        <div class="col-md-7">#}
+    {#            <div {{ stimulus_controller('topic') }}>#}
+    {#                <h3 {{ stimulus_target('topic', 'title') }}>Selection</h3>#}
+    {#                <pre class="border rounded p-3 bg-white" {{ stimulus_target('topic', 'results') }}>Select a topic node.</pre>#}
+    {#            </div>#}
+    {#        </div>#}
+    </div>
 {% endblock %}

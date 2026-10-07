@@ -1,3 +1,4 @@
+import { path } from '@survos/js-twig/routing';
 import { Controller } from '@hotwired/stimulus';
 import { createEngine } from '@tacman1123/twig-browser';
 import { installSymfonyTwigAPI } from '@tacman1123/twig-browser/adapters/symfony';
@@ -43,10 +44,6 @@ function prettyTwigSource(source) {
 /* stimulusFetch: 'lazy' */
 export default class extends Controller {
     static targets = ['status', 'source', 'vars', 'rendered', 'cases', 'htmlModal', 'htmlModalBody'];
-
-    static values = {
-        routeMap: { type: Object, default: {} },
-    };
 
     connect() {
         this.loggedFailureNames = new Set();
@@ -131,28 +128,11 @@ export default class extends Controller {
         const engine = createEngine();
 
         installSymfonyTwigAPI(engine, {
-            pathGenerator: (route, params = {}) => this.generatePath(route, params),
+            pathGenerator: (route, params = {}) => path(route, route === 'app_tree_json' ? { _format: 'json', ...params } : params),
             uxIconResolver: (name, attrs = {}) => `<i class="bi bi-${name} ${attrs.class ?? 'text-primary'}" aria-hidden="true"></i>`,
         });
 
         return engine;
-    }
-
-    generatePath(route, params) {
-        const routeMap = this.routeMapValue || {};
-        const base = routeMap[route];
-        if (!base) {
-            throw new Error(`Missing route in routeMap value: ${route}`);
-        }
-
-        const url = new URL(base, window.location.origin);
-        Object.entries(params).forEach(([key, value]) => {
-            if (value !== undefined && value !== null) {
-                url.searchParams.set(key, String(value));
-            }
-        });
-
-        return `${url.pathname}${url.search}`;
     }
 
     renderCasesTable() {

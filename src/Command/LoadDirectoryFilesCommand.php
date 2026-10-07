@@ -20,7 +20,7 @@ class LoadDirectoryFilesCommand extends Command
 {
     public function __construct(private readonly EntityManagerInterface $em,
                                 private readonly ParameterBagInterface $bag,
-                                private readonly AppService $appService, string $name = null)
+                                private readonly AppService $appService, ?string $name = null)
     {
         parent::__construct($name);
 

@@ -112,7 +112,11 @@ class Building  implements \Stringable, RouteParametersInterface, TreeInterface
 
     public function getRootLocation(): ?Location
     {
-        // or filter by no parent?
-        return $this->getLocations()->first() ?: null;
+        foreach ($this->getLocations() as $location) {
+            if ($location->getParent() === null) {
+                return $location;
+            }
+        }
+        return null;
     }
 }

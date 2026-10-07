@@ -4,21 +4,7 @@
             "api_grid": {
                 "enabled": true,
                 "fetch": "lazy",
-                "autoimport": []
-            }
-        },
-        "@survos/bootstrap-bundle": {
-            "search": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": []
-            }
-        },
-        "@survos/grid-bundle": {
-            "grid": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": []
+                "autoimport": {}
             }
         },
         "@survos/js-twig-bundle": {
@@ -41,6 +27,41 @@
             "api_tree": {
                 "enabled": true,
                 "fetch": "lazy"
+            }
+        },
+        "@survos/simple-datatables-bundle": {
+            "table": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "@survos/simple-datatables-bundle/style.css": false
+                }
+            },
+            "ux": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "@pentiminax/ux-datatables/styles/datatables-base-style.css": false,
+                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": false
+                }
+            }
+        },
+        "@pentiminax/ux-datatables": {
+            "datatable": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {
+                    "@pentiminax/ux-datatables/styles/datatables-base-style.css": false,
+                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": false,
+                    "datatables.net-dt/css/dataTables.dataTables.min.css": false
+                }
+            }
+        },
+        "@survos/grid-bundle": {
+            "grid": {
+                "enabled": true,
+                "fetch": "lazy",
+                "autoimport": {}
             }
         }
     },
