@@ -78,7 +78,6 @@ return [
     '@tacman1123/twig-browser/src/compat/compileTwigBlocks.js' => ['version' => '1.0.0'],
     'simple-datatables' => ['version' => '10.3.0'],
     'simple-datatables/dist/style.min.css' => ['version' => '10.3.0', 'type' => 'css'],
-    '@pentiminax/ux-datatables/controller.js' => ['path' => './vendor/pentiminax/ux-datatables/assets/dist/controller.js'],
     'marked' => ['version' => '18.0.13'],
     'stimulus-attributes' => ['version' => '1.0.2'],
     'escape-html' => ['version' => '1.0.3'],

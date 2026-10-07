@@ -41,22 +41,15 @@ security:
             # https://symfony.com/doc/current/security/impersonating_user.html
             # switch_user: true
 
-    # Easy way to control access for large sections of your site
-    # Note: Only the *first* access control that matches will be used
+    # One list for every environment; the first matching rule wins.
+    # Signed-in users manage their own buildings and inventory (API Platform
+    # scopes Location to its owner); everything else that writes is admin-only.
     access_control:
-        - { path: '^/(login|register)$', roles: PUBLIC_ACCESS }
-        - { path: '^/(inventory|building|basic-ajax)(/|$)', roles: ROLE_USER }
-        - { path: '^/api/(locations|building)(/|$|\.)', roles: ROLE_USER }
-        - { path: '^/(load-topics|load-files|file-source|repo-files|file-overview)(/|$)', roles: ROLE_ADMIN }
+        - { path: '^/(login|register|logout)$', roles: PUBLIC_ACCESS }
+        - { path: '^/(admin|load-topics|load-files|file-source|repo-files|file-overview)(/|$)', roles: ROLE_ADMIN }
         - { path: '^/api/files(/|$|\.)', roles: ROLE_ADMIN }
-        # - { path: ^/admin, roles: ROLE_ADMIN }
-        # - { path: ^/profile, roles: ROLE_USER }
-
-when@prod:
-    security:
-        access_control:
-            - { path: '^/(admin|load-topics|load-files|file-source|repo-files)(/|$)', roles: ROLE_ADMIN }
-            - { path: '^/api/(locations|building)(/|$|\.)', roles: ROLE_USER }
-            - { path: '^/api', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
-            - { path: '^/(building|location|file)(/.*)?/(new|edit|delete)(/|$)', roles: ROLE_ADMIN }
-            - { path: '^/', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
+        - { path: '^/api/(locations|building)(/|$|\.)', roles: ROLE_USER }
+        - { path: '^/(inventory|building|basic-ajax)(/|$)', roles: ROLE_USER }
+        - { path: '^/(topic|location|file)(/.*)?/(new|edit|delete)(/|$)', roles: ROLE_ADMIN }
+        - { path: '^/api', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }
+        - { path: '^/', methods: [POST, PUT, PATCH, DELETE], roles: ROLE_ADMIN }

@@ -36,25 +36,6 @@
                 "autoimport": {
                     "@survos/simple-datatables-bundle/style.css": false
                 }
-            },
-            "ux": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": {
-                    "@pentiminax/ux-datatables/styles/datatables-base-style.css": false,
-                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": false
-                }
-            }
-        },
-        "@pentiminax/ux-datatables": {
-            "datatable": {
-                "enabled": true,
-                "fetch": "lazy",
-                "autoimport": {
-                    "@pentiminax/ux-datatables/styles/datatables-base-style.css": false,
-                    "datatables.net-bs5/css/dataTables.bootstrap5.min.css": false,
-                    "datatables.net-dt/css/dataTables.dataTables.min.css": false
-                }
             }
         },
         "@survos/grid-bundle": {

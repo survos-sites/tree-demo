@@ -23,7 +23,10 @@ final class JsonRoutingTest extends KernelTestCase
         // Reproduce a fresh checkout instead of passing on a stale route dump.
         (new Filesystem())->remove($generatedDir);
         self::bootKernel();
-        self::getContainer()->get('cache_warmer')->warmUp(self::$kernel->getCacheDir());
+        // The routes warmer is optional (see FosRoutingCacheWarmer::isOptional), as in cache:clear.
+        $warmer = self::getContainer()->get('cache_warmer');
+        $warmer->enableOptionalWarmers();
+        $warmer->warmUp(self::$kernel->getCacheDir());
 
         self::assertFalse(class_exists('FOS\\JsRoutingBundle\\FOSJsRoutingBundle'));
         self::assertFileExists($generatedDir.'/routes.json');
