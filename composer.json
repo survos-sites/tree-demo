@@ -55,6 +55,7 @@
         "symfony/twig-bundle": "^8.0",
         "symfony/uid": "^8.0",
         "symfony/ux-icons": "^3.0",
+        "symfony/ux-router": "^3.6",
         "symfony/validator": "^8.0",
         "symfony/web-link": "^8.0",
         "symfony/yaml": "^8.0",

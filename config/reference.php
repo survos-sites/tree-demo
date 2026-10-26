@@ -1873,7 +1873,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     twig?: array{
  *         template?: scalar|Param|null, // Default: "@KnpMenu/menu.html.twig"
  *     },
- *     templating?: bool|Param, // Default: false
+ *     route_voter?: bool|Param, // Default: true
  *     default_renderer?: scalar|Param|null, // Default: "twig"
  * }
  * @psalm-type SurvosCrawlerConfig = array{
@@ -2048,6 +2048,8 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         show_locale_dropdown?: bool|Param, // Default: true
  *     },
  *     auto_breadcrumbs?: bool|Param, // Build the BREADCRUMB slot from the page's entities: each object option whose class has a #[RouteMeta(entity:, purpose: Show)] route becomes a crumb. See BreadcrumbMenuSubscriber. // Default: false
+ *     menu_renderer?: "knp"|"survos"|Param, // How tabler_menu() draws menus. knp: KnpMenu templates (@SurvosTabler/menu/*). survos: survos/menu-bundle themes (@SurvosTabler/menu_theme/*); register SurvosMenuBundle first. Same listeners either way. // Default: "knp"
+ *     menu_themes?: array<string, scalar|Param|null>,
  *     menu_options?: array<string, scalar|Param|null>,
  *     impersonate?: array<string, scalar|Param|null>,
  *     routes_enabled?: bool|Param, // Set false to manage this bundle's routes manually in your app. Bundles exposing sensitive routes (e.g. running console commands) should default this off. // Default: true
@@ -2061,6 +2063,11 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  * }
  * @psalm-type SurvosGridConfig = array{
  *     stimulus_controller?: scalar|Param|null, // Default: "survos--grid-bundle--grid"
+ * }
+ * @psalm-type UxRouterConfig = array{
+ *     dump_directory?: scalar|Param|null, // The directory where routes and TypeScript types are dumped. // Default: "%kernel.project_dir%/var/routes"
+ *     dump_typescript?: bool|Param, // Control whether TypeScript types are dumped alongside routes. Disable this if you do not use TypeScript (e.g. in production when using AssetMapper). // Default: true
+ *     routes?: Param|string|list<scalar|Param|null>,
  * }
  * @psalm-type ConfigType = array{
  *     imports?: ImportsConfig,
@@ -2091,6 +2098,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *     survos_tabler?: SurvosTablerConfig,
  *     survos_media_topics?: SurvosMediaTopicsConfig,
  *     survos_grid?: SurvosGridConfig,
+ *     ux_router?: UxRouterConfig,
  *     "when@dev"?: array{
  *         imports?: ImportsConfig,
  *         parameters?: ParametersConfig,
@@ -2124,6 +2132,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
  *         survos_grid?: SurvosGridConfig,
+ *         ux_router?: UxRouterConfig,
  *     },
  *     "when@prod"?: array{
  *         imports?: ImportsConfig,
@@ -2154,6 +2163,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
  *         survos_grid?: SurvosGridConfig,
+ *         ux_router?: UxRouterConfig,
  *     },
  *     "when@test"?: array{
  *         imports?: ImportsConfig,
@@ -2187,6 +2197,7 @@ use Symfony\Component\Config\Loader\ParamConfigurator as Param;
  *         survos_tabler?: SurvosTablerConfig,
  *         survos_media_topics?: SurvosMediaTopicsConfig,
  *         survos_grid?: SurvosGridConfig,
+ *         ux_router?: UxRouterConfig,
  *     },
  *     ...<string, ExtensionType|array{ // extra keys must follow the when@%env% pattern or match an extension alias
  *         imports?: ImportsConfig,

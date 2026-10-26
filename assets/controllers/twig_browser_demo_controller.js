@@ -1,4 +1,4 @@
-import { path } from '@survos/js-twig/routing';
+import { path } from '../router.js';
 import { Controller } from '@hotwired/stimulus';
 import { createEngine } from '@tacman1123/twig-browser';
 import { installSymfonyTwigAPI } from '@tacman1123/twig-browser/adapters/symfony';

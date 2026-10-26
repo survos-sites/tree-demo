@@ -24,6 +24,8 @@
  */
 return [
     'app' => ['path' => './assets/app.js', 'entrypoint' => true],
+    '@symfony/ux-router' => ['path' => './vendor/symfony/ux-router/assets/dist/router_controller.js'],
+    'router' => ['path' => './assets/router.js'],
     '@symfony/stimulus-bundle' => ['path' => './vendor/symfony/stimulus-bundle/assets/dist/loader.js'],
     '@survos/api-grid-bundle' => ['path' => '@survos/api-grid-bundle/package.json', 'type' => 'json'],
     '@tacman1123/twig-browser/testing/detailContextHeader' => ['version' => '0.2.2'],
@@ -99,4 +101,5 @@ return [
     'datatables.net-fixedcolumns-bs5/css/fixedColumns.bootstrap5.min.css' => ['version' => '6.1.1', 'type' => 'css'],
     'datatables.net-fixedheader-bs5/css/fixedHeader.bootstrap5.min.css' => ['version' => '5.1.2', 'type' => 'css'],
     'datatables.net-rowgroup-bs5/css/rowGroup.bootstrap5.min.css' => ['version' => '2.1.1', 'type' => 'css'],
+    '@survos/grid-bundle/src/controllers/grid_controller.js' => ['path' => '@survos/grid-bundle/src/controllers/grid_controller.js'],
 ];

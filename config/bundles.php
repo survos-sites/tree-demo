@@ -32,4 +32,6 @@ return [
     Survos\TablerBundle\SurvosTablerBundle::class => ['all' => true],
     Survos\MediaTopicsBundle\SurvosMediaTopicsBundle::class => ['all' => true],
     Survos\Grid\SurvosGridBundle::class => ['all' => true],
+    Symfony\UX\Router\UXRouterBundle::class => ['all' => true],
+    Survos\MenuBundle\SurvosMenuBundle::class => ['all' => true],
 ];

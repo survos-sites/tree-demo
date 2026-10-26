@@ -1,0 +1,17 @@
+ux_router:
+    # The directory where the JavaScript routes are dumped
+    # If you change it, also change the import in assets/router.js
+    dump_directory: '%kernel.project_dir%/var/routes'
+
+    # Route name patterns exposed to JavaScript, prefix with "!" to exclude (e.g. 'app_*', '!app_admin_*').
+    # A route's own options: ['expose' => true] always wins over these patterns.
+    routes:
+        - 'app_*'
+        - 'topic_*'
+        - 'building_*'
+        - 'api_*'
+        - '_api_*'
+
+when@prod:
+    ux_router:
+        dump_typescript: false
