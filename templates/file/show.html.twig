@@ -39,9 +39,9 @@
                     {% tree e in entities %}
                         {% if treeloop.first %}<ul>{% endif %}
                         <li
-                                data-path="{{ e.path }}"
-                                data-type="{{ e.isDir ? 'dir' : 'file' }}"
-                                data-jstree='{"path": "{{ e.path }}", "type":"{{ e.isDir ? 'dir' : e.extension }}"}'>
+                                data-path="{{ e.path ?? e.code }}"
+                                data-type="{{ (e.isDir ?? false) ? 'dir' : 'file' }}"
+                                data-jstree='{"path": "{{ e.path ?? e.code }}", "type":"{{ (e.isDir ?? false) ? 'dir' : (e.extension ?? 'file') }}"}'>
                             {{ e.name }}
                             {% subtree e.children %}
                         </li>

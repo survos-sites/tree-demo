@@ -1,0 +1,4 @@
+survos_crawler:
+    # crawldata.json is written by survos:crawl itself, so this route is 404 before the first crawl and 200 after.
+    routes_to_ignore:
+        - survos_crawler_data

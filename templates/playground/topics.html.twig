@@ -6,7 +6,7 @@
     <h1>Topics table playground</h1>
     <p>{{ topics|length|number_format }} IPTC topics. Compare the same rows and Twig column blocks across table backends.</p>
     <nav class="d-flex flex-wrap gap-2 mb-3" aria-label="Table backends">
-        {% for value, label in {grid: 'Grid', 'grid-responsive': 'Grid + Responsive', ux: 'UX DataTables', simple: 'Simple DataTables', plain: 'Plain HTML'} %}
+        {% for value, label in {grid: 'Grid', 'grid-responsive': 'Grid + Responsive', ux: 'UX DataTables', plain: 'Plain HTML'} %}
             <a class="btn {{ backend == value ? 'btn-primary' : 'btn-outline-primary' }}"
                {% if backend == value %}aria-current="page"{% endif %}
                href="{{ path('topics_playground', {backend: value}) }}">{{ label }}</a>
@@ -48,7 +48,6 @@
         </twig:grid>
         {% else %}
         <twig:simple_datatables
-            :backend="backend == 'plain' ? 'ux' : backend"
             :useDatatables="backend != 'plain'"
             :data="topics"
             :columns="[

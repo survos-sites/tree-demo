@@ -43,21 +43,6 @@ class TopicCollectionController extends AbstractController
         ]);
     }
 
-    #[Route(path: '/list/{marking}', name: 'topic_browse', methods: ['GET'])]
-    public function browse(string $marking = Topic::PLACE_NEW): Response
-    {
-        $class = Topic::class;
-// WorkflowInterface $projectStateMachine
-        $markingData = []; // $this->workflowHelperService->getMarkingData($projectStateMachine, $class);
-
-        return $this->render('topic/browse.html.twig', [
-            'class' => $class,
-            'marking' => $marking,
-            'filter' => [],
-//            'owner' => $owner,
-        ]);
-    }
-
     #[Route('/index', name: 'topic_index')]
     public function index(Request $request): Response
     {

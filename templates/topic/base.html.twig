@@ -1,8 +1,8 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}{{ topic.name }} · Topics{% endblock %}
+{% block title %}{{ topic is defined ? topic.name : 'Topics' }} · Topics{% endblock %}
 
-{% block page_title %}{{ topic }}{% endblock %}
+{% block page_title %}{{ topic is defined ? topic : 'Topics' }}{% endblock %}
 {% block page_subtitle %}{{ app.request.attributes.get('_route') }}{% endblock %}
 
 {% block body %}
