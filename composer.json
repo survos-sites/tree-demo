@@ -115,7 +115,11 @@
         "symfony/polyfill-php56": "*"
     },
     "scripts": {
-        "pre-update-cmd": "# vendor/bin/phpstan analyse src/Entity",
+        "pre-install-cmd": "mkdir -p var/routes",
+        "pre-update-cmd": [
+            "mkdir -p var/routes",
+            "# vendor/bin/phpstan analyse src/Entity"
+        ],
         "pre-commit-cmd": [
             "bin/console lint:twig",
             "# add this to endpoint? /home/tac/g/survos/survos/packages/recipes/index.json",
